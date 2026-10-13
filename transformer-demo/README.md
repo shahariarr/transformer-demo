@@ -34,3 +34,10 @@ own or are licensed to use. If a file fails to load, the placeholder reappears.
 Front-end validation only. There is no backend, so nothing is sent. After a valid submit the form says so and
 offers an "open in your email app" link with the details prefilled. To send for real, post the form values to a
 service such as Formspree, EmailJS or your own endpoint inside `initContact()` in `js/components/contact.js`.
+- For true transparency you would need an alpha-capable source (e.g. WebM VP9 with alpha plus an HEVC-alpha
+  MOV for Safari) rendered from the original 3D/animation project, not derived from this MP4.
+
+## Contact form
+Front-end validation only. There is no backend, so nothing is sent. After a valid submit the form says so and
+offers an "open in your email app" link with the details prefilled. To send for real, post the form values to a
+service such as Formspree, EmailJS or your own endpoint inside `initContact()` in `js/components/contact.js`.
