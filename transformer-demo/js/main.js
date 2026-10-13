@@ -2,6 +2,7 @@
   const mount = (id, html) => { document.getElementById(id).innerHTML = html; };
   mount('site-header', Header());
   mount('home', Hero());
+  mount('stats', Stats());
   mount('about', About());
   mount('products', Products());
   mount('industries', Industries());
@@ -14,6 +15,6 @@
   mount('footer', Footer());
   document.getElementById('yr').textContent = new Date().getFullYear();
   document.body.insertAdjacentHTML('beforeend', WhatsAppButton() + DialogShell());
-  initHeader(); initTransformerVideos(); initHeroSlider(); initProjects(); initLifecycle();
+  initHeader(); initTransformerVideos(); initHeroSlider(); initStats(); initProjects(); initLifecycle();
   initFaq(); initContact(); initWhatsApp(); initDialog(); initMotion(); initPartners(); initQuality();
 })();

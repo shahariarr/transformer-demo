@@ -128,6 +128,23 @@ h3{margin:0}
 .tv__fallback{position:absolute;inset:0;margin:0;display:flex;align-items:flex-end;justify-content:center;padding:1rem;font-size:.85rem;color:var(--ink-2);background:var(--poster) center/contain no-repeat;mix-blend-mode:multiply}
 .tv__fallback[hidden]{display:none}
 
+/* ---------- minimalist numeric stats bar (between hero & about) ---------- */
+.stats-bar{background:#ffffff;padding:clamp(2.5rem,4.5vw,3.5rem) 0;border-top:1px solid rgba(13,27,46,.08);border-bottom:1px solid rgba(13,27,46,.08);position:relative}
+.stats-grid{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;max-width:1040px;margin:0 auto}
+.stat-item{flex:1;min-width:180px;text-align:center;padding:.5rem 1.75rem;position:relative}
+.stat-item:not(:last-child)::after{content:"";position:absolute;right:0;top:15%;height:70%;width:1px;background:rgba(13,27,46,.12)}
+.stat-num{font-size:clamp(2.4rem,4.2vw,3.5rem);font-weight:800;font-stretch:85%;line-height:1;color:#0D1B2E;letter-spacing:-.02em;margin-bottom:.55rem}
+.stat-label{font-size:.74rem;font-weight:700;letter-spacing:.16em;color:#64748B;text-transform:uppercase}
+
+@media(max-width:768px){
+  .stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem 0}
+  .stat-item:nth-child(2)::after{display:none}
+}
+@media(max-width:480px){
+  .stats-grid{grid-template-columns:1fr;gap:1.75rem 0}
+  .stat-item::after{display:none!important}
+}
+
 .about{position:relative;padding:clamp(5rem,8vw,7.5rem) 0;border-top:1px solid var(--line);background-color:#FCFCFC;background-image:linear-gradient(to right,rgba(13,27,46,.05) 1px,transparent 1px),linear-gradient(to bottom,rgba(13,27,46,.05) 1px,transparent 1px);background-size:44px 44px}
 .about .tv,.about .tv__video{mix-blend-mode:multiply;background:transparent!important}
 .about__grid{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(2rem,4vw,4rem);align-items:center}
@@ -178,6 +195,7 @@ h3{margin:0}
 @media(max-width:540px){.prod-card{grid-template-columns:1fr;gap:1rem}.prod-card__img{aspect-ratio:4/3}}
 
 /* ---------- industries ---------- */
+#industries{position:relative;background-color:#0D1B2E;background-image:linear-gradient(180deg,rgba(13,27,46,.82) 0%,rgba(13,27,46,.72) 50%,rgba(13,27,46,.88) 100%),url('../assets/images/industries-bg.jpg');background-size:cover;background-position:center 30%;background-repeat:no-repeat}
 .ind-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:1rem}
 .ind{grid-column:span var(--span);position:relative;overflow:hidden;min-height:clamp(280px,27vw,380px);background:#1B2B43}
 .ind:nth-child(-n+2){min-height:clamp(300px,33vw,440px)}
