@@ -2,7 +2,7 @@
 window.SITE = {
   name: 'Voltline Power',                       // placeholder company name
   videoSrc: 'assets/videos/transformer-animation.mp4',
-  poster: 'assets/videos/transformer-poster.jpg',
+  poster: 'assets/videos/transformer-poster.png',
   nav: [
     { label: 'Home', href: '#home' },
     { label: 'About', href: '#about' },

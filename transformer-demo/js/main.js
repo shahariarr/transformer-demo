@@ -14,6 +14,6 @@
   mount('footer', Footer());
   document.getElementById('yr').textContent = new Date().getFullYear();
   document.body.insertAdjacentHTML('beforeend', WhatsAppButton() + DialogShell());
-  initHeader(); initTransformerVideos(); initProjects(); initLifecycle();
+  initHeader(); initTransformerVideos(); initHeroSlider(); initProjects(); initLifecycle();
   initFaq(); initContact(); initWhatsApp(); initDialog(); initMotion(); initPartners(); initQuality();
 })();
