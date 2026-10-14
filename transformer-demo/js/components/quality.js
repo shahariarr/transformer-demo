@@ -1,13 +1,37 @@
 /* ── Our Quality Assurance ────────────────────────────────────── */
 const QA_CARDS = [
-  { title: 'Quality Control',
-    desc: 'Stringent quality control at every stage of manufacturing, from raw material inspection to final product testing, ensuring IEC, IEEE and GOST-R compliance.' },
-  { title: 'Transformer Manufacturing',
-    desc: 'State-of-the-art manufacturing facilities producing power and distribution transformers with precision-engineered cores and windings.' },
-  { title: 'Advanced Technology',
-    desc: 'Integration of advanced insulation systems, vacuum impregnation and automated testing rigs to maximise reliability and service life.' },
-  { title: 'Certifications',
-    desc: 'Internationally recognised certificates covering low-voltage directives, environmental management, occupational health and quality management systems.' }
+  {
+    icon: `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>`,
+    step: 'Pillar 01 • Testing',
+    title: 'Multi-Stage Quality Control',
+    desc: 'Stringent multi-tier inspection protocols governing grain-oriented silicon steel, high-purity copper windings, and transformer oil prior to assembly, concluding with 100% FAT verification.',
+    highlight: '100% FAT Tested',
+    standards: 'IEC 60076 • IEEE C57'
+  },
+  {
+    icon: `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>`,
+    step: 'Pillar 02 • Fabrication',
+    title: 'Precision Manufacturing',
+    desc: 'State-of-the-art step-lap core stacking, constant-tension automated winding lines, and high-vacuum drying ovens ensuring superior mechanical rigidity and dynamic short-circuit strength.',
+    highlight: 'Step-Lap Core Lines',
+    standards: '500 MVA Lab Tested'
+  },
+  {
+    icon: `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/><circle cx="12" cy="12" r="3"/></svg>`,
+    step: 'Pillar 03 • Insulation',
+    title: 'Advanced Technology & VPI',
+    desc: 'Automated vacuum pressure impregnation (VPI), high-grade Nomex thermal barriers, and digital DGA oil chromatography diagnostics engineered for reliable 30+ year service lifespans.',
+    highlight: 'VPI & Digital DGA',
+    standards: 'Class H / Class F'
+  },
+  {
+    icon: `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>`,
+    step: 'Pillar 04 • Compliance',
+    title: 'Global Certifications',
+    desc: 'Comprehensive accreditation portfolio across ISO 9001/14001/45001, EU CE/LVD Directive 2014/35/EU, and dynamic short-circuit reports issued by CNAS and ILAC-MRA partner laboratories.',
+    highlight: 'CNAS & IAF Accredited',
+    standards: 'ISO • CE • TÜV Certified'
+  }
 ];
 
 /* Official Quality Certificates and Type Test Reports provided by company */
@@ -136,53 +160,121 @@ const QA_CERTS = [
 
 window.QA_CERTS = QA_CERTS;
 
+function getCertBadgeClass(badge) {
+  if (badge.includes('ISO')) return 'qa-cert__badge--iso';
+  if (badge.includes('CE')) return 'qa-cert__badge--ce';
+  return 'qa-cert__badge--test';
+}
+
 function Quality() {
   const cards = QA_CARDS.map((c, i) => `
     <article class="qa-card" data-reveal style="--d:${i % 2}">
-      <div class="qa-card__top">
-        <h3>${c.title}</h3>
-        <a href="#contact" class="qa-card__link" aria-label="Read more about ${c.title}">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+      <div class="qa-card__head">
+        <div class="qa-card__icon-box">
+          ${c.icon}
+        </div>
+        <span class="qa-card__step">${c.step}</span>
+      </div>
+      <div class="qa-card__body">
+        <h3 class="qa-card__title">${c.title}</h3>
+        <p class="qa-card__desc">${c.desc}</p>
+      </div>
+      <div class="qa-card__foot">
+        <div class="qa-card__meta">
+          <span class="qa-card__pill">${c.highlight}</span>
+          <span class="qa-card__std">${c.standards}</span>
+        </div>
+        <a href="#contact" class="qa-card__btn" aria-label="Inquire about ${c.title}">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
         </a>
       </div>
-      <p>${c.desc}</p>
-      <a href="#contact" class="qa-read">Read More
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
-      </a>
     </article>`).join('');
 
   const certCards = QA_CERTS.map((c, i) => `
-    <article class="qa-cert" data-cert="${i}" role="button" tabindex="0" aria-label="View ${c.title}">
+    <article class="qa-cert" data-cert="${i}" role="button" tabindex="0" aria-label="View official ${c.title}">
       <div class="qa-cert__preview">
         <img src="${c.src}" alt="${c.alt}" loading="lazy" decoding="async">
-        <span class="qa-cert__zoom" title="Click to view full certificate">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>
+        <span class="qa-cert__zoom-hint" title="Inspect document">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
         </span>
       </div>
       <div class="qa-cert__info">
-        <span class="qa-cert__badge">${c.badge}</span>
+        <span class="qa-cert__badge ${getCertBadgeClass(c.badge)}">${c.badge}</span>
         <h4 class="qa-cert__title">${c.title}</h4>
         <p class="qa-cert__sub">${c.sub}</p>
       </div>
     </article>`).join('');
 
   return `<div class="wrap">
-    ${SectionHead({ label: 'OUR QUALITY ASSURANCE', title: 'Certified Quality You Can Trust' })}
+    ${SectionHead({
+      label: 'OUR QUALITY ASSURANCE',
+      title: 'Certified Quality You Can Trust',
+      desc: 'Rigorous multi-stage factory acceptance tests (FAT), full-scale impulse test laboratories, and international ISO & CE compliance ensuring zero-defect transformer reliability.'
+    })}
+    
+    <!-- Upper Section: Executive Quality Pillar & Grid -->
     <div class="qa-layout" data-reveal>
-      <div class="qa-text">
-        <p>CHBEB uses only premium materials and advanced manufacturing processes to produce power and distribution transformers that meet various international standards, such as IEC, IEEE, GOST-R.</p>
-        <p>Our high-quality transformers offer significant cost and sustainability advantages, with high efficiency, low environmental impact, reliable operation, and a service life of 20 years.</p>
+      <div class="qa-overview">
+        <div class="qa-lead-card">
+          <div class="qa-lead-tag">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+            Zero-Defect Quality Protocol
+          </div>
+          <h3>Precision Engineering & Testing Built Into Every Kilovolt</h3>
+          <p>We deploy premium grain-oriented electrical steel, computer-guided core cutting, high-vacuum thermal drying chambers, and calibrated high-voltage impulse test rigs to engineer transformers that endure the toughest electrical grid environments.</p>
+        </div>
+
+        <div class="qa-highlights-list">
+          <div class="qa-hl-item">
+            <div class="qa-hl-check">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="qa-hl-text">
+              <strong>100% Routine & Dielectric FAT Inspection</strong>
+              <span>Full-voltage ratio, winding resistance, and no-load losses verified prior to field shipment.</span>
+            </div>
+          </div>
+          <div class="qa-hl-item">
+            <div class="qa-hl-check">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="qa-hl-text">
+              <strong>500 MVA Type Test Lab Rating</strong>
+              <span>Lightning impulse (BIL 200kV) and dynamic short-circuit endurance tested by national testing centers.</span>
+            </div>
+          </div>
+          <div class="qa-hl-item">
+            <div class="qa-hl-check">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="qa-hl-text">
+              <strong>Accredited Standards Compliance</strong>
+              <span>Certified under ISO 9001/14001/45001, EU CE/LVD Directive, IEC 60076, and IEEE C57 series.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="qa-cta-box">
+          <a href="#contact" class="btn btn--primary qa-cta-btn">
+            <span>Request Full Quality Dossier</span>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
       </div>
+
       <div class="qa-cards">${cards}</div>
     </div>
 
+    <!-- Lower Section: Spacious Certificates Slider (4 per view) -->
     <div class="qa-certs-wrap" data-reveal>
       <div class="qa-certs-header">
         <div class="qa-certs-titles">
-          <h3>Official Quality Certificates & Type Test Reports</h3>
-          <p>Verified international accreditations and laboratory test reports for CHBEB transformer equipment (Showing 6 at a time, click arrows to browse).</p>
+          <div class="qa-certs-eyebrow">Accreditation Portfolio</div>
+          <h3>Official Quality Certificates & Laboratory Reports</h3>
+          <p>Verified third-party accreditations and electrical type test reports issued by CNAS, IAF, and accredited national laboratories (Click any document to inspect details).</p>
         </div>
         <div class="qa-certs-nav">
+          <span class="qa-certs-counter">12 Verified Documents</span>
           <button type="button" class="qa-arrow-btn" id="qa-cert-prev" aria-label="Previous certificates" title="Previous">
             <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
           </button>
@@ -206,8 +298,8 @@ function initQuality() {
 
   function getStep() {
     const card = track.firstElementChild;
-    if (!card) return 200;
-    const gap = parseFloat(getComputedStyle(track).gap) || 16;
+    if (!card) return 280;
+    const gap = parseFloat(getComputedStyle(track).gap) || 24;
     return card.offsetWidth + gap;
   }
 

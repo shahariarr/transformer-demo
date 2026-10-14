@@ -6,7 +6,7 @@ const HERO_SLIDES = [
     title: 'Engineering Power. Enabling Progress.',
     lead: 'Delivering engineered oil-immersed, dry-type, and special transformers for industrial, commercial, and utility applications.',
     ctaPrimary: { text: 'Explore Products', href: '#products' },
-    ctaSecondary: { text: 'Discuss Your Project', href: '#contact' },
+    ctaSecondary: { text: 'GET A QUOTE', href: '#contact' },
     caps: ['10kV – 35kV Capacity', 'High Thermal Efficiency', 'Low-Loss Core Design'],
     video: 'assets/videos/transformer-animation.mp4',
     poster: 'assets/videos/transformer-poster.png',

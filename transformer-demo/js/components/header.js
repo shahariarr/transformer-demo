@@ -8,9 +8,20 @@ function Header() {
     </a>
     <nav id="nav" class="nav" aria-label="Primary">
       <ul>${links}</ul>
-      <a class="btn btn--primary btn--sm nav__cta" href="#contact">Discuss Your Project</a>
+      <a class="btn btn--primary btn--sm nav__cta nav__cta--mobile" href="#contact">GET A QUOTE</a>
     </nav>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span></button>
+    <div class="header__actions">
+      <button type="button" class="search-btn" id="search-trigger" aria-label="Search" title="Search (Ctrl + K)">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <span class="search-btn__text">Search</span>
+        <kbd class="search-btn__kbd">Ctrl K</kbd>
+      </button>
+      <a class="btn btn--primary btn--sm nav__cta nav__cta--desktop" href="#contact">GET A QUOTE</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span></button>
+    </div>
   </div>`;
 }
 function initHeader() {

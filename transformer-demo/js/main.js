@@ -14,7 +14,7 @@
   mount('contact', Contact());
   mount('footer', Footer());
   document.getElementById('yr').textContent = new Date().getFullYear();
-  document.body.insertAdjacentHTML('beforeend', WhatsAppButton() + DialogShell());
+  document.body.insertAdjacentHTML('beforeend', WhatsAppButton() + DialogShell() + SearchModal());
   initHeader(); initTransformerVideos(); initHeroSlider(); initStats(); initProjects(); initLifecycle();
-  initFaq(); initContact(); initWhatsApp(); initDialog(); initMotion(); initPartners(); initQuality();
+  initFaq(); initContact(); initWhatsApp(); initDialog(); initSearch(); initMotion(); initPartners(); initQuality(); initFooter();
 })();
