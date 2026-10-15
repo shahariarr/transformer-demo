@@ -38,7 +38,7 @@ function Lifecycle() {
 
     // Media Showcase Card (Clean image with stage badge)
     const mediaCardHtml = `
-      <div class="lc-card lc-card--media ${isEven ? 'lc-slide--right' : 'lc-slide--left'}">
+      <div class="lc-card lc-card--media ${isEven ? 'fade-in-right' : 'fade-in-left'}" ${isEven ? 'data-delay="120"' : ''}>
         <div class="lc-media__frame">
           <img src="${s.image}" alt="${s.title}" loading="${i <= 1 ? 'eager' : 'lazy'}" decoding="async">
           <div class="lc-media__top-chips">
@@ -53,7 +53,7 @@ function Lifecycle() {
 
     // Clean Minimal Stage Header Card (Only STAGE XX OF 07 and Title)
     const scopeCardHtml = `
-      <div class="lc-card lc-card--scope ${isEven ? 'lc-slide--left' : 'lc-slide--right'}">
+      <div class="lc-card lc-card--scope ${isEven ? 'fade-in-left' : 'fade-in-right'}" ${isEven ? '' : 'data-delay="120"'}>
         <div class="lc-scope__content">
           <div class="lc-scope__eyebrow">
             <span class="lc-scope__eyebrow-badge">${s.phase.toUpperCase()} OF 07</span>
@@ -65,7 +65,7 @@ function Lifecycle() {
 
     // Center Stage Node
     const centerNodeHtml = `
-      <div class="lc-timeline__node" aria-hidden="true">
+      <div class="lc-timeline__node fade-in-up" data-delay="60" aria-hidden="true">
         <div class="lc-node__circle">
           <span class="lc-node__num">${i + 1}</span>
           <span class="lc-node__icon">${iconSvg}</span>
@@ -181,6 +181,8 @@ function initLifecycle() {
             const idx = parseInt(row.dataset.stageIndex, 10);
             activateStage(idx);
           }
+        } else {
+          row.classList.remove('is-visible');
         }
       }
     }, {
