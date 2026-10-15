@@ -8,28 +8,28 @@ const HIGHLIGHTS = [
 ];
 function About() {
   const items = HIGHLIGHTS.map((h, i) => `
-    <li data-reveal style="--d:${i}"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${h.i}</svg>
+    <li class="fade-in-up" data-delay="${280 + i * 90}"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${h.i}</svg>
     <div><h3>${h.t}</h3><p>${h.d}</p></div></li>`).join('');
   return `
   <div class="wrap about__grid">
     <div class="about__copy">
-      <p class="label" data-reveal>ABOUT OUR COMPANY</p>
-      <h2 data-reveal>Engineering Expertise. Built Around Reliability.</h2>
-      <p class="lead" data-reveal>Our engineers and manufacturing team work from specification through to quality assurance, installation and commissioning, so each project stays accountable to its drawings and to the network it joins.</p>
+      <p class="label fade-in-left">ABOUT OUR COMPANY</p>
+      <h2 class="fade-in-left" data-delay="100">Engineering Expertise. Built Around Reliability.</h2>
+      <p class="lead fade-in-left" data-delay="200">Our engineers and manufacturing team work from specification through to quality assurance, installation and commissioning, so each project stays accountable to its drawings and to the network it joins.</p>
       <ul class="highlights">${items}</ul>
     </div>
 
-    <div class="about__media" data-reveal style="--d:1">
+    <div class="about__media">
       <div class="about-collage">
-        <div class="about-card about-card--main">
+        <div class="about-card about-card--main fade-in-right" data-delay="150">
           <img src="assets/images/about-campus.jpg" alt="Voltline Power Manufacturing Campus" class="about-card__img" loading="lazy" decoding="async">
         </div>
 
-        <div class="about-card about-card--sub">
+        <div class="about-card about-card--sub fade-in-up" data-delay="280">
           <img src="assets/images/about-tower.jpg" alt="Voltline Power Corporate Headquarters" class="about-card__img" loading="lazy" decoding="async">
         </div>
 
-        <div class="about-badge" tabindex="0" role="region" aria-label="Founded In 1985 Years">
+        <div class="about-badge fade-in-right" data-delay="380" tabindex="0" role="region" aria-label="Founded In 1985 Years">
           <div class="about-badge__icon">
             <svg viewBox="0 0 54 48" width="50" height="44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <!-- Left Building (Medium Height) -->

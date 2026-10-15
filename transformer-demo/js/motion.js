@@ -1,14 +1,181 @@
-/* Shared motion: one reveal observer, light parallax. Everything is visible
-   if JS or IntersectionObserver is unavailable (hidden states are scoped to html.js). */
+/* Shared motion: Antigravity Entrance Animation (Fade In Left / Right / Up) powered by Anime.js.
+   Works seamlessly across all sections, repeatable on every scroll, preserving exact original design and alignment. */
+
+/**
+ * Universal Antigravity Entrance Animation using Anime.js (v4 / v3 compatible)
+ * @param {HTMLElement|string} target 
+ * @param {'left'|'right'|'up'|'bottom'} direction 
+ * @param {number} delay 
+ */
+function runAntigravityAnimation(target, direction = 'up', delay = 0) {
+  const isReduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (isReduced) {
+    const els = typeof target === 'string' ? document.querySelectorAll(target) : [target];
+    els.forEach(el => {
+      if (el && el.style) {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      }
+    });
+    return;
+  }
+
+  let xFrom = 0, yFrom = 0;
+  if (direction === 'left') {
+    xFrom = -38;
+  } else if (direction === 'right') {
+    xFrom = 38;
+  } else {
+    // 'up' or 'bottom'
+    yFrom = 32;
+  }
+
+  // 1. Anime.js v4 syntax check
+  if (typeof window.animate === 'function') {
+    window.animate(target, {
+      x: [xFrom, 0],
+      y: [yFrom, 0],
+      opacity: [0, 1],
+      duration: 1000,
+      delay: delay,
+      ease: 'outBack(1.35)',
+      onComplete: () => {
+        const els = typeof target === 'string' ? document.querySelectorAll(target) : [target];
+        els.forEach(el => {
+          if (el && el.style) {
+            el.style.transform = '';
+            el.style.opacity = '1';
+          }
+        });
+      }
+    });
+    return;
+  }
+
+  // 2. Anime.js v3 syntax fallback (using bundled anime.min.js)
+  if (typeof window.anime === 'function') {
+    window.anime.remove(target);
+    window.anime({
+      targets: target,
+      translateX: [xFrom, 0],
+      translateY: [yFrom, 0],
+      opacity: [0, 1],
+      duration: 1050,
+      delay: delay,
+      easing: 'easeOutElastic(1, 0.82)',
+      complete: () => {
+        const els = typeof target === 'string' ? document.querySelectorAll(target) : [target];
+        els.forEach(el => {
+          if (el && el.style) {
+            el.style.transform = '';
+            el.style.opacity = '1';
+          }
+        });
+      }
+    });
+    return;
+  }
+
+  // 3. Native CSS Fallback if Anime.js is not loaded
+  const els = typeof target === 'string' ? document.querySelectorAll(target) : [target];
+  els.forEach(el => {
+    if (el) {
+      el.style.transition = 'opacity .7s ease, transform .7s ease';
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+      el.classList.add('in');
+    }
+  });
+}
+
+/**
+ * Resets an element to its initial hidden state when scrolled out of view.
+ */
+function resetAntigravityElement(el, direction = 'up') {
+  if (!el) return;
+  if (typeof window.anime === 'function') {
+    window.anime.remove(el);
+  }
+  let xFrom = 0, yFrom = 0;
+  if (direction === 'left') {
+    xFrom = -38;
+  } else if (direction === 'right') {
+    xFrom = 38;
+  } else {
+    yFrom = 32;
+  }
+
+  el.style.opacity = '0';
+  el.style.transform = `translate3d(${xFrom}px, ${yFrom}px, 0)`;
+  el.classList.remove('in');
+}
+
+/**
+ * Determines element entrance direction.
+ * • বাম থেকে আসলে: Fade In Left
+ * • ডান থেকে আসলে: Fade In Right
+ * • নিচ থেকে আসলে: Fade In Up
+ */
+function getTargetDirection(el) {
+  if (el.dataset.direction) {
+    const d = el.dataset.direction.toLowerCase();
+    if (d === 'left') return 'left';
+    if (d === 'right') return 'right';
+    return 'up';
+  }
+  if (el.matches('.fade-in-left, .anime-left, .antigravity-left')) return 'left';
+  if (el.matches('.fade-in-right, .anime-right, .antigravity-right')) return 'right';
+  if (el.matches('.fade-in-up, .anime-bottom, .antigravity-bottom')) return 'up';
+  return 'up';
+}
+
+/**
+ * Calculates entrance delay based on data-delay or CSS custom property --d.
+ */
+function getTargetDelay(el) {
+  if (el.dataset.delay) return parseInt(el.dataset.delay, 10) || 0;
+  const dVal = el.style.getPropertyValue('--d');
+  if (dVal !== '') return (parseFloat(dVal) || 0) * 90;
+  return 0;
+}
+
 function initMotion() {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const els = document.querySelectorAll('[data-reveal]');
-  if (reduce || !('IntersectionObserver' in window)) { els.forEach(e => e.classList.add('in')); return; }
-  const io = new IntersectionObserver(list => list.forEach(x => {
-    if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); }
-  }), { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
-  els.forEach(e => io.observe(e));
+  const selector = [
+    '.fade-in-left', '.fade-in-right', '.fade-in-up',
+    '.anime-left', '.anime-right', '.anime-bottom',
+    '.antigravity-left', '.antigravity-right', '.antigravity-bottom',
+    '[data-reveal]', '[data-direction]'
+  ].join(', ');
 
+  const els = document.querySelectorAll(selector);
+
+  if (reduce || !('IntersectionObserver' in window)) {
+    els.forEach(e => {
+      e.style.opacity = '1';
+      e.style.transform = 'none';
+      e.classList.add('in');
+    });
+  } else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const el = entry.target;
+        const dir = getTargetDirection(el);
+        const delay = getTargetDelay(el);
+
+        if (entry.isIntersecting) {
+          runAntigravityAnimation(el, dir, delay);
+        } else {
+          // Reset when scrolled out of view so animation repeats every time user scrolls to section
+          resetAntigravityElement(el, dir);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+    els.forEach(e => io.observe(e));
+  }
+
+  // Parallax handling
   const pars = [...document.querySelectorAll('[data-parallax]')];
   let ticking = false;
   const run = () => {
@@ -23,3 +190,7 @@ function initMotion() {
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(run); } }, { passive: true });
   run();
 }
+
+// Expose helpers globally
+window.runAntigravityAnimation = runAntigravityAnimation;
+window.initMotion = initMotion;

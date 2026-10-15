@@ -11,6 +11,6 @@ function Media(item, { cls = '', parallax = false, reveal = true } = {}) {
       ${reveal ? 'data-reveal="mask"' : ''}><div class="media__shift" ${parallax ? 'data-parallax' : ''}>${ph}${inner}</div></div>`;
 }
 function SectionHead({ label, title, desc }) {
-  return `<header class="sec-head" data-reveal>
+  return `<header class="sec-head fade-in-up" data-reveal>
     <p class="label">${label}</p><h2>${title}</h2>${desc ? `<p class="sec-head__desc">${desc}</p>` : ''}</header>`;
 }

@@ -130,7 +130,7 @@ function Partners() {
     ${SectionHead({ label: 'OUR PARTNERS', title: 'Trusted by Industry Leaders',
       desc: 'We collaborate with world-class manufacturers and certification bodies to deliver reliable power solutions.' })}
   </div>
-  <div class="partners-wrap" aria-label="Partner logos" data-reveal>
+  <div class="partners-wrap fade-in-up" aria-label="Partner logos" data-delay="100">
     <div class="partners-inner" id="partners-inner">
       <div class="partners-row" id="partners-row">${logos}</div>
     </div>

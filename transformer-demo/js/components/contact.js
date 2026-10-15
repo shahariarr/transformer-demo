@@ -16,13 +16,13 @@ function Contact() {
     ${SectionHead({ label: "LET'S DISCUSS YOUR PROJECT", title: 'Have a Power Engineering Requirement?',
       desc: 'Share your project requirements and connect with our team to discuss the next steps.' })}
     <div class="contact__grid">
-      <div class="contact__cards" data-reveal>
+      <div class="contact__cards fade-in-left">
         <a class="ccard" href="${mailLink()}">${ico(I.mail)}<span><b>Email</b>${c.email}<small>Placeholder address</small></span></a>
         <a class="ccard" href="${waLink()}" target="_blank" rel="noopener">${ico(I.wa)}<span><b>WhatsApp</b>${c.phoneDisplay}<small>Placeholder number, opens WhatsApp</small></span></a>
         <div class="ccard">${ico(I.phone)}<span><b>Business phone</b>${c.phoneDisplay}<small>Placeholder number</small></span></div>
         <div class="ccard">${ico(I.pin)}<span><b>Office address</b>${c.address}<small>Placeholder address</small></span></div>
       </div>
-      <form id="contact-form" class="form" novalidate data-reveal>
+      <form id="contact-form" class="form fade-in-right" data-delay="150" novalidate>
         <div class="form__row">${field('name', 'Full Name', 'text', true, 'autocomplete="name"')}${field('company', 'Company Name', 'text', false, 'autocomplete="organization"')}</div>
         <div class="form__row">${field('email', 'Email Address', 'email', true, 'autocomplete="email"')}${field('phone', 'Phone Number', 'tel', false, 'autocomplete="tel"')}</div>
         <div class="form__row">

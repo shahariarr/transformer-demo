@@ -4,8 +4,12 @@ function Products() {
       ? p.specs.map(s => `<li>• ${s}</li>`).join('')
       : `<li>• ${p.desc}</li>`;
 
+    // Left column cards enter from Left; Right column cards enter from Right
+    const sideClass = (i % 2 === 0) ? 'fade-in-left' : 'fade-in-right';
+    const rowDelay = Math.floor(i / 2) * 120;
+
     return `
-    <article class="prod-card" data-reveal style="--d:${i % 2}">
+    <article class="prod-card ${sideClass}" data-delay="${rowDelay}">
       <div class="prod-card__img">
         <img src="${p.image}" alt="${p.name}" loading="lazy" decoding="async">
       </div>
@@ -17,8 +21,11 @@ function Products() {
     </article>`;
   }).join('');
 
+  const browseSide = (DATA.products.length % 2 === 0) ? 'fade-in-left' : 'fade-in-right';
+  const browseDelay = Math.floor(DATA.products.length / 2) * 120;
+
   const browseCard = `
-    <article class="prod-card prod-card--browse" data-reveal style="--d:1">
+    <article class="prod-card prod-card--browse ${browseSide}" data-delay="${browseDelay}">
       <div class="prod-browse__bg"></div>
       <a href="#contact" class="prod-browse__overlay" aria-label="Browse All Products">
         <span class="prod-browse__title">Browse All Products</span>
@@ -33,7 +40,7 @@ function Products() {
   return `<div class="wrap">
     ${SectionHead({ label: 'OUR PRODUCTS', title: 'Engineered Products for Critical Power Infrastructure',
       desc: 'Explore electrical equipment and engineered solutions designed for reliable power distribution and industrial infrastructure.' })}
-    <p class="demo-note" data-reveal>Featured power & distribution transformers and substation equipment.</p>
+    <p class="demo-note fade-in-up" data-delay="160">Featured power & distribution transformers and substation equipment.</p>
     <div class="prod-grid">${cards}${browseCard}</div>
   </div>`;
 }

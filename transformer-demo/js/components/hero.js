@@ -130,7 +130,18 @@ function initHeroSlider() {
   let current = 0;
   let timer = null;
   let isHovered = false;
-  const duration = 7500; // 7.5 seconds per slide
+  const duration = (window.SITE && window.SITE.slideDuration) || 6500;
+  slider.style.setProperty('--hero-slide-duration', `${duration}ms`);
+
+  // Ensure all hero videos have fast playbackRate configured
+  slides.forEach(slide => {
+    const v = slide.querySelector('video');
+    if (v) {
+      const spd = (window.SITE && window.SITE.videoPlaybackRate) || 2.0;
+      v.defaultPlaybackRate = spd;
+      v.playbackRate = spd;
+    }
+  });
 
   function goTo(index) {
     if (index === current && slides[current].classList.contains('is-active')) return;
@@ -156,6 +167,9 @@ function initHeroSlider() {
       const nextVideo = nextSlide.querySelector('video');
       if (nextVideo) {
         nextVideo.currentTime = 0;
+        const spd = (window.SITE && window.SITE.videoPlaybackRate) || 2.0;
+        nextVideo.defaultPlaybackRate = spd;
+        nextVideo.playbackRate = spd;
         const p = nextVideo.play();
         if (p && p.catch) p.catch(() => {});
       }
@@ -174,12 +188,24 @@ function initHeroSlider() {
   function next() { goTo(current + 1); }
   function prev() { goTo(current - 1); }
 
+  let isVisible = true;
+
   function resetTimer() {
     clearInterval(timer);
-    if (!isHovered) {
+    if (isVisible && !isHovered) {
       timer = setInterval(next, duration);
     }
   }
+
+  const heroObserver = new IntersectionObserver(([entry]) => {
+    isVisible = entry.isIntersecting;
+    if (isVisible) {
+      resetTimer();
+    } else {
+      clearInterval(timer);
+    }
+  }, { threshold: 0.15 });
+  heroObserver.observe(slider);
 
   if (nextBtn) nextBtn.addEventListener('click', next);
   if (prevBtn) prevBtn.addEventListener('click', prev);
@@ -191,13 +217,24 @@ function initHeroSlider() {
     });
   });
 
-  slider.addEventListener('mouseenter', () => {
-    isHovered = true;
-    clearInterval(timer);
-  });
-  slider.addEventListener('mouseleave', () => {
-    isHovered = false;
-    resetTimer();
+  const bottomNav = slider.querySelector('.hero-bottom');
+  if (bottomNav) {
+    bottomNav.addEventListener('mouseenter', () => {
+      isHovered = true;
+      clearInterval(timer);
+    });
+    bottomNav.addEventListener('mouseleave', () => {
+      isHovered = false;
+      resetTimer();
+    });
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      clearInterval(timer);
+    } else {
+      resetTimer();
+    }
   });
 
   slider.addEventListener('keydown', e => {

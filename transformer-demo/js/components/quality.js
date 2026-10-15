@@ -1,36 +1,47 @@
-/* ── Our Quality Assurance ────────────────────────────────────── */
-const QA_CARDS = [
+/* ── Why Work With BPEL & Official Certificates ─────────────────── */
+
+const WHY_BPEL_CARDS = [
   {
-    icon: `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>`,
-    step: 'Pillar 01 • Testing',
-    title: 'Multi-Stage Quality Control',
-    desc: 'Stringent multi-tier inspection protocols governing grain-oriented silicon steel, high-purity copper windings, and transformer oil prior to assembly, concluding with 100% FAT verification.',
-    highlight: '100% FAT Tested',
-    standards: 'IEC 60076 • IEEE C57'
+    icon: `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+      <polyline points="14 2 14 8 20 8"></polyline>
+      <circle cx="16" cy="16" r="2.5"></circle>
+      <path d="m14.5 18 1.5 3 1.5-3"></path>
+    </svg>`,
+    title: 'In-House Production,<br>Full Control',
+    desc: 'With 3 manufacturing bases, we handle every step of transformer manufacturing in-house, ensuring consistent quality, faster delivery, and substantial return on investment.'
   },
   {
-    icon: `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>`,
-    step: 'Pillar 02 • Fabrication',
-    title: 'Precision Manufacturing',
-    desc: 'State-of-the-art step-lap core stacking, constant-tension automated winding lines, and high-vacuum drying ovens ensuring superior mechanical rigidity and dynamic short-circuit strength.',
-    highlight: 'Step-Lap Core Lines',
-    standards: '500 MVA Lab Tested'
+    icon: `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="2" fill="currentColor"></circle>
+      <ellipse cx="12" cy="12" rx="9" ry="3.5" transform="rotate(30 12 12)"></ellipse>
+      <ellipse cx="12" cy="12" rx="9" ry="3.5" transform="rotate(90 12 12)"></ellipse>
+      <ellipse cx="12" cy="12" rx="9" ry="3.5" transform="rotate(150 12 12)"></ellipse>
+    </svg>`,
+    title: 'Premium Materials,<br>Reliable Performance',
+    desc: "We utilize high-quality materials, including Baowu's top silicon steel sheets, DuPont Nomex®, or Vishay's components, to ensure high efficiency, durability, and safety."
   },
   {
-    icon: `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/><circle cx="12" cy="12" r="3"/></svg>`,
-    step: 'Pillar 03 • Insulation',
-    title: 'Advanced Technology & VPI',
-    desc: 'Automated vacuum pressure impregnation (VPI), high-grade Nomex thermal barriers, and digital DGA oil chromatography diagnostics engineered for reliable 30+ year service lifespans.',
-    highlight: 'VPI & Digital DGA',
-    standards: 'Class H / Class F'
+    icon: `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M9 18h6"></path>
+      <path d="M10 22h4"></path>
+      <path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7z"></path>
+      <path d="M12 7v4"></path>
+    </svg>`,
+    title: 'R&D-Driven Innovation',
+    desc: 'We invest 5% to 7% of our annual revenue into R&D and have obtained 5 inventions and more than 120 patents. We deliver smarter, more energy-efficient transformers for evolving power needs.'
   },
   {
-    icon: `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>`,
-    step: 'Pillar 04 • Compliance',
-    title: 'Global Certifications',
-    desc: 'Comprehensive accreditation portfolio across ISO 9001/14001/45001, EU CE/LVD Directive 2014/35/EU, and dynamic short-circuit reports issued by CNAS and ILAC-MRA partner laboratories.',
-    highlight: 'CNAS & IAF Accredited',
-    standards: 'ISO • CE • TÜV Certified'
+    icon: `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <rect x="3" y="10" width="18" height="4" rx="2" transform="rotate(45 12 12)"></rect>
+      <rect x="3" y="10" width="18" height="4" rx="2" transform="rotate(-45 12 12)"></rect>
+      <line x1="8.5" y1="8.5" x2="10" y2="10"></line>
+      <line x1="14" y1="14" x2="15.5" y2="15.5"></line>
+      <line x1="15.5" y1="8.5" x2="14" y2="10"></line>
+      <line x1="10" y1="14" x2="8.5" y2="15.5"></line>
+    </svg>`,
+    title: 'Custom Solutions,<br>Full-Cycle Support',
+    desc: 'Beyond standard models, we offer fully customized transformers tailored to your specific needs. From your first inquiry to years of stable operation, our engineering team will provide comprehensive support at every stage.'
   }
 ];
 
@@ -160,134 +171,61 @@ const QA_CERTS = [
 
 window.QA_CERTS = QA_CERTS;
 
-function getCertBadgeClass(badge) {
-  if (badge.includes('ISO')) return 'qa-cert__badge--iso';
-  if (badge.includes('CE')) return 'qa-cert__badge--ce';
-  return 'qa-cert__badge--test';
-}
-
 function Quality() {
-  const cards = QA_CARDS.map((c, i) => `
-    <article class="qa-card" data-reveal style="--d:${i % 2}">
-      <div class="qa-card__head">
-        <div class="qa-card__icon-box">
-          ${c.icon}
-        </div>
-        <span class="qa-card__step">${c.step}</span>
+  const bpelCards = WHY_BPEL_CARDS.map((card, i) => `
+    <article class="why-bpel__card fade-in-up" data-delay="${i * 90}">
+      <div class="why-bpel__icon-box" aria-hidden="true">
+        ${card.icon}
       </div>
-      <div class="qa-card__body">
-        <h3 class="qa-card__title">${c.title}</h3>
-        <p class="qa-card__desc">${c.desc}</p>
-      </div>
-      <div class="qa-card__foot">
-        <div class="qa-card__meta">
-          <span class="qa-card__pill">${c.highlight}</span>
-          <span class="qa-card__std">${c.standards}</span>
-        </div>
-        <a href="#contact" class="qa-card__btn" aria-label="Inquire about ${c.title}">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
-        </a>
-      </div>
-    </article>`).join('');
+      <h3 class="why-bpel__card-title">${card.title}</h3>
+      <p class="why-bpel__card-text">${card.desc}</p>
+    </article>
+  `).join('');
 
   const certCards = QA_CERTS.map((c, i) => `
-    <article class="qa-cert" data-cert="${i}" role="button" tabindex="0" aria-label="View official ${c.title}">
-      <div class="qa-cert__preview">
+    <article class="qa-cert-frame fade-in-up" data-delay="${(i % 5) * 70}" data-cert="${i}" role="button" tabindex="0" aria-label="View official ${c.title}" title="Click to inspect: ${c.title}">
+      <div class="qa-frame-mat">
         <img src="${c.src}" alt="${c.alt}" loading="lazy" decoding="async">
-        <span class="qa-cert__zoom-hint" title="Inspect document">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-        </span>
-      </div>
-      <div class="qa-cert__info">
-        <span class="qa-cert__badge ${getCertBadgeClass(c.badge)}">${c.badge}</span>
-        <h4 class="qa-cert__title">${c.title}</h4>
-        <p class="qa-cert__sub">${c.sub}</p>
       </div>
     </article>`).join('');
 
-  return `<div class="wrap">
-    ${SectionHead({
-      label: 'OUR QUALITY ASSURANCE',
-      title: 'Certified Quality You Can Trust',
-      desc: 'Rigorous multi-stage factory acceptance tests (FAT), full-scale impulse test laboratories, and international ISO & CE compliance ensuring zero-defect transformer reliability.'
-    })}
-    
-    <!-- Upper Section: Executive Quality Pillar & Grid -->
-    <div class="qa-layout" data-reveal>
-      <div class="qa-overview">
-        <div class="qa-lead-card">
-          <div class="qa-lead-tag">
-            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
-            Zero-Defect Quality Protocol
-          </div>
-          <h3>Precision Engineering & Testing Built Into Every Kilovolt</h3>
-          <p>We deploy premium grain-oriented electrical steel, computer-guided core cutting, high-vacuum thermal drying chambers, and calibrated high-voltage impulse test rigs to engineer transformers that endure the toughest electrical grid environments.</p>
-        </div>
-
-        <div class="qa-highlights-list">
-          <div class="qa-hl-item">
-            <div class="qa-hl-check">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            </div>
-            <div class="qa-hl-text">
-              <strong>100% Routine & Dielectric FAT Inspection</strong>
-              <span>Full-voltage ratio, winding resistance, and no-load losses verified prior to field shipment.</span>
-            </div>
-          </div>
-          <div class="qa-hl-item">
-            <div class="qa-hl-check">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            </div>
-            <div class="qa-hl-text">
-              <strong>500 MVA Type Test Lab Rating</strong>
-              <span>Lightning impulse (BIL 200kV) and dynamic short-circuit endurance tested by national testing centers.</span>
-            </div>
-          </div>
-          <div class="qa-hl-item">
-            <div class="qa-hl-check">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            </div>
-            <div class="qa-hl-text">
-              <strong>Accredited Standards Compliance</strong>
-              <span>Certified under ISO 9001/14001/45001, EU CE/LVD Directive, IEC 60076, and IEEE C57 series.</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="qa-cta-box">
-          <a href="#contact" class="btn btn--primary qa-cta-btn">
-            <span>Request Full Quality Dossier</span>
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </a>
+  return `
+    <div class="wrap">
+      <!-- Top Section: Why Work With BPEL (4-Card Grid) -->
+      <div class="why-bpel__head fade-in-up">
+        <h2 class="why-bpel__title">Why Work With BPEL</h2>
+        <div class="why-bpel__dashes" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
       </div>
-
-      <div class="qa-cards">${cards}</div>
-    </div>
-
-    <!-- Lower Section: Spacious Certificates Slider (4 per view) -->
-    <div class="qa-certs-wrap" data-reveal>
-      <div class="qa-certs-header">
-        <div class="qa-certs-titles">
-          <div class="qa-certs-eyebrow">Accreditation Portfolio</div>
-          <h3>Official Quality Certificates & Laboratory Reports</h3>
-          <p>Verified third-party accreditations and electrical type test reports issued by CNAS, IAF, and accredited national laboratories (Click any document to inspect details).</p>
-        </div>
-        <div class="qa-certs-nav">
-          <span class="qa-certs-counter">12 Verified Documents</span>
-          <button type="button" class="qa-arrow-btn" id="qa-cert-prev" aria-label="Previous certificates" title="Previous">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-          </button>
-          <button type="button" class="qa-arrow-btn" id="qa-cert-next" aria-label="Next certificates" title="Next">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-          </button>
-        </div>
+      <div class="why-bpel__grid">
+        ${bpelCards}
       </div>
-      <div class="qa-certs-slider">
-        <div class="qa-certs-track" id="qa-certs-track">${certCards}</div>
+
+      <!-- Bottom Section: Simple Framed Certificates Gallery (Matches User's Reference Photo) -->
+      <div class="qa-certs-wrap fade-in-up">
+        <div class="qa-certs-header">
+          <div class="qa-certs-titles">
+            <h3>Certificates & Test Reports</h3>
+            <p>Official international accreditations and laboratory test reports (Click any certificate to inspect).</p>
+          </div>
+          <div class="qa-certs-nav">
+            <button type="button" class="qa-arrow-btn" id="qa-cert-prev" aria-label="Previous certificates" title="Previous">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button type="button" class="qa-arrow-btn" id="qa-cert-next" aria-label="Next certificates" title="Next">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="qa-certs-slider">
+          <div class="qa-certs-track" id="qa-certs-track">${certCards}</div>
+        </div>
       </div>
     </div>
-  </div>`;
+  `;
 }
 
 function initQuality() {
@@ -298,7 +236,7 @@ function initQuality() {
 
   function getStep() {
     const card = track.firstElementChild;
-    if (!card) return 280;
+    if (!card) return 220;
     const gap = parseFloat(getComputedStyle(track).gap) || 24;
     return card.offsetWidth + gap;
   }
@@ -322,4 +260,6 @@ function initQuality() {
   });
 }
 
+window.Quality = Quality;
+window.WhyBPEL = Quality;
 window.initQuality = initQuality;

@@ -14,7 +14,7 @@
   mount('contact', Contact());
   mount('footer', Footer());
   document.getElementById('yr').textContent = new Date().getFullYear();
-  document.body.insertAdjacentHTML('beforeend', WhatsAppButton() + DialogShell() + SearchModal());
+  document.body.insertAdjacentHTML('beforeend', WhatsAppButton() + ChatbotWidget() + DialogShell() + SearchModal());
   initHeader(); initTransformerVideos(); initHeroSlider(); initStats(); initProjects(); initLifecycle();
-  initFaq(); initContact(); initWhatsApp(); initDialog(); initSearch(); initMotion(); initPartners(); initQuality(); initFooter();
+  initFaq(); initContact(); initWhatsApp(); initChatbot(); initDialog(); initSearch(); initMotion(); initPartners(); initQuality(); initFooter();
 })();

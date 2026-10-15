@@ -38,16 +38,16 @@ function Lifecycle() {
     })}
 
     <!-- Interactive Stepper Track -->
-    <div class="lc-stepper-wrap" data-reveal>
+    <div class="lc-stepper-wrap fade-in-up">
       <div class="lc-stepper" role="tablist" aria-label="Project lifecycle stages" id="lc-stepper">
         ${stepperItems}
       </div>
     </div>
 
     <!-- Active Stage Featured Showcase -->
-    <div class="lc-showcase" id="lc-showcase" data-reveal>
-      <!-- Left: Stage Visual Media -->
-      <div class="lc-media">
+    <div class="lc-showcase" id="lc-showcase">
+      <!-- Left: Stage Visual Media (Fade In Left) -->
+      <div class="lc-media fade-in-left">
         <div class="lc-media__frame">
           <img src="${first.image}" alt="${first.title}" id="lc-main-img" loading="eager" decoding="async">
           <div class="lc-media__top-chips">
@@ -67,8 +67,8 @@ function Lifecycle() {
         </div>
       </div>
 
-      <!-- Right: Engineering Scope & Deliverables -->
-      <div class="lc-content" id="lc-content">
+      <!-- Right: Engineering Scope & Deliverables (Fade In Right) -->
+      <div class="lc-content fade-in-right" id="lc-content">
         <div class="lc-content__eyebrow" id="lc-eyebrow">STAGE 01 OF 07 • TURNKEY EPC WORKFLOW</div>
         <h3 class="lc-content__title" id="lc-title">${first.title}</h3>
         <p class="lc-content__tagline" id="lc-tagline">${first.tagline}</p>
@@ -106,14 +106,14 @@ function Lifecycle() {
     </div>
 
     <!-- Quick Access All Stages Strip -->
-    <div class="lc-thumbs-slider" data-reveal>
+    <div class="lc-thumbs-slider fade-in-up" data-delay="150">
       <div class="lc-thumbs-track" id="lc-thumbs-track">
         ${thumbs}
       </div>
     </div>
 
     <!-- Turnkey EPC Assurance Banner -->
-    <div class="lc-assurance" data-reveal>
+    <div class="lc-assurance fade-in-up" data-delay="150">
       <div class="lc-assurance__icon">
         <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
       </div>
@@ -164,14 +164,15 @@ function initLifecycle() {
         btn.classList.toggle('is-done', k < idx);
         btn.setAttribute('aria-selected', k === idx ? 'true' : 'false');
       });
-      // Scroll active step into view on mobile
+      // Scroll active step into stepper view (horizontal container scroll only, never window)
       const activeStep = stepBtns[idx];
-      if (activeStep) {
-        activeStep.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      if (activeStep && stepper) {
+        const offset = activeStep.offsetLeft - (stepper.clientWidth - activeStep.clientWidth) / 2;
+        stepper.scrollTo({ left: offset, behavior: 'smooth' });
       }
     }
 
-    // Update thumbs track
+    // Update thumbs track (horizontal container scroll only, never window)
     if (thumbsTrack) {
       const thumbEls = thumbsTrack.querySelectorAll('.lc-thumb');
       thumbEls.forEach((th, k) => {
@@ -179,7 +180,8 @@ function initLifecycle() {
       });
       const activeThumb = thumbEls[idx];
       if (activeThumb) {
-        activeThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        const offset = activeThumb.offsetLeft - (thumbsTrack.clientWidth - activeThumb.clientWidth) / 2;
+        thumbsTrack.scrollTo({ left: offset, behavior: 'smooth' });
       }
     }
 
@@ -221,6 +223,7 @@ function initLifecycle() {
       const btn = e.target.closest('.lc-step');
       if (btn && btn.dataset.stage !== undefined) {
         renderStage(Number(btn.dataset.stage));
+        resetAuto();
       }
     });
   }
@@ -231,6 +234,7 @@ function initLifecycle() {
       const thumb = e.target.closest('.lc-thumb');
       if (thumb && thumb.dataset.stage !== undefined) {
         renderStage(Number(thumb.dataset.stage));
+        resetAuto();
       }
     });
   }
@@ -240,6 +244,7 @@ function initLifecycle() {
     prevBtn.addEventListener('click', () => {
       const nextIdx = currentStage === 0 ? L.length - 1 : currentStage - 1;
       renderStage(nextIdx);
+      resetAuto();
     });
   }
 
@@ -247,8 +252,54 @@ function initLifecycle() {
     nextBtn.addEventListener('click', () => {
       const nextIdx = currentStage === L.length - 1 ? 0 : currentStage + 1;
       renderStage(nextIdx);
+      resetAuto();
     });
   }
+
+  // Auto sliding (only when visible in viewport to prevent scroll interference)
+  let autoTimer = null;
+  let isHovered = false;
+  let isVisible = false;
+
+  function autoNext() {
+    const nextIdx = (currentStage + 1) % L.length;
+    renderStage(nextIdx);
+  }
+
+  function startAuto() {
+    clearInterval(autoTimer);
+    if (isVisible && !isHovered && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      autoTimer = setInterval(autoNext, 4500);
+    }
+  }
+
+  function resetAuto() {
+    clearInterval(autoTimer);
+    startAuto();
+  }
+
+  const lcSec = document.getElementById('lifecycle');
+  if (lcSec) {
+    lcSec.addEventListener('mouseenter', () => { isHovered = true; clearInterval(autoTimer); });
+    lcSec.addEventListener('mouseleave', () => { isHovered = false; startAuto(); });
+    lcSec.addEventListener('touchstart', () => { isHovered = true; clearInterval(autoTimer); }, { passive: true });
+    lcSec.addEventListener('touchend', () => { isHovered = false; startAuto(); }, { passive: true });
+
+    const observer = new IntersectionObserver(([entry]) => {
+      isVisible = entry.isIntersecting;
+      if (isVisible) {
+        startAuto();
+      } else {
+        clearInterval(autoTimer);
+      }
+    }, { threshold: 0.15 });
+    observer.observe(lcSec);
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) clearInterval(autoTimer);
+    else startAuto();
+  });
 
   // Kinetic Grid initialization
   if (typeof initKineticGrid === 'function') {

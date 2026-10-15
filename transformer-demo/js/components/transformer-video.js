@@ -16,11 +16,32 @@ function TransformerVideo({ id, preload = 'auto' }) {
 
 function initTransformerVideos() {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  const getSpeed = () => (window.SITE && window.SITE.videoPlaybackRate) || 2.0;
+
   document.querySelectorAll('[data-tv]').forEach(tv => {
     const v = tv.querySelector('video');
     if (!v) return;
 
-    const play = () => { const p = v.play(); if (p && p.catch) p.catch(() => {}); };
+    const applySpeed = () => {
+      const spd = getSpeed();
+      v.defaultPlaybackRate = spd;
+      v.playbackRate = spd;
+    };
+    applySpeed();
+    v.addEventListener('loadedmetadata', applySpeed);
+    v.addEventListener('play', applySpeed);
+    v.addEventListener('ratechange', () => {
+      const spd = getSpeed();
+      if (Math.abs(v.playbackRate - spd) > 0.05) {
+        v.playbackRate = spd;
+      }
+    });
+
+    const play = () => {
+      applySpeed();
+      const p = v.play();
+      if (p && p.catch) p.catch(() => {});
+    };
     const fail = () => {
       const fb = tv.querySelector('.tv__fallback');
       if (fb) fb.hidden = false;
@@ -42,3 +63,12 @@ function initTransformerVideos() {
     }, { threshold: 0.15 }).observe(tv);
   });
 }
+
+// Runtime helper to dynamically update video animation playback speed
+window.setTransformerVideoSpeed = function(speed) {
+  if (window.SITE) window.SITE.videoPlaybackRate = speed;
+  document.querySelectorAll('.tv__video').forEach(v => {
+    v.defaultPlaybackRate = speed;
+    v.playbackRate = speed;
+  });
+};

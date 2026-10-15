@@ -1,6 +1,6 @@
 function Faq() {
   const items = DATA.faq.map((f, i) => `
-    <div class="faq__item" data-reveal style="--d:${i % 3}">
+    <div class="faq__item fade-in-up" data-delay="${(i % 3) * 110}">
       <h3>
         <button type="button" class="faq__q" id="faq-q${i}" aria-expanded="false" aria-controls="faq-a${i}">
           <span class="faq__q-wrap">
@@ -30,7 +30,7 @@ function Faq() {
     })}
     <div class="faq">${items}</div>
 
-    <div class="faq__footer-help" data-reveal>
+    <div class="faq__footer-help fade-in-up" data-delay="160">
       <div class="faq__help-content">
         <div class="faq__help-icon">
           <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
