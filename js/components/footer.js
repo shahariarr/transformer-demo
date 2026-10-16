@@ -5,7 +5,7 @@ function Footer() {
 
   <div class="wrap">
     <!-- Top Consultation Callout Banner -->
-    <div class="footer__banner" data-reveal>
+    <div class="footer__banner">
       <div class="footer__banner-copy">
         <span class="footer__banner-tag">
           <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
@@ -30,7 +30,7 @@ function Footer() {
     </div>
 
     <!-- Trust & Capability Metrics Ribbon -->
-    <div class="footer__stats" data-reveal>
+    <div class="footer__stats">
       <div class="f-stat-card">
         <div class="f-stat-num">35+</div>
         <div class="f-stat-label">Years of Innovation</div>
@@ -189,7 +189,7 @@ function Footer() {
 function initFooter() {
   if (typeof initKineticGrid === 'function') {
     initKineticGrid('footer-kinetic-grid', 'footer', {
-      bg: '#121316',
+      bg: '#0b0e14',
       lineActive: { r: 56, g: 189, b: 248, a: 0.85 },
       nodeActive: { r: 125, g: 211, b: 252, a: 1.0 },
       glow: '56,189,248',

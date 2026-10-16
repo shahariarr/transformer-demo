@@ -9,6 +9,14 @@ function initKineticGrid(canvasId, containerId, customTheme) {
   const ctx = canvas.getContext('2d');
   if (!ctx) return;
 
+  canvas.style.position = 'absolute';
+  canvas.style.top = '0';
+  canvas.style.left = '0';
+  canvas.style.width = '100%';
+  canvas.style.height = '100%';
+  canvas.style.pointerEvents = 'none';
+  canvas.style.zIndex = '1';
+
   const CELL_SIZE = 55;
   const INFLUENCE_RADIUS = 260;
   const MAX_WARP = 24;
