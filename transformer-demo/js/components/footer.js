@@ -56,7 +56,7 @@ function Footer() {
     <!-- Main 4-Column Structured Content -->
     <div class="footer__grid">
       <!-- Col 1: Corporate Profile & Credentials -->
-      <div class="footer__col footer__col--brand">
+      <div class="footer__col footer__col--brand" data-reveal style="--d: 1">
         <div class="footer__name">
           <img src="${SITE.logo || 'assets/images/logo.png'}" alt="${SITE.name} Logo" class="footer__logo">
           <span>${SITE.name}</span>
@@ -96,7 +96,7 @@ function Footer() {
       </div>
 
       <!-- Col 2: Engineered Equipment -->
-      <div class="footer__col">
+      <div class="footer__col" data-reveal style="--d: 2">
         <span class="footer__col-hint">Engineered Systems</span>
         <h3>Power Equipment</h3>
         <ul class="footer__nav-list">
@@ -111,7 +111,7 @@ function Footer() {
       </div>
 
       <!-- Col 3: Engineering Services -->
-      <div class="footer__col">
+      <div class="footer__col" data-reveal style="--d: 3">
         <span class="footer__col-hint">Lifecycle Support</span>
         <h3>Services & Solutions</h3>
         <ul class="footer__nav-list">
@@ -126,7 +126,7 @@ function Footer() {
       </div>
 
       <!-- Col 4: Operations & Contact -->
-      <div class="footer__col">
+      <div class="footer__col" data-reveal style="--d: 4">
         <span class="footer__col-hint">Direct Channels</span>
         <h3>Global Operations</h3>
         <ul class="footer__contact-list">
@@ -174,7 +174,7 @@ function Footer() {
     </div>
 
     <!-- Bottom Sub-Footer Bar -->
-    <div class="footer__bottom">
+    <div class="footer__bottom" data-reveal style="--d: 2">
       <div>&copy; <span id="yr"></span> ${SITE.name} Inc. All rights reserved. Heavy Power Systems & Electrical Transmission Infrastructure.</div>
       <ul class="footer__bottom-links">
         <li><a href="#about">Privacy Policy</a></li>
@@ -189,7 +189,7 @@ function Footer() {
 function initFooter() {
   if (typeof initKineticGrid === 'function') {
     initKineticGrid('footer-kinetic-grid', 'footer', {
-      bg: '#121316',
+      bg: '#0b0e14',
       lineActive: { r: 56, g: 189, b: 248, a: 0.85 },
       nodeActive: { r: 125, g: 211, b: 252, a: 1.0 },
       glow: '56,189,248',

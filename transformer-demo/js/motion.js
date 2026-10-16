@@ -43,7 +43,8 @@ function runAntigravityAnimation(target, direction = 'up', delay = 0) {
         const els = typeof target === 'string' ? document.querySelectorAll(target) : [target];
         els.forEach(el => {
           if (el && el.style) {
-            el.style.transform = '';
+            el.classList.add('in');
+            el.style.transform = 'none';
             el.style.opacity = '1';
           }
         });
@@ -67,7 +68,8 @@ function runAntigravityAnimation(target, direction = 'up', delay = 0) {
         const els = typeof target === 'string' ? document.querySelectorAll(target) : [target];
         els.forEach(el => {
           if (el && el.style) {
-            el.style.transform = '';
+            el.classList.add('in');
+            el.style.transform = 'none';
             el.style.opacity = '1';
           }
         });
@@ -105,9 +107,9 @@ function resetAntigravityElement(el, direction = 'up') {
     yFrom = 32;
   }
 
+  el.classList.remove('in');
   el.style.opacity = '0';
   el.style.transform = `translate3d(${xFrom}px, ${yFrom}px, 0)`;
-  el.classList.remove('in');
 }
 
 /**
@@ -166,11 +168,14 @@ function initMotion() {
         if (entry.isIntersecting) {
           runAntigravityAnimation(el, dir, delay);
         } else {
-          // Reset when scrolled out of view so animation repeats every time user scrolls to section
-          resetAntigravityElement(el, dir);
+          // Only reset when element is below viewport (so it re-animates when user scrolls down again)
+          // Keep visible if scrolled above viewport to prevent jarring vanishing while reading
+          if (entry.boundingClientRect.top > 0) {
+            resetAntigravityElement(el, dir);
+          }
         }
       });
-    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+    }, { threshold: 0.05, rootMargin: '0px 0px 40px 0px' });
 
     els.forEach(e => io.observe(e));
   }

@@ -282,3 +282,14 @@ window.DATA = {
     { q: 'How can I discuss a project with your team?', a: 'Use the contact form, email or WhatsApp in the Contact section. These details are placeholders until the company supplies its own.' }
   ]
 };
+
+function waLink() {
+  const c = (window.DATA && window.DATA.contact) || {};
+  return `https://wa.me/${c.whatsapp || ''}?text=${encodeURIComponent(c.waMessage || '')}`;
+}
+
+function mailLink(body = '') {
+  const c = (window.DATA && window.DATA.contact) || {};
+  return `mailto:${c.email || ''}?subject=${encodeURIComponent(c.emailSubject || '')}${body ? '&body=' + encodeURIComponent(body) : ''}`;
+}
+
