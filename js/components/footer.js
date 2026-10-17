@@ -101,14 +101,14 @@ function FloatingActions() {
       <span class="bot-badge-glow" aria-hidden="true"></span>
       <span class="bot-unread-badge" aria-hidden="true">1</span>
       <svg viewBox="0 0 28 28" width="28" height="28" fill="none" aria-hidden="true">
-        <path d="M5 14 A9 9 0 0 1 23 14" stroke="#1F3A93" stroke-width="2.4" stroke-linecap="round" fill="none"/>
-        <rect x="3" y="11" width="3.5" height="7.5" rx="1.7" fill="#1F3A93"/>
-        <rect x="21.5" y="11" width="3.5" height="7.5" rx="1.7" fill="#1F3A93"/>
-        <path d="M22 17 C22 21.5, 17 23.5, 14 23.5" stroke="#1F3A93" stroke-width="2" stroke-linecap="round" fill="none"/>
-        <circle cx="13" cy="23.5" r="1.8" fill="#1F3A93"/>
-        <line x1="14" y1="10.5" x2="14" y2="8" stroke="#1F3A93" stroke-width="1.8" stroke-linecap="round"/>
-        <circle cx="14" cy="7.2" r="1.2" fill="#1F3A93"/>
-        <rect x="7.5" y="10.5" width="13" height="9.5" rx="3.5" fill="#1F3A93"/>
+        <path d="M5 14 A9 9 0 0 1 23 14" stroke="#0B5CAB" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+        <rect x="3" y="11" width="3.5" height="7.5" rx="1.7" fill="#0B5CAB"/>
+        <rect x="21.5" y="11" width="3.5" height="7.5" rx="1.7" fill="#0B5CAB"/>
+        <path d="M22 17 C22 21.5, 17 23.5, 14 23.5" stroke="#0B5CAB" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <circle cx="13" cy="23.5" r="1.8" fill="#0B5CAB"/>
+        <line x1="14" y1="10.5" x2="14" y2="8" stroke="#0B5CAB" stroke-width="1.8" stroke-linecap="round"/>
+        <circle cx="14" cy="7.2" r="1.2" fill="#0B5CAB"/>
+        <rect x="7.5" y="10.5" width="13" height="9.5" rx="3.5" fill="#0B5CAB"/>
         <rect x="10" y="13.2" width="2.2" height="3.2" rx="0.8" fill="#ffffff"/>
         <rect x="15.8" y="13.2" width="2.2" height="3.2" rx="0.8" fill="#ffffff"/>
       </svg>

@@ -48,13 +48,17 @@ function Lifecycle() {
       </div>
 
       <div class="lcx-panel" id="lcx-panel" role="tabpanel" aria-live="polite">
-        <figure class="lcx-panel__media"><img id="lcx-img" src="${L[0].image}" alt="" decoding="async"></figure>
+        <figure class="lcx-panel__media">
+          <img id="lcx-img" src="${L[0].image}" alt="" decoding="async">
+          <figcaption class="lcx-panel__badge" aria-hidden="true"><span>Stage</span><strong id="lcx-num">01</strong></figcaption>
+        </figure>
         <div class="lcx-panel__body">
           <div class="lcx-panel__meta">
             <span class="lcx-panel__stage" id="lcx-stage"></span>
             <span class="lcx-panel__time" id="lcx-time"></span>
           </div>
           <h3 id="lcx-title"></h3>
+          <div class="lcx-progress" aria-hidden="true"><span id="lcx-progress"></span></div>
           <p class="lcx-panel__summary" id="lcx-summary"></p>
           <ul class="lcx-panel__points" id="lcx-points"></ul>
           <div class="lcx-panel__foot">
@@ -73,6 +77,7 @@ function Lifecycle() {
     </div>
 
     <div class="lcx-cta fade-in-up" data-delay="100">
+      <span class="lcx-cta__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span>
       <p><strong>Single-point EPC accountability</strong> — one team from factory to field, under ISO 9001 quality supervision.</p>
       <a href="#contact" class="lcx-cta__btn">Request Technical Proposal</a>
     </div>
@@ -124,6 +129,8 @@ function initLifecycle() {
     $('lcx-title').textContent = s.title;
     $('lcx-summary').textContent = s.summary;
     $('lcx-milestone').textContent = s.milestone;
+    $('lcx-num').textContent = String(idx + 1).padStart(2, '0');
+    $('lcx-progress').style.width = ((idx + 1) / L.length * 100) + '%';
     $('lcx-points').innerHTML = s.points.map(p => `<li>${check}<span>${p}</span></li>`).join('');
   }
 
