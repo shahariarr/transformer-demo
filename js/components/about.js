@@ -33,14 +33,14 @@ function About() {
           <div class="about-badge__icon">
             <svg viewBox="0 0 54 48" width="50" height="44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <!-- Left Building (Medium Height) -->
-              <path d="M4 17L18 10V46H4V17Z" fill="#0072CE"/>
+              <path d="M4 17L18 10V46H4V17Z" fill="currentColor"/>
               <!-- Center Building (Tallest Skyscraper) -->
-              <path d="M18 6L35 0V46H18V6Z" fill="#0082E4"/>
+              <path d="M18 6L35 0V46H18V6Z" fill="currentColor" fill-opacity=".85"/>
               <!-- Center Building Right Perspective Facet -->
-              <path d="M35 0L38 1.8V46H35V0Z" fill="#005FA8"/>
+              <path d="M35 0L38 1.8V46H35V0Z" fill="currentColor" fill-opacity=".6"/>
               <!-- Right Building (Lower Wing) -->
-              <path d="M38 23L50 18V46H38V23Z" fill="#0072CE"/>
-              <path d="M50 18L52 19V46H50V18Z" fill="#005FA8"/>
+              <path d="M38 23L50 18V46H38V23Z" fill="currentColor"/>
+              <path d="M50 18L52 19V46H50V18Z" fill="currentColor" fill-opacity=".6"/>
 
               <!-- Tall Building Windows (2 columns) -->
               <rect x="21.5" y="7" width="3" height="3" rx="0.5" fill="#FFFFFF"/>

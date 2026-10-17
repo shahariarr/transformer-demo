@@ -16,8 +16,8 @@ function ChatbotWidget() {
             <line x1="14" y1="10.5" x2="14" y2="8" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
             <circle cx="14" cy="7.2" r="1.2" fill="#ffffff"/>
             <rect x="7.5" y="10.5" width="13" height="9.5" rx="3.5" fill="#ffffff"/>
-            <rect x="10" y="13.2" width="2.2" height="3.2" rx="0.8" fill="#E11D48"/>
-            <rect x="15.8" y="13.2" width="2.2" height="3.2" rx="0.8" fill="#E11D48"/>
+            <rect x="10" y="13.2" width="2.2" height="3.2" rx="0.8" fill="#1F3A93"/>
+            <rect x="15.8" y="13.2" width="2.2" height="3.2" rx="0.8" fill="#1F3A93"/>
           </svg>
           <span class="chatbot-avatar__status" aria-label="Online"></span>
         </div>
