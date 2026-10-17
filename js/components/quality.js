@@ -173,16 +173,10 @@ window.QA_CERTS = QA_CERTS;
 
 function Quality() {
   const bpelCards = WHY_BPEL_CARDS.map((card, i) => `
-    <article class="why-bpel__card fade-in-up${i === 0 ? ' is-open' : ''}" data-delay="${i * 90}">
-      <h3 class="why-bpel__card-head">
-        <button type="button" class="why-bpel__toggle" aria-expanded="${i === 0}" aria-controls="why-bpel-panel-${i}">
-          <span class="why-bpel__num">${String(i + 1).padStart(2, '0')}</span>
-          <span class="why-bpel__icon-box" aria-hidden="true">${card.icon}</span>
-          <span class="why-bpel__card-title">${card.title.replace(/<br>/g, ' ')}</span>
-          <span class="why-bpel__plus" aria-hidden="true"></span>
-        </button>
-      </h3>
-      <div class="why-bpel__panel" id="why-bpel-panel-${i}">
+    <article class="why-bpel__card fade-in-up" data-delay="${i * 90}">
+      <span class="why-bpel__icon-box" aria-hidden="true">${card.icon}</span>
+      <div>
+        <h3 class="why-bpel__card-title">${card.title.replace(/<br>/g, ' ')}</h3>
         <p class="why-bpel__card-text">${card.desc}</p>
       </div>
     </article>
@@ -257,19 +251,6 @@ function Quality() {
 }
 
 function initQuality() {
-  // Why BPEL accordion: one reason open at a time
-  const whyCards = Array.from(document.querySelectorAll('.why-bpel__card'));
-  whyCards.forEach(card => {
-    card.querySelector('.why-bpel__toggle').addEventListener('click', () => {
-      const opening = !card.classList.contains('is-open');
-      whyCards.forEach(c => {
-        const open = c === card && opening;
-        c.classList.toggle('is-open', open);
-        c.querySelector('.why-bpel__toggle').setAttribute('aria-expanded', open);
-      });
-    });
-  });
-
   const track   = document.getElementById('qa-certs-track');
   const prevBtn = document.getElementById('qa-cert-prev');
   const nextBtn = document.getElementById('qa-cert-next');
