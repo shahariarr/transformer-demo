@@ -174,11 +174,11 @@ window.QA_CERTS = QA_CERTS;
 function Quality() {
   const bpelCards = WHY_BPEL_CARDS.map((card, i) => `
     <article class="why-bpel__card fade-in-up" data-delay="${i * 90}">
-      <div class="why-bpel__icon-box" aria-hidden="true">
-        ${card.icon}
+      <span class="why-bpel__icon-box" aria-hidden="true">${card.icon}</span>
+      <div>
+        <h3 class="why-bpel__card-title">${card.title.replace(/<br>/g, ' ')}</h3>
+        <p class="why-bpel__card-text">${card.desc}</p>
       </div>
-      <h3 class="why-bpel__card-title">${card.title}</h3>
-      <p class="why-bpel__card-text">${card.desc}</p>
     </article>
   `).join('');
 
@@ -191,17 +191,39 @@ function Quality() {
 
   return `
     <div class="wrap">
-      <!-- Top Section: Why Work With BPEL (4-Card Grid) -->
-      <div class="why-bpel__head fade-in-up">
-        <h2 class="why-bpel__title">Why Work With BPEL</h2>
-        <div class="why-bpel__dashes" aria-hidden="true">
-          <span></span>
-          <span></span>
-          <span></span>
+      <!-- Top Section: Why Work With BPEL (image collage left, reasons right) -->
+      <div class="why-bpel">
+        <div class="why-bpel__gallery fade-in-left" aria-hidden="true">
+          <span class="why-bpel__deco"></span>
+          <figure class="why-bpel__img why-bpel__img--main">
+            <img src="assets/images/lifecycle/04-manufacturing-fat.jpg" alt="" loading="lazy" decoding="async">
+          </figure>
+          <figure class="why-bpel__img why-bpel__img--top">
+            <img src="assets/images/lifecycle/02-engineering-design.jpg" alt="" loading="lazy" decoding="async">
+          </figure>
+          <figure class="why-bpel__img why-bpel__img--bottom">
+            <img src="assets/images/lifecycle/06-testing-commissioning.jpg" alt="" loading="lazy" decoding="async">
+          </figure>
+          <div class="why-bpel__badge">
+            <strong>Design · Build · Test</strong>
+            <span>One accountable team</span>
+          </div>
         </div>
-      </div>
-      <div class="why-bpel__grid">
-        ${bpelCards}
+
+        <div class="why-bpel__content">
+          <div class="why-bpel__intro fade-in-right">
+            <p class="label">WHY WORK WITH BPEL</p>
+            <h2 class="why-bpel__title">Built in-house. Backed by engineers.</h2>
+            <p class="why-bpel__lead">From raw material to final test, every transformer is designed, built and supported by one accountable team — so you get consistent quality, predictable delivery and support for the life of the equipment.</p>
+          </div>
+          <div class="why-bpel__grid">
+            ${bpelCards}
+          </div>
+          <a href="#contact" class="why-bpel__btn fade-in-up">
+            <span>Talk to an engineer</span>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
       </div>
 
       <!-- Bottom Section: Simple Framed Certificates Gallery (Matches User's Reference Photo) -->
