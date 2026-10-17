@@ -50,10 +50,10 @@ function initStats() {
         window.anime({
           targets: item,
           opacity: [0, 1],
-          translateY: [36, 0],
-          duration: 1100,
+          translateY: [16, 0],
+          duration: 700,
           delay: delay,
-          easing: 'easeOutElastic(1, 0.78)'
+          easing: 'easeOutCubic'
         });
 
         // Cinematic exponential count-up
@@ -74,7 +74,7 @@ function initStats() {
             if (plusEl) {
               window.anime({
                 targets: plusEl,
-                scale: [1, 1.28, 1],
+                scale: [1, 1.12, 1],
                 duration: 400,
                 easing: 'easeOutBack'
               });
@@ -87,7 +87,7 @@ function initStats() {
           window.anime({
             targets: labelEl,
             opacity: [0, 1],
-            letterSpacing: ['0.06em', '0.18em'],
+            letterSpacing: ['0.04em', '0.12em'],
             duration: 1200,
             delay: delay + 200,
             easing: 'easeOutCubic'
@@ -109,7 +109,7 @@ function initStats() {
         if (plusEl) window.anime.remove(plusEl);
       }
       item.style.opacity = '0';
-      item.style.transform = 'translate3d(0, 36px, 0)';
+      item.style.transform = 'translate3d(0, 16px, 0)';
       const digitsEl = item.querySelector('.stat-num__digits');
       if (digitsEl) digitsEl.textContent = '0';
     });

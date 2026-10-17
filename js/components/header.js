@@ -117,9 +117,22 @@ function Header() {
     `;
   }).join('');
 
+  const c = (window.DATA && DATA.contact) || {};
+  const tIco = d => `<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
+
   return `
+  <div class="topbar">
+    <div class="wrap topbar__in">
+      <ul class="topbar__info">
+        <li>${tIco('<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>')}<a href="tel:${c.whatsapp || ''}">${c.phoneDisplay || ''}</a></li>
+        <li>${tIco('<rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>')}<a href="mailto:${c.email || ''}">${c.email || ''}</a></li>
+        <li class="topbar__hours">${tIco('<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>')}<span>Mon – Fri: 08:00 – 18:00</span></li>
+      </ul>
+      <p class="topbar__meta">ISO 9001:2015 Certified Manufacturer</p>
+    </div>
+  </div>
   <div class="header-shell">
-    <div class="header__inner">
+    <div class="wrap header__inner">
       <a class="brand" href="#home" aria-label="${site.name || 'BPEL'} home">
         <img src="${site.logo || 'assets/images/logo.png'}" alt="${site.name || 'BPEL'} Logo" class="brand__logo">
       </a>

@@ -22,12 +22,12 @@ function runAntigravityAnimation(target, direction = 'up', delay = 0) {
 
   let xFrom = 0, yFrom = 0;
   if (direction === 'left') {
-    xFrom = -38;
+    xFrom = -24;
   } else if (direction === 'right') {
-    xFrom = 38;
+    xFrom = 24;
   } else {
     // 'up' or 'bottom'
-    yFrom = 32;
+    yFrom = 20;
   }
 
   // 1. Anime.js v4 syntax check
@@ -36,9 +36,9 @@ function runAntigravityAnimation(target, direction = 'up', delay = 0) {
       x: [xFrom, 0],
       y: [yFrom, 0],
       opacity: [0, 1],
-      duration: 1000,
+      duration: 700,
       delay: delay,
-      ease: 'outBack(1.35)',
+      ease: 'outCubic',
       onComplete: () => {
         const els = typeof target === 'string' ? document.querySelectorAll(target) : [target];
         els.forEach(el => {
@@ -61,9 +61,9 @@ function runAntigravityAnimation(target, direction = 'up', delay = 0) {
       translateX: [xFrom, 0],
       translateY: [yFrom, 0],
       opacity: [0, 1],
-      duration: 1050,
+      duration: 700,
       delay: delay,
-      easing: 'easeOutElastic(1, 0.82)',
+      easing: 'easeOutCubic',
       complete: () => {
         const els = typeof target === 'string' ? document.querySelectorAll(target) : [target];
         els.forEach(el => {
@@ -100,11 +100,11 @@ function resetAntigravityElement(el, direction = 'up') {
   }
   let xFrom = 0, yFrom = 0;
   if (direction === 'left') {
-    xFrom = -38;
+    xFrom = -24;
   } else if (direction === 'right') {
-    xFrom = 38;
+    xFrom = 24;
   } else {
-    yFrom = 32;
+    yFrom = 20;
   }
 
   el.classList.remove('in');
@@ -165,14 +165,10 @@ function initMotion() {
         const dir = getTargetDirection(el);
         const delay = getTargetDelay(el);
 
+        // Reveal once, then stop watching: content stays put while reading
         if (entry.isIntersecting) {
-          runAntigravityAnimation(el, dir, delay);
-        } else {
-          // Only reset when element is below viewport (so it re-animates when user scrolls down again)
-          // Keep visible if scrolled above viewport to prevent jarring vanishing while reading
-          if (entry.boundingClientRect.top > 0) {
-            resetAntigravityElement(el, dir);
-          }
+          runAntigravityAnimation(el, dir, Math.min(delay, 240));
+          io.unobserve(el);
         }
       });
     }, { threshold: 0.05, rootMargin: '0px 0px 40px 0px' });

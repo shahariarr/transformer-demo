@@ -9,7 +9,7 @@ const WHY_BPEL_CARDS = [
       <path d="m14.5 18 1.5 3 1.5-3"></path>
     </svg>`,
     title: 'In-House Production,<br>Full Control',
-    desc: 'With 3 manufacturing bases, we handle every step of transformer manufacturing in-house, ensuring consistent quality, faster delivery, and substantial return on investment.'
+    desc: 'Three in-house manufacturing bases ensure consistent quality, faster delivery and better ROI.'
   },
   {
     icon: `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -19,7 +19,7 @@ const WHY_BPEL_CARDS = [
       <ellipse cx="12" cy="12" rx="9" ry="3.5" transform="rotate(150 12 12)"></ellipse>
     </svg>`,
     title: 'Premium Materials,<br>Reliable Performance',
-    desc: "We utilize high-quality materials, including Baowu's top silicon steel sheets, DuPont Nomex®, or Vishay's components, to ensure high efficiency, durability, and safety."
+    desc: "Baowu silicon steel, DuPont Nomex® insulation and Vishay components deliver high efficiency, durability and safety."
   },
   {
     icon: `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -29,7 +29,7 @@ const WHY_BPEL_CARDS = [
       <path d="M12 7v4"></path>
     </svg>`,
     title: 'R&D-Driven Innovation',
-    desc: 'We invest 5% to 7% of our annual revenue into R&D and have obtained 5 inventions and more than 120 patents. We deliver smarter, more energy-efficient transformers for evolving power needs.'
+    desc: '5–7% of revenue invested in R&D, with 5 inventions and 120+ patents behind every design.'
   },
   {
     icon: `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -41,7 +41,7 @@ const WHY_BPEL_CARDS = [
       <line x1="10" y1="14" x2="8.5" y2="15.5"></line>
     </svg>`,
     title: 'Custom Solutions,<br>Full-Cycle Support',
-    desc: 'Beyond standard models, we offer fully customized transformers tailored to your specific needs. From your first inquiry to years of stable operation, our engineering team will provide comprehensive support at every stage.'
+    desc: 'Built to your exact specification, with engineering support from first inquiry to years of operation.'
   }
 ];
 
@@ -174,6 +174,7 @@ window.QA_CERTS = QA_CERTS;
 function Quality() {
   const bpelCards = WHY_BPEL_CARDS.map((card, i) => `
     <article class="why-bpel__card fade-in-up" data-delay="${i * 90}">
+      <span class="why-bpel__num" aria-hidden="true">0${i + 1}</span>
       <span class="why-bpel__icon-box" aria-hidden="true">${card.icon}</span>
       <div>
         <h3 class="why-bpel__card-title">${card.title.replace(/<br>/g, ' ')}</h3>
@@ -195,6 +196,7 @@ function Quality() {
       <div class="why-bpel">
         <div class="why-bpel__gallery fade-in-left" aria-hidden="true">
           <span class="why-bpel__deco"></span>
+          <span class="why-bpel__dots"></span>
           <figure class="why-bpel__img why-bpel__img--main">
             <img src="assets/images/lifecycle/04-manufacturing-fat.jpg" alt="" loading="lazy" decoding="async">
           </figure>
@@ -204,9 +206,12 @@ function Quality() {
           <figure class="why-bpel__img why-bpel__img--bottom">
             <img src="assets/images/lifecycle/06-testing-commissioning.jpg" alt="" loading="lazy" decoding="async">
           </figure>
-          <div class="why-bpel__badge">
-            <strong>Design · Build · Test</strong>
-            <span>One accountable team</span>
+          <div class="why-bpel__seal">
+            <svg viewBox="0 0 120 120" class="why-bpel__seal-ring">
+              <defs><path id="seal-path" d="M60 60 m-46 0 a46 46 0 1 1 92 0 a46 46 0 1 1 -92 0"/></defs>
+              <text><textPath href="#seal-path" textLength="286" lengthAdjust="spacing">DESIGN · BUILD · TEST · ONE TEAM · </textPath></text>
+            </svg>
+            <span class="why-bpel__seal-core"><small>Since</small><strong>1985</strong></span>
           </div>
         </div>
 
@@ -216,6 +221,7 @@ function Quality() {
             <h2 class="why-bpel__title">Built in-house. Backed by engineers.</h2>
             <p class="why-bpel__lead">From raw material to final test, every transformer is designed, built and supported by one accountable team — so you get consistent quality, predictable delivery and support for the life of the equipment.</p>
           </div>
+          
           <div class="why-bpel__grid">
             ${bpelCards}
           </div>

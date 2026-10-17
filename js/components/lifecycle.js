@@ -1,4 +1,4 @@
-/* ── From Concept to Commissioning: tabbed 7-stage project lifecycle ── */
+/* ── From Concept to Commissioning: stages as nodes on an energised power line + detail card ── */
 
 const STAGE_ICONS = [
   // 1: Requirement (Document & checklist)
@@ -17,62 +17,106 @@ const STAGE_ICONS = [
   `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`
 ];
 
+/* Circuit geometry (SVG user units). Nodes alternate low/high along a wave. */
+const LCV_W = 1200, LCV_H = 300;
+function lcvPoints(n) {
+  return Array.from({ length: n }, (_, i) => [90 + i * ((LCV_W - 180) / (n - 1)), i % 2 ? 92 : 208]);
+}
+function lcvSegments(pts) {
+  const d = (pts[1][0] - pts[0][0]) / 2;
+  return pts.slice(1).map((p, i) => {
+    const [x0, y0] = pts[i];
+    return `C ${x0 + d} ${y0}, ${p[0] - d} ${p[1]}, ${p[0]} ${p[1]}`;
+  });
+}
+
 function Lifecycle() {
   const L = DATA.lifecycle;
-  const pad = n => String(n + 1).padStart(2, '0');
-  const check = `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>`;
+  const pad = n => String(n).padStart(2, '0');
+  const pts = lcvPoints(L.length);
+  const path = `M ${pts[0][0]} ${pts[0][1]} ` + lcvSegments(pts).join(' ');
+  const arrow = d => `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${d}"/></svg>`;
 
-  const steps = L.map((s, i) => `
-      <li>
-        <button type="button" class="lcx-step${i === 0 ? ' is-active' : ''}" role="tab" id="lcx-tab-${i}" aria-selected="${i === 0}" aria-controls="lcx-panel" data-lcx="${i}">
-          <span class="lcx-step__dot">${STAGE_ICONS[i] || STAGE_ICONS[0]}<b>${pad(i)}</b></span>
-          <span class="lcx-step__name">${s.chipText}</span>
-        </button>
-      </li>`).join('');
+  const nodes = L.map((s, i) => `
+        <button type="button" class="lcv-node ${i % 2 ? 'is-up' : 'is-down'}${i === 0 ? ' is-active' : ''}" data-lcv="${i}"
+                style="left:${(pts[i][0] / LCV_W * 100).toFixed(3)}%;top:${(pts[i][1] / LCV_H * 100).toFixed(3)}%"
+                aria-pressed="${i === 0}" aria-label="${s.phase}: ${s.title}">
+          <span class="lcv-node__dot">${STAGE_ICONS[i] || STAGE_ICONS[0]}</span>
+          <span class="lcv-node__label"><b>${pad(i + 1)}</b>${s.chipText}</span>
+        </button>`).join('');
 
   return `
   <div class="wrap">
-    ${SectionHead({
-      label: 'FROM CONCEPT TO COMMISSIONING',
-      title: 'The Complete Project Lifecycle',
-      desc: 'A coordinated 7-stage turnkey methodology — from first requirement to grid energisation and lifecycle care.'
-    })}
-
-    <div class="lcx fade-in-up" data-delay="80">
-      <div class="lcx-track" id="lcx-track">
-        <div class="lcx-steps-wrap" style="--n:${L.length}">
-          <span class="lcx-steps__line" aria-hidden="true"><span class="lcx-steps__fill" id="lcx-fill"></span></span>
-          <ol class="lcx-steps" role="tablist" aria-label="Project lifecycle stages">${steps}
-          </ol>
-        </div>
-      </div>
-
-      <div class="lcx-panel" id="lcx-panel" role="tabpanel" aria-live="polite">
-        <figure class="lcx-panel__media"><img id="lcx-img" src="${L[0].image}" alt="" decoding="async"></figure>
-        <div class="lcx-panel__body">
-          <div class="lcx-panel__meta">
-            <span class="lcx-panel__stage" id="lcx-stage"></span>
-            <span class="lcx-panel__time" id="lcx-time"></span>
-          </div>
-          <h3 id="lcx-title"></h3>
-          <p class="lcx-panel__summary" id="lcx-summary"></p>
-          <ul class="lcx-panel__points" id="lcx-points"></ul>
-          <div class="lcx-panel__foot">
-            <div class="lcx-panel__milestone">
-              <small>Milestone</small>
-              <strong id="lcx-milestone"></strong>
-            </div>
-            <div class="lcx-panel__nav">
-              <button type="button" class="lcx-nav" data-lcx-step="-1" aria-label="Previous stage"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
-              <button type="button" class="lcx-nav" data-lcx-step="1" aria-label="Next stage"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <template id="lcx-check">${check}</template>
+    <div class="lc-head">
+      ${SectionHead({
+        label: 'FROM CONCEPT TO COMMISSIONING',
+        title: 'The Complete Project Lifecycle',
+        desc: 'A coordinated 7-stage turnkey methodology — from first requirement to grid energisation and lifecycle care.'
+      })}
+      <ul class="lc-pills fade-in-right" data-delay="120">
+        <li><strong>${pad(L.length)}</strong><span>Delivery stages</span></li>
+        <li><strong>01</strong><span>Accountable team</span></li>
+        <li><strong>ISO</strong><span>9001 supervised</span></li>
+      </ul>
     </div>
 
+    <div class="lcv-circuit fade-in-up">
+      <p class="lcv-circuit__tag"><span class="lcv-live-dot" aria-hidden="true"></span>Energisation path</p>
+      <p class="lcv-circuit__status" aria-live="polite"><span id="lcv-status">${pad(1)}</span> / ${pad(L.length)} energised</p>
+      <div class="lcv-scroll" id="lcv-scroll">
+        <div class="lcv-canvas">
+          <svg viewBox="0 0 ${LCV_W} ${LCV_H}" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="lcv-grad" x1="0" x2="1" y1="0" y2="0">
+                <stop offset="0" stop-color="#5FB0FF"/><stop offset=".6" stop-color="#9AD0FF"/><stop offset="1" stop-color="#F28C28"/>
+              </linearGradient>
+            </defs>
+            <path class="lcv-base" d="${path}"/>
+            <path class="lcv-live" id="lcv-live" d="${path}"/>
+          </svg>
+          <span class="lcv-spark" id="lcv-spark" aria-hidden="true"></span>
+          ${nodes}
+        </div>
+      </div>
+    </div>
+
+    <article class="lcv-detail" id="lcv-detail" aria-live="polite">
+      <figure class="lcv-detail__media">
+        <img id="lcv-img" src="${L[0].image}" alt="${L[0].title}" decoding="async">
+        <span class="lcv-detail__no" id="lcv-no" aria-hidden="true">01</span>
+      </figure>
+      <div class="lcv-detail__body">
+        <div class="lcv-detail__chips">
+          <span class="lcv-chip lcv-chip--phase" id="lcv-phase">${L[0].phase}</span>
+          <span class="lcv-chip" id="lcv-time">${L[0].duration}</span>
+        </div>
+        <h3 id="lcv-title">${L[0].title}</h3>
+        <p class="lcv-detail__tag" id="lcv-tag">${L[0].tagline || ''}</p>
+        <p class="lcv-detail__summary" id="lcv-summary">${L[0].summary}</p>
+        <ul class="lcv-detail__points" id="lcv-points"></ul>
+      </div>
+      <aside class="lcv-detail__side">
+        <div class="lcv-ring" aria-hidden="true">
+          <svg viewBox="0 0 120 120">
+            <defs><linearGradient id="lcv-ring-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5FB0FF"/><stop offset="1" stop-color="#F28C28"/></linearGradient></defs>
+            <circle cx="60" cy="60" r="52" class="lcv-ring__track"/>
+            <circle cx="60" cy="60" r="52" class="lcv-ring__bar" id="lcv-ring"/>
+          </svg>
+          <span><b id="lcv-ring-num">01</b><small>of ${pad(L.length)}</small></span>
+        </div>
+        <div class="lcv-milestone">
+          <small>Milestone</small>
+          <strong id="lcv-milestone">${L[0].milestone}</strong>
+        </div>
+        <div class="lcv-nav">
+          <button type="button" data-lcv-step="-1" aria-label="Previous stage">${arrow('M15 18l-6-6 6-6')}</button>
+          <button type="button" data-lcv-step="1" aria-label="Next stage">${arrow('M9 18l6-6-6-6')}</button>
+        </div>
+      </aside>
+    </article>
+
     <div class="lcx-cta fade-in-up" data-delay="100">
+      <span class="lcx-cta__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span>
       <p><strong>Single-point EPC accountability</strong> — one team from factory to field, under ISO 9001 quality supervision.</p>
       <a href="#contact" class="lcx-cta__btn">Request Technical Proposal</a>
     </div>
@@ -81,61 +125,105 @@ function Lifecycle() {
 
 function initLifecycle() {
   const L = DATA.lifecycle;
-  if (!L || !L.length) return;
+  const live = document.getElementById('lcv-live');
+  if (!L || !L.length || !live) return;
 
-  const tabs = Array.from(document.querySelectorAll('[data-lcx]'));
-  const panel = document.getElementById('lcx-panel');
-  const track = document.getElementById('lcx-track');
-  const fill = document.getElementById('lcx-fill');
-  const img = document.getElementById('lcx-img');
-  const check = document.getElementById('lcx-check').innerHTML;
   const $ = id => document.getElementById(id);
-  let current = 0;
+  const pad = n => String(n).padStart(2, '0');
+  const nodes = [...document.querySelectorAll('.lcv-node')];
+  const detail = $('lcv-detail'), spark = $('lcv-spark'), ring = $('lcv-ring'), scroller = $('lcv-scroll');
+  const circuit = document.querySelector('.lcv-circuit');
+  const check = `<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>`;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const RC = 2 * Math.PI * 52;
+  let current = 0, timer = null, userPicked = false, visible = false, hovered = false;
 
-  // Warm the image cache so switching stages doesn't flash
+  // Path length up to each node, so the energised stroke stops exactly on it
+  const pts = lcvPoints(L.length), segs = lcvSegments(pts);
+  const probe = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  live.parentNode.appendChild(probe);
+  const upTo = pts.map((p, i) => {
+    if (!i) return 0;
+    probe.setAttribute('d', `M ${pts[0][0]} ${pts[0][1]} ` + segs.slice(0, i).join(' '));
+    return probe.getTotalLength();
+  });
+  probe.remove();
+  const total = live.getTotalLength();
+  live.style.strokeDasharray = `${total} ${total}`;
+  live.style.strokeDashoffset = total;
+  ring.style.strokeDasharray = RC;
   L.forEach(s => { const i = new Image(); i.src = s.image; });
 
-  function show(idx, focus) {
-    idx = (idx + L.length) % L.length;
-    current = idx;
-    const s = L[idx];
+  // A spark of current runs along the energised part of the line
+  let t0 = performance.now();
+  function runSpark(now) {
+    const len = upTo[current];
+    if (!reduce && len > 0 && visible) {
+      const t = ((now - t0) % 2200) / 2200;
+      const e = 1 - Math.pow(1 - t, 3);
+      const p = live.getPointAtLength(len * e);
+      spark.style.left = (p.x / LCV_W * 100) + '%';
+      spark.style.top = (p.y / LCV_H * 100) + '%';
+      spark.style.opacity = t > .85 ? (1 - t) / .15 : 1;
+    } else {
+      spark.style.opacity = 0;
+    }
+    requestAnimationFrame(runSpark);
+  }
+  requestAnimationFrame(runSpark);
 
-    tabs.forEach((t, k) => {
-      t.classList.toggle('is-active', k === idx);
-      t.classList.toggle('is-done', k < idx);
-      t.setAttribute('aria-selected', k === idx);
-      t.tabIndex = k === idx ? 0 : -1;
+  function show(idx) {
+    current = (idx + L.length) % L.length;
+    const s = L[current];
+    nodes.forEach((n, k) => {
+      n.classList.toggle('is-active', k === current);
+      n.classList.toggle('is-done', k < current);
+      n.setAttribute('aria-pressed', k === current);
     });
-    if (focus) tabs[idx].focus();
-    // Keep the active step visible when the stepper scrolls sideways on phones
-    const t = tabs[idx];
-    track.scrollTo({ left: t.offsetLeft - (track.clientWidth - t.offsetWidth) / 2, behavior: 'smooth' });
-    fill.style.width = (idx / (L.length - 1) * 100) + '%';
+    live.style.strokeDashoffset = total - upTo[current];
+    ring.style.strokeDashoffset = RC * (1 - (current + 1) / L.length);
+    t0 = performance.now();
 
-    panel.classList.remove('is-in');
-    void panel.offsetWidth;
-    panel.classList.add('is-in');
-    panel.setAttribute('aria-labelledby', 'lcx-tab-' + idx);
+    $('lcv-status').textContent = pad(current + 1);
+    $('lcv-ring-num').textContent = pad(current + 1);
+    $('lcv-no').textContent = pad(current + 1);
+    $('lcv-phase').textContent = s.phase;
+    $('lcv-time').textContent = s.duration;
+    $('lcv-title').textContent = s.title;
+    $('lcv-tag').textContent = s.tagline || '';
+    $('lcv-summary').textContent = s.summary;
+    $('lcv-milestone').textContent = s.milestone;
+    $('lcv-points').innerHTML = s.points.map(p => `<li>${check}<span>${p}</span></li>`).join('');
+    const img = $('lcv-img'); img.src = s.image; img.alt = s.title;
+    detail.classList.remove('is-in'); void detail.offsetWidth; detail.classList.add('is-in');
 
-    img.src = s.image;
-    img.alt = s.title;
-    $('lcx-stage').textContent = `${s.phase} of ${String(L.length).padStart(2, '0')}`;
-    $('lcx-time').textContent = s.duration;
-    $('lcx-title').textContent = s.title;
-    $('lcx-summary').textContent = s.summary;
-    $('lcx-milestone').textContent = s.milestone;
-    $('lcx-points').innerHTML = s.points.map(p => `<li>${check}<span>${p}</span></li>`).join('');
+    // On phones the circuit scrolls sideways: keep the active node centred
+    if (scroller.scrollWidth > scroller.clientWidth) {
+      const n = nodes[current];
+      scroller.scrollTo({ left: n.offsetLeft - scroller.clientWidth / 2, behavior: reduce ? 'auto' : 'smooth' });
+    }
   }
 
-  tabs.forEach((t, k) => {
-    t.addEventListener('click', () => show(k));
-    t.addEventListener('keydown', e => {
-      if (e.key === 'ArrowRight') { e.preventDefault(); show(current + 1, true); }
-      if (e.key === 'ArrowLeft') { e.preventDefault(); show(current - 1, true); }
+  function schedule() {
+    clearInterval(timer);
+    if (!userPicked && visible && !hovered && !reduce) timer = setInterval(() => show(current + 1), 6000);
+  }
+  const pick = k => { userPicked = true; clearInterval(timer); show(k); };
+
+  nodes.forEach((n, k) => {
+    n.addEventListener('click', () => pick(k));
+    n.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight') { e.preventDefault(); pick(current + 1); nodes[current].focus(); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); pick(current - 1); nodes[current].focus(); }
     });
   });
-  document.querySelectorAll('[data-lcx-step]').forEach(b =>
-    b.addEventListener('click', () => show(current + Number(b.dataset.lcxStep))));
+  document.querySelectorAll('[data-lcv-step]').forEach(b =>
+    b.addEventListener('click', () => pick(current + Number(b.dataset.lcvStep))));
+  [circuit, detail].forEach(el => {
+    el.addEventListener('mouseenter', () => { hovered = true; clearInterval(timer); });
+    el.addEventListener('mouseleave', () => { hovered = false; schedule(); });
+  });
+  new IntersectionObserver(([e]) => { visible = e.isIntersecting; schedule(); }, { threshold: .25 }).observe(circuit);
 
   show(0);
 }
