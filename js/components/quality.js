@@ -173,12 +173,18 @@ window.QA_CERTS = QA_CERTS;
 
 function Quality() {
   const bpelCards = WHY_BPEL_CARDS.map((card, i) => `
-    <article class="why-bpel__card fade-in-up" data-delay="${i * 90}">
-      <div class="why-bpel__icon-box" aria-hidden="true">
-        ${card.icon}
+    <article class="why-bpel__card fade-in-up${i === 0 ? ' is-open' : ''}" data-delay="${i * 90}">
+      <h3 class="why-bpel__card-head">
+        <button type="button" class="why-bpel__toggle" aria-expanded="${i === 0}" aria-controls="why-bpel-panel-${i}">
+          <span class="why-bpel__num">${String(i + 1).padStart(2, '0')}</span>
+          <span class="why-bpel__icon-box" aria-hidden="true">${card.icon}</span>
+          <span class="why-bpel__card-title">${card.title.replace(/<br>/g, ' ')}</span>
+          <span class="why-bpel__plus" aria-hidden="true"></span>
+        </button>
+      </h3>
+      <div class="why-bpel__panel" id="why-bpel-panel-${i}">
+        <p class="why-bpel__card-text">${card.desc}</p>
       </div>
-      <h3 class="why-bpel__card-title">${card.title}</h3>
-      <p class="why-bpel__card-text">${card.desc}</p>
     </article>
   `).join('');
 
@@ -191,17 +197,39 @@ function Quality() {
 
   return `
     <div class="wrap">
-      <!-- Top Section: Why Work With BPEL (4-Card Grid) -->
-      <div class="why-bpel__head fade-in-up">
-        <h2 class="why-bpel__title">Why Work With BPEL</h2>
-        <div class="why-bpel__dashes" aria-hidden="true">
-          <span></span>
-          <span></span>
-          <span></span>
+      <!-- Top Section: Why Work With BPEL (image collage left, reasons right) -->
+      <div class="why-bpel">
+        <div class="why-bpel__gallery fade-in-left" aria-hidden="true">
+          <span class="why-bpel__deco"></span>
+          <figure class="why-bpel__img why-bpel__img--main">
+            <img src="assets/images/lifecycle/04-manufacturing-fat.jpg" alt="" loading="lazy" decoding="async">
+          </figure>
+          <figure class="why-bpel__img why-bpel__img--top">
+            <img src="assets/images/lifecycle/02-engineering-design.jpg" alt="" loading="lazy" decoding="async">
+          </figure>
+          <figure class="why-bpel__img why-bpel__img--bottom">
+            <img src="assets/images/lifecycle/06-testing-commissioning.jpg" alt="" loading="lazy" decoding="async">
+          </figure>
+          <div class="why-bpel__badge">
+            <strong>Design · Build · Test</strong>
+            <span>One accountable team</span>
+          </div>
         </div>
-      </div>
-      <div class="why-bpel__grid">
-        ${bpelCards}
+
+        <div class="why-bpel__content">
+          <div class="why-bpel__intro fade-in-right">
+            <p class="label">WHY WORK WITH BPEL</p>
+            <h2 class="why-bpel__title">Built in-house. Backed by engineers.</h2>
+            <p class="why-bpel__lead">From raw material to final test, every transformer is designed, built and supported by one accountable team — so you get consistent quality, predictable delivery and support for the life of the equipment.</p>
+          </div>
+          <div class="why-bpel__grid">
+            ${bpelCards}
+          </div>
+          <a href="#contact" class="why-bpel__btn fade-in-up">
+            <span>Talk to an engineer</span>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
       </div>
 
       <!-- Bottom Section: Simple Framed Certificates Gallery (Matches User's Reference Photo) -->
@@ -229,6 +257,19 @@ function Quality() {
 }
 
 function initQuality() {
+  // Why BPEL accordion: one reason open at a time
+  const whyCards = Array.from(document.querySelectorAll('.why-bpel__card'));
+  whyCards.forEach(card => {
+    card.querySelector('.why-bpel__toggle').addEventListener('click', () => {
+      const opening = !card.classList.contains('is-open');
+      whyCards.forEach(c => {
+        const open = c === card && opening;
+        c.classList.toggle('is-open', open);
+        c.querySelector('.why-bpel__toggle').setAttribute('aria-expanded', open);
+      });
+    });
+  });
+
   const track   = document.getElementById('qa-certs-track');
   const prevBtn = document.getElementById('qa-cert-prev');
   const nextBtn = document.getElementById('qa-cert-next');

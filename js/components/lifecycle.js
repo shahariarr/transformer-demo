@@ -1,4 +1,4 @@
-/* ── From Concept to Commissioning: The Smooth Scroll-Based Animated Project Lifecycle ─────────────── */
+/* ── From Concept to Commissioning: tabbed 7-stage project lifecycle ── */
 
 const STAGE_ICONS = [
   // 1: Requirement (Document & checklist)
@@ -20,121 +20,61 @@ const STAGE_ICONS = [
 function Lifecycle() {
   const L = DATA.lifecycle;
   const pad = n => String(n + 1).padStart(2, '0');
+  const check = `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>`;
 
-  // Sticky navigation chip pills
-  const navPills = L.map((s, i) => `
-    <button type="button" class="lc-pill ${i === 0 ? 'is-active' : ''}" data-stage-btn="${i}" role="tab" aria-selected="${i === 0 ? 'true' : 'false'}" aria-controls="lc-stage-${i}" style="--stage-color:${s.accentColor}; --stage-glow:${s.glowColor};">
-      <span class="lc-pill__num">${pad(i)}</span>
-      <span class="lc-pill__text">
-        <span class="lc-pill__stage">${s.phase}</span>
-        <span class="lc-pill__name">${s.chipText}</span>
-      </span>
-    </button>`).join('');
-
-  // 7 alternating animated stage rows
-  const stageRows = L.map((s, i) => {
-    const isEven = i % 2 === 1; // Stages 1, 3, 5, 7 (Odd index 0,2,4,6) vs Stages 2, 4, 6 (Even index 1,3,5)
-    const iconSvg = STAGE_ICONS[i] || STAGE_ICONS[0];
-
-    // Media Showcase Card (Clean image with stage badge)
-    const mediaCardHtml = `
-      <div class="lc-card lc-card--media ${isEven ? 'fade-in-right' : 'fade-in-left'}" ${isEven ? 'data-delay="120"' : ''}>
-        <div class="lc-media__frame">
-          <img src="${s.image}" alt="${s.title}" loading="${i <= 1 ? 'eager' : 'lazy'}" decoding="async">
-          <div class="lc-media__top-chips">
-            <span class="lc-chip lc-chip--stage">
-              <span class="lc-chip__dot"></span>
-              ${s.phase}
-            </span>
-          </div>
-        </div>
-      </div>
-    `;
-
-    // Clean Minimal Stage Header Card (Only STAGE XX OF 07 and Title)
-    const scopeCardHtml = `
-      <div class="lc-card lc-card--scope ${isEven ? 'fade-in-left' : 'fade-in-right'}" ${isEven ? '' : 'data-delay="120"'}>
-        <div class="lc-scope__content">
-          <div class="lc-scope__eyebrow">
-            <span class="lc-scope__eyebrow-badge">${s.phase.toUpperCase()} OF 07</span>
-          </div>
-          <h3 class="lc-scope__title">${s.title}</h3>
-        </div>
-      </div>
-    `;
-
-    // Center Stage Node
-    const centerNodeHtml = `
-      <div class="lc-timeline__node fade-in-up" data-delay="60" aria-hidden="true">
-        <div class="lc-node__circle">
-          <span class="lc-node__num">${i + 1}</span>
-          <span class="lc-node__icon">${iconSvg}</span>
-        </div>
-        <div class="lc-node__chip-tag">
-          <span class="lc-node__tag-phase">${s.phase}</span>
-          <span class="lc-node__tag-title">${s.chipText}</span>
-        </div>
-        <div class="lc-node__connector lc-node__connector--left"></div>
-        <div class="lc-node__connector lc-node__connector--right"></div>
-      </div>
-    `;
-
-    return `
-      <div class="lc-stage-row ${isEven ? 'lc-stage-row--even' : 'lc-stage-row--odd'}" id="lc-stage-${i}" data-stage-index="${i}" style="--stage-color:${s.accentColor}; --stage-glow:${s.glowColor}; --stage-bg:${s.bgTint};">
-        ${isEven ? scopeCardHtml : mediaCardHtml}
-        ${centerNodeHtml}
-        ${isEven ? mediaCardHtml : scopeCardHtml}
-      </div>
-    `;
-  }).join('');
+  const steps = L.map((s, i) => `
+      <li>
+        <button type="button" class="lcx-step${i === 0 ? ' is-active' : ''}" role="tab" id="lcx-tab-${i}" aria-selected="${i === 0}" aria-controls="lcx-panel" data-lcx="${i}">
+          <span class="lcx-step__dot">${STAGE_ICONS[i] || STAGE_ICONS[0]}<b>${pad(i)}</b></span>
+          <span class="lcx-step__name">${s.chipText}</span>
+        </button>
+      </li>`).join('');
 
   return `
-  <div class="stars-container" aria-hidden="true">
-    <div id="lifecycle-stars" class="stars-layer-1"></div>
-    <div id="lifecycle-stars2" class="stars-layer-2"></div>
-    <div id="lifecycle-stars3" class="stars-layer-3"></div>
-  </div>
   <div class="wrap">
     ${SectionHead({
       label: 'FROM CONCEPT TO COMMISSIONING',
       title: 'The Complete Project Lifecycle',
-      desc: 'A coordinated 7-stage turnkey engineering and commissioning methodology ensuring zero-defect transformer fabrication, full IEC compliance, and on-time grid energisation.'
+      desc: 'A coordinated 7-stage turnkey methodology — from first requirement to grid energisation and lifecycle care.'
     })}
 
-    <!-- Interactive Sticky Stage Pills Navigation -->
-    <div class="lc-nav-wrapper" id="lc-nav-wrapper">
-      <div class="lc-pills-bar" role="tablist" aria-label="Project lifecycle stages" id="lc-pills-bar">
-        ${navPills}
+    <div class="lcx fade-in-up" data-delay="80">
+      <div class="lcx-track" id="lcx-track">
+        <div class="lcx-steps-wrap" style="--n:${L.length}">
+          <span class="lcx-steps__line" aria-hidden="true"><span class="lcx-steps__fill" id="lcx-fill"></span></span>
+          <ol class="lcx-steps" role="tablist" aria-label="Project lifecycle stages">${steps}
+          </ol>
+        </div>
       </div>
+
+      <div class="lcx-panel" id="lcx-panel" role="tabpanel" aria-live="polite">
+        <figure class="lcx-panel__media"><img id="lcx-img" src="${L[0].image}" alt="" decoding="async"></figure>
+        <div class="lcx-panel__body">
+          <div class="lcx-panel__meta">
+            <span class="lcx-panel__stage" id="lcx-stage"></span>
+            <span class="lcx-panel__time" id="lcx-time"></span>
+          </div>
+          <h3 id="lcx-title"></h3>
+          <p class="lcx-panel__summary" id="lcx-summary"></p>
+          <ul class="lcx-panel__points" id="lcx-points"></ul>
+          <div class="lcx-panel__foot">
+            <div class="lcx-panel__milestone">
+              <small>Milestone</small>
+              <strong id="lcx-milestone"></strong>
+            </div>
+            <div class="lcx-panel__nav">
+              <button type="button" class="lcx-nav" data-lcx-step="-1" aria-label="Previous stage"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+              <button type="button" class="lcx-nav" data-lcx-step="1" aria-label="Next stage"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <template id="lcx-check">${check}</template>
     </div>
 
-    <!-- Scroll-Based Vertical Stages Timeline -->
-    <div class="lc-timeline" id="lc-timeline">
-      <!-- Animated Central Progress Spine -->
-      <div class="lc-timeline__spine">
-        <div class="lc-timeline__spine-track"></div>
-        <div class="lc-timeline__spine-fill" id="lc-spine-fill"></div>
-      </div>
-
-      <!-- 7 Sequential Animated Stages -->
-      <div class="lc-stages-container" id="lc-stages-container">
-        ${stageRows}
-      </div>
-    </div>
-
-    <!-- Turnkey EPC Assurance Banner -->
-    <div class="lc-assurance fade-in-up" data-delay="100">
-      <div class="lc-assurance__icon">
-        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      </div>
-      <div class="lc-assurance__body">
-        <h4>Single-Point EPC Accountability from Factory to Field</h4>
-        <p>Our multidisciplinary team of power electrical engineers, civil technicians, and commissioning specialists handle the entire lifecycle under ISO 9001 quality supervision, eliminating contractor handoff risks.</p>
-      </div>
-      <a href="#contact" class="lc-assurance__btn">
-        <span>Request Technical Proposal</span>
-        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
+    <div class="lcx-cta fade-in-up" data-delay="100">
+      <p><strong>Single-point EPC accountability</strong> — one team from factory to field, under ISO 9001 quality supervision.</p>
+      <a href="#contact" class="lcx-cta__btn">Request Technical Proposal</a>
     </div>
   </div>`;
 }
@@ -143,116 +83,61 @@ function initLifecycle() {
   const L = DATA.lifecycle;
   if (!L || !L.length) return;
 
-  const timeline = document.getElementById('lc-timeline');
-  const spineFill = document.getElementById('lc-spine-fill');
-  const pillsBar = document.getElementById('lc-pills-bar');
-  const stageRows = Array.from(document.querySelectorAll('.lc-stage-row'));
-  const pillBtns = Array.from(document.querySelectorAll('[data-stage-btn]'));
+  const tabs = Array.from(document.querySelectorAll('[data-lcx]'));
+  const panel = document.getElementById('lcx-panel');
+  const track = document.getElementById('lcx-track');
+  const fill = document.getElementById('lcx-fill');
+  const img = document.getElementById('lcx-img');
+  const check = document.getElementById('lcx-check').innerHTML;
+  const $ = id => document.getElementById(id);
+  let current = 0;
 
-  let activeIndex = -1;
+  // Warm the image cache so switching stages doesn't flash
+  L.forEach(s => { const i = new Image(); i.src = s.image; });
 
-  // Set active stage in navigation and rows (without layout thrashing)
-  function activateStage(idx) {
-    if (idx === activeIndex || idx < 0 || idx >= L.length) return;
-    activeIndex = idx;
+  function show(idx, focus) {
+    idx = (idx + L.length) % L.length;
+    current = idx;
+    const s = L[idx];
 
-    for (let k = 0; k < pillBtns.length; k++) {
-      const btn = pillBtns[k];
-      const isActive = k === idx;
-      btn.classList.toggle('is-active', isActive);
-      btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
-    }
-
-    for (let k = 0; k < stageRows.length; k++) {
-      const row = stageRows[k];
-      row.classList.toggle('is-active', k === idx);
-    }
-  }
-
-  // Smooth IntersectionObserver for hardware-accelerated stage reveal
-  if ('IntersectionObserver' in window && stageRows.length) {
-    const stageObserver = new IntersectionObserver((entries) => {
-      for (let i = 0; i < entries.length; i++) {
-        const entry = entries[i];
-        const row = entry.target;
-        if (entry.isIntersecting) {
-          row.classList.add('is-visible');
-          if (entry.intersectionRatio >= 0.25) {
-            const idx = parseInt(row.dataset.stageIndex, 10);
-            activateStage(idx);
-          }
-        } else {
-          row.classList.remove('is-visible');
-        }
-      }
-    }, {
-      rootMargin: '-5% 0px -20% 0px',
-      threshold: [0.1, 0.25, 0.5]
+    tabs.forEach((t, k) => {
+      t.classList.toggle('is-active', k === idx);
+      t.classList.toggle('is-done', k < idx);
+      t.setAttribute('aria-selected', k === idx);
+      t.tabIndex = k === idx ? 0 : -1;
     });
+    if (focus) tabs[idx].focus();
+    // Keep the active step visible when the stepper scrolls sideways on phones
+    const t = tabs[idx];
+    track.scrollTo({ left: t.offsetLeft - (track.clientWidth - t.offsetWidth) / 2, behavior: 'smooth' });
+    fill.style.width = (idx / (L.length - 1) * 100) + '%';
 
-    stageRows.forEach(row => stageObserver.observe(row));
-  } else {
-    stageRows.forEach(row => row.classList.add('is-visible'));
+    panel.classList.remove('is-in');
+    void panel.offsetWidth;
+    panel.classList.add('is-in');
+    panel.setAttribute('aria-labelledby', 'lcx-tab-' + idx);
+
+    img.src = s.image;
+    img.alt = s.title;
+    $('lcx-stage').textContent = `${s.phase} of ${String(L.length).padStart(2, '0')}`;
+    $('lcx-time').textContent = s.duration;
+    $('lcx-title').textContent = s.title;
+    $('lcx-summary').textContent = s.summary;
+    $('lcx-milestone').textContent = s.milestone;
+    $('lcx-points').innerHTML = s.points.map(p => `<li>${check}<span>${p}</span></li>`).join('');
   }
 
-  // Ultra-lightweight throttled progress spine update (zero lag)
-  let ticking = false;
-  function updateSpineFill() {
-    if (!timeline || !spineFill) return;
-    const rect = timeline.getBoundingClientRect();
-    const windowH = window.innerHeight;
-    const totalH = rect.height;
-    if (totalH <= 0) return;
-
-    const startOffset = windowH * 0.45;
-    const progress = Math.min(Math.max((startOffset - rect.top) / totalH, 0), 1);
-    spineFill.style.height = (progress * 100).toFixed(1) + '%';
-  }
-
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      requestAnimationFrame(() => {
-        updateSpineFill();
-        ticking = false;
-      });
-      ticking = true;
-    }
-  }, { passive: true });
-
-  updateSpineFill();
-
-  // Navigation Pill Clicks (Smooth scroll straight to target stage)
-  pillBtns.forEach((btn, idx) => {
-    btn.addEventListener('click', () => {
-      const targetRow = document.getElementById(`lc-stage-${idx}`);
-      if (targetRow) {
-        const headerOffset = 140;
-        const targetPos = targetRow.getBoundingClientRect().top + window.pageYOffset - headerOffset;
-        window.scrollTo({ top: targetPos, behavior: 'smooth' });
-        activateStage(idx);
-      }
+  tabs.forEach((t, k) => {
+    t.addEventListener('click', () => show(k));
+    t.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight') { e.preventDefault(); show(current + 1, true); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); show(current - 1, true); }
     });
   });
+  document.querySelectorAll('[data-lcx-step]').forEach(b =>
+    b.addEventListener('click', () => show(current + Number(b.dataset.lcxStep))));
 
-  // Jump buttons on each stage card
-  document.querySelectorAll('[data-jump-to]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const nextIdx = parseInt(btn.dataset.jumpTo, 10);
-      const targetRow = document.getElementById(`lc-stage-${nextIdx}`);
-      if (targetRow) {
-        const headerOffset = 140;
-        const targetPos = targetRow.getBoundingClientRect().top + window.pageYOffset - headerOffset;
-        window.scrollTo({ top: targetPos, behavior: 'smooth' });
-        activateStage(nextIdx);
-      }
-    });
-  });
-
-  // Initialize initial stage
-  activateStage(0);
-  if (stageRows[0]) {
-    stageRows[0].classList.add('is-visible');
-  }
+  show(0);
 }
 
 window.Lifecycle = Lifecycle;
