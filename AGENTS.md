@@ -1,50 +1,56 @@
 # Antigravity Workspace Agents & Skills
 
-This workspace is configured with specialized Antigravity agent personas and workflow skills located under [.agents/](file:///c:/Users/IT%20PC/Downloads/transformer-demo/.agents).
+This workspace is configured with specialized Antigravity agent personas and workflow skills located under [.agents/](file:///d:/laragon/www/trans/.agents).
 
 ---
 
 ## 🤖 Specialist Agents
 
-The following specialist agent definitions and workflows are available in [.agents/agents/](file:///c:/Users/IT%20PC/Downloads/transformer-demo/.agents/agents) and registered as on-demand skills in [.agents/skills/](file:///c:/Users/IT%20PC/Downloads/transformer-demo/.agents/skills):
+The following specialist agent definitions and workflows are available in [.agents/agents/](file:///d:/laragon/www/trans/.agents/agents) and registered as on-demand skills in [.agents/skills/](file:///d:/laragon/www/trans/.agents/skills):
 
 | Agent Name | Skill Path | Role & Purpose |
 |---|---|---|
-| **frontend-developer** | [.agents/skills/frontend-developer/SKILL.md](file:///c:/Users/IT%20PC/Downloads/transformer-demo/.agents/skills/frontend-developer/SKILL.md) | Modern frontend engineering across React, Vue, Next.js, component architecture, state management, and WCAG accessibility. |
-| **fullstack-developer** | [.agents/skills/fullstack-developer/SKILL.md](file:///c:/Users/IT%20PC/Downloads/transformer-demo/.agents/skills/fullstack-developer/SKILL.md) | End-to-end features spanning database schema, APIs, server components, real-time sync, and frontend integration. |
-| **javascript-pro** | [.agents/skills/javascript-pro/SKILL.md](file:///c:/Users/IT%20PC/Downloads/transformer-demo/.agents/skills/javascript-pro/SKILL.md) | ES2025 modern JavaScript, asynchronous patterns, performance optimization, DOM efficiency, and Node.js backend. |
-| **ui-ux-designer** | [.agents/skills/ui-ux-designer/SKILL.md](file:///c:/Users/IT%20PC/Downloads/transformer-demo/.agents/skills/ui-ux-designer/SKILL.md) | Research-backed design critique, usability audits, typography, aesthetic direction, and layout review. |
+| **frontend-developer** | [.agents/skills/frontend-developer/SKILL.md](file:///d:/laragon/www/trans/.agents/skills/frontend-developer/SKILL.md) | Modern frontend engineering across React, Vue, Next.js, component architecture, state management, and WCAG accessibility. |
+| **fullstack-developer** | [.agents/skills/fullstack-developer/SKILL.md](file:///d:/laragon/www/trans/.agents/skills/fullstack-developer/SKILL.md) | End-to-end features spanning database schema, APIs, server components, real-time sync, and frontend integration. |
+| **javascript-pro** | [.agents/skills/javascript-pro/SKILL.md](file:///d:/laragon/www/trans/.agents/skills/javascript-pro/SKILL.md) | ES2025 modern JavaScript, asynchronous patterns, performance optimization, DOM efficiency, and Node.js backend. |
+| **ui-ux-designer** | [.agents/skills/ui-ux-designer/SKILL.md](file:///d:/laragon/www/trans/.agents/skills/ui-ux-designer/SKILL.md) | Research-backed design critique, usability audits, typography, aesthetic direction, and layout review. |
 
 ---
 
 ## 🛠️ Specialized Skills
 
-The following skills are installed in [.agents/skills/](file:///c:/Users/IT%20PC/Downloads/transformer-demo/.agents/skills) and can be activated progressively by Antigravity:
+The following skills are installed in [.agents/skills/](file:///d:/laragon/www/trans/.agents/skills) and can be activated progressively by Antigravity:
 
 | Skill | Path | Description |
 |---|---|---|
-| **ui-ux-pro-max** | [.agents/skills/ui-ux-pro-max/](file:///c:/Users/IT%20PC/Downloads/transformer-demo/.agents/skills/ui-ux-pro-max) | 50+ styles, 97 color palettes, 57 font pairings, and responsive UX design intelligence. |
-| **premium-web-design** | [.agents/skills/premium-web-design/](file:///c:/Users/IT%20PC/Downloads/transformer-demo/.agents/skills/premium-web-design) | Guidelines for high-end, world-class aesthetic web layouts and animations. |
-| **frontend-design** | [.agents/skills/frontend-design/](file:///c:/Users/IT%20PC/Downloads/transformer-demo/.agents/skills/frontend-design) | Modern component layouts, CSS architectures, and micro-interactions. |
-| **web-design-guidelines** | [.agents/skills/web-design-guidelines/](file:///c:/Users/IT%20PC/Downloads/transformer-demo/.agents/skills/web-design-guidelines) | Best practices for modern, responsive, and maintainable web pages. |
-| **accessibility-auditor** | [.agents/skills/accessibility-auditor/](file:///c:/Users/IT%20PC/Downloads/transformer-demo/.agents/skills/accessibility-auditor) | WCAG 2.1 AA/AAA compliance, ARIA attributes, keyboard navigation, and screen reader testing. |
-| **scroll-experience** | [.agents/skills/scroll-experience/](file:///c:/Users/IT%20PC/Downloads/transformer-demo/.agents/skills/scroll-experience) | Smooth scroll animations, parallax effects, and scroll-driven interactions. |
-| **3d-web-experience** | [.agents/skills/3d-web-experience/](file:///c:/Users/IT%20PC/Downloads/transformer-demo/.agents/skills/3d-web-experience) | Three.js, WebGL, 3D model rendering, lighting, and interactive scenes. |
-| **interactive-portfolio** | [.agents/skills/interactive-portfolio/](file:///c:/Users/IT%20PC/Downloads/transformer-demo/.agents/skills/interactive-portfolio) | Interactive showcases, portfolio animations, and portfolio case studies. |
-| **d3-viz** | [.agents/skills/d3-viz/](file:///c:/Users/IT%20PC/Downloads/transformer-demo/.agents/skills/d3-viz) | Bespoke interactive data visualisations and charts using D3.js. |
-| **mermaid-diagrams** | [.agents/skills/mermaid-diagrams/](file:///c:/Users/IT%20PC/Downloads/transformer-demo/.agents/skills/mermaid-diagrams) | System architecture, flowcharts, sequence diagrams, and entity-relationship models. |
-| **draw-io** | [.agents/skills/draw-io/](file:///c:/Users/IT%20PC/Downloads/transformer-demo/.agents/skills/draw-io) | Visual technical diagrams and system schematics. |
-| **figma** | [.agents/skills/figma/](file:///c:/Users/IT%20PC/Downloads/transformer-demo/.agents/skills/figma) | Figma design extraction and design tokens synchronization. |
-| **figma-implement-design** | [.agents/skills/figma-implement-design/](file:///c:/Users/IT%20PC/Downloads/transformer-demo/.agents/skills/figma-implement-design) | Translating Figma design specs into pixel-perfect code. |
-| **canvas-design** | [.agents/skills/canvas-design/](file:///c:/Users/IT%20PC/Downloads/transformer-demo/.agents/skills/canvas-design) | HTML5 Canvas rendering, 2D graphics, and custom visual effects. |
-| **algorithmic-art** | [.agents/skills/algorithmic-art/](file:///c:/Users/IT%20PC/Downloads/transformer-demo/.agents/skills/algorithmic-art) | Generative art, procedural visual patterns, and mathematical animation. |
-| **game-development** | [.agents/skills/game-development/](file:///c:/Users/IT%20PC/Downloads/transformer-demo/.agents/skills/game-development) | 2D/3D browser games, game loops, sprite animation, physics, and controls. |
-| **tailwind-patterns** | [.agents/skills/tailwind-patterns/](file:///c:/Users/IT%20PC/Downloads/transformer-demo/.agents/skills/tailwind-patterns) | Production-ready Tailwind CSS layouts, responsive utilities, and patterns. |
-| **theme-factory** | [.agents/skills/theme-factory/](file:///c:/Users/IT%20PC/Downloads/transformer-demo/.agents/skills/theme-factory) | Multi-theme systems, dark mode palettes, and CSS variable token pipelines. |
-| **ui-design-system** | [.agents/skills/ui-design-system/](file:///c:/Users/IT%20PC/Downloads/transformer-demo/.agents/skills/ui-design-system) | Enterprise design system tokens, typography scales, and component specs. |
-| **ux-researcher-designer** | [.agents/skills/ux-researcher-designer/](file:///c:/Users/IT%20PC/Downloads/transformer-demo/.agents/skills/ux-researcher-designer) | User testing plans, journey mapping, usability heuristics, and persona research. |
-| **executing-marketing-campaigns** | [.agents/skills/executing-marketing-campaigns/](file:///c:/Users/IT%20PC/Downloads/transformer-demo/.agents/skills/executing-marketing-campaigns) | Campaign page generation, SEO copy, meta assets, and conversion optimization. |
-| **mobile-design** | [.agents/skills/mobile-design/](file:///c:/Users/IT%20PC/Downloads/transformer-demo/.agents/skills/mobile-design) | Touch-optimized layouts, viewport responsive strategies, and mobile patterns. |
+| **ui-ux-pro-max** | [.agents/skills/ui-ux-pro-max/](file:///d:/laragon/www/trans/.agents/skills/ui-ux-pro-max) | 50+ styles, 97 color palettes, 57 font pairings, and responsive UX design intelligence. |
+| **premium-web-design** | [.agents/skills/premium-web-design/](file:///d:/laragon/www/trans/.agents/skills/premium-web-design) | Guidelines for high-end, world-class aesthetic web layouts and animations. |
+| **frontend-design** | [.agents/skills/frontend-design/](file:///d:/laragon/www/trans/.agents/skills/frontend-design) | Modern component layouts, CSS architectures, and micro-interactions. |
+| **web-design-guidelines** | [.agents/skills/web-design-guidelines/](file:///d:/laragon/www/trans/.agents/skills/web-design-guidelines) | Best practices for modern, responsive, and maintainable web pages. |
+| **accessibility-auditor** | [.agents/skills/accessibility-auditor/](file:///d:/laragon/www/trans/.agents/skills/accessibility-auditor) | WCAG 2.1 AA/AAA compliance, ARIA attributes, keyboard navigation, and screen reader testing. |
+| **scroll-experience** | [.agents/skills/scroll-experience/](file:///d:/laragon/www/trans/.agents/skills/scroll-experience) | Smooth scroll animations, parallax effects, and scroll-driven interactions. |
+| **3d-web-experience** | [.agents/skills/3d-web-experience/](file:///d:/laragon/www/trans/.agents/skills/3d-web-experience) | Three.js, WebGL, 3D model rendering, lighting, and interactive scenes. |
+| **interactive-portfolio** | [.agents/skills/interactive-portfolio/](file:///d:/laragon/www/trans/.agents/skills/interactive-portfolio) | Interactive showcases, portfolio animations, and portfolio case studies. |
+| **d3-viz** | [.agents/skills/d3-viz/](file:///d:/laragon/www/trans/.agents/skills/d3-viz) | Bespoke interactive data visualisations and charts using D3.js. |
+| **mermaid-diagrams** | [.agents/skills/mermaid-diagrams/](file:///d:/laragon/www/trans/.agents/skills/mermaid-diagrams) | System architecture, flowcharts, sequence diagrams, and entity-relationship models. |
+| **draw-io** | [.agents/skills/draw-io/](file:///d:/laragon/www/trans/.agents/skills/draw-io) | Visual technical diagrams and system schematics. |
+| **figma** | [.agents/skills/figma/](file:///d:/laragon/www/trans/.agents/skills/figma) | Figma design extraction and design tokens synchronization. |
+| **figma-implement-design** | [.agents/skills/figma-implement-design/](file:///d:/laragon/www/trans/.agents/skills/figma-implement-design) | Translating Figma design specs into pixel-perfect code. |
+| **canvas-design** | [.agents/skills/canvas-design/](file:///d:/laragon/www/trans/.agents/skills/canvas-design) | HTML5 Canvas rendering, 2D graphics, and custom visual effects. |
+| **algorithmic-art** | [.agents/skills/algorithmic-art/](file:///d:/laragon/www/trans/.agents/skills/algorithmic-art) | Generative art, procedural visual patterns, and mathematical animation. |
+| **game-development** | [.agents/skills/game-development/](file:///d:/laragon/www/trans/.agents/skills/game-development) | 2D/3D browser games, game loops, sprite animation, physics, and controls. |
+| **tailwind-patterns** | [.agents/skills/tailwind-patterns/](file:///d:/laragon/www/trans/.agents/skills/tailwind-patterns) | Production-ready Tailwind CSS layouts, responsive utilities, and patterns. |
+| **theme-factory** | [.agents/skills/theme-factory/](file:///d:/laragon/www/trans/.agents/skills/theme-factory) | Multi-theme systems, dark mode palettes, and CSS variable token pipelines. |
+| **ui-design-system** | [.agents/skills/ui-design-system/](file:///d:/laragon/www/trans/.agents/skills/ui-design-system) | Enterprise design system tokens, typography scales, and component specs. |
+| **ux-researcher-designer** | [.agents/skills/ux-researcher-designer/](file:///d:/laragon/www/trans/.agents/skills/ux-researcher-designer) | User testing plans, journey mapping, usability heuristics, and persona research. |
+| **executing-marketing-campaigns** | [.agents/skills/executing-marketing-campaigns/](file:///d:/laragon/www/trans/.agents/skills/executing-marketing-campaigns) | Campaign page generation, SEO copy, meta assets, and conversion optimization. |
+| **mobile-design** | [.agents/skills/mobile-design/](file:///d:/laragon/www/trans/.agents/skills/mobile-design) | Touch-optimized layouts, viewport responsive strategies, and mobile patterns. |
+| **taste-skill** | [.agents/skills/taste-skill/](file:///d:/laragon/www/trans/.agents/skills/taste-skill) | Anti-slop art direction, 20 curated gallery directions, type pairings, palettes, and browser inspector. |
+| **superdesign** | [.agents/skills/superdesign/](file:///d:/laragon/www/trans/.agents/skills/superdesign) | Superdesign infinite canvas AI models for UI generation, design systems, slides, and graphics. |
+| **claude-design** | [.agents/skills/claude-design/](file:///d:/laragon/www/trans/.agents/skills/claude-design) | High-fidelity design artifacts in HTML, prototypes, landing pages, decks, and visual systems. |
+| **impeccable** | [.agents/skills/impeccable/](file:///d:/laragon/www/trans/.agents/skills/impeccable) | Craft-focused design director engine for frontend interfaces, UX audits, and polish. |
+| **web-artifacts-builder** | [.agents/skills/web-artifacts-builder/](file:///d:/laragon/www/trans/.agents/skills/web-artifacts-builder) | Complex multi-component web artifact building with React, Tailwind, and shadcn/ui. |
+| **accessibility** | [.agents/skills/accessibility/](file:///d:/laragon/www/trans/.agents/skills/accessibility) | WCAG 2.2 web accessibility audits, ARIA implementation, and keyboard navigation testing. |
 
 ---
 
