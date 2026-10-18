@@ -1,10 +1,11 @@
 import { DATA } from '@/lib/data';
 import Media from './Media';
 import SectionHead from './SectionHead';
+import ViewAll from './ViewAll';
 
 const IND_SPANS = [7, 5, 4, 4, 4, 3, 4, 5];
 
-export default function Industries() {
+export default function Industries({ viewAll = true }) {
   return (
     <>
       <div className="stars-container" aria-hidden="true">
@@ -13,8 +14,11 @@ export default function Industries() {
         <div id="stars3"></div>
       </div>
       <div className="wrap">
-        <SectionHead label="INDUSTRIES WE SERVE" title="Powering Diverse Industries"
-          desc="Engineered power solutions for the facilities and infrastructure that keep industries moving." />
+        <div className="prod-head">
+          <SectionHead label="INDUSTRIES WE SERVE" title="Powering Diverse Industries"
+            desc="Engineered power solutions for the facilities and infrastructure that keep industries moving." />
+          {viewAll ? <ViewAll href="/industries/" className="fade-in-up">View all industries</ViewAll> : null}
+        </div>
         <p className="demo-note fade-in-up" data-delay="200">Illustrative industries until the company&apos;s actual customer sectors are confirmed.</p>
         <div className="ind-grid">
           {DATA.industries.map((p, i) => (

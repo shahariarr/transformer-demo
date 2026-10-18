@@ -2,18 +2,19 @@
 
 import { DATA } from '@/lib/data';
 import SectionHead from './SectionHead';
+import ViewAll from './ViewAll';
 
 const Arrow = () => (
   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
 );
 
-export default function Products() {
+export default function Products({ viewAll = true }) {
   return (
     <div className="wrap">
       <div className="prod-head">
         <SectionHead label="OUR PRODUCTS" title="Engineered Products for Critical Power Infrastructure"
           desc="Oil-immersed power and distribution transformers built for reliable, low-loss performance in utility and industrial networks." />
-        <a href="/products/" className="prod-head__link fade-in-up">View all products <Arrow /></a>
+        {viewAll ? <ViewAll href="/products/" className="fade-in-up">View all products</ViewAll> : null}
       </div>
       <div className="pgrid">
         {DATA.products.map((p, i) => {
@@ -53,7 +54,6 @@ export default function Products() {
           <h3>Need a custom rating?</h3>
           <p>We design and build transformers to your voltage, capacity and site specification.</p>
           <a href="/contact/" className="pcard__btn pcard__btn--light">Request a Quote <Arrow /></a>
-          <a href="/products/" className="pcard--more__link">Browse all products</a>
         </article>
       </div>
     </div>

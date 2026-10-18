@@ -27,7 +27,7 @@ export default function ProductsPage() {
         <a className="btn btn--ghost" href="/resources/sizing-guide/">Size Your Transformer</a>
       </PageHero>
 
-      <section className="sec sec--alt" aria-label="Product range"><Products /></section>
+      <section className="sec sec--alt" aria-label="Product range"><Products viewAll={false} /></section>
 
       <section className="sec" aria-label="Custom engineering">
         <div className="wrap split">

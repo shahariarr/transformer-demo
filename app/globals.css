@@ -1419,19 +1419,75 @@ h2 {
   margin-bottom: 0
 }
 
-.prod-head__link {
+.view-all {
   display: inline-flex;
   align-items: center;
-  gap: .45rem;
+  gap: .65rem;
   flex: none;
-  font-weight: 600;
-  font-size: .95rem;
-  color: var(--primary);
-  text-decoration: none
+  height: 44px;
+  padding: 0 .4rem 0 1.15rem;
+  border: 1px solid var(--line-2);
+  border-radius: 999px;
+  background: #fff;
+  font-size: .875rem;
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--navy);
+  text-decoration: none;
+  transition: border-color .2s, color .2s, box-shadow .25s, translate .25s var(--ease)
 }
 
-.prod-head__link:hover {
-  text-decoration: underline
+.view-all__icon {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  transition: background-color .2s, translate .25s var(--ease)
+}
+
+.view-all:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  box-shadow: 0 10px 24px -12px rgba(11, 92, 171, .55);
+  translate: 0 -1px
+}
+
+.view-all:hover .view-all__icon {
+  background: var(--primary-700);
+  translate: 3px 0
+}
+
+/* on dark sections (Industries) */
+.sec--dark .view-all {
+  border-color: rgba(255, 255, 255, .25);
+  background: rgba(255, 255, 255, .06);
+  color: #fff
+}
+
+.sec--dark .view-all__icon {
+  background: #fff;
+  color: var(--navy)
+}
+
+.sec--dark .view-all:hover {
+  border-color: rgba(255, 255, 255, .6);
+  background: rgba(255, 255, 255, .12);
+  color: #fff;
+  box-shadow: 0 10px 24px -12px rgba(95, 176, 255, .6)
+}
+
+.sec--dark .view-all:hover .view-all__icon {
+  background: var(--sky);
+  color: var(--navy-900)
+}
+
+/* beside the arrow buttons, keep a little extra space before the arrows */
+.proj-nav .view-all,
+.qa-certs-nav .view-all {
+  margin-right: .25rem
 }
 
 .pgrid {
@@ -1616,18 +1672,61 @@ h2 {
   color: #fff
 }
 
+/* same surface as the projects "Engineering Collaboration" banner */
 .pcard--more {
+  --accent: #fff;
+  position: relative;
+  isolation: isolate;
   justify-content: center;
   align-items: flex-start;
   gap: 1rem;
   padding: 2.25rem;
-  border: 0;
+  border: 1px solid rgba(255, 255, 255, .1);
   color: #fff;
-  background: var(--primary) radial-gradient(circle at 100% 0%, rgba(255, 255, 255, .12), transparent 55%)
+  background:
+    radial-gradient(ellipse 90% 60% at 100% 100%, rgba(95, 176, 255, .32), transparent 70%),
+    radial-gradient(ellipse 70% 50% at 0% 0%, rgba(11, 92, 171, .55), transparent 70%),
+    var(--grad-hero);
+  box-shadow: 0 24px 48px -20px rgba(6, 19, 40, .55)
+}
+
+/* blueprint grid that fades toward the copy */
+.pcard--more::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(rgba(255, 255, 255, .05) 1px, transparent 1px) 0 0/32px 32px,
+    linear-gradient(90deg, rgba(255, 255, 255, .05) 1px, transparent 1px) 0 0/32px 32px;
+  -webkit-mask-image: linear-gradient(160deg, transparent 15%, #000 80%);
+  mask-image: linear-gradient(160deg, transparent 15%, #000 80%)
+}
+
+/* concentric rings in the corner */
+.pcard--more::after {
+  content: "";
+  position: absolute;
+  right: -110px;
+  bottom: -110px;
+  z-index: -1;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: repeating-radial-gradient(circle, transparent 0 34px, rgba(255, 255, 255, .07) 35px 36px)
 }
 
 .pcard--more:hover {
-  border-color: transparent
+  border-color: rgba(255, 255, 255, .18)
+}
+
+.pcard--more .pcard__btn--light {
+  box-shadow: 0 12px 28px -10px rgba(95, 176, 255, .7)
+}
+
+.pcard--more .pcard__btn--light:hover {
+  background: var(--primary-50);
+  color: var(--primary-700)
 }
 
 .pcard--more__icon {
@@ -4763,13 +4862,11 @@ a.ccard:hover,
 }
 
 .header-quote-btn__icon,
-.prod-head__link svg,
 .pcard__btn svg {
   transition: transform .25s var(--ease)
 }
 
 .header-quote-btn:hover .header-quote-btn__icon,
-.prod-head__link:hover svg,
 .pcard__btn:hover svg {
   transform: translateX(3px)
 }
@@ -5986,5 +6083,17 @@ a.ccard:hover,
 @media (max-width: 768px) {
   .lcv-scroll {
     padding-top: 2.75rem
+  }
+}
+
+/* phones: counter on its own line so "View all" + arrows fit beside each other */
+@media (max-width: 640px) {
+  .proj-nav {
+    flex-wrap: wrap
+  }
+
+  .proj-counter {
+    flex-basis: 100%;
+    margin: 0 0 .25rem
   }
 }

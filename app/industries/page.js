@@ -14,7 +14,7 @@ export default function IndustriesPage() {
         image="/assets/images/industries-bg.jpg">
         <a className="btn btn--primary" href="/contact/">Discuss Your Sector</a>
       </PageHero>
-      <section id="industries" className="sec sec--dark" aria-label="Industries"><Industries /></section>
+      <section id="industries" className="sec sec--dark" aria-label="Industries"><Industries viewAll={false} /></section>
     </>
   );
 }

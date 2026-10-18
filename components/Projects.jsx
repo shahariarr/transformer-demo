@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { DATA } from '@/lib/data';
 import SectionHead from './SectionHead';
+import ViewAll from './ViewAll';
 
 function getCategorySlug(cat) {
   const c = (cat || '').toLowerCase();
@@ -27,7 +28,7 @@ const FILTERS = [
 const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 const deployments = n => `${n} ${n === 1 ? 'Flagship Deployment' : 'Flagship Deployments'}`;
 
-export default function Projects() {
+export default function Projects({ viewAll = true }) {
   const router = useRouter();
   const openProject = i => router.push(`/projects/${DATA.projects[i].slug}/`);
   const [filter, setFilter] = useState('all');
@@ -122,6 +123,7 @@ export default function Projects() {
             desc="Explore real-world execution examples showcasing substation planning, heavy transformer delivery, medium-voltage distribution automation, and utility energisation." />
           <div className="proj-nav fade-in-right" data-delay="150" aria-label="Scroll projects" onMouseEnter={pause} onMouseLeave={resume}>
             <span className="proj-counter">{deployments(visibleCount)}</span>
+            {viewAll ? <ViewAll href="/projects/">View all</ViewAll> : null}
             <button type="button" data-proj-dir="-1" aria-label="Previous project" title="Previous" disabled={!canScroll}
                     onClick={() => { scroll(-1); startAuto(); }}>
               <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6" /></svg>
