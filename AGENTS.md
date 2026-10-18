@@ -54,7 +54,49 @@ The following skills are installed in [.agents/skills/](file:///d:/laragon/www/t
 
 ---
 
+## ⚡ Global Workflow Skills & Slash Commands
+
+The following workflow skills and commands from `antigravity_global_skills` are installed in [.agents/skills/](file:///d:/laragon/www/transformer-demo/.agents/skills) and configured as workflows under [.agents/workflows/](file:///d:/laragon/www/transformer-demo/.agents/workflows) and [.agent/workflows/](file:///d:/laragon/www/transformer-demo/.agent/workflows):
+
+| Skill / Command | Path | Description |
+|---|---|---|
+| **code_review** (`/code_review`) | [.agents/skills/code_review/SKILL.md](file:///d:/laragon/www/transformer-demo/.agents/skills/code_review/SKILL.md) | Comprehensive code analysis, bug hunting, and integrity testing checklist. |
+| **create_launcher** (`/create_launcher`) | [.agents/skills/create_launcher/SKILL.md](file:///d:/laragon/www/transformer-demo/.agents/skills/create_launcher/SKILL.md) | Generate cross-platform launchers (.bat/.sh) with dependency checks and graceful shutdown. |
+| **create_skill** (`/create_skill`) | [.agents/skills/create_skill/SKILL.md](file:///d:/laragon/www/transformer-demo/.agents/skills/create_skill/SKILL.md) | Meta-skill to interactively build new skills and generate slash commands. |
+| **daily_log** (`/daily_log`) | [.agents/skills/daily_log/SKILL.md](file:///d:/laragon/www/transformer-demo/.agents/skills/daily_log/SKILL.md) | Scans session work and appends a bulleted summary to `WORK_LOG.md`. |
+| **debug_issue** (`/debug_issue`) | [.agents/skills/debug_issue/SKILL.md](file:///d:/laragon/www/transformer-demo/.agents/skills/debug_issue/SKILL.md) | Strict 5-step debugging protocol (Isolate -> Reproduce -> Log -> Fix -> Verify). |
+| **document_api** (`/api_docs`) | [.agents/skills/document_api/SKILL.md](file:///d:/laragon/www/transformer-demo/.agents/skills/document_api/SKILL.md) | Generates API documentation (endpoints, requests, responses). |
+| **enhance_ui** (`/enhance_ui`) | [.agents/skills/enhance_ui/SKILL.md](file:///d:/laragon/www/transformer-demo/.agents/skills/enhance_ui/SKILL.md) | Upgrade UI styling and run integrity tests to ensure no regressions. |
+| **frontend_design** (`/frontend_design`) | [.agents/skills/frontend_design/SKILL.md](file:///d:/laragon/www/transformer-demo/.agents/skills/frontend_design/SKILL.md) | Create distinctive, production-grade frontend interfaces with high design quality. |
+| **generate_release_image** (`/generate_release_image`) | [.agents/skills/generate_release_image/SKILL.md](file:///d:/laragon/www/transformer-demo/.agents/skills/generate_release_image/SKILL.md) | Generate promotional/release graphics and visual banners. |
+| **idea_to_action** (`/idea_to_action`) | [.agents/skills/idea_to_action/SKILL.md](file:///d:/laragon/www/transformer-demo/.agents/skills/idea_to_action/SKILL.md) | Converts concepts into execution plans with schedules and risk analysis. |
+| **list_features** (`/list_features`) | [.agents/skills/list_features/SKILL.md](file:///d:/laragon/www/transformer-demo/.agents/skills/list_features/SKILL.md) | Generates a prompt-based feature list for recreating the application. |
+| **open_source_prep** (`/open_source_prep`) | [.agents/skills/open_source_prep/SKILL.md](file:///d:/laragon/www/transformer-demo/.agents/skills/open_source_prep/SKILL.md) | Prepares repository for open source release: licenses, sanitized usernames, integrity checks. |
+| **optimize_codebase** (`/optimize_codebase`) | [.agents/skills/optimize_codebase/SKILL.md](file:///d:/laragon/www/transformer-demo/.agents/skills/optimize_codebase/SKILL.md) | Checks for oversized files (>2k lines) and refactors into modular components. |
+| **release_helper** (`/release_helper`) | [.agents/skills/release_helper/SKILL.md](file:///d:/laragon/www/transformer-demo/.agents/skills/release_helper/SKILL.md) | Pre-release audits, changelog generation, version bumps, and git tags. |
+| **repo_infographic** (`/repo_infographic`) | [.agents/skills/repo_infographic/SKILL.md](file:///d:/laragon/www/transformer-demo/.agents/skills/repo_infographic/SKILL.md) | Generates visual architectural infographic representations for the repo. |
+| **scaffold_tests** (`/add_tests`) | [.agents/skills/scaffold_tests/SKILL.md](file:///d:/laragon/www/transformer-demo/.agents/skills/scaffold_tests/SKILL.md) | Generates unit and regression test shells for existing code. |
+| **security_audit** (`/security_audit`) | [.agents/skills/security_audit/SKILL.md](file:///d:/laragon/www/transformer-demo/.agents/skills/security_audit/SKILL.md) | Scans codebase for vulnerabilities, leaks, and updates `SECURITY.md`. |
+| **software_architecture** (`/software_architecture`) | [.agents/skills/software_architecture/SKILL.md](file:///d:/laragon/www/transformer-demo/.agents/skills/software_architecture/SKILL.md) | Guides software architecture design and best practice patterns. |
+| **test_runner** (`/run_tests`) | [.agents/skills/test_runner/SKILL.md](file:///d:/laragon/www/transformer-demo/.agents/skills/test_runner/SKILL.md) | Executes test suites and analyzes results. |
+| **ui_ux_pro_max** (`/ui_ux_pro_max`) | [.agents/skills/ui_ux_pro_max/SKILL.md](file:///d:/laragon/www/transformer-demo/.agents/skills/ui_ux_pro_max/SKILL.md) | UI/UX design intelligence with searchable database of patterns, styles, and stacks. |
+| **update_docs** (`/update_docs`) | [.agents/skills/update_docs/SKILL.md](file:///d:/laragon/www/transformer-demo/.agents/skills/update_docs/SKILL.md) | Systematically updates README, documentation, and design philosophy files. |
+| **web_performance_optimization** (`/web_performance_optimization`) | [.agents/skills/web_performance_optimization/SKILL.md](file:///d:/laragon/www/transformer-demo/.agents/skills/web_performance_optimization/SKILL.md) | Optimizes loading speed, Core Web Vitals, assets, and bundle performance. |
+
+---
+
 ## 🚀 Activation & Usage
 
+- **Slash Commands**: Type `/` in the prompt to invoke workflows like `/code_review`, `/debug_issue`, `/security_audit`, etc.
 - **Automatic Activation**: Antigravity evaluates task requirements against the descriptions above and activates the relevant skill on-demand using progressive disclosure.
-- **Explicit Instruction**: You can reference any agent or skill directly in your prompt (e.g., *"Act as ui-ux-designer to review the landing page"* or *"Use d3-viz to build a transformer power curve chart"*).
+- **Explicit Instruction**: You can reference any agent or skill directly in your prompt (e.g., *"Act as ui-ux-designer to review the landing page"* or *"Use web_performance_optimization to inspect bundle size"*).
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+## This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->
