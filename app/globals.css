@@ -3591,17 +3591,20 @@ h2 {
   align-items: center;
   padding: .9rem 1.6rem;
   border-radius: 6px;
-  background: var(--accent);
-  color: var(--navy-900);
+  background: var(--primary);
+  color: #fff;
   font-weight: 700;
   font-size: .92rem;
   text-decoration: none;
-  transition: background-color .2s, box-shadow .2s
+  box-shadow: 0 4px 18px rgba(11, 92, 171, .45);
+  transition: background-color .2s, box-shadow .2s, transform .2s
 }
 
 .lcx-cta__btn:hover {
-  background: #FFA23F;
-  box-shadow: 0 10px 24px -8px rgba(255, 255, 255, .7)
+  background: var(--primary-700);
+  color: #fff;
+  box-shadow: 0 10px 24px -6px rgba(11, 92, 171, .75);
+  transform: translateY(-1px);
 }
 
 /* =====================================================================
@@ -5905,15 +5908,42 @@ a.ccard:hover,
   margin-top: 2rem
 }
 
+.page-hero .btn--primary {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+  font-weight: 700;
+  border-radius: 6px;
+  box-shadow: 0 4px 18px rgba(11, 92, 171, .35);
+}
+
+.page-hero .btn--primary:hover {
+  background: var(--primary-700);
+  border-color: var(--primary-700);
+  color: #fff;
+  box-shadow: 0 8px 24px -4px rgba(11, 92, 171, .55);
+  transform: translateY(-1px);
+}
+
+.page-hero .btn--primary svg {
+  transition: transform .25s var(--ease);
+}
+
+.page-hero .btn--primary:hover svg {
+  transform: translateX(3px);
+}
+
 .page-hero .btn--ghost {
   border-color: rgba(255, 255, 255, .35);
   color: #fff;
-  background: transparent
+  background: transparent;
+  border-radius: 8px;
 }
 
 .page-hero .btn--ghost:hover {
   background: #fff;
-  color: var(--navy)
+  color: var(--navy);
+  border-color: #fff;
 }
 
 /* link cards (services, resources, related items) */
