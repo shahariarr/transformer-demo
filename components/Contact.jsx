@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { DATA, waLink, mailLink } from '@/lib/data';
 import { useUI } from './UIProvider';
 import SectionHead from './SectionHead';
@@ -26,10 +26,16 @@ const Req = () => <> <span className="req" aria-hidden="true">*</span></>;
 
 export default function Contact() {
   const c = DATA.contact;
-  const { service, setService } = useUI();
+  const { service, setService, prefillContact } = useUI();
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState(null);
   const formRef = useRef(null);
+
+  // Pre-select a product/service passed as ?service=... (product pages, Inquiry buttons)
+  useEffect(() => {
+    const q = new URLSearchParams(window.location.search).get('service');
+    if (q) prefillContact(q);
+  }, [prefillContact]);
   const statusRef = useRef(null);
 
   const check = k => {

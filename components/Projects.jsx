@@ -1,8 +1,8 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { DATA } from '@/lib/data';
-import { useUI } from './UIProvider';
 import SectionHead from './SectionHead';
 
 function getCategorySlug(cat) {
@@ -28,7 +28,8 @@ const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 const deployments = n => `${n} ${n === 1 ? 'Flagship Deployment' : 'Flagship Deployments'}`;
 
 export default function Projects() {
-  const { openProject } = useUI();
+  const router = useRouter();
+  const openProject = i => router.push(`/projects/${DATA.projects[i].slug}/`);
   const [filter, setFilter] = useState('all');
   const [visibleCount, setVisibleCount] = useState(DATA.projects.length);
   const [canScroll, setCanScroll] = useState(true);
@@ -95,7 +96,7 @@ export default function Projects() {
   }, [filter, updateNavState, startAuto]);
 
   useEffect(() => {
-    const sec = trackRef.current.closest('#projects');
+    const sec = trackRef.current.closest('section');
     const io = new IntersectionObserver(([entry]) => {
       auto.current.visible = entry.isIntersecting;
       entry.isIntersecting ? startAuto() : clearInterval(auto.current.timer);
@@ -198,7 +199,7 @@ export default function Projects() {
             <h4>Planning a New Power Grid or Substation Project?</h4>
             <p>Our senior project engineering team provides load flow calculations, layout drawings, equipment delivery coordination, and full on-site commissioning support.</p>
           </div>
-          <a href="#contact" className="btn btn--primary proj-bottom-btn">
+          <a href="/contact/" className="btn btn--primary proj-bottom-btn">
             <span>Discuss Your Project With Us</span>
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
           </a>

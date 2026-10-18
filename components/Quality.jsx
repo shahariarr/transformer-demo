@@ -5,7 +5,7 @@ import { WHY_BPEL_CARDS, QA_CERTS } from '@/lib/quality';
 import { useUI } from './UIProvider';
 import RawSvg from './RawSvg';
 
-export default function Quality() {
+export default function Quality({ showWhy = true, showCerts = true }) {
   const { openCert } = useUI();
   const trackRef = useRef(null);
 
@@ -31,7 +31,7 @@ export default function Quality() {
   return (
     <div className="wrap">
       {/* Top Section: Why Work With BPEL (image collage left, reasons right) */}
-      <div className="why-bpel">
+      {showWhy ? <div className="why-bpel">
         <div className="why-bpel__gallery fade-in-left" aria-hidden="true">
           <span className="why-bpel__deco"></span>
           <span className="why-bpel__dots"></span>
@@ -72,15 +72,15 @@ export default function Quality() {
               </article>
             ))}
           </div>
-          <a href="#contact" className="why-bpel__btn fade-in-up">
+          <a href="/contact/" className="why-bpel__btn fade-in-up">
             <span>Talk to an engineer</span>
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
           </a>
         </div>
-      </div>
+      </div> : null}
 
       {/* Bottom Section: Framed Certificates Gallery */}
-      <div className="qa-certs-wrap fade-in-up">
+      {showCerts ? <div className="qa-certs-wrap fade-in-up">
         <div className="qa-certs-header">
           <div className="qa-certs-titles">
             <h3>Certificates & Test Reports</h3>
@@ -109,7 +109,7 @@ export default function Quality() {
             ))}
           </div>
         </div>
-      </div>
+      </div> : null}
     </div>
   );
 }

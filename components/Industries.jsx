@@ -21,6 +21,7 @@ export default function Industries() {
             <article className="ind fade-in-up" style={{ '--span': IND_SPANS[i] }} data-delay={(i % 3) * 110} key={p.name}>
               <Media item={p} parallax reveal={false} />
               <div className="ind__body"><h3>{p.name}</h3><p>{p.desc}</p></div>
+              <a className="ind__link" href={`/industries/${p.slug}/`} aria-label={`${p.name}: learn more`}></a>
             </article>
           ))}
         </div>

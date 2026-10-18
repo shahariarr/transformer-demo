@@ -1,7 +1,6 @@
 'use client';
 
 import { DATA } from '@/lib/data';
-import { useUI } from './UIProvider';
 import SectionHead from './SectionHead';
 
 const Arrow = () => (
@@ -9,14 +8,12 @@ const Arrow = () => (
 );
 
 export default function Products() {
-  const { openProduct } = useUI();
-
   return (
     <div className="wrap">
       <div className="prod-head">
         <SectionHead label="OUR PRODUCTS" title="Engineered Products for Critical Power Infrastructure"
           desc="Oil-immersed power and distribution transformers built for reliable, low-loss performance in utility and industrial networks." />
-        <a href="#contact" className="prod-head__link fade-in-up">View all products <Arrow /></a>
+        <a href="/products/" className="prod-head__link fade-in-up">View all products <Arrow /></a>
       </div>
       <div className="pgrid">
         {DATA.products.map((p, i) => {
@@ -41,8 +38,8 @@ export default function Products() {
                 {rows.length ? <dl className="pcard__specs">{rows}</dl> : <p className="pcard__desc">{p.desc}</p>}
                 {tags.length ? <ul className="pcard__tags">{tags}</ul> : null}
                 <div className="pcard__actions">
-                  <button type="button" className="pcard__btn pcard__btn--main" data-product={i} onClick={() => openProduct(i)}>View Details <Arrow /></button>
-                  <a href="#contact" className="pcard__btn pcard__btn--ghost">Inquiry</a>
+                  <a href={`/products/${p.slug}/`} className="pcard__btn pcard__btn--main" data-product={i}>View Details <Arrow /></a>
+                  <a href={`/contact/?service=${encodeURIComponent(p.name)}`} className="pcard__btn pcard__btn--ghost">Inquiry</a>
                 </div>
               </div>
             </article>
@@ -55,8 +52,8 @@ export default function Products() {
           </span>
           <h3>Need a custom rating?</h3>
           <p>We design and build transformers to your voltage, capacity and site specification.</p>
-          <a href="#contact" className="pcard__btn pcard__btn--light">Request a Quote <Arrow /></a>
-          <a href="#contact" className="pcard--more__link">Browse all products</a>
+          <a href="/contact/" className="pcard__btn pcard__btn--light">Request a Quote <Arrow /></a>
+          <a href="/products/" className="pcard--more__link">Browse all products</a>
         </article>
       </div>
     </div>

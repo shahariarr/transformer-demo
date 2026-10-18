@@ -4,7 +4,7 @@ import { createContext, useCallback, useContext, useMemo, useState } from 'react
 import { DATA } from '@/lib/data';
 import { QA_CERTS } from '@/lib/quality';
 
-/* App-wide UI state shared between sections: details dialog, contact form prefill,
+/* App-wide UI state shared across pages: certificate dialog, contact form prefill,
    open FAQ items, search modal and chatbot. */
 const UIContext = createContext(null);
 
@@ -21,24 +21,6 @@ export default function UIProvider({ children }) {
   const [searchRequest, setSearchRequest] = useState(0);
   const openSearch = useCallback(() => { setSearchOpen(true); setSearchRequest(n => n + 1); }, []);
   const [chatOpen, setChatOpen] = useState(false);
-
-  const openProduct = useCallback(i => {
-    const x = DATA.products[i];
-    setDialog({
-      item: x, kicker: x.cat, title: x.name, desc: x.desc,
-      note: 'Technical specifications and product details will be added once the company supplies them.',
-      cta: 'Request a quote', service: x.name
-    });
-  }, []);
-
-  const openProject = useCallback(i => {
-    const x = DATA.projects[i];
-    setDialog({
-      item: x, kicker: x.cat, title: x.title, desc: x.desc,
-      note: 'Illustrative example only. This is not a project completed by the company.',
-      cta: 'Discuss a similar project', service: ''
-    });
-  }, []);
 
   const openCert = useCallback(i => {
     const x = QA_CERTS[i];
@@ -70,12 +52,12 @@ export default function UIProvider({ children }) {
   }, []);
 
   const value = useMemo(() => ({
-    dialog, closeDialog: () => setDialog(null), openProduct, openProject, openCert,
+    dialog, closeDialog: () => setDialog(null), openCert,
     service, setService, prefillContact,
     openFaqs, toggleFaq, openFaq,
     searchOpen, searchRequest, openSearch, closeSearch: () => setSearchOpen(false),
     chatOpen, setChatOpen
-  }), [dialog, openProduct, openProject, openCert, service, prefillContact, openFaqs, toggleFaq, openFaq, searchOpen, searchRequest, openSearch, chatOpen]);
+  }), [dialog, openCert, service, prefillContact, openFaqs, toggleFaq, openFaq, searchOpen, searchRequest, openSearch, chatOpen]);
 
   return <UIContext.Provider value={value}>{children}</UIContext.Provider>;
 }

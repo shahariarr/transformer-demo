@@ -38,7 +38,7 @@ export default function Dialog() {
           <h3 id="dlg-title">{c.title}</h3>
           <p id="dlg-desc">{c.desc}</p>
           <p className="dlg__note" id="dlg-note">{c.note}</p>
-          <a className="btn btn--primary" id="dlg-cta" href="#contact" onClick={() => { if (c.service) prefillContact(c.service); closeDialog(); }}>{c.cta}</a>
+          <a className="btn btn--primary" id="dlg-cta" href="/contact/" onClick={() => { if (c.service) prefillContact(c.service); closeDialog(); }}>{c.cta}</a>
         </div>
       </div>
     </dialog>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { waLink, mailLink } from '@/lib/data';
 import { WA_PATH } from '@/lib/icons';
 import { useUI } from './UIProvider';
@@ -12,11 +13,13 @@ export default function FloatingActions() {
   const [overForm, setOverForm] = useState(false);
   const [unread, setUnread] = useState(true);
   const ref = useRef(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setShowTop(window.scrollY > 320);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
+    setOverForm(false);
     const form = document.getElementById('contact-form');
     const io = form && new IntersectionObserver(([e]) => setOverForm(e.isIntersecting), { threshold: 0 });
     if (io) io.observe(form);
@@ -24,7 +27,7 @@ export default function FloatingActions() {
       window.removeEventListener('scroll', onScroll);
       if (io) io.disconnect();
     };
-  }, []);
+  }, [pathname]);
 
   useEffect(() => { if (chatOpen) setUnread(false); }, [chatOpen]);
 

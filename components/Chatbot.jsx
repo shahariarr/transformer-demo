@@ -27,7 +27,7 @@ function replyFor(text) {
   if (matched) return matched.reply;
   return `
           Thank you for reaching out! For detailed custom technical queries or immediate engineering advice regarding <strong>"${escapeHtml(text)}"</strong>, please contact our engineering desk or request a quote:<br><br>
-          <a href="#contact" class="chat-action-btn" data-close-chat>Request Specification &amp; Quote 📋</a>
+          <a href="/contact/" class="chat-action-btn" data-close-chat>Request Specification &amp; Quote 📋</a>
         `;
 }
 

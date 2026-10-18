@@ -66,7 +66,7 @@ export default function Faq() {
         <div className="faq-help__aside">
           <p className="faq-help__aside-title">Talk to our engineers</p>
           <p className="faq-help__aside-text">Share your requirement and get a clear technical answer.</p>
-          <a href="#contact" className="faq-help__btn faq-help__btn--primary">
+          <a href="/contact/" className="faq-help__btn faq-help__btn--primary">
             <span>Ask an Engineer</span>
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
           </a>

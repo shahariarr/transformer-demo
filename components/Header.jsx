@@ -1,6 +1,8 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { SITE } from '@/lib/site';
 import { DATA } from '@/lib/data';
 import { NAV_ICONS, NAV_FOOTERS } from '@/lib/nav';
@@ -31,8 +33,13 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const [subOpen, setSubOpen] = useState(null);
   const [scrolled, setScrolled] = useState(false);
-  const [current, setCurrent] = useState(0);
+  const rawPath = usePathname() || '/';
+  const pathname = rawPath.endsWith('/') ? rawPath : rawPath + '/';
   const navList = SITE.nav || [];
+  // Active top-level item: the menu whose own page or dropdown pages contain the current path
+  const ownPaths = n => [n.href, ...(n.children || []).map(c => c.href).filter(h => h !== '/contact/')];
+  const current = pathname === '/' ? 0
+    : navList.findIndex(n => n.href !== '/' && ownPaths(n).some(h => h !== '/' && pathname.startsWith(h)));
   const c = DATA.contact;
 
   const setDrawer = value => {
@@ -46,34 +53,21 @@ export default function Header() {
     document.documentElement.classList.toggle('menu-open', open);
   }, [open]);
 
+  // Close the drawer after navigating to another page
+  useEffect(() => { drawerRef.current(false); }, [pathname]);
+
   useEffect(() => {
     const onKey = e => { if (e.key === 'Escape') drawerRef.current(false); };
-
     // Header scroll appearance
     const onScroll = () => setScrolled(window.scrollY > 24);
-
-    // Active top-level item spy (~40% down viewport)
-    const secs = navList.map(n => document.querySelector(n.href));
-    const spy = () => {
-      const y = innerHeight * 0.4;
-      let cur = 0;
-      secs.forEach((s, i) => { if (s && s.getBoundingClientRect().top <= y) cur = i; });
-      setCurrent(cur);
-    };
-
     onScroll();
-    spy();
     addEventListener('keydown', onKey);
     addEventListener('scroll', onScroll, { passive: true });
-    addEventListener('scroll', spy, { passive: true });
-    addEventListener('resize', spy);
     return () => {
       removeEventListener('keydown', onKey);
       removeEventListener('scroll', onScroll);
-      removeEventListener('scroll', spy);
-      removeEventListener('resize', spy);
     };
-  }, [navList]);
+  }, []);
 
   const toggleSub = key => setSubOpen(prev => (prev === key ? null : key));
   const close = () => setDrawer(false);
@@ -97,10 +91,10 @@ export default function Header() {
     if (!hasDropdown) {
       return (
         <li className="nav-item" key={key}>
-          <a href={n.href} className="nav-link nav-link--top" data-nav-link={key} {...isCurrent} onClick={close}>
+          <Link href={n.href} className="nav-link nav-link--top" data-nav-link={key} {...isCurrent} onClick={close}>
             <span className="nav-link__dot" aria-hidden="true"></span>
             <span className="nav-link__text">{n.label}</span>
-          </a>
+          </Link>
         </li>
       );
     }
@@ -112,12 +106,12 @@ export default function Header() {
     return (
       <li className={`nav-item nav-item--has-dropdown${isOpen ? ' is-open' : ''}`} data-dropdown={key} key={key}>
         <div className="nav-item__head">
-          <a href={n.href} className="nav-link nav-link--top nav-link--has-sub" data-nav-link={key} aria-expanded="false" aria-haspopup="true" {...isCurrent}
+          <Link href={n.href} className="nav-link nav-link--top nav-link--has-sub" data-nav-link={key} aria-expanded="false" aria-haspopup="true" {...isCurrent}
              onClick={e => onParentClick(e, key)}>
             <span className="nav-link__dot" aria-hidden="true"></span>
             <span className="nav-link__text">{n.label}</span>
             <Chevron className="nav-chevron" size="10" />
-          </a>
+          </Link>
           <button type="button" className="nav-dropdown-toggle" aria-label={`Toggle ${n.label} submenu`} aria-expanded={isOpen}
                   onClick={e => { e.preventDefault(); e.stopPropagation(); toggleSub(key); }}>
             <Chevron size="12" />
@@ -127,29 +121,29 @@ export default function Header() {
         <div className={`dropdown-menu dropdown-menu--${key} ${isTwoCol ? 'dropdown-menu--wide' : ''}`} role="menu" aria-label={`${n.label} submenu`}>
           <div className="dropdown-menu__header">
             <span className="dropdown-menu__tag">{n.label}</span>
-            <a href={n.href} className="dropdown-menu__all-link" onClick={close}>
+            <Link href={n.href} className="dropdown-menu__all-link" onClick={close}>
               <span>Overview</span>
               <svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <line x1="3" y1="8" x2="13" y2="8"></line>
                 <polyline points="9 4 13 8 9 12"></polyline>
               </svg>
-            </a>
+            </Link>
           </div>
           <div className={`dropdown-menu__grid ${isTwoCol ? 'dropdown-menu__grid--2col' : ''}`}>
             {n.children.map(ch => (
-              <a href={ch.href} className="dropdown-item" role="menuitem" key={ch.title} onClick={close}>
+              <Link href={ch.href} className="dropdown-item" role="menuitem" key={ch.title} onClick={close}>
                 <span className="dropdown-item__icon" aria-hidden="true"><RawSvg markup={NAV_ICONS[ch.icon] || NAV_ICONS.zap} /></span>
                 <span className="dropdown-item__content">
                   <span className="dropdown-item__title">{ch.title}</span>
                   <span className="dropdown-item__desc">{ch.desc}</span>
                 </span>
-              </a>
+              </Link>
             ))}
           </div>
           {footer ? (
             <div className="dropdown-menu__footer">
               <span className="dropdown-menu__footer-text">{footer.text}</span>
-              <a href={footer.href} className="dropdown-menu__footer-link" onClick={close}>{footer.cta}</a>
+              <Link href={footer.href} className="dropdown-menu__footer-link" onClick={close}>{footer.cta}</Link>
             </div>
           ) : null}
         </div>
@@ -171,16 +165,16 @@ export default function Header() {
       </div>
       <div className="header-shell">
         <div className="wrap header__inner">
-          <a className="brand" href="#home" aria-label={`${SITE.name || 'BPEL'} home`}>
+          <Link className="brand" href="/" aria-label={`${SITE.name || 'BPEL'} home`}>
             <img src={SITE.logo || '/assets/images/logo.png'} alt={`${SITE.name || 'BPEL'} Logo`} className="brand__logo" />
-          </a>
+          </Link>
 
           <nav id="nav" className="nav" aria-label="Primary navigation">
             <ul className="nav__list">{links}</ul>
-            <a className="header-quote-btn nav__cta nav__cta--mobile" href="#contact">
+            <Link className="header-quote-btn nav__cta nav__cta--mobile" href="/contact/">
               <span className="header-quote-btn__text">GET A QUOTE</span>
               <QuoteArrow />
-            </a>
+            </Link>
           </nav>
 
           <div className="header__actions">
@@ -193,10 +187,10 @@ export default function Header() {
               <kbd className="search-btn__kbd">Ctrl K</kbd>
             </button>
 
-            <a className="header-quote-btn nav__cta--desktop" href="#contact" aria-label="Get a custom power transformer quote">
+            <Link className="header-quote-btn nav__cta--desktop" href="/contact/" aria-label="Get a custom power transformer quote">
               <span className="header-quote-btn__text">GET A QUOTE</span>
               <QuoteArrow />
-            </a>
+            </Link>
 
             <button className="nav-toggle" aria-expanded={open} aria-controls="nav" aria-label={open ? 'Close menu' : 'Open menu'} onClick={() => setDrawer(!open)}>
               <span></span>

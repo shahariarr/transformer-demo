@@ -1,8 +1,9 @@
 'use client';
 
 /* Shared motion: entrance animations (fade in left / right / up) powered by anime.js, plus image parallax.
-   Rendered last so its effect runs after every section has mounted. */
+   Rendered last so its effect runs after every section has mounted, and again after each page change. */
 import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import anime from 'animejs';
 
 const SELECTOR = [
@@ -52,9 +53,12 @@ function getDelay(el) {
 }
 
 export default function Motion() {
+  const pathname = usePathname();
+
   useEffect(() => {
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const els = document.querySelectorAll(SELECTOR);
+    // Skip elements already revealed (e.g. the footer, which stays mounted across pages)
+    const els = [...document.querySelectorAll(SELECTOR)].filter(el => !el.classList.contains('in'));
     let io;
 
     if (reduce || !('IntersectionObserver' in window)) {
@@ -92,7 +96,7 @@ export default function Motion() {
       if (io) io.disconnect();
       removeEventListener('scroll', onScroll);
     };
-  }, []);
+  }, [pathname]);
 
   return null;
 }

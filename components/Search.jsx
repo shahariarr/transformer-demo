@@ -1,10 +1,9 @@
 'use client';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { DATA } from '@/lib/data';
 import { useUI } from './UIProvider';
-
-const scrollTo = (el, block) => el.scrollIntoView({ behavior: 'smooth', block });
 
 function Highlight({ text, q }) {
   if (!q) return text;
@@ -14,47 +13,35 @@ function Highlight({ text, q }) {
 }
 
 export default function Search() {
-  const { searchOpen: open, searchRequest, openSearch, closeSearch, openProduct, openProject, openFaq } = useUI();
+  const { searchOpen: open, searchRequest, openSearch, closeSearch, openFaq } = useUI();
+  const router = useRouter();
   const [value, setValue] = useState('');
   const [selected, setSelected] = useState(-1);
   const inputRef = useRef(null);
   const listRef = useRef(null);
 
-  // Searchable index across products, industries, projects and FAQ
+  // Searchable index across products, industries, projects and FAQ; each result opens its page
   const allItems = useMemo(() => {
-    const data = [];
-    DATA.products.forEach((p, idx) => data.push({
-      type: 'products', badge: 'Product', title: p.name, subtitle: p.cat || 'Transformer',
-      desc: p.desc || '', specs: (p.specs || []).join(' • '),
-      action: () => {
-        const el = document.querySelector(`[data-product="${idx}"]`);
-        if (el) { scrollTo(el, 'center'); setTimeout(() => openProduct(idx), 300); } else location.hash = '#products';
-      }
-    }));
-    DATA.industries.forEach(ind => data.push({
-      type: 'industries', badge: 'Industry', title: ind.name, subtitle: 'Application Sector', desc: ind.desc || '', specs: '',
-      action: () => {
-        const sec = document.getElementById('industries');
-        if (sec) scrollTo(sec, 'start'); else location.hash = '#industries';
-      }
-    }));
-    DATA.projects.forEach((proj, idx) => data.push({
-      type: 'projects', badge: 'Project', title: proj.title, subtitle: `${proj.cat} • ${proj.location}`,
-      desc: proj.desc || '', specs: proj.location || '',
-      action: () => {
-        const el = document.querySelector(`[data-project="${idx}"]`);
-        if (el) { scrollTo(el, 'center'); setTimeout(() => openProject(idx), 300); } else location.hash = '#projects';
-      }
-    }));
-    DATA.faq.forEach((f, idx) => data.push({
-      type: 'faq', badge: 'FAQ', title: f.q, subtitle: 'Frequently Asked Question', desc: f.a || '', specs: '',
-      action: () => {
-        const qBtn = document.getElementById(`faq-q${idx}`);
-        if (qBtn) { openFaq(idx); scrollTo(qBtn, 'center'); } else location.hash = '#faq';
-      }
-    }));
-    return data;
-  }, [openProduct, openProject, openFaq]);
+    const go = href => () => router.push(href);
+    return [
+      ...DATA.products.map(p => ({
+        type: 'products', badge: 'Product', title: p.name, subtitle: p.cat || 'Transformer',
+        desc: p.desc || '', specs: (p.specs || []).join(' • '), action: go(`/products/${p.slug}/`)
+      })),
+      ...DATA.industries.map(ind => ({
+        type: 'industries', badge: 'Industry', title: ind.name, subtitle: 'Application Sector',
+        desc: ind.desc || '', specs: '', action: go(`/industries/${ind.slug}/`)
+      })),
+      ...DATA.projects.map(proj => ({
+        type: 'projects', badge: 'Project', title: proj.title, subtitle: `${proj.cat} • ${proj.location}`,
+        desc: proj.desc || '', specs: proj.location || '', action: go(`/projects/${proj.slug}/`)
+      })),
+      ...DATA.faq.map((f, idx) => ({
+        type: 'faq', badge: 'FAQ', title: f.q, subtitle: 'Frequently Asked Question', desc: f.a || '', specs: '',
+        action: () => { openFaq(idx); router.push(`/resources/faq/#faq-q${idx}`); }
+      }))
+    ];
+  }, [router, openFaq]);
 
   const q = value.trim().toLowerCase();
   const matches = useMemo(() => (q

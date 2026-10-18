@@ -5,18 +5,37 @@ A Next.js (App Router) site. Requires Node.js 20.9+.
 ```
 npm install
 npm run dev      # http://localhost:3000
-npm run build    # production build (the page is prerendered as static HTML)
-npm start        # serve the production build
+npm run build    # static export: writes the whole site to out/ as plain HTML/CSS/JS
 ```
+Upload the contents of `out/` to any static host. It must be served from the domain root
+(links use `/...` paths), and opening `out/index.html` directly from disk will not work.
+`scripts/fix-export-segments.mjs` runs after every build to work around a Next.js export bug on
+Windows (prefetch files written as folders); on other platforms it does nothing.
+
+## Pages
+| Route | Page |
+|---|---|
+| `/` | Home (all sections) |
+| `/products/`, `/products/[slug]/` | Product range and one page per product |
+| `/services/`, `/services/[slug]/` | Supply, installation, testing, maintenance |
+| `/industries/`, `/industries/[slug]/` | Sectors served, one page per industry |
+| `/projects/`, `/projects/[slug]/` | Project portfolio and case pages |
+| `/about/`, `/engineering/`, `/certifications/`, `/careers/` | Company pages |
+| `/resources/` + `faq/`, `sizing-guide/`, `glossary/`, `standards/` | Technical resources (kVA calculator in sizing guide) |
+| `/contact/` | Contact form (`?service=` pre-selects a product) |
+| `/privacy/`, `/terms/`, `/sitemap/` | Legal placeholders and sitemap |
 Fonts load from Google Fonts with a system fallback.
 
 ## Where to edit things
 | What | File |
 |---|---|
-| Company name, nav labels, video paths | `lib/site.js` |
+| Company name, menu (labels, links, dropdowns), video paths | `lib/site.js` |
 | Email, WhatsApp number, phone, address, WhatsApp message, email subject | `lib/data.js` -> `contact` |
 | Products, industries, projects, lifecycle stages, FAQ | `lib/data.js` |
 | Hero slides, certificates, partners, chatbot replies | `lib/hero.js`, `lib/quality.js`, `lib/partners.js`, `lib/chatbot.js` |
+| Services, industry details | `lib/services.js`, `lib/industries.js` |
+| Manufacturing steps, tests, glossary, standards, kVA ratings, careers | `lib/resources.js` |
+| Page layouts | `app/**/page.js` (shared header/footer in `app/layout.js`) |
 | Colours, spacing, motion | `app/globals.css` (tokens at top) |
 | One component per section | `components/` (page order in `app/page.js`) |
 | Images and videos | `public/assets/` (referenced as `/assets/...`) |
