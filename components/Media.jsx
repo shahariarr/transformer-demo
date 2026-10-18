@@ -3,7 +3,7 @@
 import { useState } from 'react';
 
 /* Image slot. With no `image` (or if it fails to load), shows a labelled placeholder naming the file to add. */
-export default function Media({ item, cls = '', parallax = false, reveal = true }) {
+export default function Media({ item, cls = '', parallax = false, reveal = true, num = null, children }) {
   const [failed, setFailed] = useState(false);
   const hintPath = `assets/images/${item.dir}/${item.hint}`;
   const label = item.name || item.title;
@@ -20,6 +20,8 @@ export default function Media({ item, cls = '', parallax = false, reveal = true 
           <img src={item.image} alt={label} loading="lazy" decoding="async" onError={() => setFailed(true)} />
         ) : null}
       </div>
+      {num != null ? <span className="media__num ind__num" aria-hidden="true">{num}</span> : null}
+      {children}
     </div>
   );
 }

@@ -1,5 +1,7 @@
 'use client';
 
+/* Project portfolio: spotlight carousel. The centred card is the active one (full details),
+   neighbours shrink and dim. Prev/next arrows sit on either side; touch swipes and mouse drags. */
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { DATA } from '@/lib/data';
@@ -25,95 +27,138 @@ const FILTERS = [
   ['transit', 'Transit Electrification']
 ];
 
+const AUTOPLAY_MS = 5000;
+const pad = n => String(n).padStart(2, '0');
 const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 const deployments = n => `${n} ${n === 1 ? 'Flagship Deployment' : 'Flagship Deployments'}`;
 
+const Chevron = ({ d }) => (
+  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={d} /></svg>
+);
+
 export default function Projects({ viewAll = true }) {
   const router = useRouter();
-  const openProject = i => router.push(`/projects/${DATA.projects[i].slug}/`);
   const [filter, setFilter] = useState('all');
-  const [visibleCount, setVisibleCount] = useState(DATA.projects.length);
-  const [canScroll, setCanScroll] = useState(true);
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const [visible, setVisible] = useState(false);
   const trackRef = useRef(null);
-  const cards = useRef([]);
-  const auto = useRef({ timer: null, hovered: false, visible: false });
-  const appliedFilter = useRef('all');
+  const cardRefs = useRef([]);
+  const fromScroll = useRef(false);
+  const scrollTimer = useRef(null);
+  const drag = useRef(null);
+  const dragged = useRef(false);
 
-  const visibleCards = () => cards.current.filter(c => c && !c.classList.contains('is-hidden'));
+  // Projects in the current filter, keeping their index in DATA for links/search
+  const items = DATA.projects
+    .map((p, i) => ({ ...p, index: i }))
+    .filter(p => filter === 'all' || getCategorySlug(p.cat).includes(filter));
+  const count = items.length;
 
-  const updateNavState = useCallback(() => {
-    const track = trackRef.current;
-    setCanScroll(track.scrollWidth > track.clientWidth + 10 && visibleCards().length > 1);
-  }, []);
+  const go = useCallback(i => setActive(((i % count) + count) % count), [count]);
 
-  const scroll = useCallback(dir => {
-    const track = trackRef.current;
-    if (visibleCards().length <= 1) return;
-    const card = visibleCards()[0];
-    const step = card ? card.getBoundingClientRect().width + (parseFloat(getComputedStyle(track).gap) || 28) : 320;
-    const maxScroll = track.scrollWidth - track.clientWidth;
-    if (maxScroll <= 10) return;
-
-    if (dir > 0 && track.scrollLeft >= maxScroll - 20) {
-      track.scrollTo({ left: 0, behavior: 'smooth' });
-    } else if (dir < 0 && track.scrollLeft <= 20) {
-      track.scrollTo({ left: maxScroll, behavior: 'smooth' });
-    } else {
-      track.scrollBy({ left: step * dir, behavior: reduced() ? 'auto' : 'smooth' });
-    }
-  }, []);
-
-  // Auto sliding (only when visible in viewport and more than 1 visible card)
-  const startAuto = useCallback(() => {
-    const a = auto.current;
-    clearInterval(a.timer);
-    if (a.visible && !a.hovered && visibleCards().length > 1 && !reduced()) {
-      a.timer = setInterval(() => scroll(1), 3500);
-    }
-  }, [scroll]);
-
-  const pause = () => { auto.current.hovered = true; clearInterval(auto.current.timer); };
-  const resume = () => { auto.current.hovered = false; startAuto(); };
-
-  // Filter project cards by category (classes toggled directly so the reveal state is kept)
+  // Centre the active card (unless the user's own swipe already put it there)
   useEffect(() => {
-    if (appliedFilter.current === filter) return;
-    appliedFilter.current = filter;
-    let count = 0;
-    cards.current.forEach(card => {
-      const matches = filter === 'all' || (card.dataset.category || '').includes(filter);
-      card.classList.toggle('is-hidden', !matches);
-      card.classList.remove('proj--anim-in');
-      if (matches) {
-        void card.offsetWidth; // reflow so the entrance animation replays
-        card.classList.add('proj--anim-in');
-        count++;
-      }
-    });
-    trackRef.current.scrollTo({ left: 0, behavior: 'smooth' });
-    setVisibleCount(count);
-    updateNavState();
-    startAuto();
-  }, [filter, updateNavState, startAuto]);
+    if (fromScroll.current) { fromScroll.current = false; return; }
+    const track = trackRef.current;
+    const card = cardRefs.current[active];
+    if (!track || !card) return;
+    track.scrollTo({ left: card.offsetLeft - (track.clientWidth - card.offsetWidth) / 2, behavior: reduced() ? 'auto' : 'smooth' });
+  }, [active, filter]);
 
+  // Index of the card whose centre is nearest the track's centre
+  const nearest = () => {
+    const track = trackRef.current;
+    const mid = track.scrollLeft + track.clientWidth / 2;
+    let best = 0, dist = Infinity;
+    cardRefs.current.slice(0, count).forEach((c, i) => {
+      if (!c) return;
+      const d = Math.abs(c.offsetLeft + c.offsetWidth / 2 - mid);
+      if (d < dist) { dist = d; best = i; }
+    });
+    return best;
+  };
+
+  // A touch swipe picks whichever card ends up closest to the centre
+  const onScroll = () => {
+    if (drag.current) return;
+    clearTimeout(scrollTimer.current);
+    scrollTimer.current = setTimeout(() => {
+      const best = nearest();
+      if (best !== active) { fromScroll.current = true; setActive(best); }
+    }, 140);
+  };
+
+  // Mouse drag: move the track with the pointer, then settle on the nearest card.
+  // A quick short flick still moves one card in the drag direction.
+  const onPointerDown = e => {
+    if (e.pointerType !== 'mouse' || e.button !== 0 || count < 2) return;
+    drag.current = { x: e.clientX, left: trackRef.current.scrollLeft, id: e.pointerId, moved: false };
+    dragged.current = false;
+  };
+
+  const onPointerMove = e => {
+    const d = drag.current;
+    if (!d || e.pointerId !== d.id) return;
+    const dx = e.clientX - d.x;
+    if (!d.moved) {
+      if (Math.abs(dx) < 6) return;
+      d.moved = true;
+      trackRef.current.setPointerCapture(d.id);
+      trackRef.current.dataset.dragging = '';
+    }
+    e.preventDefault();
+    trackRef.current.scrollLeft = d.left - dx;
+  };
+
+  const endDrag = e => {
+    const d = drag.current;
+    if (!d || e.pointerId !== d.id) return;
+    drag.current = null;
+    if (!d.moved) return;
+    dragged.current = true;
+    const track = trackRef.current;
+    const dx = e.clientX - d.x;
+    let target = nearest();
+    if (target === active && Math.abs(dx) > 60) target = Math.min(count - 1, Math.max(0, active + (dx < 0 ? 1 : -1)));
+    const card = cardRefs.current[target];
+    track.scrollTo({ left: card.offsetLeft - (track.clientWidth - card.offsetWidth) / 2, behavior: reduced() ? 'auto' : 'smooth' });
+    setTimeout(() => { delete track.dataset.dragging; }, 450);
+    if (target !== active) { fromScroll.current = true; setActive(target); }
+  };
+
+  // Swallow the click that ends a drag so it doesn't open/select a card
+  const onClickCapture = e => {
+    if (!dragged.current) return;
+    dragged.current = false;
+    e.preventDefault();
+    e.stopPropagation();
+  };
+
+  // Autoplay only while on screen, not hovered, tab visible and motion allowed
   useEffect(() => {
     const sec = trackRef.current.closest('section');
-    const io = new IntersectionObserver(([entry]) => {
-      auto.current.visible = entry.isIntersecting;
-      entry.isIntersecting ? startAuto() : clearInterval(auto.current.timer);
-    }, { threshold: 0.15 });
+    const io = new IntersectionObserver(([e]) => setVisible(e.isIntersecting), { threshold: 0.25 });
     io.observe(sec);
-    const onVis = () => (document.hidden ? clearInterval(auto.current.timer) : startAuto());
-    document.addEventListener('visibilitychange', onVis);
-    updateNavState();
-    window.addEventListener('resize', updateNavState);
-    return () => {
-      io.disconnect();
-      document.removeEventListener('visibilitychange', onVis);
-      window.removeEventListener('resize', updateNavState);
-      clearInterval(auto.current.timer);
-    };
-  }, [startAuto, updateNavState]);
+    return () => io.disconnect();
+  }, []);
+
+  const playing = visible && !paused && count > 1;
+  useEffect(() => {
+    if (!playing || reduced()) return;
+    const t = setTimeout(() => { if (!document.hidden) go(active + 1); }, AUTOPLAY_MS);
+    return () => clearTimeout(t);
+  }, [playing, active, go]);
+
+  const pickFilter = key => {
+    if (key === filter) return;
+    setFilter(key);
+    setActive(0);
+  };
+
+  const onCardClick = i => (i === active ? router.push(`/projects/${items[i].slug}/`) : go(i));
+
+  const hold = { onMouseEnter: () => setPaused(true), onMouseLeave: () => setPaused(false), onFocus: () => setPaused(true), onBlur: () => setPaused(false) };
 
   return (
     <>
@@ -121,17 +166,9 @@ export default function Projects({ viewAll = true }) {
         <div className="proj-head">
           <SectionHead label="OUR PROJECT PORTFOLIO" title="Turnkey Engineering & Infrastructure Deployments"
             desc="Explore real-world execution examples showcasing substation planning, heavy transformer delivery, medium-voltage distribution automation, and utility energisation." />
-          <div className="proj-nav fade-in-right" data-delay="150" aria-label="Scroll projects" onMouseEnter={pause} onMouseLeave={resume}>
-            <span className="proj-counter">{deployments(visibleCount)}</span>
+          <div className="proj-nav fade-in-right" data-delay="150">
+            <span className="proj-counter">{deployments(count)}</span>
             {viewAll ? <ViewAll href="/projects/">View all</ViewAll> : null}
-            <button type="button" data-proj-dir="-1" aria-label="Previous project" title="Previous" disabled={!canScroll}
-                    onClick={() => { scroll(-1); startAuto(); }}>
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6" /></svg>
-            </button>
-            <button type="button" data-proj-dir="1" aria-label="Next project" title="Next" disabled={!canScroll}
-                    onClick={() => { scroll(1); startAuto(); }}>
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
-            </button>
           </div>
         </div>
 
@@ -139,58 +176,64 @@ export default function Projects({ viewAll = true }) {
         <div className="proj-filter-bar fade-in-up" data-delay="180" role="tablist" aria-label="Filter project portfolio by category">
           {FILTERS.map(([key, label]) => (
             <button type="button" className={`proj-filter-pill${filter === key ? ' is-active' : ''}`} data-filter={key} role="tab" key={key}
-                    aria-selected={filter === key ? 'true' : 'false'} onClick={() => { if (filter !== key) setFilter(key); }}>
+                    aria-selected={filter === key ? 'true' : 'false'} onClick={() => pickFilter(key)}>
               {label}
             </button>
           ))}
         </div>
       </div>
 
-      <div className="proj-track" tabIndex="0" role="region" aria-label="Project portfolio, scrollable horizontally" ref={trackRef}
-           onMouseEnter={pause} onMouseLeave={resume} onTouchStart={pause} onTouchEnd={resume}>
-        {DATA.projects.map((p, i) => (
-          <article className="proj fade-in-up" data-delay={(i % 3) * 110} data-project={i} data-category={getCategorySlug(p.cat)} role="button" tabIndex="0"
-                   aria-label={`View case study for ${p.title}`} key={p.title} ref={el => { cards.current[i] = el; }}
-                   onClick={() => openProject(i)}
-                   onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openProject(i); } }}>
-            <div className="proj__img">
-              <img src={p.image} alt={p.title} loading="lazy" decoding="async" />
-              <div className="proj__overlay"></div>
-              <div className="proj__tags">
-                <span className="proj__cat-tag">{p.cat}</span>
-                {p.scope ? <span className="proj__scope-tag">{p.scope}</span> : null}
+      <div className="pcar fade-in-up" data-playing={playing ? 'true' : 'false'} data-delay="120" {...hold}>
+        <button type="button" className="pcar__arrow pcar__arrow--prev" aria-label="Previous project" onClick={() => go(active - 1)} disabled={count < 2}><Chevron d="m15 18-6-6 6-6" /></button>
+        <button type="button" className="pcar__arrow pcar__arrow--next" aria-label="Next project" onClick={() => go(active + 1)} disabled={count < 2}><Chevron d="m9 18 6-6-6-6" /></button>
+
+        <div className="pcar__track" ref={trackRef} tabIndex="0" role="region" aria-roledescription="carousel" aria-label="Project portfolio"
+             onScroll={onScroll} onPointerDown={onPointerDown} onPointerMove={onPointerMove}
+             onPointerUp={endDrag} onPointerCancel={endDrag} onClickCapture={onClickCapture} onDragStart={e => e.preventDefault()}
+             onKeyDown={e => {
+               if (e.key === 'ArrowRight') { e.preventDefault(); go(active + 1); }
+               if (e.key === 'ArrowLeft') { e.preventDefault(); go(active - 1); }
+             }}>
+          {items.map((p, i) => (
+            <article key={`${filter}-${p.slug}`} ref={el => { cardRefs.current[i] = el; }}
+                     className={`pcar__card${i === active ? ' is-active' : ''}`} data-project={p.index} data-category={getCategorySlug(p.cat)}
+                     role="group" aria-roledescription="slide" aria-label={`${i + 1} of ${count}: ${p.title}`}
+                     style={{ '--i': i }} onClick={() => onCardClick(i)}>
+              <img className="pcar__img" src={p.image} alt="" loading="lazy" decoding="async" draggable="false" />
+              <span className="pcar__shade" aria-hidden="true"></span>
+
+              <div className="pcar__top">
+                <span className="pcar__num" aria-hidden="true">{pad(i + 1)}</span>
+                <span className="pcar__cat">{p.cat}</span>
               </div>
-            </div>
 
-            <div className="proj__body">
-              <div className="proj__location">
-                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg>
-                <span>{p.location}</span>
-              </div>
-
-              <h3 className="proj__title">{p.title}</h3>
-
-              {p.specs ? (
-                <div className="proj__specs-box">
-                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
-                  <span>{p.specs}</span>
+              <div className="pcar__panel">
+                <p className="pcar__loc">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg>
+                  {p.location}
+                </p>
+                <h3 className="pcar__title">{p.title}</h3>
+                {p.scope ? <p className="pcar__scope">{p.scope}</p> : null}
+                <div className="pcar__more">
+                  <div>
+                    {p.specs ? (
+                      <ul className="pcar__specs">
+                        {p.specs.split('•').map(s => s.trim()).filter(Boolean).map(s => <li key={s}>{s}</li>)}
+                      </ul>
+                    ) : null}
+                    <p className="pcar__desc">{p.desc}</p>
+                    <a className="pcar__cta" href={`/projects/${p.slug}/`} tabIndex={i === active ? 0 : -1} onClick={e => e.stopPropagation()}>
+                      <span>Explore Case Study</span>
+                      <span className="pcar__cta-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17 17 7M8 7h9v9" /></svg>
+                      </span>
+                    </a>
+                  </div>
                 </div>
-              ) : null}
-
-              <p className="proj__desc">{p.desc}</p>
-
-              <div className="proj__foot">
-                <span className="proj__link-btn">
-                  <span>Explore Case Study</span>
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                    <polyline points="12 5 19 12 12 19"></polyline>
-                  </svg>
-                </span>
               </div>
-            </div>
-          </article>
-        ))}
+            </article>
+          ))}
+        </div>
       </div>
 
       <div className="wrap">

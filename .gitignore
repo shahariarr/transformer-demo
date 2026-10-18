@@ -1,4 +1,5 @@
 /.claude
+/.agent
 /.agents
 node_modules/
 .next/

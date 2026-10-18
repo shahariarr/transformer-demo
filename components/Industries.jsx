@@ -4,6 +4,7 @@ import SectionHead from './SectionHead';
 import ViewAll from './ViewAll';
 
 const IND_SPANS = [7, 5, 4, 4, 4, 3, 4, 5];
+const pad = n => String(n).padStart(2, '0');
 
 export default function Industries({ viewAll = true }) {
   return (
@@ -23,7 +24,7 @@ export default function Industries({ viewAll = true }) {
         <div className="ind-grid">
           {DATA.industries.map((p, i) => (
             <article className="ind fade-in-up" style={{ '--span': IND_SPANS[i] }} data-delay={(i % 3) * 110} key={p.name}>
-              <Media item={p} parallax reveal={false} />
+              <Media item={p} parallax reveal={false} num={pad(i + 1)} />
               <div className="ind__body"><h3>{p.name}</h3><p>{p.desc}</p></div>
               <a className="ind__link" href={`/industries/${p.slug}/`} aria-label={`${p.name}: learn more`}></a>
             </article>
