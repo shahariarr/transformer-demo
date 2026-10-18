@@ -18,9 +18,9 @@ const STAGE_ICONS = [
 ];
 
 /* Circuit geometry (SVG user units). Nodes alternate low/high along a wave. */
-const LCV_W = 1200, LCV_H = 300;
+const LCV_W = 1200, LCV_H = 240;
 function lcvPoints(n) {
-  return Array.from({ length: n }, (_, i) => [90 + i * ((LCV_W - 180) / (n - 1)), i % 2 ? 92 : 208]);
+  return Array.from({ length: n }, (_, i) => [90 + i * ((LCV_W - 180) / (n - 1)), i % 2 ? 78 : 162]);
 }
 function lcvSegments(pts) {
   const d = (pts[1][0] - pts[0][0]) / 2;
@@ -53,11 +53,7 @@ function Lifecycle() {
         title: 'The Complete Project Lifecycle',
         desc: 'A coordinated 7-stage turnkey methodology — from first requirement to grid energisation and lifecycle care.'
       })}
-      <ul class="lc-pills fade-in-right" data-delay="120">
-        <li><strong>${pad(L.length)}</strong><span>Delivery stages</span></li>
-        <li><strong>01</strong><span>Accountable team</span></li>
-        <li><strong>ISO</strong><span>9001 supervised</span></li>
-      </ul>
+     
     </div>
 
     <div class="lcv-circuit fade-in-up">
@@ -68,7 +64,7 @@ function Lifecycle() {
           <svg viewBox="0 0 ${LCV_W} ${LCV_H}" aria-hidden="true" focusable="false">
             <defs>
               <linearGradient id="lcv-grad" x1="0" x2="1" y1="0" y2="0">
-                <stop offset="0" stop-color="#5FB0FF"/><stop offset=".6" stop-color="#9AD0FF"/><stop offset="1" stop-color="#F28C28"/>
+                <stop offset="0" stop-color="#5FB0FF"/><stop offset=".6" stop-color="#9AD0FF"/><stop offset="1" stop-color="#FFFFFF"/>
               </linearGradient>
             </defs>
             <path class="lcv-base" d="${path}"/>
@@ -98,7 +94,7 @@ function Lifecycle() {
       <aside class="lcv-detail__side">
         <div class="lcv-ring" aria-hidden="true">
           <svg viewBox="0 0 120 120">
-            <defs><linearGradient id="lcv-ring-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5FB0FF"/><stop offset="1" stop-color="#F28C28"/></linearGradient></defs>
+            <defs><linearGradient id="lcv-ring-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5FB0FF"/><stop offset="1" stop-color="#FFFFFF"/></linearGradient></defs>
             <circle cx="60" cy="60" r="52" class="lcv-ring__track"/>
             <circle cx="60" cy="60" r="52" class="lcv-ring__bar" id="lcv-ring"/>
           </svg>
