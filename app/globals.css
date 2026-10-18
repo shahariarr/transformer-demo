@@ -175,7 +175,7 @@ h2 {
   content: "";
   width: 28px;
   height: 2px;
-  background: var(--accent);
+  background: var(--primary);
   flex: none;
   transition: width .7s .25s var(--ease)
 }
