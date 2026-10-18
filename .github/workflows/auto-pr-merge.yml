@@ -1,0 +1,82 @@
+# On every push to `dev` or `dev_shifat`: open (or reuse) a pull request into `main`
+# and merge it automatically when it has no conflicts. If it conflicts, the PR stays
+# open with a comment and this run fails, so someone can resolve it by hand.
+name: Auto PR & merge to main
+
+on:
+  push:
+    branches:
+      - dev
+      - dev_shifat
+
+permissions:
+  contents: write
+  pull-requests: write
+
+# One run per branch at a time, so quick successive pushes don't race each other
+concurrency:
+  group: auto-pr-${{ github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  pr-and-merge:
+    runs-on: ubuntu-latest
+    env:
+      # Prefer a personal access token (CUSTOM_GH_TOKEN) if you add one: merges made with the
+      # default GITHUB_TOKEN do not trigger other workflows (e.g. a deploy on push to main).
+      GH_TOKEN: ${{ secrets.CUSTOM_GH_TOKEN || secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+      BRANCH: ${{ github.ref_name }}
+      BASE: main
+    steps:
+      - name: Open or reuse pull request
+        id: pr
+        run: |
+          # Nothing to do if the branch has no commits that main doesn't already have
+          ahead=$(gh api "repos/$GH_REPO/compare/$BASE...$BRANCH" --jq '.ahead_by')
+          if [ "$ahead" = "0" ]; then
+            echo "$BRANCH has no new commits for $BASE; nothing to merge."
+            echo "number=" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          number=$(gh pr list --head "$BRANCH" --base "$BASE" --state open --json number --jq '.[0].number // empty')
+          if [ -z "$number" ]; then
+            url=$(gh pr create --head "$BRANCH" --base "$BASE" \
+              --title "Merge $BRANCH into $BASE" \
+              --body "Automated pull request for push ${{ github.sha }} by @${{ github.actor }}.
+
+          It is merged automatically when it has no conflicts.")
+            number="${url##*/}"
+            echo "Created PR #$number"
+          else
+            echo "Reusing open PR #$number"
+          fi
+          echo "number=$number" >> "$GITHUB_OUTPUT"
+
+      - name: Merge if there are no conflicts
+        if: steps.pr.outputs.number != ''
+        env:
+          NUMBER: ${{ steps.pr.outputs.number }}
+        run: |
+          # GitHub computes mergeability in the background; wait for a definite answer
+          state=UNKNOWN
+          for i in $(seq 1 12); do
+            state=$(gh pr view "$NUMBER" --json mergeable --jq '.mergeable')
+            [ "$state" != "UNKNOWN" ] && break
+            sleep 5
+          done
+          echo "PR #$NUMBER mergeable: $state"
+
+          if [ "$state" = "MERGEABLE" ]; then
+            # Merge commit keeps the branch history; the source branch is kept (no --delete-branch)
+            gh pr merge "$NUMBER" --merge
+            echo "Merged PR #$NUMBER into $BASE."
+          elif [ "$state" = "CONFLICTING" ]; then
+            gh pr comment "$NUMBER" --body "⚠️ This branch conflicts with \`$BASE\`, so it was not merged automatically. Merge \`$BASE\` into \`$BRANCH\`, resolve the conflicts and push again."
+            echo "::error::PR #$NUMBER has merge conflicts with $BASE; left open for manual resolution."
+            exit 1
+          else
+            echo "::error::Could not determine whether PR #$NUMBER can be merged (state: $state)."
+            exit 1
+          fi
