@@ -13,7 +13,7 @@ Upload the contents of `out/` to any static host. It must be served from the dom
 Windows (prefetch files written as folders); on other platforms it does nothing.
 
 ## Pages
-| Route | Page |
+| Route | Pages |
 |---|---|
 | `/` | Home (all sections) |
 | `/products/`, `/products/[slug]/` | Product range and one page per product |
