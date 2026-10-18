@@ -4,8 +4,9 @@ import { useRef } from 'react';
 import { WHY_BPEL_CARDS, QA_CERTS } from '@/lib/quality';
 import { useUI } from './UIProvider';
 import RawSvg from './RawSvg';
+import ViewAll from './ViewAll';
 
-export default function Quality({ showWhy = true, showCerts = true }) {
+export default function Quality({ showWhy = true, showCerts = true, viewAll = true }) {
   const { openCert } = useUI();
   const trackRef = useRef(null);
 
@@ -87,6 +88,7 @@ export default function Quality({ showWhy = true, showCerts = true }) {
             <p>Official international accreditations and laboratory test reports (Click any certificate to inspect).</p>
           </div>
           <div className="qa-certs-nav">
+            {viewAll ? <ViewAll href="/certifications/">View all</ViewAll> : null}
             <button type="button" className="qa-arrow-btn" id="qa-cert-prev" aria-label="Previous certificates" title="Previous" onClick={prev}>
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
             </button>

@@ -13,7 +13,7 @@ export default function CertificationsPage() {
       <PageHero crumbs={[{ label: 'About', href: '/about/' }, { label: 'Certifications' }]} label="QUALITY & COMPLIANCE" title="Certified Quality, Tested Performance"
         desc="Management system certificates and independent laboratory test reports. Click any document to inspect it." />
 
-      <section className="sec" aria-label="Certificates"><Quality showWhy={false} /></section>
+      <section className="sec" aria-label="Certificates"><Quality showWhy={false} viewAll={false} /></section>
 
       <section className="sec sec--alt" aria-label="Standards">
         <div className="wrap split">
