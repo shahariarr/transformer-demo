@@ -16,7 +16,6 @@ export async function generateMetadata({ params }) {
 export default async function ServicePage({ params }) {
   const s = find((await params).slug);
   if (!s) notFound();
-  const others = SERVICES.filter(x => x.slug !== s.slug);
 
   return (
     <>
@@ -57,7 +56,7 @@ export default async function ServicePage({ params }) {
         <div className="wrap">
           <header className="sec-head fade-in-up"><p className="label">MORE SERVICES</p><h2>Combine services into one package</h2></header>
           <div className="lgrid">
-            {others.map((o, i) => <LinkCard key={o.slug} href={`/services/${o.slug}/`} image={o.image} title={o.title} text={o.short} delay={i * 80} />)}
+            {SERVICES.map((o, i) => <LinkCard key={o.slug} href={`/services/${o.slug}/`} image={o.image} title={o.title} text={o.short} delay={i * 80} />)}
           </div>
         </div>
       </section>
