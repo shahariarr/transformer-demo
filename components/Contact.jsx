@@ -75,10 +75,10 @@ export default function Contact() {
         desc="Share your project requirements and connect with our team to discuss the next steps." />
       <div className="contact__grid">
         <div className="contact__cards fade-in-left">
-          <a className="ccard" href={mailLink()}><Ico name="mail" /><span><b>Email</b>{c.email}<small>Placeholder address</small></span></a>
-          <a className="ccard" href={waLink()} target="_blank" rel="noopener"><Ico name="wa" /><span><b>WhatsApp</b>{c.phoneDisplay}<small>Placeholder number, opens WhatsApp</small></span></a>
-          <div className="ccard"><Ico name="phone" /><span><b>Business phone</b>{c.phoneDisplay}<small>Placeholder number</small></span></div>
-          <div className="ccard"><Ico name="pin" /><span><b>Office address</b>{c.address}<small>Placeholder address</small></span></div>
+          <a className="ccard" href={mailLink()}><Ico name="mail" /><span><b>Email</b>{c.email}<small>Direct technical desk • 24h response</small></span></a>
+          <a className="ccard" href={waLink()} target="_blank" rel="noopener"><Ico name="wa" /><span><b>WhatsApp</b>{c.phoneDisplay}<small>Chat live with application engineers</small></span></a>
+          <div className="ccard"><Ico name="phone" /><span><b>Business phone</b>{c.phoneDisplay}<small>Sun–Thu: 08:30 – 18:00 BST</small></span></div>
+          <div className="ccard"><Ico name="pin" /><span><b>Office address</b>{c.address}<small>Corporate HQ, Gulshan-1, Dhaka</small></span></div>
         </div>
         <form id="contact-form" className="form fade-in-right" data-delay="150" noValidate ref={formRef} onSubmit={onSubmit}>
           <div className="form__row">
