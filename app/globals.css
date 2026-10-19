@@ -10534,22 +10534,35 @@ a.btn.btn--light {
 /* =====================================================================
    FILTER PANEL
    ===================================================================== */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
 .vacancies-filter-panel {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
   background: #ffffff;
   border: 1px solid var(--line);
-  box-shadow: 0 4px 20px -6px rgba(10, 30, 60, 0.05);
-  border-radius: 16px;
-  padding: 18px 22px;
+  box-shadow: 0 4px 24px -6px rgba(10, 30, 60, 0.06);
+  border-radius: 18px;
+  padding: 20px 24px;
   text-align: left;
+  margin-top: 1rem;
 }
 
 .vacancies-filter-controls {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 
 .vacancies-search-wrap {
@@ -10559,28 +10572,34 @@ a.btn.btn--light {
 
 .vacancies-search-wrap .search-icon {
   position: absolute;
-  left: 14px;
+  left: 15px;
   top: 50%;
   transform: translateY(-50%);
-  color: #64748B;
+  color: var(--primary);
   pointer-events: none;
 }
 
 .vacancies-search-input {
   width: 100%;
-  padding: 10px 38px 10px 40px;
+  height: 46px;
+  padding: 10px 38px 10px 42px;
   background: #ffffff;
-  border: 1.5px solid #CBD5E1;
-  border-radius: 10px;
-  font-size: 13px;
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  font-size: 13.5px;
   font-weight: 550;
-  color: #0A1E3C;
+  color: var(--navy);
   outline: none;
-  transition: all 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.vacancies-search-input::placeholder {
+  color: #94A3B8;
+  font-weight: 450;
 }
 
 .vacancies-search-input:focus {
-  border-color: #0B5CAB;
+  border-color: var(--primary);
   box-shadow: 0 0 0 3px rgba(11, 92, 171, 0.12);
 }
 
@@ -10600,11 +10619,11 @@ a.btn.btn--light {
 }
 
 .search-clear-btn:hover {
-  color: #0A1E3C;
+  color: var(--navy);
 }
 
 .vacancies-loc-filter {
-  min-width: 200px;
+  min-width: 230px;
 }
 
 /* Custom Select Wrap for Vacancy & Form */
@@ -10614,30 +10633,41 @@ a.btn.btn--light {
   display: block;
 }
 
+.vacancy-select-wrap .loc-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--primary);
+  pointer-events: none;
+  z-index: 1;
+}
+
 .vacancy-loc-select {
   width: 100%;
+  height: 46px;
   appearance: none;
   -webkit-appearance: none;
-  padding: 10px 34px 10px 14px;
+  padding: 10px 36px 10px 40px;
   background: #ffffff;
-  border: 1.5px solid #CBD5E1;
-  border-radius: 10px;
-  font-size: 13px;
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  font-size: 13.5px;
   font-weight: 650;
-  color: #0A1E3C;
+  color: var(--navy);
   cursor: pointer;
   outline: none;
-  transition: all 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .vacancy-loc-select:focus {
-  border-color: #0B5CAB;
+  border-color: var(--primary);
   box-shadow: 0 0 0 3px rgba(11, 92, 171, 0.12);
 }
 
 .vacancy-select-arrow {
   position: absolute;
-  right: 13px;
+  right: 14px;
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none;
@@ -10651,20 +10681,21 @@ a.btn.btn--light {
 .vacancies-dept-tabs {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 9px;
 }
 
 .vacancy-pill-btn {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  padding: 7px 14px;
+  gap: 8px;
+  height: 38px;
+  padding: 0 16px;
   border-radius: 999px;
   background: #ffffff;
-  border: 1.5px solid #CBD5E1;
-  color: #334155;
-  font-size: 12px;
-  font-weight: 700;
+  border: 1.5px solid var(--line);
+  color: var(--navy);
+  font-size: 13px;
+  font-weight: 650;
   cursor: pointer;
   transition: all 0.2s cubic-bezier(.16, 1, .3, 1);
 }
@@ -10673,27 +10704,28 @@ a.btn.btn--light {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 18px;
-  height: 18px;
-  padding: 0 5px;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
   border-radius: 999px;
   background: #F1F5F9;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 800;
-  color: #64748B;
+  color: var(--navy);
   transition: all 0.2s ease;
 }
 
 .vacancy-pill-btn:hover {
-  border-color: #0B5CAB;
-  color: #0B5CAB;
+  border-color: var(--primary);
+  color: var(--primary);
+  background: var(--primary-50);
 }
 
 .vacancy-pill-btn.is-active {
-  background: #0B5CAB;
-  border-color: #0B5CAB;
+  background: var(--primary);
+  border-color: var(--primary);
   color: #ffffff;
-  box-shadow: 0 3px 10px rgba(11, 92, 171, 0.25);
+  box-shadow: 0 4px 14px rgba(11, 92, 171, 0.28);
 }
 
 .vacancy-pill-btn.is-active .vacancy-pill-count {
@@ -10706,25 +10738,27 @@ a.btn.btn--light {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 10px;
-  border-top: 1px solid #E2E8F0;
-  font-size: 12px;
-  color: #64748B;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  font-size: 12.5px;
+  color: var(--ink-2);
 }
 
 .vacancies-reset-btn {
   border: none;
   background: none;
-  color: #0B5CAB;
+  color: var(--primary);
   font-weight: 750;
-  font-size: 12px;
+  font-size: 12.5px;
   cursor: pointer;
-  padding: 2px 6px;
-  border-radius: 4px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  transition: background-color 0.18s ease;
 }
 
 .vacancies-reset-btn:hover {
-  text-decoration: underline;
+  background: var(--primary-50);
+  text-decoration: none;
 }
 
 /* Empty State */

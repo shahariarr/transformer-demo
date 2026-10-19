@@ -108,13 +108,17 @@ export default function CareersVacancyDirectory() {
           </div>
 
           <div className="vacancies-loc-filter">
-            <label htmlFor="loc-select" className="visually-hidden">Filter by Location</label>
             <div className="vacancy-select-wrap">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="loc-icon" aria-hidden="true">
+                <path d="M12 21s7-6 7-11a7 7 0 0 0-14 0c0 5 7 11 7 11z" />
+                <circle cx="12" cy="10" r="2.5" />
+              </svg>
               <select
                 id="loc-select"
                 value={locationFilter}
                 onChange={(e) => handleLocationChange(e.target.value)}
                 className="vacancy-loc-select"
+                aria-label="Filter vacancies by facility location"
               >
                 {LOCATIONS.map((loc) => (
                   <option key={loc.id} value={loc.id}>
