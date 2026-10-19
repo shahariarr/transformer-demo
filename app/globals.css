@@ -12129,3 +12129,323 @@ a.btn.btn--light {
     padding: 1.25rem 1.15rem;
   }
 }
+
+/* =====================================================================
+   Website Architecture Alignments: Services Ecosystem & Turnkey EPC
+   ===================================================================== */
+
+/* Left Column Media & Assurance Box Alignment */
+.detail__media-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+}
+
+.service-side-assurance {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1.35rem 1.5rem;
+  box-shadow: 0 4px 18px -4px rgba(10, 30, 60, 0.05);
+}
+
+.service-side-assurance__head {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  font-size: .75rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 1.15rem;
+}
+
+.service-side-assurance__head svg {
+  color: #16a34a;
+}
+
+.service-side-assurance__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: .95rem;
+}
+
+.service-side-assurance__list li {
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+}
+
+.service-side-assurance__list strong {
+  font-size: .885rem;
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1.3;
+}
+
+.service-side-assurance__list p {
+  font-size: .8rem;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.45;
+}
+
+.service-cap-verified {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  margin-top: 1rem;
+  padding-top: .85rem;
+  border-top: 1px solid var(--line);
+  font-size: .75rem;
+  font-weight: 700;
+  color: #059669;
+}
+
+/* Services Listing Page: 2-Column Showcase Grid */
+.services-index-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.services-showcase-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform .3s cubic-bezier(.16, 1, .3, 1), border-color .3s ease, box-shadow .3s ease;
+  box-shadow: 0 4px 20px -6px rgba(10, 30, 60, 0.05);
+}
+
+.services-showcase-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(11, 92, 171, 0.35);
+  box-shadow: 0 16px 36px -8px rgba(10, 30, 60, 0.1);
+}
+
+.services-showcase-media {
+  position: relative;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  background: var(--alt);
+}
+
+.services-showcase-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .45s ease;
+}
+
+.services-showcase-card:hover .services-showcase-media img {
+  transform: scale(1.05);
+}
+
+.services-showcase-kicker {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(10, 30, 60, 0.82);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  padding: .35rem .85rem;
+  border-radius: 999px;
+  font-size: .725rem;
+  font-weight: 800;
+  letter-spacing: .06em;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.services-showcase-body {
+  padding: 1.85rem 1.95rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.services-showcase-badge {
+  display: inline-block;
+  font-size: .725rem;
+  font-weight: 800;
+  color: var(--primary);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  margin-bottom: .5rem;
+}
+
+.services-showcase-body h3 {
+  font-size: 1.35rem;
+  font-weight: 850;
+  color: var(--navy);
+  margin: 0 0 .65rem 0;
+  line-height: 1.3;
+}
+
+.services-showcase-body p {
+  font-size: .92rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0 0 1.25rem 0;
+}
+
+.services-showcase-ticks {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.65rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+
+.services-showcase-ticks li {
+  display: flex;
+  align-items: flex-start;
+  gap: .6rem;
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.4;
+}
+
+.services-showcase-ticks li svg {
+  color: var(--primary);
+  flex-shrink: 0;
+  margin-top: .15rem;
+}
+
+.services-showcase-action {
+  margin-top: auto;
+  padding-top: 1.15rem;
+  border-top: 1px solid var(--line);
+}
+
+.services-showcase-action .btn {
+  width: 100%;
+  justify-content: center;
+}
+
+/* Turnkey EPC & Integrated Packages Grid */
+.turnkey-packages-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.turnkey-pkg-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 1.85rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 18px -4px rgba(10, 30, 60, 0.05);
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+
+.turnkey-pkg-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--primary);
+  box-shadow: 0 12px 30px -6px rgba(10, 30, 60, 0.08);
+}
+
+.turnkey-pkg-badge {
+  display: inline-block;
+  font-size: .725rem;
+  font-weight: 800;
+  color: var(--primary);
+  background: var(--primary-50);
+  border: 1px solid rgba(11, 92, 171, 0.15);
+  padding: .25rem .65rem;
+  border-radius: 6px;
+  width: fit-content;
+  margin-bottom: .85rem;
+  letter-spacing: .04em;
+}
+
+.turnkey-pkg-card h3 {
+  font-size: 1.22rem;
+  font-weight: 850;
+  color: var(--navy);
+  margin: 0 0 .45rem 0;
+  line-height: 1.3;
+}
+
+.turnkey-pkg-target {
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  font-size: .8rem;
+  font-weight: 700;
+  color: #0284c7;
+  margin: 0 0 1rem 0;
+}
+
+.turnkey-pkg-target svg {
+  color: #0284c7;
+  flex-shrink: 0;
+}
+
+.turnkey-pkg-desc {
+  font-size: .885rem;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 0 0 1.25rem 0;
+}
+
+.turnkey-pkg-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+
+.turnkey-pkg-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: .55rem;
+  font-size: .825rem;
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.45;
+}
+
+.turnkey-pkg-list li svg {
+  color: #059669;
+  flex-shrink: 0;
+  margin-top: .15rem;
+}
+
+.turnkey-pkg-action {
+  margin-top: auto;
+  padding-top: 1.15rem;
+  border-top: 1px solid var(--line);
+}
+
+.turnkey-pkg-action .btn {
+  width: 100%;
+  justify-content: center;
+}
+
+/* Responsive adjustments for Services Ecosystem */
+@media (max-width: 980px) {
+  .turnkey-packages-grid {
+    grid-template-columns: 1fr;
+  }
+  .services-index-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
