@@ -6,6 +6,7 @@ export const metadata = {
 };
 
 const ITEMS = [
+  { href: '/blog/', title: 'Engineering Blog & Insights', text: 'Technical deep-dives, IEC 60076 standards, and operational field notes.', icon: '<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>' },
   { href: '/resources/sizing-guide/', title: 'Sizing Guide', text: 'Estimate the kVA rating you need from your load, with standard ratings.', icon: '<rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="11" x2="8" y2="11.01"/><line x1="12" y1="11" x2="12" y2="11.01"/><line x1="16" y1="11" x2="16" y2="11.01"/><line x1="8" y1="15" x2="8" y2="15.01"/><line x1="12" y1="15" x2="12" y2="15.01"/><line x1="16" y1="15" x2="16" y2="18"/>' },
   { href: '/resources/faq/', title: 'Technical FAQ', text: 'Answers about products, quotations, engineering and commissioning.', icon: '<circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>' },
   { href: '/resources/glossary/', title: 'Glossary', text: 'Plain-language definitions of common transformer terms.', icon: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>' },

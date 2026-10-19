@@ -10,7 +10,7 @@ const GROUPS = [
   ['Services', [['/services/', 'All Services'], ...SERVICES.map(s => [`/services/${s.slug}/`, s.title])]],
   ['Industries', [['/industries/', 'All Industries'], ...DATA.industries.map(i => [`/industries/${i.slug}/`, i.name])]],
   ['Projects', [['/projects/', 'All Projects'], ...DATA.projects.map(p => [`/projects/${p.slug}/`, p.title])]],
-  ['Resources', [['/resources/', 'Resources'], ['/resources/sizing-guide/', 'Sizing Guide'], ['/resources/faq/', 'FAQ'], ['/resources/glossary/', 'Glossary'], ['/resources/standards/', 'Standards'], ['/privacy/', 'Privacy Policy'], ['/terms/', 'Terms of Use']]]
+  ['Resources', [['/resources/', 'Resources'], ['/blog/', 'Engineering Blog & Insights'], ['/resources/sizing-guide/', 'Sizing Guide'], ['/resources/faq/', 'FAQ'], ['/resources/glossary/', 'Glossary'], ['/resources/standards/', 'Standards'], ['/privacy/', 'Privacy Policy'], ['/terms/', 'Terms of Use']]]
 ];
 
 export default function SitemapPage() {
