@@ -12,7 +12,9 @@ export default function ProjectsPage() {
       <PageHero crumbs={[{ label: 'Projects' }]} label="PROJECT PORTFOLIO" title="Engineering Delivered on Site"
         desc="Examples of substation, transformer and switchgear work, from planning and delivery to energisation."
         image="/assets/images/projects/substation-installation.jpg" />
-      <section id="projects" className="sec" aria-label="Projects"><Projects viewAll={false} /></section>
+      <section id="projects" className="sec" aria-label="Projects">
+        <Projects viewAll={false} isGrid={true} />
+      </section>
     </>
   );
 }
