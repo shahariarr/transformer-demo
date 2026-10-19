@@ -1,672 +1,375 @@
 'use client';
 
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 import Link from 'next/link';
-import { BLOG_CATEGORIES, BLOG_POPULAR_TAGS } from '@/lib/blog';
+import { BLOG_CATEGORIES } from '@/lib/blog';
 
-const ArrowRight = () => (
-  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-    <path d="M5 12h14M12 5l7 7-7 7" />
+// SVG Icons matching ETS Lucide icon set
+const RssIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M4 11a9 9 0 0 1 9 9" />
+    <path d="M4 4a16 16 0 0 1 16 16" />
+    <circle cx="5" cy="19" r="1" />
+  </svg>
+);
+
+const CodeXmlIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="m18 16 4-4-4-4" />
+    <path d="m6 8-4 4 4 4" />
+    <path d="m14.5 4-5 16" />
+  </svg>
+);
+
+const ArrowUpRightIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M7 7h10v10" />
+    <path d="M7 17 17 7" />
+  </svg>
+);
+
+const ArrowRightIcon = ({ className = "w-4 h-4" }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+    <path d="M5 12h14" />
+    <path d="m12 5 7 7-7 7" />
   </svg>
 );
 
 const SearchIcon = () => (
-  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-    <circle cx="11" cy="11" r="8"></circle>
-    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-  </svg>
-);
-
-const CalendarIcon = () => (
-  <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-    <line x1="16" y1="2" x2="16" y2="6"></line>
-    <line x1="8" y1="2" x2="8" y2="6"></line>
-    <line x1="3" y1="10" x2="21" y2="10"></line>
-  </svg>
-);
-
-const ClockIcon = () => (
-  <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-    <circle cx="12" cy="12" r="10"></circle>
-    <polyline points="12 6 12 12 16 14"></polyline>
-  </svg>
-);
-
-const FilterSlidersIcon = () => (
-  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-    <line x1="4" y1="21" x2="4" y2="14"></line>
-    <line x1="4" y1="10" x2="4" y2="3"></line>
-    <line x1="12" y1="21" x2="12" y2="12"></line>
-    <line x1="12" y1="8" x2="12" y2="3"></line>
-    <line x1="20" y1="21" x2="20" y2="16"></line>
-    <line x1="20" y1="12" x2="20" y2="3"></line>
-    <line x1="1" y1="14" x2="7" y2="14"></line>
-    <line x1="9" y1="8" x2="15" y2="8"></line>
-    <line x1="17" y1="16" x2="23" y2="16"></line>
-  </svg>
-);
-
-const CloseIcon = () => (
-  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-    <line x1="18" y1="6" x2="6" y2="18"></line>
-    <line x1="6" y1="6" x2="18" y2="18"></line>
-  </svg>
-);
-
-const TagIcon = () => (
-  <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-    <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
-    <line x1="7" y1="7" x2="7.01" y2="7"></line>
+  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <circle cx="11" cy="11" r="8" />
+    <line x1="21" y1="21" x2="16.65" y2="16.65" />
   </svg>
 );
 
 export default function BlogDirectory({ posts = [] }) {
   const [selectedCat, setSelectedCat] = useState('All');
-  const [query, setQuery] = useState('');
-  const [selectedTag, setSelectedTag] = useState('');
-  const [readDuration, setReadDuration] = useState('all'); // 'all', 'quick' (<7m), 'deep' (>=7m)
-  const [sortBy, setSortBy] = useState('newest'); // 'newest', 'oldest', 'shortest', 'longest'
-  const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
 
-  // Close mobile drawer on escape
-  useEffect(() => {
-    const handleKey = e => {
-      if (e.key === 'Escape') setMobileDrawerOpen(false);
-    };
-    window.addEventListener('keydown', handleKey);
-    return () => window.removeEventListener('keydown', handleKey);
-  }, []);
+  // Default unmodified state (shows 2-column featured card + grid)
+  const isDefaultView = selectedCat === 'All' && !searchQuery.trim();
 
-  // Category counts
-  const catCounts = useMemo(() => {
-    const map = { All: posts.length };
-    BLOG_CATEGORIES.forEach(cat => {
-      if (cat !== 'All') {
-        map[cat] = posts.filter(p => p.category === cat).length;
-      }
-    });
-    return map;
+  // Featured Post detection
+  const featuredPost = useMemo(() => {
+    return posts.find(p => p.featured) || posts[0] || null;
   }, [posts]);
 
-  // Count active filters (for badge)
-  const activeFiltersCount = useMemo(() => {
-    let count = 0;
-    if (selectedCat !== 'All') count++;
-    if (query.trim()) count++;
-    if (selectedTag) count++;
-    if (readDuration !== 'all') count++;
-    if (sortBy !== 'newest') count++;
-    return count;
-  }, [selectedCat, query, selectedTag, readDuration, sortBy]);
-
-  // Reset all filters
-  const resetAllFilters = () => {
-    setSelectedCat('All');
-    setQuery('');
-    setSelectedTag('');
-    setReadDuration('all');
-    setSortBy('newest');
-  };
-
-  // Filtered and sorted posts
+  // Filtered posts based on category and search query
   const filteredPosts = useMemo(() => {
-    const q = query.trim().toLowerCase();
+    const q = searchQuery.trim().toLowerCase();
 
-    const filtered = posts.filter(post => {
-      // Category filter
-      if (selectedCat !== 'All' && post.category !== selectedCat) return false;
-
-      // Tag filter
-      if (selectedTag && (!post.tags || !post.tags.some(t => t.toLowerCase() === selectedTag.toLowerCase()))) {
+    return posts.filter(post => {
+      // Category match
+      if (selectedCat !== 'All' && post.category !== selectedCat) {
         return false;
       }
-
-      // Read duration filter
-      const minutes = post.readMinutes || 7;
-      if (readDuration === 'quick' && minutes >= 7) return false;
-      if (readDuration === 'deep' && minutes < 7) return false;
-
-      // Query search
+      // Search match
       if (!q) return true;
-      const matchTitle = post.title.toLowerCase().includes(q);
-      const matchExcerpt = post.excerpt.toLowerCase().includes(q);
-      const matchAuthor = post.author?.name?.toLowerCase().includes(q);
-      const matchCatName = post.category.toLowerCase().includes(q);
+      const matchTitle = (post.title || '').toLowerCase().includes(q);
+      const matchExcerpt = (post.excerpt || '').toLowerCase().includes(q);
+      const matchCat = (post.category || '').toLowerCase().includes(q);
       const matchTags = (post.tags || []).some(t => t.toLowerCase().includes(q));
-      return matchTitle || matchExcerpt || matchAuthor || matchCatName || matchTags;
+      return matchTitle || matchExcerpt || matchCat || matchTags;
     });
+  }, [posts, selectedCat, searchQuery]);
 
-    // Sorting
-    return [...filtered].sort((a, b) => {
-      if (sortBy === 'newest') {
-        return new Date(b.isoDate) - new Date(a.isoDate);
-      }
-      if (sortBy === 'oldest') {
-        return new Date(a.isoDate) - new Date(b.isoDate);
-      }
-      if (sortBy === 'shortest') {
-        return (a.readMinutes || 7) - (b.readMinutes || 7);
-      }
-      if (sortBy === 'longest') {
-        return (b.readMinutes || 7) - (a.readMinutes || 7);
-      }
-      return 0;
-    });
-  }, [posts, selectedCat, query, selectedTag, readDuration, sortBy]);
-
-  // Check if default unmodified view
-  const isDefaultView = activeFiltersCount === 0;
-
-  // Featured post detection
-  const featuredPost = useMemo(() => {
-    if (!isDefaultView) return null;
-    return posts.find(p => p.featured) || posts[0] || null;
-  }, [posts, isDefaultView]);
-
-  // Main grid posts (excluding featured post when featured banner is shown)
+  // Posts for the 3-column grid (exclude featured post if in default view)
   const gridPosts = useMemo(() => {
-    if (featuredPost && isDefaultView) {
+    if (isDefaultView && featuredPost) {
       return filteredPosts.filter(p => p.slug !== featuredPost.slug);
     }
     return filteredPosts;
-  }, [filteredPosts, featuredPost, isDefaultView]);
+  }, [filteredPosts, isDefaultView, featuredPost]);
 
   return (
-    <div className="blog-directory-root">
-      {/* Mobile Sticky Quick Bar (Below Main Header) */}
-      <div className="blog-mobile-bar">
-        <div className="wrap">
-          <div className="blog-mobile-bar__inner">
-            <button
-              type="button"
-              onClick={() => setMobileDrawerOpen(true)}
-              className="blog-mobile-filter-trigger"
-              aria-label="Open filter sidebar"
-            >
-              <FilterSlidersIcon />
-              <span>Filters</span>
-              {activeFiltersCount > 0 && (
-                <span className="blog-filter-count-badge">{activeFiltersCount}</span>
-              )}
-            </button>
+    <div className="blog-ets-page-wrapper">
+      {/* =========================================================
+          1. ETS HERO SECTION
+          ========================================================= */}
+      <section className="blog-ets-hero" aria-label="Blog Header">
+        {/* Background Image with Dark Industrial Aesthetic */}
+        <img
+          src="/assets/images/about-campus.jpg"
+          alt="Engineering Knowledge & Insights"
+          className="blog-ets-hero__bg"
+          loading="eager"
+          decoding="sync"
+        />
+        {/* Exact Gradient Overlay from ETS */}
+        <div className="blog-ets-hero__overlay" />
 
-            <div className="blog-mobile-search">
-              <span className="blog-search-box__icon"><SearchIcon /></span>
+        <div className="wrap">
+          <div className="blog-ets-hero__container">
+            {/* News & Insights Pill Badge */}
+            <div className="blog-ets-hero__badge-row">
+              <span className="blog-ets-hero__badge">
+                News &amp; Insights
+              </span>
+            </div>
+
+            {/* Main Title */}
+            <h1 className="blog-ets-hero__title">
+              Engineering Knowledge, Shared
+            </h1>
+
+            {/* Subtitle */}
+            <p className="blog-ets-hero__desc">
+              Technical deep-dives, industry analysis, and the latest from our engineering and project teams.
+            </p>
+
+            {/* Feeds Row */}
+            <div className="blog-ets-hero__feeds">
+              <a
+                href="#feed-rss"
+                onClick={(e) => { e.preventDefault(); alert("RSS Feed available: /rss.xml"); }}
+                aria-label="Subscribe via RSS feed"
+                className="blog-ets-feed-btn"
+              >
+                <RssIcon />
+                <span>RSS</span>
+              </a>
+
+              <a
+                href="#feed-atom"
+                onClick={(e) => { e.preventDefault(); alert("Atom Feed available: /atom.xml"); }}
+                aria-label="Subscribe via Atom feed"
+                className="blog-ets-feed-btn"
+              >
+                <RssIcon />
+                <span>Atom</span>
+              </a>
+
+              <a
+                href="#feed-json"
+                onClick={(e) => { e.preventDefault(); alert("JSON Feed available: /feed.json"); }}
+                aria-label="Subscribe via JSON Feed"
+                className="blog-ets-feed-btn"
+              >
+                <CodeXmlIcon />
+                <span>JSON Feed</span>
+              </a>
+
+              <Link
+                href="/resources/"
+                aria-label="View all available feeds and engineering resources"
+                className="blog-ets-feed-btn blog-ets-feed-btn--accent"
+              >
+                <span>All feeds</span>
+                <ArrowUpRightIcon />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================
+          2. FEATURED ARTICLE SECTION (When in default view)
+          ========================================================= */}
+      {isDefaultView && featuredPost && (
+        <section className="blog-ets-featured-sec" aria-label="Featured Article">
+          <div className="wrap">
+            <Link
+              href={`/blog/${featuredPost.slug}/`}
+              className="blog-ets-featured-card group"
+            >
+              <div className="blog-ets-featured-grid">
+                {/* 16:10 / responsive cover image */}
+                <div className="blog-ets-featured-media">
+                  <img
+                    src={featuredPost.image}
+                    alt={featuredPost.title}
+                    loading="eager"
+                    className="blog-ets-featured-img"
+                  />
+                </div>
+
+                {/* Right content box */}
+                <div className="blog-ets-featured-content">
+                  <span className="blog-ets-featured-tag">
+                    Featured Article
+                  </span>
+
+                  <h2 className="blog-ets-featured-title">
+                    {featuredPost.title}
+                  </h2>
+
+                  <p className="blog-ets-featured-excerpt">
+                    {featuredPost.excerpt}
+                  </p>
+
+                  <div className="blog-ets-featured-link">
+                    <span>Read Article</span>
+                    <ArrowRightIcon />
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </div>
+        </section>
+      )}
+
+      {/* =========================================================
+          3. CATEGORY FILTERS & ARTICLE GRID SECTION
+          ========================================================= */}
+      <section className="blog-ets-grid-sec" aria-label="Articles Grid">
+        <div className="wrap">
+          {/* Category Filter Pills & Search Input */}
+          <div className="blog-ets-toolbar">
+            <div className="blog-ets-cat-tabs" role="tablist" aria-label="Filter by category">
+              {BLOG_CATEGORIES.map(cat => {
+                const isActive = selectedCat === cat;
+                return (
+                  <button
+                    key={cat}
+                    type="button"
+                    onClick={() => setSelectedCat(cat)}
+                    role="tab"
+                    aria-selected={isActive}
+                    className={`blog-ets-cat-pill${isActive ? ' is-active' : ''}`}
+                  >
+                    {cat}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Quick Search */}
+            <div className="blog-ets-search-wrap">
+              <span className="blog-ets-search-icon" aria-hidden="true">
+                <SearchIcon />
+              </span>
               <input
                 type="text"
                 placeholder="Search articles..."
-                value={query}
-                onChange={e => setQuery(e.target.value)}
-                className="blog-search-box__input blog-search-box__input--mobile"
+                value={searchQuery}
+                onChange={e => setSearchQuery(e.target.value)}
+                className="blog-ets-search-input"
+                aria-label="Search articles by title or keyword"
               />
-              {query && (
+              {searchQuery && (
                 <button
                   type="button"
-                  onClick={() => setQuery('')}
-                  className="blog-search-box__clear"
-                  aria-label="Clear search"
+                  onClick={() => setSearchQuery('')}
+                  className="blog-ets-search-clear"
+                  aria-label="Clear search input"
                 >
                   &times;
                 </button>
               )}
             </div>
           </div>
-        </div>
-      </div>
 
-      {/* Main Two-Column Layout */}
-      <div className="wrap blog-layout-wrap">
-        <div className="blog-split-container">
-          {/* =========================================================
-              SIDEBAR: FILTERS
-              ========================================================= */}
-          <aside
-            className={`blog-filter-sidebar${mobileDrawerOpen ? ' is-mobile-open' : ''}`}
-            aria-label="Article filter controls"
-          >
-            {/* Backdrop for Mobile */}
-            {mobileDrawerOpen && (
-              <div
-                className="blog-sidebar-backdrop"
-                onClick={() => setMobileDrawerOpen(false)}
-                aria-hidden="true"
-              />
-            )}
-
-            <div className="blog-sidebar-inner">
-              {/* Sidebar Header */}
-              <div className="blog-sidebar-header">
-                <div className="blog-sidebar-header__title">
-                  <FilterSlidersIcon />
-                  <h3>Filter Insights</h3>
-                  {activeFiltersCount > 0 && (
-                    <span className="blog-filter-count-badge">{activeFiltersCount}</span>
-                  )}
-                </div>
-
-                <div className="blog-sidebar-header__actions">
-                  {activeFiltersCount > 0 && (
-                    <button
-                      type="button"
-                      onClick={resetAllFilters}
-                      className="blog-sidebar-reset-btn"
-                    >
-                      Clear all
-                    </button>
-                  )}
-                  <button
-                    type="button"
-                    onClick={() => setMobileDrawerOpen(false)}
-                    className="blog-sidebar-close-btn"
-                    aria-label="Close filter drawer"
-                  >
-                    <CloseIcon />
-                  </button>
-                </div>
-              </div>
-
-              {/* Filter Section 1: Keyword Search */}
-              <div className="blog-filter-group blog-filter-group--search">
-                <label htmlFor="sidebar-blog-search" className="blog-filter-group__label">
-                  Keyword Search
-                </label>
-                <div className="blog-search-box blog-search-box--sidebar">
-                  <span className="blog-search-box__icon">
-                    <SearchIcon />
-                  </span>
-                  <input
-                    id="sidebar-blog-search"
-                    type="text"
-                    placeholder="Search titles, specs..."
-                    value={query}
-                    onChange={e => setQuery(e.target.value)}
-                    className="blog-search-box__input"
-                  />
-                  {query && (
-                    <button
-                      type="button"
-                      onClick={() => setQuery('')}
-                      className="blog-search-box__clear"
-                      aria-label="Clear query"
-                    >
-                      &times;
-                    </button>
-                  )}
-                </div>
-              </div>
-
-              {/* Filter Section 2: Categories */}
-              <div className="blog-filter-group">
-                <div className="blog-filter-group__head">
-                  <span className="blog-filter-group__label">Engineering Disciplines</span>
-                  {selectedCat !== 'All' && (
-                    <button
-                      type="button"
-                      onClick={() => setSelectedCat('All')}
-                      className="blog-filter-group__clear"
-                    >
-                      Reset
-                    </button>
-                  )}
-                </div>
-                <div className="blog-category-list" role="radiogroup" aria-label="Filter by category">
-                  {BLOG_CATEGORIES.map(cat => {
-                    const isSelected = selectedCat === cat;
-                    const count = catCounts[cat] || 0;
-                    return (
-                      <button
-                        key={cat}
-                        type="button"
-                        role="radio"
-                        aria-checked={isSelected}
-                        onClick={() => setSelectedCat(cat)}
-                        className={`blog-category-item${isSelected ? ' is-active' : ''}`}
-                      >
-                        <span className="blog-category-item__bullet" aria-hidden="true" />
-                        <span className="blog-category-item__name">{cat}</span>
-                        <span className="blog-category-item__count">{count}</span>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Filter Section 3: Reading Duration */}
-              <div className="blog-filter-group">
-                <div className="blog-filter-group__head">
-                  <span className="blog-filter-group__label">Reading Duration</span>
-                  {readDuration !== 'all' && (
-                    <button
-                      type="button"
-                      onClick={() => setReadDuration('all')}
-                      className="blog-filter-group__clear"
-                    >
-                      Reset
-                    </button>
-                  )}
-                </div>
-                <div className="blog-segmented-control">
-                  <button
-                    type="button"
-                    onClick={() => setReadDuration('all')}
-                    className={`blog-segment-btn${readDuration === 'all' ? ' is-active' : ''}`}
-                  >
-                    All
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setReadDuration('quick')}
-                    className={`blog-segment-btn${readDuration === 'quick' ? ' is-active' : ''}`}
-                  >
-                    &lt; 7 min
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setReadDuration('deep')}
-                    className={`blog-segment-btn${readDuration === 'deep' ? ' is-active' : ''}`}
-                  >
-                    ≥ 7 min
-                  </button>
-                </div>
-              </div>
-
-              {/* Filter Section 4: Sort Order */}
-              <div className="blog-filter-group">
-                <label htmlFor="blog-sort-select" className="blog-filter-group__label">
-                  Sort Order
-                </label>
-                <div className="blog-select-wrapper">
-                  <select
-                    id="blog-sort-select"
-                    value={sortBy}
-                    onChange={e => setSortBy(e.target.value)}
-                    className="blog-select-input"
-                  >
-                    <option value="newest">Newest First</option>
-                    <option value="oldest">Oldest First</option>
-                    <option value="shortest">Reading Time: Quickest</option>
-                    <option value="longest">Reading Time: Most In-Depth</option>
-                  </select>
-                </div>
-              </div>
-
-              {/* Filter Section 5: Popular Engineering Tags */}
-              <div className="blog-filter-group">
-                <div className="blog-filter-group__head">
-                  <span className="blog-filter-group__label">Popular Topics</span>
-                  {selectedTag && (
-                    <button
-                      type="button"
-                      onClick={() => setSelectedTag('')}
-                      className="blog-filter-group__clear"
-                    >
-                      Clear
-                    </button>
-                  )}
-                </div>
-                <div className="blog-tags-cloud">
-                  {BLOG_POPULAR_TAGS.map(tag => {
-                    const isSelected = selectedTag.toLowerCase() === tag.toLowerCase();
-                    return (
-                      <button
-                        key={tag}
-                        type="button"
-                        onClick={() => setSelectedTag(prev => prev.toLowerCase() === tag.toLowerCase() ? '' : tag)}
-                        className={`blog-tag-pill${isSelected ? ' is-active' : ''}`}
-                      >
-                        <TagIcon />
-                        <span>#{tag}</span>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Sidebar Engineering Assistance Banner */}
-              <div className="blog-sidebar-cta">
-                <h4>Technical Inquiry?</h4>
-                <p>
-                  Speak directly with our senior electrical designers about custom kVA, BIL insulation, or site testing.
-                </p>
-                <Link href="/contact/" className="blog-sidebar-cta__btn">
-                  <span>Contact Engineering</span>
-                  <ArrowRight />
-                </Link>
-              </div>
+          {/* Active Filter Notification Bar if searching/filtering */}
+          {!isDefaultView && (
+            <div className="blog-ets-filter-status">
+              <p>
+                Showing <strong>{gridPosts.length}</strong> {gridPosts.length === 1 ? 'article' : 'articles'}
+                {selectedCat !== 'All' && <span> in <strong>{selectedCat}</strong></span>}
+                {searchQuery && <span> matching <strong>&ldquo;{searchQuery}&rdquo;</strong></span>}
+              </p>
+              <button
+                type="button"
+                onClick={() => { setSelectedCat('All'); setSearchQuery(''); }}
+                className="blog-ets-reset-btn"
+              >
+                Reset filters
+              </button>
             </div>
-          </aside>
+          )}
 
-          {/* =========================================================
-              MAIN COLUMN: ARTICLES & RESULTS
-              ========================================================= */}
-          <main className="blog-main-content">
-            {/* Active Filters Toolbar / Chips */}
-            <div className="blog-results-header">
-              <div className="blog-results-summary">
-                <span className="blog-results-count">
-                  Showing <strong>{filteredPosts.length}</strong> {filteredPosts.length === 1 ? 'article' : 'articles'}
-                </span>
-                {activeFiltersCount > 0 && (
-                  <span className="blog-results-filtered-label">
-                    (filtered from {posts.length} total)
-                  </span>
-                )}
-              </div>
-
-              {/* Active Filter Chips */}
-              {activeFiltersCount > 0 && (
-                <div className="blog-active-chips-row">
-                  {selectedCat !== 'All' && (
-                    <button
-                      type="button"
-                      onClick={() => setSelectedCat('All')}
-                      className="blog-active-chip"
-                      title="Remove Category filter"
-                    >
-                      <span>Category: <strong>{selectedCat}</strong></span>
-                      <span className="blog-active-chip__x">&times;</span>
-                    </button>
-                  )}
-
-                  {selectedTag && (
-                    <button
-                      type="button"
-                      onClick={() => setSelectedTag('')}
-                      className="blog-active-chip"
-                      title="Remove Tag filter"
-                    >
-                      <span>Tag: <strong>#{selectedTag}</strong></span>
-                      <span className="blog-active-chip__x">&times;</span>
-                    </button>
-                  )}
-
-                  {readDuration !== 'all' && (
-                    <button
-                      type="button"
-                      onClick={() => setReadDuration('all')}
-                      className="blog-active-chip"
-                      title="Remove Duration filter"
-                    >
-                      <span>Duration: <strong>{readDuration === 'quick' ? '< 7 min' : '≥ 7 min'}</strong></span>
-                      <span className="blog-active-chip__x">&times;</span>
-                    </button>
-                  )}
-
-                  {query.trim() && (
-                    <button
-                      type="button"
-                      onClick={() => setQuery('')}
-                      className="blog-active-chip"
-                      title="Remove Query filter"
-                    >
-                      <span>Search: <strong>"{query}"</strong></span>
-                      <span className="blog-active-chip__x">&times;</span>
-                    </button>
-                  )}
-
-                  <button
-                    type="button"
-                    onClick={resetAllFilters}
-                    className="blog-clear-all-link"
-                  >
-                    Reset all
-                  </button>
-                </div>
-              )}
-            </div>
-
-            {/* Featured Article Banner (Only on clean default view) */}
-            {featuredPost && (
-              <section className="blog-featured-section" aria-label="Featured Article">
+          {/* 3-Column Article Grid */}
+          {gridPosts.length > 0 ? (
+            <div className="blog-ets-grid">
+              {gridPosts.map(post => (
                 <Link
-                  href={`/blog/${featuredPost.slug}/`}
-                  className="blog-featured-card group"
+                  key={post.slug}
+                  href={`/blog/${post.slug}/`}
+                  className="blog-ets-card group"
                 >
-                  <div className="blog-featured-card__media">
+                  {/* 16:10 Cover image */}
+                  <div className="blog-ets-card-media">
                     <img
-                      src={featuredPost.image}
-                      alt={featuredPost.title}
-                      loading="eager"
-                      decoding="async"
-                      className="blog-featured-card__img"
+                      src={post.image}
+                      alt={post.title}
+                      loading="lazy"
+                      className="blog-ets-card-img"
                     />
-                    <div className="blog-featured-card__overlay"></div>
                   </div>
-                  <div className="blog-featured-card__content">
-                    <div className="blog-featured-card__badges">
-                      <span className="blog-badge blog-badge--featured">Featured Article</span>
-                      <span className="blog-badge blog-badge--cat">{featuredPost.category}</span>
+
+                  {/* Card Body */}
+                  <div className="blog-ets-card-body">
+                    <div className="blog-ets-card-tag-row">
+                      <span className="blog-ets-card-tag">
+                        {post.category}
+                      </span>
                     </div>
-                    <h2 className="blog-featured-card__title">
-                      {featuredPost.title}
-                    </h2>
-                    <p className="blog-featured-card__excerpt">
-                      {featuredPost.excerpt}
+
+                    <h3 className="blog-ets-card-title">
+                      {post.title}
+                    </h3>
+
+                    <p className="blog-ets-card-excerpt">
+                      {post.excerpt}
                     </p>
-                    <div className="blog-featured-card__meta">
-                      <div className="blog-author-mini">
-                        {featuredPost.author?.avatar && (
-                          <img
-                            src={featuredPost.author.avatar}
-                            alt={featuredPost.author.name}
-                            className="blog-author-mini__img"
-                          />
-                        )}
-                        <div>
-                          <span className="blog-author-mini__name">{featuredPost.author?.name}</span>
-                          <span className="blog-author-mini__role">{featuredPost.author?.role}</span>
-                        </div>
-                      </div>
-                      <div className="blog-featured-card__time">
-                        <span className="blog-meta-item">
-                          <CalendarIcon /> {featuredPost.date}
-                        </span>
-                        <span className="blog-meta-item">
-                          <ClockIcon /> {featuredPost.readTime}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="blog-featured-card__cta">
-                      <span>Read Full Article</span>
-                      <ArrowRight />
+
+                    {/* Card Footer with hover-revealing arrow */}
+                    <div className="blog-ets-card-footer">
+                      <span className="blog-ets-card-meta">
+                        {post.readTime || `${post.readMinutes || 7} min read`}
+                      </span>
+                      <span className="blog-ets-card-arrow">
+                        <ArrowRightIcon />
+                      </span>
                     </div>
                   </div>
                 </Link>
-              </section>
-            )}
-
-            {/* Article Cards Grid */}
-            {gridPosts.length > 0 ? (
-              <div className="blog-grid" role="feed">
-                {gridPosts.map(post => (
-                  <article key={post.slug} className="blog-card-item">
-                    <Link href={`/blog/${post.slug}/`} className="blog-card group">
-                      <div className="blog-card__media">
-                        <img
-                          src={post.image}
-                          alt={post.title}
-                          loading="lazy"
-                          decoding="async"
-                          className="blog-card__img"
-                        />
-                        <div className="blog-card__cat-pill">
-                          {post.category}
-                        </div>
-                      </div>
-
-                      <div className="blog-card__body">
-                        <div className="blog-card__time-row">
-                          <span className="blog-meta-item">
-                            <CalendarIcon /> {post.date}
-                          </span>
-                          <span className="blog-meta-sep">•</span>
-                          <span className="blog-meta-item">
-                            <ClockIcon /> {post.readTime}
-                          </span>
-                        </div>
-
-                        <h3 className="blog-card__title">
-                          {post.title}
-                        </h3>
-
-                        <p className="blog-card__excerpt">
-                          {post.excerpt}
-                        </p>
-
-                        {/* Card Tag Pills */}
-                        {post.tags && post.tags.length > 0 && (
-                          <div className="blog-card__tags">
-                            {post.tags.slice(0, 3).map(tag => (
-                              <span key={tag} className="blog-card__tag">
-                                #{tag}
-                              </span>
-                            ))}
-                          </div>
-                        )}
-
-                        <div className="blog-card__footer">
-                          <div className="blog-card__author">
-                            {post.author?.avatar && (
-                              <img
-                                src={post.author.avatar}
-                                alt=""
-                                className="blog-card__author-avatar"
-                              />
-                            )}
-                            <span className="blog-card__author-name">{post.author?.name}</span>
-                          </div>
-                          <span className="blog-card__arrow" aria-hidden="true">
-                            <ArrowRight />
-                          </span>
-                        </div>
-                      </div>
-                    </Link>
-                  </article>
-                ))}
-              </div>
-            ) : (
-              <div className="blog-empty-state">
-                <div className="blog-empty-state__icon">
-                  <SearchIcon />
-                </div>
-                <h3>No Matching Technical Articles</h3>
-                <p>
-                  No articles matched your active filter selections. Try clearing your search keyword, category, or duration filters.
-                </p>
-                <button
-                  type="button"
-                  onClick={resetAllFilters}
-                  className="blog-empty-state__btn"
-                >
-                  Clear All Filters
-                </button>
-              </div>
-            )}
-          </main>
+              ))}
+            </div>
+          ) : (
+            <div className="blog-ets-empty">
+              <h3>No articles found</h3>
+              <p>We could not find any insights matching your filter or search keywords.</p>
+              <button
+                type="button"
+                onClick={() => { setSelectedCat('All'); setSearchQuery(''); }}
+                className="blog-ets-empty__btn"
+              >
+                View all articles
+              </button>
+            </div>
+          )}
         </div>
+      </section>
 
-      </div>
+      {/* =========================================================
+          4. HAVE A PROJECT IN MIND? CTA BANNER
+          ========================================================= */}
+      <section className="blog-ets-cta-sec" aria-label="Project Inquiry">
+        <div className="wrap">
+          <div className="blog-ets-cta-card">
+            <div className="blog-ets-cta-inner">
+              <div>
+                <h2 className="blog-ets-cta-heading">
+                  Have a Project in Mind?
+                </h2>
+                <p className="blog-ets-cta-sub">
+                  Our engineering team is ready to discuss your transformer and turnkey substation requirements.
+                </p>
+              </div>
+
+              <div className="blog-ets-cta-btn-wrap">
+                <Link
+                  href="/contact/"
+                  className="blog-ets-cta-action group"
+                >
+                  <span>Get in Touch</span>
+                  <ArrowRightIcon />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

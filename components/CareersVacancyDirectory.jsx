@@ -42,8 +42,8 @@ export default function CareersVacancyDirectory() {
   const filteredVacancies = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
     return VACANCIES.filter((v) => {
-      const matchDept = activeDept === 'all' || v.dept === activeDept;
-      const matchLoc = locationFilter === 'all' || v.locationCode === locationFilter;
+      const matchDept = activeDept === 'all' || v.dept.toLowerCase() === activeDept.toLowerCase();
+      const matchLoc = locationFilter === 'all' || v.locationCode.toLowerCase() === locationFilter.toLowerCase();
       const matchSearch = !q || (
         v.title.toLowerCase().includes(q) ||
         v.summary.toLowerCase().includes(q) ||
@@ -62,22 +62,10 @@ export default function CareersVacancyDirectory() {
 
   const handleDeptClick = (deptId) => {
     setActiveDept(deptId);
-    if (deptId !== 'all' && locationFilter !== 'all') {
-      const existsInLoc = VACANCIES.some(v => v.dept === deptId && v.locationCode === locationFilter);
-      if (!existsInLoc) {
-        setLocationFilter('all');
-      }
-    }
   };
 
   const handleLocationChange = (locId) => {
     setLocationFilter(locId);
-    if (locId !== 'all' && activeDept !== 'all') {
-      const existsInDept = VACANCIES.some(v => v.locationCode === locId && v.dept === activeDept);
-      if (!existsInDept) {
-        setActiveDept('all');
-      }
-    }
   };
 
   const isFiltered = activeDept !== 'all' || locationFilter !== 'all' || searchQuery.trim().length > 0;
@@ -210,8 +198,7 @@ export default function CareersVacancyDirectory() {
             return (
               <article
                 key={job.slug}
-                className={`vacancy-pcard fade-in-up ${isExpanded ? 'is-expanded' : ''}`}
-                data-delay={(idx % 3) * 80}
+                className={`vacancy-pcard ${isExpanded ? 'is-expanded' : ''}`}
               >
                 {/* Card Header Top */}
                 <div className="vacancy-pcard__top">
