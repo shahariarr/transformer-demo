@@ -1,4 +1,3 @@
-import RawSvg from './RawSvg';
 
 const CAREERS_HIGHLIGHTS = [
   {

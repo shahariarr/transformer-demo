@@ -10538,10 +10538,11 @@ a.btn.btn--light {
   display: flex;
   flex-direction: column;
   gap: 14px;
-  background: #F8FAFC;
-  border: 1.5px solid #E2E8F0;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  box-shadow: 0 4px 20px -6px rgba(10, 30, 60, 0.05);
   border-radius: 16px;
-  padding: 16px 20px;
+  padding: 18px 22px;
   text-align: left;
 }
 
