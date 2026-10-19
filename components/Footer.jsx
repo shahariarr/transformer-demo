@@ -12,7 +12,7 @@ const Wa = () => <svg viewBox="0 0 24 24" width="17" height="17" fill="currentCo
 
 const QUICK_LINKS = [
   ['/', 'Home'], ['/about/', 'About Us'], ['/products/', 'Products'],
-  ['/projects/', 'Projects'], ['/certifications/', 'Quality & Testing'], ['/resources/faq/', 'FAQ'], ['/contact/', 'Contact Us']
+  ['/projects/', 'Projects'], ['/blog/', 'Engineering Blog'], ['/certifications/', 'Quality & Testing'], ['/resources/faq/', 'FAQ'], ['/contact/', 'Contact Us']
 ];
 const PRODUCTS = [
   'Oil-Immersed Transformer', 'Dry Type Transformer', 'Pad Mounted Transformer',
