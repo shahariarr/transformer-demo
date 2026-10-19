@@ -66,9 +66,17 @@ export default function Projects({ viewAll = true }) {
     track.scrollTo({ left: card.offsetLeft - (track.clientWidth - card.offsetWidth) / 2, behavior: reduced() ? 'auto' : 'smooth' });
   }, [active, filter]);
 
+  // Clean up pending scroll timer on unmount
+  useEffect(() => {
+    return () => {
+      clearTimeout(scrollTimer.current);
+    };
+  }, []);
+
   // Index of the card whose centre is nearest the track's centre
   const nearest = () => {
     const track = trackRef.current;
+    if (!track) return 0;
     const mid = track.scrollLeft + track.clientWidth / 2;
     let best = 0, dist = Infinity;
     cardRefs.current.slice(0, count).forEach((c, i) => {
@@ -84,6 +92,7 @@ export default function Projects({ viewAll = true }) {
     if (drag.current) return;
     clearTimeout(scrollTimer.current);
     scrollTimer.current = setTimeout(() => {
+      if (!trackRef.current) return;
       const best = nearest();
       if (best !== active) { fromScroll.current = true; setActive(best); }
     }, 140);
@@ -92,23 +101,23 @@ export default function Projects({ viewAll = true }) {
   // Mouse drag: move the track with the pointer, then settle on the nearest card.
   // A quick short flick still moves one card in the drag direction.
   const onPointerDown = e => {
-    if (e.pointerType !== 'mouse' || e.button !== 0 || count < 2) return;
+    if (e.pointerType !== 'mouse' || e.button !== 0 || count < 2 || !trackRef.current) return;
     drag.current = { x: e.clientX, left: trackRef.current.scrollLeft, id: e.pointerId, moved: false };
     dragged.current = false;
   };
 
   const onPointerMove = e => {
     const d = drag.current;
-    if (!d || e.pointerId !== d.id) return;
+    if (!d || e.pointerId !== d.id || !trackRef.current) return;
     const dx = e.clientX - d.x;
     if (!d.moved) {
       if (Math.abs(dx) < 6) return;
       d.moved = true;
-      trackRef.current.setPointerCapture(d.id);
-      trackRef.current.dataset.dragging = '';
+      trackRef.current?.setPointerCapture?.(d.id);
+      if (trackRef.current) trackRef.current.dataset.dragging = '';
     }
     e.preventDefault();
-    trackRef.current.scrollLeft = d.left - dx;
+    if (trackRef.current) trackRef.current.scrollLeft = d.left - dx;
   };
 
   const endDrag = e => {
@@ -118,12 +127,15 @@ export default function Projects({ viewAll = true }) {
     if (!d.moved) return;
     dragged.current = true;
     const track = trackRef.current;
+    if (!track) return;
     const dx = e.clientX - d.x;
     let target = nearest();
     if (target === active && Math.abs(dx) > 60) target = Math.min(count - 1, Math.max(0, active + (dx < 0 ? 1 : -1)));
     const card = cardRefs.current[target];
-    track.scrollTo({ left: card.offsetLeft - (track.clientWidth - card.offsetWidth) / 2, behavior: reduced() ? 'auto' : 'smooth' });
-    setTimeout(() => { delete track.dataset.dragging; }, 450);
+    if (card) {
+      track.scrollTo({ left: card.offsetLeft - (track.clientWidth - card.offsetWidth) / 2, behavior: reduced() ? 'auto' : 'smooth' });
+    }
+    setTimeout(() => { if (track) delete track.dataset.dragging; }, 450);
     if (target !== active) { fromScroll.current = true; setActive(target); }
   };
 
@@ -137,7 +149,8 @@ export default function Projects({ viewAll = true }) {
 
   // Autoplay only while on screen, not hovered, tab visible and motion allowed
   useEffect(() => {
-    const sec = trackRef.current.closest('section');
+    const sec = trackRef.current?.closest('section');
+    if (!sec) return;
     const io = new IntersectionObserver(([e]) => setVisible(e.isIntersecting), { threshold: 0.25 });
     io.observe(sec);
     return () => io.disconnect();
