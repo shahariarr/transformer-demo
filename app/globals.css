@@ -11309,52 +11309,112 @@ a.btn.btn--light {
 }
 
 .job-target-card {
-  padding: 24px 28px;
-  background: linear-gradient(135deg, #0A1E3C 0%, #0F2D5A 100%);
-  border-radius: 16px;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(1.6rem, 3.2vw, 2.25rem) clamp(1.6rem, 3.6vw, 2.5rem);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
   color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 20px;
-  box-shadow: 0 8px 24px rgba(10, 30, 60, 0.12);
+  gap: 22px;
+  background:
+    radial-gradient(ellipse 55% 120% at 100% 50%, rgba(95, 176, 255, 0.32), transparent 70%),
+    radial-gradient(ellipse 40% 90% at 0% 100%, rgba(11, 92, 171, 0.55), transparent 70%),
+    var(--grad-hero);
+  box-shadow: 0 20px 48px -18px rgba(6, 19, 40, 0.55);
+}
+
+/* Blueprint grid pattern */
+.job-target-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px) 0 0 / 28px 28px,
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px) 0 0 / 28px 28px;
+  -webkit-mask-image: linear-gradient(90deg, transparent 5%, #000 65%);
+  mask-image: linear-gradient(90deg, transparent 5%, #000 65%);
+  pointer-events: none;
+}
+
+/* Concentric technical radar circle watermark */
+.job-target-card::after {
+  content: "";
+  position: absolute;
+  right: -70px;
+  top: 50%;
+  z-index: -1;
+  width: 290px;
+  height: 290px;
+  translate: 0 -50%;
+  border-radius: 50%;
+  background: repeating-radial-gradient(circle, transparent 0 32px, rgba(255, 255, 255, 0.07) 33px 34px);
+  pointer-events: none;
 }
 
 .job-target-tag {
-  display: inline-block;
-  font-size: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.32rem 0.75rem;
+  border: 1px solid rgba(143, 195, 245, 0.35);
+  border-radius: 999px;
+  background: rgba(95, 176, 255, 0.12);
+  font-size: 0.68rem;
   font-weight: 800;
-  letter-spacing: 0.1em;
-  color: #38BDF8;
-  margin-bottom: 4px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--on-dark-label, #7DD3FC);
+  margin-bottom: 0.6rem;
+}
+
+.job-target-tag::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--sky, #38BDF8);
+  box-shadow: 0 0 0 2px rgba(95, 176, 255, 0.25), 0 0 8px var(--sky, #38BDF8);
 }
 
 .job-target-title {
-  margin: 0 0 8px;
-  font-size: 1.55rem;
+  margin: 0 0 10px;
+  font-size: clamp(1.4rem, 2.5vw, 1.85rem);
   font-weight: 850;
   color: #ffffff;
   line-height: 1.25;
+  letter-spacing: -0.01em;
 }
 
 .job-target-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 7px;
 }
 
 .target-pill {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  padding: 3.5px 10px;
+  gap: 6px;
+  padding: 4px 12px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(8px);
   font-size: 11.5px;
   font-weight: 650;
   color: #E2E8F0;
+  transition: all 0.2s ease;
+}
+
+.target-pill:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .target-pill svg {
@@ -11373,7 +11433,7 @@ a.btn.btn--light {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  min-width: 280px;
+  min-width: 290px;
 }
 
 .job-switch-label {
@@ -11381,33 +11441,35 @@ a.btn.btn--light {
   font-weight: 750;
   color: #94A3B8;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
 }
 
 .job-switch-select {
   width: 100%;
   appearance: none;
   -webkit-appearance: none;
-  padding: 10px 34px 10px 14px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1.5px solid rgba(255, 255, 255, 0.25);
-  border-radius: 10px;
-  font-size: 12.5px;
-  font-weight: 700;
+  padding: 11px 36px 11px 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.22);
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 650;
   color: #ffffff;
   outline: none;
   cursor: pointer;
+  backdrop-filter: blur(8px);
   transition: all 0.2s ease;
 }
 
 .job-switch-select option {
-  background: #0A1E3C;
+  background: #0B192C;
   color: #ffffff;
 }
 
 .job-switch-select:focus {
   border-color: #38BDF8;
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25);
 }
 
 .job-target-switch .vacancy-select-arrow {
