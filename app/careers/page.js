@@ -1,58 +1,73 @@
-import { PageHero, Icon } from '@/components/PageParts';
-import { CAREER_REASONS, CAREER_AREAS } from '@/lib/resources';
-import { DATA } from '@/lib/data';
+import { PageHero } from '@/components/PageParts';
+import CareersVacancyDirectory from '@/components/CareersVacancyDirectory';
+import Link from 'next/link';
 
 export const metadata = {
-  title: 'Careers',
-  description: 'Build what powers industry. Careers in transformer design, manufacturing, testing and field service at BPEL.'
+  title: 'Careers & Open Vacancies | Engineering Opportunities at BPEL',
+  description: 'Explore open engineering vacancies in transformer design, high-voltage testing, plant manufacturing, and substation commissioning at Basic Power Engineering Ltd.'
 };
 
-const ICONS = [
-  '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>',
-  '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
-  '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
-  '<polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>'
-];
-
 export default function CareersPage() {
-  const apply = `mailto:${DATA.contact.email}?subject=${encodeURIComponent('Job application')}`;
   return (
     <>
-      <PageHero crumbs={[{ label: 'About', href: '/about/' }, { label: 'Careers' }]} label="CAREERS" title="Build What Powers Industry"
-        desc="Join the engineers, technicians and specialists who design, build and commission power equipment."
-        image="/assets/images/lifecycle/04-manufacturing-fat.jpg">
-        <a className="btn btn--primary" href={apply}>Send Your CV</a>
+      <PageHero
+        crumbs={[{ label: 'About', href: '/about/' }, { label: 'Careers' }]}
+        label="CAREERS & ENGINEERING TALENT"
+        title="Build What Powers the Nation"
+        desc="Join the engineers, technicians, and specialists who design, manufacture, and commission high-voltage power transformers and turnkey substations across Bangladesh."
+        image="/assets/images/lifecycle/04-manufacturing-fat.jpg"
+      >
+        <a className="btn btn--primary" href="#vacancies">
+          <span>Explore Open Positions</span>
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M12 5v14M19 12l-7 7-7-7" />
+          </svg>
+        </a>
+        <Link className="btn btn--ghost" href="/careers/apply?job=open-application">
+          <span>Submit Open CV</span>
+        </Link>
       </PageHero>
 
-      <section className="sec" aria-label="Why join us">
+      {/* Currently Open Vacancies Section */}
+      <section id="vacancies" className="sec" aria-label="Currently Open Vacancies">
         <div className="wrap">
-          <header className="sec-head fade-in-up"><p className="label">WHY JOIN US</p><h2>Work that matters, every day</h2></header>
-          <div className="lgrid">
-            {CAREER_REASONS.map((r, i) => (
-              <div className="panel fade-in-up" data-delay={i * 80} key={r.t}>
-                <span className="lcard__icon" style={{ margin: 0 }} aria-hidden="true"><Icon d={ICONS[i]} /></span>
-                <h3>{r.t}</h3>
-                <p style={{ margin: 0, color: 'var(--ink-2)' }}>{r.d}</p>
-              </div>
-            ))}
-          </div>
+          <CareersVacancyDirectory />
         </div>
       </section>
 
-      <section className="sec sec--alt" aria-label="Open positions">
-        <div className="wrap split">
-          <div>
-            <p className="label fade-in-up">TEAMS</p>
-            <h2 className="fade-in-up" data-delay="80">Where you could work</h2>
-            <ul className="ticks ticks--2col fade-in-up" data-delay="160" style={{ marginTop: '1.5rem' }}>
-              {CAREER_AREAS.map(a => <li key={a}>{a}</li>)}
-            </ul>
+      {/* Transparent Recruitment Roadmap */}
+      <section className="sec sec--alt" aria-label="Our Hiring Process">
+        <div className="wrap">
+          <div className="recruitment-roadmap fade-in-up">
+            <div className="roadmap-head">
+              <span className="roadmap-tag">TRANSPARENT RECRUITMENT</span>
+              <h3 className="roadmap-title">What to Expect During Your Application</h3>
+              <p className="roadmap-desc">Our selection process assesses engineering fundamentals, safety mindset, and project execution rigor.</p>
+            </div>
+
+            <div className="roadmap-steps-grid">
+              <div className="roadmap-step">
+                <span className="step-num">01</span>
+                <h4>Online Application</h4>
+                <p>Submit your credentials through our online portal. Our technical HR team reviews submissions within 3 business days.</p>
+              </div>
+              <div className="roadmap-step">
+                <span className="step-num">02</span>
+                <h4>Technical Discussion</h4>
+                <p>Engage in a structured interview with senior discipline heads evaluating electromagnetic or plant operational experience.</p>
+              </div>
+              <div className="roadmap-step">
+                <span className="step-num">03</span>
+                <h4>Facility / Lab Visit</h4>
+                <p>Tour our Gazipur plant or Dhaka design office, meet your team, and discuss live transformer engineering challenges.</p>
+              </div>
+              <div className="roadmap-step">
+                <span className="step-num">04</span>
+                <h4>Formal Offer &amp; Onboarding</h4>
+                <p>Receive a comprehensive offer package with full benefits, followed by structured mentorship and safety induction.</p>
+              </div>
+            </div>
           </div>
-          <aside className="panel fade-in-right">
-            <h3>Open positions</h3>
-            <p style={{ margin: 0, color: 'var(--ink-2)' }}>No vacancies are listed on this demo site yet. Send your CV and tell us which team interests you; we keep applications on file for future roles.</p>
-            <a className="btn btn--primary" href={apply}>Send Your CV</a>
-          </aside>
         </div>
       </section>
     </>
