@@ -21,7 +21,7 @@ export default async function ServicePage({ params }) {
   const s = find((await params).slug);
   if (!s) notFound();
 
-  const otherServices = SERVICES.filter(item => item.slug !== s.slug);
+  const allServices = SERVICES;
 
   return (
     <>
@@ -47,7 +47,7 @@ export default async function ServicePage({ params }) {
       {/* Main Service Overview & Scope Section */}
       <section className="sec" aria-label="Service overview and scope">
         <div className="wrap detail">
-          {/* Left Column: Interactive Media Gallery + SLA Anchor Card */}
+          {/* Left Column: Interactive Media Gallery */}
           <div className="detail__media-col">
             <DetailGallery
               mainImage={s.image}
@@ -55,31 +55,6 @@ export default async function ServicePage({ params }) {
               alt={s.title}
               badgeLabel={s.badge || 'Field & Factory View'}
             />
-
-            {/* Service Field Readiness & Assurance Card */}
-            <div className="service-side-assurance fade-in-up" role="region" aria-label="Service Commitments">
-              <div className="service-side-assurance__head">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                  <polyline points="9 12 11 14 15 10" />
-                </svg>
-                <span>ENGINEERING COMMITMENTS</span>
-              </div>
-              <ul className="service-side-assurance__list">
-                <li>
-                  <strong>100% FAT Witness Access</strong>
-                  <p>Direct client and third-party inspection in accredited high-voltage testing bay.</p>
-                </li>
-                <li>
-                  <strong>24/7 Field Rapid Response</strong>
-                  <p>Certified substation engineers ready for nationwide emergency deployment.</p>
-                </li>
-                <li>
-                  <strong>Turnkey Single Accountability</strong>
-                  <p>One unified engineering team from design review to final energisation.</p>
-                </li>
-              </ul>
-            </div>
           </div>
 
           {/* Right Column: Overview, Highlights, and Scope */}
@@ -148,47 +123,67 @@ export default async function ServicePage({ params }) {
         <section className="sec sec--alt" aria-label="Engineering discipline and methodology">
           <div className="wrap">
             <header className="sec-head fade-in-up">
-              <p className="label">ENGINEERING DISCIPLINE</p>
+              <p className="label">ENGINEERING DISCIPLINE &amp; STANDARDS</p>
               <h2>{s.deepDive.heading}</h2>
-              <p className="sec-head__desc">{s.deepDive.overview}</p>
             </header>
 
-            <div className="service-methodology-grid">
-              {/* Secondary Narrative Banner */}
-              {s.deepDive.overviewSecondary && (
-                <div className="service-narrative-card fade-in-up">
-                  <div className="service-narrative-head">
-                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
-                      <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+            {/* Relocated Executive Engineering Commitments Strip */}
+            <div className="service-commitments-grid fade-in-up" role="region" aria-label="Engineering Commitments">
+              <div className="service-commitment-item">
+                <div className="service-commitment-icon">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    <polyline points="9 12 11 14 15 10" />
+                  </svg>
+                </div>
+                <div className="service-commitment-body">
+                  <h4>100% FAT Witness Access</h4>
+                  <p>Direct client and third-party inspection in accredited high-voltage testing bay.</p>
+                </div>
+              </div>
+
+              <div className="service-commitment-item">
+                <div className="service-commitment-icon">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                  </svg>
+                </div>
+                <div className="service-commitment-body">
+                  <h4>24/7 Field Rapid Response</h4>
+                  <p>Certified substation engineers ready for nationwide emergency deployment.</p>
+                </div>
+              </div>
+
+              <div className="service-commitment-item">
+                <div className="service-commitment-icon">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                    <polyline points="22 4 12 14.01 9 11.01" />
+                  </svg>
+                </div>
+                <div className="service-commitment-body">
+                  <h4>Turnkey Single Accountability</h4>
+                  <p>One unified engineering team from design review to final energisation.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* 4 Capabilities Cards */}
+            <div className="service-caps-grid">
+              {s.deepDive.capabilities.map((cap, idx) => (
+                <div key={idx} className="service-cap-card fade-in-up" data-delay={idx * 70}>
+                  <div className="service-cap-num">0{idx + 1}</div>
+                  <h4>{cap.title}</h4>
+                  <p>{cap.desc}</p>
+                  <div className="service-cap-verified">
+                    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <polyline points="20 6 9 17 4 12" />
                     </svg>
-                    <h4>Quality &amp; Traceability Commitment</h4>
-                  </div>
-                  <p>{s.deepDive.overviewSecondary}</p>
-                  <div className="service-narrative-tags">
-                    <span>100% FAT Witness Access</span>
-                    <span>Direct Utility Calibration</span>
-                    <span>Zero Deviation Tolerance</span>
+                    <span>Verified by BPEL Standards</span>
                   </div>
                 </div>
-              )}
-
-              {/* 4 Capabilities Cards */}
-              <div className="service-caps-grid">
-                {s.deepDive.capabilities.map((cap, idx) => (
-                  <div key={idx} className="service-cap-card fade-in-up" data-delay={idx * 70}>
-                    <div className="service-cap-num">0{idx + 1}</div>
-                    <h4>{cap.title}</h4>
-                    <p>{cap.desc}</p>
-                    <div className="service-cap-verified">
-                      <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                        <polyline points="20 6 9 17 4 12" />
-                      </svg>
-                      <span>Verified by BPEL Standards</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              ))}
             </div>
           </div>
         </section>
@@ -207,7 +202,7 @@ export default async function ServicePage({ params }) {
             </header>
 
             <div className="service-specs-wrap">
-              {/* Native Spec-Table */}
+              {/* Seamless Spec-Table inside Clean Unified Card */}
               <div className="service-specs-card fade-in-up">
                 <div className="service-specs-card__head">
                   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -217,7 +212,7 @@ export default async function ServicePage({ params }) {
                   </svg>
                   <h3>Key Technical Parameters</h3>
                 </div>
-                <table className="spec-table">
+                <table className="service-spec-table">
                   <tbody>
                     {s.specs.map(item => (
                       <tr key={item.label}>
@@ -330,7 +325,7 @@ export default async function ServicePage({ params }) {
         </section>
       )}
 
-      {/* More Services Navigation */}
+      {/* More Services Navigation - 4 Full Cards */}
       <section className="sec" aria-label="Other services">
         <div className="wrap">
           <header className="sec-head fade-in-up">
@@ -340,15 +335,15 @@ export default async function ServicePage({ params }) {
               Explore complementary electrical engineering services to streamline project execution.
             </p>
           </header>
-          <div className="lgrid">
-            {otherServices.map((o, i) => (
+          <div className="services-more-grid">
+            {allServices.map((o, i) => (
               <LinkCard
                 key={o.slug}
                 href={`/services/${o.slug}/`}
                 image={o.image}
                 title={o.title}
                 text={o.short}
-                delay={i * 80}
+                delay={i * 70}
               />
             ))}
           </div>

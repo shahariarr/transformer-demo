@@ -11818,12 +11818,13 @@ a.btn.btn--light {
 }
 
 /* Technical Specifications & Deliverables Matrix */
+/* Technical Specifications & Deliverables Matrix */
 .service-specs-wrap {
   display: grid;
-  grid-template-columns: 7fr 5fr;
-  gap: 1.75rem;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+  gap: 2rem;
   margin-top: 2rem;
-  align-items: start;
+  align-items: stretch;
 }
 
 .service-specs-card,
@@ -11835,57 +11836,73 @@ a.btn.btn--light {
   overflow: hidden;
 }
 
+.service-specs-card {
+  display: flex;
+  flex-direction: column;
+}
+
 .service-specs-card__head {
   display: flex;
   align-items: center;
   gap: .75rem;
-  padding: 1.35rem 1.65rem;
-  background: var(--alt);
+  padding: 1.25rem 1.65rem;
+  background: #F4F8FC;
   border-bottom: 1px solid var(--line);
 }
 
 .service-specs-card__head svg {
   color: var(--primary);
+  flex-shrink: 0;
 }
 
 .service-specs-card__head h3 {
-  font-size: 1.1rem;
+  font-size: 1.12rem;
   font-weight: 800;
   color: var(--navy);
   margin: 0;
+  letter-spacing: -.01em;
 }
 
-.service-specs-table {
-  display: flex;
-  flex-direction: column;
+.service-spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+  background: #ffffff;
 }
 
-.service-spec-row {
-  display: grid;
-  grid-template-columns: 2fr 3fr;
-  padding: 1rem 1.65rem;
+.service-spec-table tr {
   border-bottom: 1px solid var(--line);
-  align-items: center;
-  font-size: .875rem;
+  transition: background-color .15s ease;
 }
 
-.service-spec-row:last-child {
+.service-spec-table tr:last-child {
   border-bottom: none;
 }
 
-.service-spec-row:nth-child(even) {
-  background: rgba(247, 249, 252, 0.5);
+.service-spec-table tr:hover {
+  background: rgba(11, 92, 171, 0.025);
 }
 
-.service-spec-label {
+.service-spec-table th,
+.service-spec-table td {
+  padding: 1.05rem 1.65rem;
+  text-align: left;
+  vertical-align: middle;
+  font-size: .915rem;
+  line-height: 1.5;
+}
+
+.service-spec-table th {
+  width: 36%;
   font-weight: 700;
   color: var(--navy);
+  background: transparent;
+  border-right: 1px solid var(--line);
 }
 
-.service-spec-val {
-  color: var(--text);
+.service-spec-table td {
+  color: var(--ink-2);
   font-weight: 500;
-  line-height: 1.45;
 }
 
 /* Deliverables Card */
@@ -12076,57 +12093,81 @@ a.btn.btn--light {
   gap: 1.35rem;
 }
 
-.service-side-assurance {
+/* Executive Engineering Commitments Strip (3-Column Trust Grid) */
+.service-commitments-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.service-commitment-item {
   background: #ffffff;
   border: 1px solid var(--line);
   border-radius: 14px;
-  padding: 1.35rem 1.5rem;
+  padding: 1.35rem 1.45rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
   box-shadow: 0 4px 18px -4px rgba(10, 30, 60, 0.05);
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
 }
 
-.service-side-assurance__head {
+.service-commitment-item:hover {
+  transform: translateY(-2px);
+  border-color: rgba(11, 92, 171, 0.35);
+  box-shadow: 0 10px 24px -6px rgba(10, 30, 60, 0.08);
+}
+
+.service-commitment-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: var(--primary-50);
+  color: var(--primary);
   display: flex;
   align-items: center;
-  gap: .55rem;
-  font-size: .75rem;
-  font-weight: 800;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: var(--primary);
-  margin-bottom: 1.15rem;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1px solid rgba(11, 92, 171, 0.15);
 }
 
-.service-side-assurance__head svg {
-  color: #16a34a;
-}
-
-.service-side-assurance__list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: .95rem;
-}
-
-.service-side-assurance__list li {
-  display: flex;
-  flex-direction: column;
-  gap: .2rem;
-}
-
-.service-side-assurance__list strong {
-  font-size: .885rem;
+.service-commitment-body h4 {
+  font-size: .95rem;
   font-weight: 800;
   color: var(--navy);
+  margin: 0 0 .3rem 0;
   line-height: 1.3;
 }
 
-.service-side-assurance__list p {
-  font-size: .8rem;
+.service-commitment-body p {
+  font-size: .835rem;
   color: var(--muted);
+  line-height: 1.5;
   margin: 0;
-  line-height: 1.45;
+}
+
+/* More Services Quad Grid (4 Cards Across) */
+.services-more-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.35rem;
+  margin-top: 1.75rem;
+}
+
+@media (max-width: 1100px) {
+  .services-more-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .service-commitments-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .services-more-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .service-cap-verified {
