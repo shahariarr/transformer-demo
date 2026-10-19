@@ -108,13 +108,17 @@ export default function CareersVacancyDirectory() {
           </div>
 
           <div className="vacancies-loc-filter">
-            <label htmlFor="loc-select" className="visually-hidden">Filter by Location</label>
             <div className="vacancy-select-wrap">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="loc-icon" aria-hidden="true">
+                <path d="M12 21s7-6 7-11a7 7 0 0 0-14 0c0 5 7 11 7 11z" />
+                <circle cx="12" cy="10" r="2.5" />
+              </svg>
               <select
                 id="loc-select"
                 value={locationFilter}
                 onChange={(e) => handleLocationChange(e.target.value)}
                 className="vacancy-loc-select"
+                aria-label="Filter vacancies by facility location"
               >
                 {LOCATIONS.map((loc) => (
                   <option key={loc.id} value={loc.id}>
@@ -193,46 +197,50 @@ export default function CareersVacancyDirectory() {
           </div>
         ) : (
           filteredVacancies.map((job, idx) => {
-            const isExpanded = expandedJobSlug === job.slug;
-
             return (
               <article
                 key={job.slug}
-                className={`vacancy-pcard ${isExpanded ? 'is-expanded' : ''}`}
+                className="vacancy-pcard fade-in-up"
+                data-delay={(idx % 3) * 90}
               >
-                {/* Card Header Top */}
-                <div className="vacancy-pcard__top">
-                  <div className="vacancy-pcard__cat">
-                    <span className="vacancy-pcard__dot" aria-hidden="true" />
-                    <span>{job.dept}</span>
-                  </div>
-
+                {/* 1. Card Media Header - matching .pcard & .services-showcase-card */}
+                <div className="vacancy-pcard__media">
+                  <img
+                    src={job.image || '/assets/images/lifecycle/02-engineering-design.jpg'}
+                    alt={job.title}
+                    className="vacancy-pcard__img"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div className="vacancy-pcard__media-overlay" aria-hidden="true" />
+                  <span className="vacancy-pcard__dept-badge">{job.dept}</span>
                   {job.badge ? (
-                    <span className="vacancy-pcard__badge">
+                    <span className="vacancy-pcard__status-badge">
                       <span className="badge-live-dot" aria-hidden="true" />
                       <span>{job.badge}</span>
                     </span>
                   ) : (
-                    <span className="vacancy-pcard__type-tag">{job.type.split(',')[0]}</span>
+                    <span className="vacancy-pcard__type-badge">{job.type.split(',')[0]}</span>
                   )}
                 </div>
 
-                {/* Card Body */}
+                {/* 2. Card Body */}
                 <div className="vacancy-pcard__body">
+                  <div className="vacancy-pcard__meta-bar">
+                    <div className="vacancy-pcard__loc-item">
+                      <PinIcon />
+                      <span>{job.location}</span>
+                    </div>
+                    <span className="vacancy-pcard__timing">{job.type.split(',')[0]}</span>
+                  </div>
+
                   <h3 className="vacancy-pcard__title">
                     <Link href={`/careers/apply?job=${job.slug}`}>{job.title}</Link>
                   </h3>
 
-                  <div className="vacancy-pcard__loc-row">
-                    <PinIcon />
-                    <span>{job.location}</span>
-                    <span className="pcard-sep">•</span>
-                    <span>{job.type}</span>
-                  </div>
-
                   <p className="vacancy-pcard__desc">{job.summary}</p>
 
-                  {/* Specs Box: Identical to Home Page .pcard__specs-box */}
+                  {/* 3. Specs Box: Identical to Home Page .pcard__specs-box */}
                   <dl className="pcard__specs-box vacancy-pcard__specs-box">
                     <div className="pcard__spec-row">
                       <dt className="pcard__spec-key">Experience</dt>
@@ -252,7 +260,7 @@ export default function CareersVacancyDirectory() {
                     </div>
                   </dl>
 
-                  {/* Action Buttons Row: Matching Home Page .pcard__actions */}
+                  {/* 4. Action Buttons Row: Matching Home Page .pcard__actions */}
                   <div className="vacancy-pcard__actions">
                     <Link
                       href={`/careers/apply?job=${job.slug}`}
@@ -261,9 +269,13 @@ export default function CareersVacancyDirectory() {
                       <span>Apply Now</span>
                       <Arrow />
                     </Link>
-                   
+                    <Link
+                      href={`/careers/apply?job=${job.slug}`}
+                      className="btn btn--ghost btn--sm vacancy-pcard__btn-details"
+                    >
+                      <span>View Scope</span>
+                    </Link>
                   </div>
-                 
                 </div>
               </article>
             );
