@@ -16419,6 +16419,973 @@ a.btn.btn--light {
   white-space: nowrap;
 }
 
+/* ==========================================================================
+   EMIRATES TRANSFORMER & SWITCHGEAR (ETS) ABOUT PAGE STYLES
+   Design & Color Schema aligned with BPEL /about/
+   ========================================================================== */
+
+.ets-about-page {
+  background: var(--bg);
+  color: var(--ink);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* 1. ETS About Hero */
+.ets-about-hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 52vh;
+  display: flex;
+  align-items: center;
+  padding: 6rem 0 6.5rem;
+  background: var(--navy-900);
+}
+
+@media (min-width: 768px) {
+  .ets-about-hero {
+    min-height: 60vh;
+    padding: 7.5rem 0 8rem;
+  }
+}
+
+.ets-about-hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  filter: brightness(0.75);
+}
+
+.ets-about-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(6, 19, 40, 0.94) 0%, rgba(10, 30, 60, 0.85) 45%, rgba(11, 74, 143, 0.55) 100%);
+  z-index: 2;
+}
+
+.ets-about-hero__content {
+  position: relative;
+  z-index: 10;
+  max-width: 50rem;
+}
+
+.ets-about-hero__kicker {
+  margin-bottom: 1.5rem;
+}
+
+.ets-about-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--on-dark-label);
+  border: 1px solid rgba(95, 176, 255, 0.28);
+  background: rgba(95, 176, 255, 0.12);
+  padding: 6px 16px;
+  border-radius: 9999px;
+  backdrop-filter: blur(4px);
+}
+
+.ets-about-hero__title {
+  font-size: clamp(2.35rem, 5.5vw, 4.25rem);
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+
+.ets-about-hero__desc {
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  line-height: 1.65;
+  color: var(--on-dark);
+  margin-top: 1.5rem;
+  max-width: 38rem;
+}
+
+.ets-about-hero__cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.ets-about-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: all 0.25s var(--ease);
+}
+
+.ets-about-btn--primary {
+  background: var(--primary);
+  color: #FFFFFF;
+  border: 1.5px solid var(--primary);
+  box-shadow: 0 4px 14px rgba(11, 92, 171, 0.35);
+}
+
+.ets-about-btn--primary:hover {
+  background: var(--primary-600);
+  border-color: var(--primary-600);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(11, 92, 171, 0.45);
+}
+
+.ets-about-btn--ghost {
+  background: transparent;
+  color: #FFFFFF;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+}
+
+.ets-about-btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+/* 2. Stats / Milestones Band */
+.ets-about-stats-sec {
+  padding: 2.5rem 0 3.5rem;
+  background: var(--bg);
+}
+
+.ets-about-stats-box {
+  background: var(--grad-brand);
+  border-radius: var(--radius-lg);
+  padding: 3rem 2rem;
+  box-shadow: 0 12px 32px -8px rgba(10, 30, 60, 0.18);
+  position: relative;
+  overflow: hidden;
+}
+
+.ets-about-stats-box::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(110deg, transparent 35%, rgba(255, 255, 255, 0.09) 50%, transparent 65%);
+  transform: translateX(-100%);
+  animation: sweep 9s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .ets-about-stats-box {
+    padding: 3.5rem 3rem;
+  }
+}
+
+.ets-about-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 900px) {
+  .ets-about-stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+.ets-about-stat-item {
+  text-align: center;
+  position: relative;
+}
+
+.ets-about-stat-item:not(:last-child)::after {
+  content: "";
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 15%;
+  height: 70%;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+@media (min-width: 900px) {
+  .ets-about-stat-item:not(:last-child)::after {
+    display: block;
+  }
+}
+
+.ets-about-stat-value {
+  font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.ets-about-stat-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #D3DCF2;
+  margin-top: 0.65rem;
+}
+
+.ets-about-stat-sub {
+  font-size: 0.775rem;
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: 0.35rem;
+}
+
+/* 3. Section Headers */
+.ets-about-sec-head {
+  margin-bottom: 3.5rem;
+}
+
+.ets-about-sec-head.text-center {
+  text-align: center;
+}
+
+.ets-about-kicker {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--primary);
+  margin-bottom: 0.65rem;
+}
+
+.ets-about-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: var(--navy-900);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.ets-about-subtitle {
+  font-size: 1.05rem;
+  color: var(--ink-2);
+  line-height: 1.65;
+  max-width: 36rem;
+  margin: 0.85rem auto 0;
+}
+
+/* 4. Heritage Timeline */
+.ets-about-heritage-sec {
+  padding: 5.5rem 0 6.5rem;
+  background: var(--bg);
+}
+
+.ets-timeline {
+  position: relative;
+  max-width: 1060px;
+  margin: 0 auto;
+}
+
+.ets-timeline__line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 24px;
+  width: 2px;
+  background: var(--line);
+  transform: translateX(-50%);
+}
+
+@media (min-width: 768px) {
+  .ets-timeline__line {
+    left: 50%;
+  }
+}
+
+.ets-timeline__items {
+  display: flex;
+  flex-direction: column;
+  gap: 4.5rem;
+}
+
+.ets-timeline-row {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: 1.5rem;
+  padding-left: 3.5rem;
+}
+
+@media (min-width: 768px) {
+  .ets-timeline-row {
+    display: grid;
+    grid-template-columns: 1fr 48px 1fr;
+    align-items: center;
+    gap: 2.5rem;
+    padding-left: 0;
+  }
+
+  .ets-timeline-row--reverse .ets-timeline-col--media {
+    order: 3;
+  }
+
+  .ets-timeline-row--reverse .ets-timeline-node {
+    order: 2;
+  }
+
+  .ets-timeline-row--reverse .ets-timeline-col--content {
+    order: 1;
+    text-align: right;
+  }
+
+  .ets-timeline-row--reverse .ets-timeline-tag-row {
+    justify-content: flex-end;
+  }
+}
+
+.ets-timeline-node {
+  position: absolute;
+  left: 24px;
+  top: 2rem;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+}
+
+@media (min-width: 768px) {
+  .ets-timeline-node {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.ets-timeline-node__dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--primary);
+  border: 4px solid #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(11, 92, 171, 0.22);
+}
+
+.ets-timeline-card {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+  background: var(--navy);
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+
+.ets-timeline-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(11, 92, 171, 0.35);
+  box-shadow: 0 16px 32px -8px rgba(11, 92, 171, 0.14);
+}
+
+.ets-timeline-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ets-timeline-card:hover .ets-timeline-card__img {
+  transform: scale(1.05);
+}
+
+.ets-timeline-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(6, 19, 40, 0.75) 0%, transparent 60%);
+}
+
+.ets-timeline-card__watermark {
+  position: absolute;
+  bottom: 12px;
+  left: 20px;
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.22);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.ets-timeline-info {
+  position: relative;
+}
+
+.ets-timeline-watermark-lg {
+  display: none;
+  font-size: clamp(4rem, 6.5vw, 6rem);
+  font-weight: 900;
+  color: rgba(11, 92, 171, 0.06);
+  line-height: 0.9;
+  user-select: none;
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .ets-timeline-watermark-lg {
+    display: block;
+  }
+}
+
+.ets-timeline-tag-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.ets-timeline-bar {
+  display: inline-block;
+  width: 20px;
+  height: 2px;
+  background: var(--primary);
+}
+
+.ets-timeline-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--primary);
+  background: var(--primary-50);
+  border: 1px solid rgba(11, 92, 171, 0.18);
+  border-radius: 9999px;
+  padding: 3px 10px;
+}
+
+.ets-timeline-item-title {
+  font-size: clamp(1.25rem, 2vw, 1.55rem);
+  font-weight: 800;
+  color: var(--navy-900);
+  line-height: 1.25;
+  margin: 0 0 0.85rem;
+}
+
+.ets-timeline-item-desc {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--ink-2);
+  margin: 0;
+}
+
+/* 5. Global Footprint & Facility Switcher */
+.ets-about-facilities-sec {
+  padding: 5.5rem 0 6.5rem;
+  background: var(--alt);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.ets-about-facilities-tag {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ink-3);
+  margin-top: 0.5rem;
+}
+
+.ets-facilities-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+@media (min-width: 1024px) {
+  .ets-facilities-layout {
+    grid-template-columns: 1fr 1.35fr;
+    gap: 3rem;
+  }
+}
+
+.ets-facilities-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.ets-facility-tab {
+  width: 100%;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 1.15rem;
+  padding: 1.25rem 1.4rem;
+  border-radius: var(--radius-lg);
+  border: 1.5px solid var(--line);
+  background: #FFFFFF;
+  cursor: pointer;
+  transition: all 0.25s var(--ease);
+}
+
+.ets-facility-tab:hover {
+  border-color: rgba(11, 92, 171, 0.35);
+  box-shadow: var(--shadow-sm);
+}
+
+.ets-facility-tab--active {
+  border-color: var(--primary);
+  border-left: 4px solid var(--primary);
+  background: #FFFFFF;
+  box-shadow: 0 8px 24px -4px rgba(11, 92, 171, 0.12);
+}
+
+.ets-facility-tab__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: var(--alt);
+  color: var(--ink-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.25s var(--ease);
+}
+
+.ets-facility-tab--active .ets-facility-tab__icon {
+  background: var(--primary);
+  color: #FFFFFF;
+}
+
+.ets-facility-tab__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.ets-facility-tab__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.ets-facility-tab__name {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--ink);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ets-facility-tab--active .ets-facility-tab__name {
+  color: var(--primary);
+}
+
+.ets-facility-tab__tag {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink-3);
+  flex-shrink: 0;
+}
+
+.ets-facility-tab__loc {
+  font-size: 0.775rem;
+  color: var(--ink-2);
+  margin: 0.25rem 0 0;
+}
+
+/* Facility Showcase Right Card */
+.ets-facility-showcase {
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.ets-facility-showcase__media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: var(--navy);
+  overflow: hidden;
+}
+
+.ets-facility-showcase__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ets-facility-showcase__overlay {
+  position: absolute;
+  bottom: 1rem;
+  left: 1.25rem;
+  z-index: 5;
+}
+
+.ets-facility-showcase__pill {
+  display: inline-block;
+  background: rgba(6, 19, 40, 0.85);
+  backdrop-filter: blur(6px);
+  color: #FFFFFF;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.ets-facility-showcase__body {
+  padding: 2rem 2.25rem;
+}
+
+.ets-facility-showcase__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 1.25rem;
+}
+
+.ets-facility-showcase__tag {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--primary);
+  margin-bottom: 0.35rem;
+}
+
+.ets-facility-showcase__title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--navy-900);
+  margin: 0;
+}
+
+.ets-facility-showcase__meta {
+  text-align: right;
+}
+
+.ets-facility-showcase__metric-val {
+  display: block;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.ets-facility-showcase__metric-lbl {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--ink-3);
+  font-weight: 600;
+}
+
+.ets-facility-showcase__desc {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--ink-2);
+  margin: 0 0 1.5rem;
+}
+
+.ets-facility-showcase__specs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+}
+
+.ets-facility-spec-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--alt);
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+}
+
+.ets-spec-check {
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+/* 6. Certifications & Standards */
+.ets-about-certs-sec {
+  padding: 5.5rem 0 6.5rem;
+  background: var(--bg);
+}
+
+.ets-about-certs-head {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 3.5rem;
+}
+
+@media (min-width: 900px) {
+  .ets-about-certs-head {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+.ets-about-certs-lead {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--ink-2);
+  max-width: 32rem;
+  margin: 0;
+}
+
+.ets-certs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.ets-cert-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.25rem 1.35rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line);
+  background: #FFFFFF;
+  transition: all 0.25s var(--ease);
+}
+
+.ets-cert-card:hover {
+  border-color: rgba(11, 92, 171, 0.35);
+  box-shadow: 0 16px 32px -8px rgba(11, 92, 171, 0.12);
+  transform: translateY(-3px);
+}
+
+.ets-cert-card__icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: var(--primary-50);
+  color: var(--primary);
+  border: 1px solid rgba(11, 92, 171, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ets-cert-card__code {
+  font-size: 0.9375rem;
+  font-weight: 800;
+  color: var(--navy-900);
+  margin: 0 0 0.25rem;
+}
+
+.ets-cert-card__name {
+  font-size: 0.775rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 0.35rem;
+}
+
+.ets-cert-card__desc {
+  font-size: 0.775rem;
+  line-height: 1.5;
+  color: var(--ink-3);
+  margin: 0;
+}
+
+/* Independent Test Witnesses Bar */
+.ets-witnesses-bar {
+  margin-top: 3.5rem;
+  padding: 2.25rem 2.5rem;
+  border-radius: var(--radius-lg);
+  background: var(--alt);
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+@media (min-width: 900px) {
+  .ets-witnesses-bar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.ets-witnesses-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--navy-900);
+  margin: 0 0 0.35rem;
+}
+
+.ets-witnesses-sub {
+  font-size: 0.8125rem;
+  color: var(--ink-2);
+  margin: 0;
+  max-width: 30rem;
+}
+
+.ets-witnesses-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.ets-witness-pill {
+  display: inline-flex;
+  align-items: center;
+  background: #FFFFFF;
+  border: 1px solid var(--line-2);
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+  box-shadow: 0 1px 3px rgba(10, 30, 60, 0.04);
+  transition: all 0.2s var(--ease);
+}
+
+.ets-witness-pill:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* 7. Call To Action Card */
+.ets-about-cta-sec {
+  padding: 1rem 0 5rem;
+  background: var(--bg);
+}
+
+.ets-about-cta-card {
+  background: var(--grad-hero);
+  border-radius: var(--radius-lg);
+  padding: 3.5rem 2.5rem;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+@media (min-width: 768px) {
+  .ets-about-cta-card {
+    padding: 4.5rem 3.5rem;
+  }
+}
+
+.ets-about-cta-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (min-width: 900px) {
+  .ets-about-cta-inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.ets-about-cta-heading {
+  font-size: clamp(1.85rem, 3.5vw, 2.75rem);
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.85rem;
+}
+
+.ets-about-cta-sub {
+  font-size: 1rem;
+  color: var(--on-dark);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 36rem;
+}
+
+.ets-about-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.ets-about-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2.25rem;
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.25s var(--ease);
+}
+
+.ets-about-cta-btn--quote {
+  background: var(--primary);
+  color: #FFFFFF;
+  border: 1.5px solid var(--primary);
+  box-shadow: 0 4px 14px rgba(11, 92, 171, 0.35);
+}
+
+.ets-about-cta-btn--quote:hover {
+  background: var(--primary-600);
+  border-color: var(--primary-600);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(11, 92, 171, 0.45);
+}
+
+.ets-about-cta-btn--contact {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1.5px solid rgba(255, 255, 255, 0.28);
+  color: #FFFFFF;
+  backdrop-filter: blur(4px);
+}
+
+.ets-about-cta-btn--contact:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+
 
 
 
