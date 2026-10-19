@@ -84,81 +84,35 @@ export default function BlogDirectory({ posts = [] }) {
   return (
     <div className="blog-ets-page-wrapper">
       {/* =========================================================
-          1. ETS HERO SECTION
+          1. HERO SECTION (Cloned from /about/ PageHero)
           ========================================================= */}
-      <section className="blog-ets-hero" aria-label="Blog Header">
-        {/* Background Image with Dark Industrial Aesthetic */}
+      <section className="page-hero blog-ets-hero" aria-label="Blog Header">
+        {/* Background Image matching PageHero opacity and position */}
         <img
           src="/assets/images/about-campus.jpg"
-          alt="Engineering Knowledge & Insights"
-          className="blog-ets-hero__bg"
-          loading="eager"
-          decoding="sync"
+          alt=""
+          className="page-hero__img blog-ets-hero__bg"
+          loading="lazy"
+          decoding="async"
         />
-        {/* Exact Gradient Overlay from ETS */}
-        <div className="blog-ets-hero__overlay" />
 
         <div className="wrap">
-          <div className="blog-ets-hero__container">
-            {/* News & Insights Pill Badge */}
-            <div className="blog-ets-hero__badge-row">
-              <span className="blog-ets-hero__badge">
-                News &amp; Insights
-              </span>
-            </div>
+          <nav aria-label="Breadcrumb">
+            <ol className="crumbs">
+              <li><Link href="/">Home</Link></li>
+              <li><span aria-current="page">Blog &amp; Insights</span></li>
+            </ol>
+          </nav>
 
-            {/* Main Title */}
-            <h1 className="blog-ets-hero__title">
-              Engineering Knowledge, Shared
-            </h1>
+          <p className="label fade-in-up">NEWS &amp; INSIGHTS</p>
 
-            {/* Subtitle */}
-            <p className="blog-ets-hero__desc">
-              Technical deep-dives, industry analysis, and the latest from our engineering and project teams.
-            </p>
+          <h1 className="fade-in-up" data-delay="80">
+            Engineering Knowledge, Shared
+          </h1>
 
-            {/* Feeds Row */}
-            <div className="blog-ets-hero__feeds">
-              <a
-                href="#feed-rss"
-                onClick={(e) => { e.preventDefault(); alert("RSS Feed available: /rss.xml"); }}
-                aria-label="Subscribe via RSS feed"
-                className="blog-ets-feed-btn"
-              >
-                <RssIcon />
-                <span>RSS</span>
-              </a>
-
-              <a
-                href="#feed-atom"
-                onClick={(e) => { e.preventDefault(); alert("Atom Feed available: /atom.xml"); }}
-                aria-label="Subscribe via Atom feed"
-                className="blog-ets-feed-btn"
-              >
-                <RssIcon />
-                <span>Atom</span>
-              </a>
-
-              <a
-                href="#feed-json"
-                onClick={(e) => { e.preventDefault(); alert("JSON Feed available: /feed.json"); }}
-                aria-label="Subscribe via JSON Feed"
-                className="blog-ets-feed-btn"
-              >
-                <CodeXmlIcon />
-                <span>JSON Feed</span>
-              </a>
-
-              <Link
-                href="/resources/"
-                aria-label="View all available feeds and engineering resources"
-                className="blog-ets-feed-btn blog-ets-feed-btn--accent"
-              >
-                <span>All feeds</span>
-                <ArrowUpRightIcon />
-              </Link>
-            </div>
-          </div>
+          <p className="page-hero__desc blog-ets-hero__desc fade-in-up" data-delay="160">
+            Technical deep-dives, industry analysis, and the latest from our engineering and project teams.
+          </p>
         </div>
       </section>
 

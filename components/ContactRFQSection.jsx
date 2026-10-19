@@ -302,7 +302,7 @@ export default function ContactRFQSection({ preselectedOfficeId }) {
               </button>
 
               {showTechSpecs && (
-                <div className="rfq-tech-drawer fade-in-up">
+                <div className="rfq-tech-drawer">
                   <p className="rfq-tech-drawer__hint">
                     Adding engineering parameters helps our technical team calculate magnetic loss, impedance, and preliminary sizing right away.
                   </p>
@@ -383,19 +383,12 @@ export default function ContactRFQSection({ preselectedOfficeId }) {
 
             <div className="rfq-submit-row">
               <button className="btn btn--primary rfq-submit-btn" type="submit">
-                <span>Submit Technical Inquiry</span>
+                <span>Submit Inquiry</span>
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z" />
                   <path d="m21.854 2.147-10.94 10.939" />
                 </svg>
               </button>
-
-              <span className="rfq-sla-note">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#059669" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                <span>Direct engineer review • 24h turnaround guarantee</span>
-              </span>
             </div>
 
             <div

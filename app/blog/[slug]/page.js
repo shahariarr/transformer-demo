@@ -75,50 +75,49 @@ export default async function BlogPostPage({ params }) {
   return (
     <article className="blog-single-page">
       {/* =========================================================
-          1. ETS HERO HEADER FOR SINGLE ARTICLE
+          1. HERO HEADER FOR SINGLE ARTICLE (Cloned from /about/ PageHero)
           ========================================================= */}
-      <section className="blog-single-hero" aria-label="Article Banner">
+      <section className="page-hero blog-single-hero" aria-label="Article Banner">
         <img
           src={post.image}
           alt=""
-          loading="eager"
-          decoding="sync"
-          className="blog-single-hero__bg"
+          loading="lazy"
+          decoding="async"
+          className="page-hero__img blog-single-hero__bg"
         />
-        <div className="blog-single-hero__overlay" />
 
         <div className="wrap">
-          <div className="blog-single-hero__content">
-            {/* Category Pill */}
-            <div>
-              <span className="blog-single-hero__badge">
-                {post.category}
-              </span>
-            </div>
+          <nav aria-label="Breadcrumb">
+            <ol className="crumbs">
+              <li><Link href="/">Home</Link></li>
+              <li><Link href="/blog/">Blog</Link></li>
+              <li><span aria-current="page">{post.category}</span></li>
+            </ol>
+          </nav>
 
-            {/* Headline */}
-            <h1 className="blog-single-hero__title">
-              {post.title}
-            </h1>
+          <p className="label fade-in-up">{post.category}</p>
 
-            {/* Metadata (Reading Time, Date, Author) */}
-            <div className="blog-single-hero__meta">
-              <span className="blog-single-hero__meta-item">
-                <ClockIcon />
-                <span>{post.readTime || `${post.readMinutes || 7} min read`}</span>
-              </span>
-              <span className="blog-single-hero__meta-sep">•</span>
-              <span className="blog-single-hero__meta-item">
-                <CalendarIcon />
-                <span>{post.date}</span>
-              </span>
-              {post.author?.name && (
-                <>
-                  <span className="blog-single-hero__meta-sep">•</span>
-                  <span>By {post.author.name}</span>
-                </>
-              )}
-            </div>
+          <h1 className="fade-in-up" data-delay="80">
+            {post.title}
+          </h1>
+
+          {/* Metadata (Reading Time, Date, Author) */}
+          <div className="blog-single-hero__meta fade-in-up" data-delay="160">
+            <span className="blog-single-hero__meta-item">
+              <ClockIcon />
+              <span>{post.readTime || `${post.readMinutes || 7} min read`}</span>
+            </span>
+            <span className="blog-single-hero__meta-sep">•</span>
+            <span className="blog-single-hero__meta-item">
+              <CalendarIcon />
+              <span>{post.date}</span>
+            </span>
+            {post.author?.name && (
+              <>
+                <span className="blog-single-hero__meta-sep">•</span>
+                <span className="blog-single-hero__meta-item">By {post.author.name}</span>
+              </>
+            )}
           </div>
         </div>
       </section>

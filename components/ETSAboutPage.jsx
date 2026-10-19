@@ -4,38 +4,38 @@ import { useState } from 'react';
 import Link from 'next/link';
 
 const STATS = [
-  { value: '1987', label: 'FOUNDED', sub: 'Over 37 Years in Power Engineering' },
-  { value: '1,000+', label: 'EMPLOYEES', sub: 'Specialized Engineers & Technicians' },
-  { value: '4', label: 'FACILITIES', sub: 'UAE & European Manufacturing Centers' },
-  { value: '45+', label: 'EXPORT MARKETS', sub: 'Powering Critical Grids Worldwide' }
+  { value: '1987', label: 'FOUNDED', sub: 'Established in Dubai, UAE' },
+  { value: '1,000+', label: 'EMPLOYEES', sub: 'Global Engineering & Technical Staff' },
+  { value: '4', label: 'FACILITIES', sub: 'Campuses Across UAE & Europe' },
+  { value: '45+', label: 'COUNTRIES', sub: 'Critical Utility & Industrial Grids' }
 ];
 
 const TIMELINE = [
   {
     year: '1969',
     title: 'Patel Trading Company (PTC) Founded',
-    desc: 'Laying the foundational electrical engineering and distribution footprint across the Middle East, establishing trusted supply routes for heavy electrical apparatus.',
+    desc: 'Patel Trading Company (PTC) founded — laying the engineering foundation for what would become ETS.',
     image: '/assets/images/lifecycle/01-requirement-approval.jpg',
     badge: 'Foundation'
   },
   {
     year: '1983',
     title: 'Acquisition of IEO Transformatoren BV',
-    desc: 'Acquired IEO Transformatoren in the Netherlands, integrating European transformer design heritage, advanced magnetic core technology, and strict IEC standard manufacturing capabilities.',
+    desc: 'IEO Transformatoren BV acquired in the Netherlands — adding European engineering heritage and IEC manufacturing capability.',
     image: '/assets/images/services/supply-warehouse.jpg',
     badge: 'European Heritage'
   },
   {
     year: '1987',
     title: 'Emirates Transformer & Switchgear Founded in Dubai',
-    desc: 'Commissioned our flagship transformer and substation manufacturing plant in Jebel Ali Free Zone (JAFZA), becoming Dubai’s foremost domestic high-voltage equipment builder.',
+    desc: 'Emirates Transformer & Switchgear founded in Dubai. First manufacturing facility commissioned in the UAE.',
     image: '/assets/images/about-campus.jpg',
     badge: 'UAE Manufacturing'
   },
   {
     year: '2026',
-    title: 'Global Infrastructure & High-Voltage Leader',
-    desc: 'Operating high-capacity production campuses across the UAE and Europe, delivering customized power transformers, cast resin dry-type units, and switchgear for DEWA, ADNOC, ARAMCO, and global hyperscalers.',
+    title: 'Powering Infrastructure Worldwide',
+    desc: 'Today: engineered transformers and switchgear powering utilities, industry and renewables worldwide.',
     image: '/assets/images/projects/substation-installation.jpg',
     badge: 'Present Day'
   }
@@ -44,62 +44,62 @@ const TIMELINE = [
 const FACILITIES = [
   {
     id: 'dubai-jafza',
-    name: 'ETS Dubai (JAFZA)',
-    tag: 'Primary Transformer Plant',
+    name: 'ETS Manufacturing LLC',
+    tag: 'Group HQ',
     location: 'Dubai, JAFZA — UAE',
     area: '35,000 m² Campus',
     capacity: 'Up to 132 kV / 100 MVA',
-    desc: 'Our flagship manufacturing headquarters featuring climate-controlled winding cleanrooms, automated vacuum pressure impregnation (VPI), and accredited high-voltage impulse test bays.',
+    desc: 'Group HQ and primary manufacturing campus. ISO/IEC 17025 accredited test lab, full R&D and engineering centre.',
     image: '/assets/images/about-campus.jpg',
-    highlights: ['Power Transformers up to 132 kV', 'Liquid-Immersed Distribution Units', 'Accredited ISO/IEC 17025 Lab', 'Certified by DEWA, ADNOC & ARAMCO']
+    highlights: ['ISO/IEC 17025 Accredited Test Lab', 'Full R&D & Engineering Centre', 'Primary Power Transformer Campus', 'Certified by DEWA, ADNOC & ARAMCO']
   },
   {
     id: 'switchgear-dip',
-    name: 'ETS Switchgear (DIP)',
-    tag: 'Switchgear & Substation Hub',
+    name: 'HS Transformer & Switchgear',
+    tag: 'Switchgear Hub',
     location: 'Dubai Investment Park — UAE',
     area: '18,500 m² Facility',
     capacity: '11 kV – 33 kV MV & LV',
-    desc: 'Dedicated center of excellence for medium-voltage metal-clad switchgear, low-voltage power distribution boards, and modular package containerized substations.',
+    desc: 'Dedicated switchgear and package substation manufacturing center, delivering medium-voltage and low-voltage distribution assemblies.',
     image: '/assets/images/projects/mv-switchgear-installation.jpg',
     highlights: ['Air & Gas Insulated Switchgear', 'Turnkey Package Substations', 'Motor Control Centers (MCC)', 'Form 4 Type-Tested Assemblies']
   },
   {
     id: 'rak-plant',
     name: 'ETS Ras Al Khaimah',
-    tag: 'Heavy Fabrication & Core Plant',
-    location: 'Ras Al Khaimah — UAE',
+    tag: '12,000 MT/yr',
+    location: 'Ras Al Khaimah, UAE',
     area: '12,000 MT/year Capacity',
     capacity: 'Tank Fabrication & Radiators',
-    desc: 'Specialized heavy mechanical plant housing precision CNC laser cutting, step-lap core slitting, automated grit-blasting, and ISO 12944 C5-M marine corrosion paint lines.',
+    desc: 'Heavy fabrication and tank manufacturing campus with 12,000 MT annual throughput, precision core slitting and advanced surface treatment lines.',
     image: '/assets/images/services/installation-crane.jpg',
-    highlights: ['Precision Step-Lap CRGO Cores', 'Hermetic Corrugated Tanks', 'C5-M Heavy Marine Paint Bay', 'Automated Shot-Blasting Sa 2.5']
+    highlights: ['12,000 MT/year Capacity', 'Precision Step-Lap CRGO Cores', 'Hermetic Corrugated Tanks', 'Automated Shot-Blasting Sa 2.5']
   },
   {
     id: 'ieo-netherlands',
     name: 'IEO Transformatoren BV',
-    tag: 'European Engineering Hub',
-    location: 'Breda — Netherlands',
+    tag: 'EU Hub',
+    location: 'Netherlands',
     area: 'EU Manufacturing Center',
     capacity: 'Cast Resin & Dry-Type',
-    desc: 'Our European center for advanced cast resin dry-type transformers, specialized industrial drives, renewable energy inverters, and pan-European utility support.',
+    desc: 'European manufacturing and engineering hub specializing in cast resin dry-type transformers, EcoDesign Tier 2 compliance, and European utility support.',
     image: '/assets/images/about-tower.jpg',
-    highlights: ['IEC 60076-11 Cast Resin Units', 'EcoDesign Tier 2 Compliance', 'European Grid Type Approvals', 'Fast Replacement & Spares Service']
+    highlights: ['European Engineering Heritage', 'Cast Resin Dry-Type Transformers', 'EcoDesign Tier 2 Compliance', 'European Grid Type Approvals']
   }
 ];
 
 const CERTIFICATIONS = [
-  { code: 'ISO 9001:2015', name: 'Quality Management System', desc: 'Internationally recognised framework ensuring rigorous quality controls from design through witness testing.' },
-  { code: 'ISO 14001:2015', name: 'Environmental Management', desc: 'Systematic environmental protocols minimizing factory carbon emissions, waste, and oil consumption.' },
-  { code: 'ISO 50001:2018', name: 'Energy Management System', desc: 'Optimizing production energy efficiency, thermal curing processes, and factory resource management.' },
-  { code: 'ISO 45001:2018', name: 'Occupational Health & Safety', desc: 'World-class industrial safety standards protecting technicians across high-voltage manufacturing and site rigging.' },
-  { code: 'ISO/IEC 17025:2017', name: 'Testing Lab Accreditation', desc: 'The gold standard for accredited laboratory testing, dissolved gas analysis (DGA), and impulse calibration.' },
-  { code: 'IEC 60076 Series', name: 'International Power Standard', desc: 'Global design, temperature rise, dielectric withstand, and sound level compliance across all power units.' },
-  { code: 'IEC 60076-11', name: 'Dry-Type Transformer Standard', desc: 'Definitive European standard governing cast resin insulation, fire behavior (F1), and climate classes (C2/E2).' },
-  { code: 'UL 1562 Listed', name: 'Pad-Mounted Transformer Standard', desc: 'Underwriters Laboratories certified for North American utility networks, commercial risers, and data centers.' },
-  { code: 'UL 1561 Listed', name: 'Dry-Type Distribution Standard', desc: 'UL listing for indoor and outdoor dry-type transformers engineered for heavy commercial and industrial use.' },
-  { code: 'ANSI / IEEE C57', name: 'North American Standards', desc: 'Rigorous engineering standards for short-circuit withstand, winding BIL, and harmonic K-factor rating.' },
-  { code: 'ISO 3834', name: 'Welding Quality Certification', desc: 'Full fusion welding quality assurance for leak-tight transformer tanks, radiator headers, and structural frames.' }
+  { code: 'ISO 9001:2015', name: 'Quality Management System', desc: 'Quality Management System — internationally recognised framework ensuring consistent quality across all manufacturing processes.' },
+  { code: 'ISO 14001:2015', name: 'Environmental Management System', desc: 'Environmental Management System — systematic approach to minimising environmental impact.' },
+  { code: 'ISO 50001:2018', name: 'Energy Management System', desc: 'Energy Management System — systematic framework to improve energy performance, efficiency, and consumption across manufacturing operations.' },
+  { code: 'ISO 45001:2018', name: 'Occupational Health & Safety', desc: 'Occupational Health & Safety Management System for workplace safety excellence.' },
+  { code: 'ISO/IEC 17025:2017', name: 'Testing Laboratory Accreditation', desc: 'Testing Laboratory Accreditation — the gold standard for testing and calibration laboratories worldwide.' },
+  { code: 'IEC 60076', name: 'International Power Transformer Standard', desc: 'International Power Transformer Standard — the primary standard for transformer design and testing globally.' },
+  { code: 'IEC 60076-11', name: 'Dry-Type Transformer Standard', desc: 'Dry-Type Transformer Standard for cast resin and air-cooled transformer design and testing.' },
+  { code: 'UL 1562 Listed', name: 'Pad-Mounted Transformer Standard', desc: 'Underwriters Laboratories listing for pad-mounted transformers — required for North American utility markets.' },
+  { code: 'UL 1561 Listed', name: 'Dry-Type Distribution Transformers', desc: 'UL listing for dry-type distribution transformers for indoor and outdoor applications.' },
+  { code: 'ANSI / IEEE C57', name: 'North American Transformer Standard', desc: 'North American Transformer Standard — the definitive standard series for transformer design and testing in the Americas.' },
+  { code: 'ISO 3834', name: 'Welding Quality Requirements', desc: 'Welding Quality Requirements — comprehensive standard for fusion welding of metallic materials in transformer tank and structural fabrication.' }
 ];
 
 const WITNESSES = ['CESI (IT)', 'ASTA (UK)', 'INTERTEK (Global)', 'KEMA (NL)', 'DEWA Approved', 'ADNOC Approved', 'ARAMCO Approved', 'TRANSCO Certified'];
@@ -110,45 +110,36 @@ export default function ETSAboutPage() {
   return (
     <div className="ets-about-page">
       {/* =========================================================
-          1. HERO SECTION (Identical to ETS About Hero)
+          1. HERO SECTION (Cloned from /about/ PageHero)
           ========================================================= */}
-      <section className="ets-about-hero" aria-label="About ETS Hero">
+      <section className="page-hero ets-about-hero" aria-label="About ETS Hero">
         <img
           src="/assets/images/about-campus.jpg"
-          alt="Emirates Transformer & Switchgear Manufacturing"
-          loading="eager"
-          decoding="sync"
-          className="ets-about-hero__bg"
+          alt=""
+          loading="lazy"
+          decoding="async"
+          className="page-hero__img ets-about-hero__bg"
         />
-        <div className="ets-about-hero__overlay" />
 
         <div className="wrap">
-          <div className="ets-about-hero__content">
-            <div className="ets-about-hero__kicker">
-              <span className="ets-about-hero__badge">Dubai Since 1987</span>
-            </div>
+          <nav aria-label="Breadcrumb">
+            <ol className="crumbs">
+              <li><Link href="/">Home</Link></li>
+              <li><Link href="/about/">About Us</Link></li>
+              <li><span aria-current="page">ETS</span></li>
+            </ol>
+          </nav>
 
-            <h1 className="ets-about-hero__title">
-              Engineering Excellence Since 1987.
-            </h1>
+          <p className="label fade-in-up">ABOUT ETS</p>
 
-            <p className="ets-about-hero__desc">
-              From a single manufacturing facility in Dubai to an international powerhouse — powering critical utility grids, heavy industry, and renewable infrastructure worldwide.
-            </p>
+          <h1 className="fade-in-up" data-delay="80">
+            Engineering Excellence Since 1987.
+          </h1>
 
-            <div className="ets-about-hero__cta-group">
-              <Link href="/products/" className="ets-about-btn ets-about-btn--primary">
-                <span>Explore Products</span>
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <path d="M5 12h14" />
-                  <path d="m12 5 7 7-7 7" />
-                </svg>
-              </Link>
-              <Link href="/contact/" className="ets-about-btn ets-about-btn--ghost">
-                <span>Contact Us</span>
-              </Link>
-            </div>
-          </div>
+          <p className="page-hero__desc ets-about-hero__desc fade-in-up" data-delay="160">
+            From a single facility in Dubai to a global network — powering critical infrastructure worldwide.
+          </p>
+         
         </div>
       </section>
 
@@ -327,7 +318,7 @@ export default function ETSAboutPage() {
               <h2 className="ets-about-title">Globally Certified. Locally Trusted.</h2>
             </div>
             <p className="ets-about-certs-lead">
-              Triple-standard compliance across IEC, ANSI/IEEE, and UL — rare among Middle Eastern transformer manufacturers. Audited and certified by Lloyd&apos;s Register and UKAS-recognized bodies.
+              Triple-standard compliance across IEC, ANSI/IEEE, and UL — rare among Middle Eastern manufacturers. Audited by Lloyd&apos;s Register and UKAS-recognised bodies.
             </p>
           </div>
 
@@ -352,9 +343,9 @@ export default function ETSAboutPage() {
           {/* Third-Party Laboratory Witnesses */}
           <div className="ets-witnesses-bar">
             <div className="ets-witnesses-bar__left">
-              <h3 className="ets-witnesses-title">Independent Test Witnesses &amp; Approvals</h3>
+              <h3 className="ets-witnesses-title">Independent Test Witnesses</h3>
               <p className="ets-witnesses-sub">
-                Type-test certificates witnessed by independent international testing authorities — accepted by utility operators worldwide.
+                Type-test reports witnessed by independent third-party laboratories — accepted by utilities and grid operators worldwide.
               </p>
             </div>
             <div className="ets-witnesses-pills">
@@ -376,7 +367,7 @@ export default function ETSAboutPage() {
               <div>
                 <h2 className="ets-about-cta-heading">Ready to Partner With Us?</h2>
                 <p className="ets-about-cta-sub">
-                  Whether you need custom transformer engineering, tender design drawings, or a competitive quotation — our engineering team is ready to assist.
+                  Whether you need a technical consultation or a competitive quotation — our team is ready.
                 </p>
               </div>
 
