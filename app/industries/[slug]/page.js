@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import { DATA } from '@/lib/data';
 import { INDUSTRY_DETAILS } from '@/lib/industries';
 import { PageHero, LinkCard, ArrowRight } from '@/components/PageParts';
+import DetailGallery from '@/components/DetailGallery';
 
 const find = slug => DATA.industries.find(i => i.slug === slug);
 
@@ -18,7 +19,7 @@ export default async function IndustryPage({ params }) {
   const ind = find((await params).slug);
   if (!ind) notFound();
   const d = INDUSTRY_DETAILS[ind.slug] || { intro: ind.desc, needs: [], supply: [] };
-  const others = DATA.industries.filter(x => x.slug !== ind.slug).slice(0, 3);
+  const others = DATA.industries.filter(x => x.slug !== ind.slug).slice(0, 4);
 
   return (
     <>
@@ -28,7 +29,7 @@ export default async function IndustryPage({ params }) {
 
       <section className="sec" aria-label="Industry details">
         <div className="wrap detail">
-          <figure className="detail__media fade-in-left"><img src={ind.image} alt={ind.name} loading="lazy" decoding="async" /></figure>
+          <DetailGallery mainImage={ind.image} gallery={d.gallery} alt={ind.name} />
           <div className="detail__content">
             <div className="fade-in-up">
               <h2>The challenge</h2>

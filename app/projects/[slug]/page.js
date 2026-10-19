@@ -16,7 +16,7 @@ export async function generateMetadata({ params }) {
 export default async function ProjectPage({ params }) {
   const p = find((await params).slug);
   if (!p) notFound();
-  const others = DATA.projects.filter(x => x.slug !== p.slug).slice(0, 3);
+  const others = DATA.projects.filter(x => x.slug !== p.slug).slice(0, 4);
   const specs = (p.specs || '').split('•').map(s => s.trim()).filter(Boolean);
 
   return (
