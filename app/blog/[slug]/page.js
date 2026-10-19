@@ -1,6 +1,9 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getAllPosts, getPostBySlug, getRelatedPosts } from '@/lib/blog';
+import { waLink } from '@/lib/data';
+import { WA_PATH } from '@/lib/icons';
+import { ArrowRight } from '@/components/PageParts';
 
 export async function generateStaticParams() {
   const posts = getAllPosts();
@@ -399,30 +402,28 @@ export default async function BlogPostPage({ params }) {
       )}
 
       {/* =========================================================
-          4. HAVE A PROJECT IN MIND? CTA BANNER
+          4. TECHNICAL CONSULTATION & SIZING SECTION
           ========================================================= */}
-      <section className="blog-ets-cta-sec" aria-label="Project Inquiry">
+      <section className="blog-ets-cta-sec" aria-label="Technical Consultation and Sizing">
         <div className="wrap">
-          <div className="blog-ets-cta-card">
-            <div className="blog-ets-cta-inner">
-              <div>
-                <h2 className="blog-ets-cta-heading">
-                  Have a Project in Mind?
-                </h2>
-                <p className="blog-ets-cta-sub">
-                  Our engineering team is ready to discuss your transformer and turnkey substation requirements.
-                </p>
-              </div>
-
-              <div className="blog-ets-cta-btn-wrap">
-                <Link
-                  href="/contact/"
-                  className="blog-ets-cta-action group"
-                >
-                  <span>Get in Touch</span>
-                  <ArrowRightIcon />
-                </Link>
-              </div>
+          <div className="standards-consult-box fade-in-up" style={{ marginTop: 0 }}>
+            <div className="standards-consult-copy">
+              <span className="standards-consult-tag">TECHNICAL CONSULTATION &amp; SIZING</span>
+              <h3>Have complex substation or custom transformer requirements?</h3>
+              <p>
+                Our practicing electrical engineers can review your single-line diagram (SLD), calculate short-circuit tolerances, and issue an engineering proposal within 48 hours.
+              </p>
+            </div>
+            <div className="standards-consult-actions">
+              <Link className="btn btn--primary" href="/contact/">
+                Talk to an Engineer <ArrowRight />
+              </Link>
+              <a className="btn btn--wa" href={waLink()} target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+                  <path d={WA_PATH} />
+                </svg>
+                <span>WhatsApp Us</span>
+              </a>
             </div>
           </div>
         </div>
