@@ -2143,6 +2143,62 @@ h2 {
   color: #fff
 }
 
+/* ---------- project grid (for /projects/ page without carousel) ---------- */
+.proj-grid-wrap {
+  margin-top: 1.75rem;
+  margin-bottom: 3.5rem;
+}
+
+.proj-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.proj-grid__card {
+  position: relative !important;
+  flex: none !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: clamp(500px, 46vw, 560px) !important;
+  scale: 1 !important;
+  opacity: 1 !important;
+  filter: none !important;
+  cursor: pointer !important;
+  box-shadow: 0 16px 40px -18px rgba(6, 19, 40, .45), 0 0 0 1px rgba(255, 255, 255, .08) !important;
+  transition: transform .35s var(--ease), box-shadow .35s var(--ease) !important;
+}
+
+.proj-grid__card:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 32px 70px -24px rgba(6, 19, 40, .65), 0 0 0 1px rgba(255, 255, 255, .16) !important;
+}
+
+.proj-grid__card .pcar__img {
+  scale: 1 !important;
+  transition: scale .6s var(--ease) !important;
+}
+
+.proj-grid__card:hover .pcar__img {
+  scale: 1.05 !important;
+}
+
+.proj-grid__card .pcar__more {
+  grid-template-rows: 1fr !important;
+  opacity: 1 !important;
+}
+
+@media (max-width: 900px) {
+  .proj-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  .proj-grid__card {
+    height: clamp(480px, 80vh, 540px) !important;
+  }
+}
+
 /* ---------- project spotlight carousel ---------- */
 .pcar {
   --card-w: min(560px, 82vw);
