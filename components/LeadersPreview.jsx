@@ -2,12 +2,6 @@ import { LEADERS } from '@/lib/leaders';
 import ViewAll from './ViewAll';
 import LeaderCard from './LeaderCard';
 
-const CADRE_INDICES = {
-  'ashraful-islam': '// 01 FOUNDER & MD',
-  'rezaul-karim': '// 02 R&D INNOVATION',
-  'tariqul-hasan': '// 03 PLANT OPERATIONS'
-};
-
 export default function LeadersPreview() {
   const featured = LEADERS.slice(0, 3);
 
@@ -36,16 +30,17 @@ export default function LeadersPreview() {
       </div>
 
       {/* Corporate Executive Cards Grid */}
-      <div className="exec-grid exec-grid--3col">
-        {featured.map((leader, i) => (
-          <LeaderCard
-            key={leader.slug}
-            leader={leader}
-            delay={80 + i * 80}
-            isFullPage={false}
-            index={CADRE_INDICES[leader.slug]}
-          />
-        ))}
+      <div className="creative-team-section" style={{ padding: '24px 0 0' }}>
+        <div className="row">
+          {featured.map((leader, i) => (
+            <LeaderCard
+              key={leader.slug}
+              leader={leader}
+              delay={80 + i * 80}
+              isFullPage={false}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

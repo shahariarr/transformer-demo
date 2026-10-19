@@ -1,6 +1,5 @@
 import About from '@/components/About';
 import MissionVision from '@/components/MissionVision';
-import LeadersPreview from '@/components/LeadersPreview';
 import Stats from '@/components/Stats';
 import Quality from '@/components/Quality';
 import Partners from '@/components/Partners';
@@ -58,10 +57,6 @@ export default function AboutPage() {
         <MissionVision />
       </section>
 
-      {/* Leadership Section */}
-      <section id="leadership" className="sec" aria-label="Company Leadership">
-        <LeadersPreview />
-      </section>
 
       <section id="stats" className="stats-bar" aria-label="Key Performance Indicators">
         <Stats />

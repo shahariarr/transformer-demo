@@ -39,7 +39,7 @@ const Chevron = ({ d }) => (
 export default function Projects({ viewAll = true }) {
   const router = useRouter();
   const [filter, setFilter] = useState('all');
-  const [active, setActive] = useState(0);
+  const [active, setActive] = useState(1);
   const [paused, setPaused] = useState(false);
   const [visible, setVisible] = useState(false);
   const trackRef = useRef(null);

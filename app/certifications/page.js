@@ -1,6 +1,6 @@
-import Quality from '@/components/Quality';
-import { PageHero, ArrowRight } from '@/components/PageParts';
-import { STANDARDS } from '@/lib/resources';
+import { PageHero } from '@/components/PageParts';
+import CertificatesGrid from '@/components/CertificatesGrid';
+import StandardsSection from '@/components/StandardsSection';
 
 export const metadata = {
   title: 'Certifications & Test Reports',
@@ -10,23 +10,22 @@ export const metadata = {
 export default function CertificationsPage() {
   return (
     <>
-      <PageHero crumbs={[{ label: 'About', href: '/about/' }, { label: 'Certifications' }]} label="QUALITY & COMPLIANCE" title="Certified Quality, Tested Performance"
-        desc="Management system certificates and independent laboratory test reports. Click any document to inspect it." />
+      <PageHero
+        crumbs={[{ label: 'About', href: '/about/' }, { label: 'Certifications' }]}
+        label="QUALITY & COMPLIANCE"
+        title="Certified Quality, Tested Performance"
+        desc="Official management system certificates, conformity attestations, and independent laboratory type test reports. Click any document to inspect the verified report."
+        image="/assets/images/about-campus.jpg"
+      />
 
-      <section className="sec" aria-label="Certificates"><Quality showWhy={false} viewAll={false} /></section>
+      {/* Certificates & Test Reports Grid View */}
+      <section className="sec" aria-label="Official Certificates and Test Reports">
+        <CertificatesGrid />
+      </section>
 
-      <section className="sec sec--alt" aria-label="Standards">
-        <div className="wrap split">
-          <div>
-            <p className="label fade-in-up">STANDARDS</p>
-            <h2 className="fade-in-up" data-delay="80">Designed and tested to international standards</h2>
-            <p className="lead fade-in-up" data-delay="160">Our transformers and quality systems follow recognised IEC, IEEE and ISO standards.</p>
-            <p className="fade-in-up" data-delay="240"><a className="btn btn--primary" href="/resources/standards/">All Standards <ArrowRight /></a></p>
-          </div>
-          <dl className="deflist fade-in-right">
-            {STANDARDS.slice(0, 7).map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}
-          </dl>
-        </div>
+      {/* Redesigned International Standards Matrix */}
+      <section className="sec sec--alt" aria-label="International Engineering Standards">
+        <StandardsSection />
       </section>
     </>
   );
