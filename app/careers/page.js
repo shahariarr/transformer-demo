@@ -38,7 +38,6 @@ export default function CareersPage() {
           <SectionHead
             label="CURRENT OPENINGS"
             title="Explore Vacancies Across All Disciplines"
-            desc="Browse open engineering and technical positions across transformer design, high-voltage testing, plant manufacturing, and substation commissioning."
           />
           <CareersVacancyDirectory />
         </div>
