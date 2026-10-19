@@ -125,26 +125,18 @@ export default function CertificatesGrid() {
             <div className="cert-card__body">
               <span className="cert-card__cert-no">{c.certNo}</span>
               <h3 className="cert-card__title">{c.title}</h3>
-              <p className="cert-card__sub">{c.sub}</p>
-              <p className="cert-card__desc">{c.desc}</p>
+              {/* <p className="cert-card__sub">{c.sub}</p>
+              <p className="cert-card__desc">{c.desc}</p> */}
 
               <div className="cert-card__footer">
-                <span className="cert-card__issuer" title={c.issuer}>
-                  <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                    <path d="m9 12 2 2 4-4" />
-                  </svg>
-                  <span>{c.issuer}</span>
-                </span>
-
                 <button
                   type="button"
                   className="cert-card__btn"
                   aria-hidden="true"
                   tabIndex="-1"
                 >
-                  <span>Inspect</span>
-                  <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <span>Inspect Document</span>
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M5 12h14M12 5l7 7-7 7" />
                   </svg>
                 </button>
