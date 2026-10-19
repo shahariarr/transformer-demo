@@ -29,7 +29,7 @@ export default async function IndustryPage({ params }) {
 
       <section className="sec" aria-label="Industry details">
         <div className="wrap detail">
-          <DetailGallery mainImage={ind.image} gallery={d.gallery} alt={ind.name} />
+          <DetailGallery mainImage={ind.image} gallery={d.gallery} alt={ind.name} badgeLabel="Industry Application" />
           <div className="detail__content">
             <div className="fade-in-up">
               <h2>The challenge</h2>
