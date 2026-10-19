@@ -107,6 +107,10 @@ export default function Quality({ showWhy = true, showCerts = true, viewAll = tr
                 <div className="qa-frame-mat">
                   <img src={c.src} alt={c.alt} loading="lazy" decoding="async" />
                 </div>
+                <div className="qa-frame-info">
+                  <span className="qa-frame-badge">{c.badge}</span>
+                  <h4 className="qa-frame-title">{c.title}</h4>
+                </div>
               </article>
             ))}
           </div>
