@@ -17,7 +17,7 @@ export default function Home() {
       <section id="stats" className="stats-bar" aria-label="Key Performance Indicators"><Stats /></section>
       <section id="about" className="sec about" aria-label="About"><About /></section>
       <section id="products" className="sec sec--alt" aria-label="Products"><Products /></section>
-      <section id="industries" className="sec sec--dark" aria-label="Industries"><Industries /></section>
+      <section id="industries" className="sec" style={{ background: '#fff' }} aria-label="Industries"><Industries /></section>
       <section id="projects" className="sec" aria-label="Projects"><Projects /></section>
       <section id="quality" className="sec sec--alt" aria-label="Why Work With BPEL"><Quality /></section>
       <section id="lifecycle" className="sec sec--dark" aria-label="Project Lifecycle"><Lifecycle /></section>

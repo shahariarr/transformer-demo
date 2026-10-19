@@ -46,74 +46,88 @@ export default async function ServicePage({ params }) {
 
       {/* Main Service Overview & Scope Section */}
       <section className="sec" aria-label="Service overview and scope">
-        <div className="wrap detail">
-          {/* Left Column: Interactive Media Gallery */}
-          <div className="detail__media-col">
-            <DetailGallery
-              mainImage={s.image}
-              gallery={s.gallery}
-              alt={s.title}
-              badgeLabel={s.badge || 'Field & Factory View'}
-            />
+        <div className="wrap">
+          {/* Top 2-Column Split: Perfectly Balanced Gallery & Executive Overview */}
+          <div className="detail">
+            {/* Left Column: Interactive Media Gallery */}
+            <div className="detail__media-col">
+              <DetailGallery
+                mainImage={s.image}
+                gallery={s.gallery}
+                alt={s.title}
+                badgeLabel={s.badge || 'Field & Factory View'}
+              />
+            </div>
+
+            {/* Right Column: Overview, Highlights, and Primary Actions */}
+            <div className="detail__content">
+              <div className="fade-in-up">
+                {s.badge && <p className="label">{s.badge}</p>}
+                <h2>Overview &amp; Engineering Scope</h2>
+                <p className="lead">{s.intro}</p>
+              </div>
+
+              {/* Quick Metrics Strip */}
+              {s.highlights && (
+                <div className="service-metric-chips fade-in-up">
+                  {s.highlights.map((h, idx) => (
+                    <div key={idx} className="service-chip">
+                      <span className="service-chip__label">{h.label}</span>
+                      <span className="service-chip__val">{h.val}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* Action Buttons */}
+              <div className="detail__actions fade-in-up">
+                <a className="btn btn--primary" href={`/contact/?service=${encodeURIComponent(s.title)}`}>
+                  Talk to an Engineer <ArrowRight />
+                </a>
+                <a className="btn btn--ghost" href="/engineering/">
+                  How We Work
+                </a>
+              </div>
+
+              <p className="service-assurance fade-in-up">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  <polyline points="9 12 11 14 15 10" />
+                </svg>
+                <span>Direct access to practicing high-voltage engineers &bull; ISO 9001:2015 certified execution</span>
+              </p>
+            </div>
           </div>
 
-          {/* Right Column: Overview, Highlights, and Scope */}
-          <div className="detail__content">
-            <div className="fade-in-up">
-              {s.badge && <p className="label">{s.badge}</p>}
-              <h2>Overview &amp; Engineering Scope</h2>
-              <p className="lead">{s.intro}</p>
+          {/* Full-Width Structured "What's Included in This Service" Deliverables Matrix */}
+          <div className="service-included-wrap fade-in-up">
+            <div className="service-included-head">
+              <div>
+                <span className="label">COMPREHENSIVE SCOPE &amp; SPECIFICATION</span>
+                <h3>What&apos;s Included in This Service</h3>
+              </div>
+              <p className="service-included-desc">
+                Standard turnkey engineering deliverables guaranteed across every BPEL execution agreement.
+              </p>
             </div>
 
-            {/* Quick Metrics Strip */}
-            {s.highlights && (
-              <div className="service-metric-chips fade-in-up">
-                {s.highlights.map((h, idx) => (
-                  <div key={idx} className="service-chip">
-                    <span className="service-chip__label">{h.label}</span>
-                    <span className="service-chip__val">{h.val}</span>
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {/* Structured What's Included Box */}
-            <div className="service-included-box fade-in-up">
-              <h3>What&apos;s Included in This Service</h3>
-              <div className="service-included-list">
-                {(s.includesDetailed || s.includes.map(title => ({ title, desc: '' }))).map((inc, i) => (
-                  <div key={i} className="service-inc-item">
-                    <span className="service-inc-icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <div className="service-included-bento">
+              {(s.includesDetailed || s.includes.map(title => ({ title, desc: '' }))).map((inc, i) => (
+                <div key={i} className="service-inc-card">
+                  <div className="service-inc-card__top">
+                    <span className="service-inc-card__num">0{i + 1}</span>
+                    <span className="service-inc-card__badge">
+                      <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
+                      <span>Included</span>
                     </span>
-                    <div className="service-inc-text">
-                      <h4>{inc.title}</h4>
-                      {inc.desc && <p>{inc.desc}</p>}
-                    </div>
                   </div>
-                ))}
-              </div>
+                  <h4>{inc.title}</h4>
+                  {inc.desc && <p>{inc.desc}</p>}
+                </div>
+              ))}
             </div>
-
-            {/* Action Buttons */}
-            <div className="detail__actions fade-in-up">
-              <a className="btn btn--primary" href={`/contact/?service=${encodeURIComponent(s.title)}`}>
-                Talk to an Engineer <ArrowRight />
-              </a>
-              <a className="btn btn--ghost" href="/engineering/">
-                How We Work
-              </a>
-            </div>
-
-            <p className="service-assurance fade-in-up">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                <polyline points="9 12 11 14 15 10" />
-              </svg>
-              <span>Direct access to practicing high-voltage engineers &bull; ISO 9001:2015 certified execution</span>
-            </p>
           </div>
         </div>
       </section>
@@ -196,9 +210,6 @@ export default async function ServicePage({ params }) {
             <header className="sec-head fade-in-up">
               <p className="label">TECHNICAL PARAMETERS &amp; DELIVERABLES</p>
               <h2>Operating Specifications &amp; Handover Package</h2>
-              <p className="sec-head__desc">
-                Verified engineering parameters, compliance benchmarks, and official documentation dossiers.
-              </p>
             </header>
 
             <div className="service-specs-wrap">

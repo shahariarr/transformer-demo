@@ -1,4 +1,3 @@
-import Lifecycle from '@/components/Lifecycle';
 import { PageHero, ArrowRight } from '@/components/PageParts';
 import { SERVICES } from '@/lib/services';
 import { waLink } from '@/lib/data';
@@ -8,6 +7,10 @@ export const metadata = {
   title: 'Services',
   description: 'Equipment supply, installation and commissioning, testing and diagnostics, and maintenance for transformers and substations.'
 };
+
+const ServiceIcon = ({ children }) => (
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{children}</svg>
+);
 
 const SERVICE_FACTS = [
   {
@@ -103,10 +106,11 @@ export default function ServicesPage() {
         </a>
       </PageHero>
 
-      {/* Services Facts Strip */}
-      <section className="sec sec--tight" aria-label="Services capabilities overview">
+      {/* Core Services Showcase & Strategic Metrics */}
+      <section className="sec services-showcase-section" aria-label="Core services directory">
         <div className="wrap">
-          <div className="exec-facts-strip fade-in-up" role="region" aria-label="Service Capabilities Highlights">
+          {/* Services Capabilities Highlights */}
+          <div className="services-facts-strip fade-in-up" role="region" aria-label="Service Capabilities Highlights">
             {SERVICE_FACTS.map((item, idx) => (
               <div className="exec-fact-item" key={idx}>
                 <div className="exec-fact-item__head">
@@ -118,12 +122,7 @@ export default function ServicesPage() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* Core Services Showcase */}
-      <section className="sec" aria-label="Core services directory">
-        <div className="wrap">
           <header className="sec-head fade-in-up">
             <p className="label">FOUR CORE DISCIPLINES</p>
             <h2>Engineered Services for Grid &amp; Industrial Power</h2>
@@ -137,7 +136,8 @@ export default function ServicesPage() {
               <article key={s.slug} className="services-showcase-card fade-in-up" data-delay={i * 90}>
                 <div className="services-showcase-media">
                   <img src={s.image} alt={s.title} loading="lazy" decoding="async" />
-                  <span className="services-showcase-kicker">SERVICE 0{i + 1}</span>
+                  <span className="services-showcase-kicker">SERVICE</span>
+                  <span className="services-showcase-num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
                 </div>
                 <div className="services-showcase-body">
                   <span className="services-showcase-badge">{s.badge || 'ENGINEERING DISCIPLINE'}</span>
@@ -168,7 +168,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Turnkey EPC & Integrated Solutions Section */}
-      <section className="sec sec--alt" aria-label="Integrated turnkey packages">
+      <section className="sec sec--alt turnkey-solutions-section" aria-label="Integrated turnkey packages">
         <div className="wrap">
           <header className="sec-head fade-in-up">
             <p className="label">INTEGRATED TURNKEY SOLUTIONS</p>
@@ -211,34 +211,62 @@ export default function ServicesPage() {
             ))}
           </div>
 
-          {/* Signature Consultation Box */}
-          <div className="standards-consult-box fade-in-up" style={{ marginTop: '3.5rem' }}>
-            <div className="standards-consult-copy">
-              <span className="standards-consult-tag">TURNKEY ENGINEERING CONSULTATION</span>
-              <h3>Need a tailored turnkey scope for your electrical project?</h3>
-              <p>
-                From initial single-line diagram (SLD) reviews to turn-key EPC pricing and delivery scheduling, our technical directors are ready to assist.
-              </p>
+          {/* Engineering Support & Turnkey Consultation Banner */}
+          <div className="faq__footer-help fade-in-up" data-delay="160" style={{ marginTop: '3.5rem' }}>
+            <div className="faq-help__main">
+              <span className="faq-help__eyebrow">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                Engineering Support
+              </span>
+              <h4>Still have questions about your project requirements?</h4>
+              <p>Our power engineering team can provide single-line diagram (SLD) reviews, turnkey EPC pricing, and on-site commissioning support.</p>
+              <ul className="faq-help__services">
+                <li>
+                  <ServiceIcon>
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                  </ServiceIcon>
+                  <span>Turnkey EPC Execution</span>
+                </li>
+                <li>
+                  <ServiceIcon>
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                    <line x1="16" y1="13" x2="8" y2="13" />
+                    <line x1="16" y1="17" x2="8" y2="17" />
+                    <line x1="10" y1="9" x2="8" y2="9" />
+                  </ServiceIcon>
+                  <span>Single-Line Diagram (SLD)</span>
+                </li>
+                <li>
+                  <ServiceIcon>
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    <polyline points="9 12 11 14 15 10" />
+                  </ServiceIcon>
+                  <span>Testing & Commissioning</span>
+                </li>
+              </ul>
             </div>
-            <div className="standards-consult-actions">
-              <a className="btn btn--primary" href="/contact/">
-                Request Engineering Proposal <ArrowRight />
+            <div className="faq-help__aside">
+              <p className="faq-help__aside-title">Talk to our engineers</p>
+              <p className="faq-help__aside-text">Share your requirement and get a clear technical answer.</p>
+              <a href="/contact/" className="faq-help__btn faq-help__btn--primary">
+                <span>Ask an Engineer</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
               </a>
-              <a className="btn btn--wa" href={waLink()} target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+              <a href={waLink()} target="_blank" rel="noopener noreferrer" className="faq-help__btn faq-help__btn--wa">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
                   <path d={WA_PATH} />
                 </svg>
-                <span>WhatsApp Us</span>
+                <span>WhatsApp Chat</span>
               </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Energised Project Lifecycle */}
-      <section id="lifecycle" className="sec sec--dark" aria-label="Project lifecycle">
-        <Lifecycle />
-      </section>
     </>
   );
 }
