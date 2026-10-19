@@ -2,6 +2,12 @@
 
 import { useState } from 'react';
 import SectionHead from './SectionHead';
+import { waLink } from '@/lib/data';
+import { WA_PATH } from '@/lib/icons';
+
+const ServiceIcon = ({ children }) => (
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{children}</svg>
+);
 
 const CAREERS_FAQS = [
   {
@@ -87,8 +93,8 @@ export default function CareersFaq() {
         })}
       </div>
 
-      {/* HR Assistance Card matching the Home page FAQ footer */}
-      <div className="faq__footer-help fade-in-up" data-delay="160">
+      {/* Signature 2-Column Support & Consultation Banner matching the rest of the site */}
+      <div className="faq__footer-help fade-in-up" data-delay="160" style={{ marginTop: '3.5rem' }}>
         <div className="faq-help__main">
           <span className="faq-help__eyebrow">
             <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -98,29 +104,48 @@ export default function CareersFaq() {
             </svg>
             Human Resources &amp; Talent Acquisition
           </span>
-          <h4>Have specific questions about working with our engineering team?</h4>
-          <p>Our technical HR coordinators are available to discuss current requirements, interview timelines, and department openings.</p>
+          <h4>Have specific questions about engineering careers at BPEL?</h4>
+          <p>Our talent acquisition team and engineering department heads are available to discuss qualification criteria, interview timelines, and department openings.</p>
+          <ul className="faq-help__services">
+            <li>
+              <ServiceIcon>
+                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <polyline points="16 11 18 13 22 9" />
+              </ServiceIcon>
+              <span>Open Engineering Pool</span>
+            </li>
+            <li>
+              <ServiceIcon>
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+              </ServiceIcon>
+              <span>FAT &amp; Lab Mentorship</span>
+            </li>
+            <li>
+              <ServiceIcon>
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                <path d="M6 12v5c3 3 9 3 12 0v-5" />
+              </ServiceIcon>
+              <span>Campus Placement Inquiries</span>
+            </li>
+          </ul>
         </div>
 
-        <div className="faq-help__cta">
-          <a
-            href="mailto:hr@bpel.com.bd"
-            className="btn btn--primary"
-            title="Email BPEL Technical HR Desk"
-          >
-            <span>Email Technical HR</span>
-            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <path d="M5 12h14M12 5l7 7-7 7" />
+        <div className="faq-help__aside">
+          <p className="faq-help__aside-title">Talk to our Technical HR</p>
+          <p className="faq-help__aside-text">Share your qualifications or connect directly with our engineering recruitment desk.</p>
+          <a href="/careers/apply?job=open-application" className="faq-help__btn faq-help__btn--primary">
+            <span>Submit Open Application</span>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
           </a>
-          <a
-            href="https://wa.me/8801713000000"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn--ghost"
-            title="Chat via WhatsApp"
-          >
-            <span>WhatsApp HR</span>
+          <a href={waLink()} target="_blank" rel="noopener noreferrer" className="faq-help__btn faq-help__btn--wa">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+              <path d={WA_PATH} />
+            </svg>
+            <span>WhatsApp Chat</span>
           </a>
         </div>
       </div>
