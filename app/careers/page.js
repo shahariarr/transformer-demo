@@ -115,7 +115,6 @@ export default function CareersPage() {
           <SectionHead
             label="CURRENT VACANCIES"
             title="Explore Open Engineering & Technical Roles"
-            desc="Find your next career milestone across electromagnetic design, high-voltage testing, heavy fabrication, and turnkey substation EPC."
           />
           <CareersVacancyDirectory />
         </div>
