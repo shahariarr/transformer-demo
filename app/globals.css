@@ -11630,9 +11630,502 @@ a.btn.btn--light {
   }
 }
 
+/* =====================================================================
+   Enhanced Service Detail Page Styles (UI/UX Pro Max & Modern Aesthetic)
+   ===================================================================== */
 
+/* Service Pill Badge */
+.service-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .35rem .85rem;
+  border-radius: 9999px;
+  background: var(--primary-50);
+  border: 1px solid rgba(11, 92, 171, 0.18);
+  color: var(--primary);
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  margin-bottom: .85rem;
+}
 
+.service-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 0 3px rgba(11, 92, 171, 0.2);
+  display: inline-block;
+}
 
+/* Metric Chips Bar */
+.service-metric-chips {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .85rem;
+  margin: 1.35rem 0 1.75rem;
+}
 
+.service-chip {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: .75rem .95rem;
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+  box-shadow: 0 1px 3px rgba(10, 30, 60, 0.04);
+  transition: border-color .2s ease, transform .2s ease;
+}
 
+.service-chip:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
 
+.service-chip__label {
+  font-size: .7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--muted);
+}
+
+.service-chip__val {
+  font-size: .95rem;
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1.25;
+}
+
+/* Enhanced "What's Included" Box */
+.service-included-box {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1.5rem 1.65rem;
+  margin: 1.75rem 0;
+  box-shadow: 0 4px 18px -4px rgba(10, 30, 60, 0.05);
+}
+
+.service-included-box h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 1.15rem;
+  letter-spacing: -.01em;
+}
+
+.service-included-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.05rem;
+}
+
+.service-inc-item {
+  display: flex;
+  align-items: flex-start;
+  gap: .9rem;
+}
+
+.service-inc-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--primary-50);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: .15rem;
+  border: 1px solid rgba(11, 92, 171, 0.15);
+}
+
+.service-inc-text h4 {
+  font-size: .94rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0 0 .2rem 0;
+  line-height: 1.35;
+}
+
+.service-inc-text p {
+  font-size: .835rem;
+  line-height: 1.5;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* Trust Assurance Note */
+.service-assurance {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  font-size: .815rem;
+  font-weight: 600;
+  color: var(--muted);
+  margin-top: 1rem;
+}
+
+.service-assurance svg {
+  color: #16a34a;
+  flex-shrink: 0;
+}
+
+/* Methodology & Capabilities Bento Layout */
+.service-methodology-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.service-narrative-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--primary);
+  border-radius: 12px;
+  padding: 1.65rem 2rem;
+  box-shadow: 0 4px 20px -6px rgba(10, 30, 60, 0.05);
+}
+
+.service-narrative-head {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  margin-bottom: .75rem;
+}
+
+.service-narrative-head svg {
+  color: var(--primary);
+}
+
+.service-narrative-head h4 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--navy);
+  margin: 0;
+}
+
+.service-narrative-card p {
+  font-size: .94rem;
+  line-height: 1.65;
+  color: var(--text);
+  margin-bottom: 1.15rem;
+}
+
+.service-narrative-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .65rem;
+}
+
+.service-narrative-tags span {
+  display: inline-flex;
+  align-items: center;
+  padding: .3rem .75rem;
+  border-radius: 6px;
+  background: var(--alt);
+  border: 1px solid var(--line);
+  color: var(--navy);
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+}
+
+/* Capabilities Grid */
+.service-caps-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.service-cap-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1.65rem 1.75rem;
+  position: relative;
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+
+.service-cap-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--primary);
+  box-shadow: 0 10px 28px -6px rgba(10, 30, 60, 0.08);
+}
+
+.service-cap-num {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: var(--primary);
+  opacity: .5;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: .65rem;
+}
+
+.service-cap-card h4 {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: .5rem;
+  line-height: 1.35;
+}
+
+.service-cap-card p {
+  font-size: .875rem;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* Technical Specifications & Deliverables Matrix */
+.service-specs-wrap {
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: 1.75rem;
+  margin-top: 2rem;
+  align-items: start;
+}
+
+.service-specs-card,
+.service-deliverables-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: 0 4px 22px -6px rgba(10, 30, 60, 0.06);
+  overflow: hidden;
+}
+
+.service-specs-card__head {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: 1.35rem 1.65rem;
+  background: var(--alt);
+  border-bottom: 1px solid var(--line);
+}
+
+.service-specs-card__head svg {
+  color: var(--primary);
+}
+
+.service-specs-card__head h3 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--navy);
+  margin: 0;
+}
+
+.service-specs-table {
+  display: flex;
+  flex-direction: column;
+}
+
+.service-spec-row {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  padding: 1rem 1.65rem;
+  border-bottom: 1px solid var(--line);
+  align-items: center;
+  font-size: .875rem;
+}
+
+.service-spec-row:last-child {
+  border-bottom: none;
+}
+
+.service-spec-row:nth-child(even) {
+  background: rgba(247, 249, 252, 0.5);
+}
+
+.service-spec-label {
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.service-spec-val {
+  color: var(--text);
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+/* Deliverables Card */
+.service-deliverables-card {
+  padding: 1.75rem 1.85rem;
+}
+
+.service-deliv__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  padding: .3rem .75rem;
+  border-radius: 6px;
+  background: #ecfdf5;
+  color: #059669;
+  font-size: .725rem;
+  font-weight: 800;
+  letter-spacing: .05em;
+  margin-bottom: .85rem;
+}
+
+.service-deliv__head h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: .45rem;
+}
+
+.service-deliv__head p {
+  font-size: .85rem;
+  color: var(--muted);
+  line-height: 1.5;
+  margin-bottom: 1.35rem;
+}
+
+.service-deliv-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: .85rem;
+}
+
+.service-deliv-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: .65rem;
+  font-size: .875rem;
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.45;
+}
+
+.service-deliv-list li svg {
+  color: #059669;
+  flex-shrink: 0;
+  margin-top: .15rem;
+}
+
+.service-deliv-footer {
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+}
+
+/* Service FAQ Accordion */
+.service-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: .85rem;
+  max-width: 920px;
+  margin: 1.5rem auto 0;
+}
+
+.service-faq-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.service-faq-card:hover,
+.service-faq-card.is-open {
+  border-color: var(--primary);
+  box-shadow: 0 4px 16px -4px rgba(11, 92, 171, 0.08);
+}
+
+.service-faq-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.65rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  outline: none;
+  font: inherit;
+}
+
+.service-faq-q {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.4;
+}
+
+.service-faq-num {
+  font-size: .85rem;
+  font-weight: 800;
+  color: var(--primary);
+  background: var(--primary-50);
+  padding: .2rem .55rem;
+  border-radius: 6px;
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+
+.service-faq-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--alt);
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background-color .2s ease, color .2s ease;
+}
+
+.service-faq-card.is-open .service-faq-icon {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+.service-faq-body {
+  padding: 0 1.65rem 1.35rem 3.5rem;
+  border-top: 1px solid rgba(226, 232, 240, 0.5);
+}
+
+.service-faq-answer {
+  font-size: .92rem;
+  line-height: 1.65;
+  color: var(--muted);
+  margin-top: .9rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 960px) {
+  .service-metric-chips {
+    grid-template-columns: 1fr;
+  }
+  .service-specs-wrap {
+    grid-template-columns: 1fr;
+  }
+  .service-caps-grid {
+    grid-template-columns: 1fr;
+  }
+  .service-faq-body {
+    padding-left: 1.65rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .service-spec-row {
+    grid-template-columns: 1fr;
+    gap: .35rem;
+  }
+  .service-included-box {
+    padding: 1.25rem 1.15rem;
+  }
+}

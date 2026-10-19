@@ -1,11 +1,15 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-export default function DetailGallery({ mainImage, gallery = [], alt = '' }) {
+export default function DetailGallery({ mainImage, gallery = [], alt = '', badgeLabel = 'Project Showcase' }) {
   // All 3 images available in the gallery set
   const allImages = [mainImage, ...gallery.filter(Boolean)].slice(0, 3);
   const [activeImg, setActiveImg] = useState(mainImage);
+
+  useEffect(() => {
+    setActiveImg(mainImage);
+  }, [mainImage]);
 
   // The 2 secondary images to show underneath
   const thumbs = allImages.filter(img => img !== activeImg).slice(0, 2);
@@ -30,7 +34,7 @@ export default function DetailGallery({ mainImage, gallery = [], alt = '' }) {
             <circle cx="8.5" cy="8.5" r="1.5" />
             <polyline points="21 15 16 10 5 21" />
           </svg>
-          <span>Industry Application</span>
+          <span>{badgeLabel}</span>
         </div>
       </figure>
 
