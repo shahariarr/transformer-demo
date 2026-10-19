@@ -74,7 +74,7 @@ export default function ContactFaqSection() {
                   </span>
                 </button>
                 {isOpen && (
-                  <div className="contact-faq-answer fade-in-up">
+                  <div className="contact-faq-answer">
                     <p>{faq.a}</p>
                   </div>
                 )}
