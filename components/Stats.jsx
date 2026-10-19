@@ -11,7 +11,7 @@ const STATS = [
   { target: 500, suffix: '+', label: 'PROJECTS', format: false }
 ];
 
-export default function Stats() {
+export default function Stats({ items = STATS }) {
   const gridRef = useRef(null);
 
   useEffect(() => {
@@ -23,7 +23,8 @@ export default function Stats() {
         const digitsEl = item.querySelector('.stat-num__digits');
         const plusEl = item.querySelector('.stat-num__plus');
         const labelEl = item.querySelector('.stat-label');
-        const { target, format: isFormat } = STATS[index];
+        const statConfig = items[index] || STATS[index];
+        const { target, format: isFormat } = statConfig;
         const delay = index * 120;
 
         anime.remove(item);
@@ -77,7 +78,7 @@ export default function Stats() {
   return (
     <div className="wrap">
       <div className="stats-grid" ref={gridRef}>
-        {STATS.map((s, i) => (
+        {items.map((s, i) => (
           <div className="stat-item" data-stat={i} key={s.label}>
             <div className="stat-num" data-target={s.target} data-suffix={s.suffix} data-format={String(s.format)}>
               <span className="stat-num__digits">0</span><span className="stat-num__plus">{s.suffix}</span>
