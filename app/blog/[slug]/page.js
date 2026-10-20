@@ -406,6 +406,7 @@ export default async function BlogPostPage({ params }) {
           <div className="blog-ets-cta-card">
             <div className="blog-ets-cta-inner">
               <div>
+                <span className="blog-ets-cta-tag">Engineering Collaboration &amp; Tenders</span>
                 <h2 className="blog-ets-cta-heading">
                   Have a Project in Mind?
                 </h2>
