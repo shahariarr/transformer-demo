@@ -3,6 +3,9 @@
 import { useState, useMemo, useRef } from 'react';
 import Link from 'next/link';
 import { BLOG_CATEGORIES } from '@/lib/blog';
+import { waLink } from '@/lib/data';
+import { WA_PATH } from '@/lib/icons';
+import { ArrowRight } from '@/components/PageParts';
 
 const POSTS_PER_PAGE = 6;
 
@@ -397,9 +400,9 @@ export default function BlogDirectory({ posts = [] }) {
       </section>
 
       {/* =========================================================
-          4. HAVE A PROJECT IN MIND? CTA BANNER
+          4. TECHNICAL CONSULTATION & SIZING SECTION
           ========================================================= */}
-      <section className="blog-ets-cta-sec" aria-label="Project Inquiry">
+      <section className="blog-ets-cta-sec" aria-label="Technical Consultation and Sizing">
         <div className="wrap">
           <div className="blog-ets-cta-card">
             <div className="blog-ets-cta-inner">

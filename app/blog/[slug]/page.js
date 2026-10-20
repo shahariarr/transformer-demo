@@ -1,6 +1,9 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getAllPosts, getPostBySlug, getRelatedPosts } from '@/lib/blog';
+import { waLink } from '@/lib/data';
+import { WA_PATH } from '@/lib/icons';
+import { ArrowRight } from '@/components/PageParts';
 
 export async function generateStaticParams() {
   const posts = getAllPosts();
@@ -399,9 +402,9 @@ export default async function BlogPostPage({ params }) {
       )}
 
       {/* =========================================================
-          4. HAVE A PROJECT IN MIND? CTA BANNER
+          4. TECHNICAL CONSULTATION & SIZING SECTION
           ========================================================= */}
-      <section className="blog-ets-cta-sec" aria-label="Project Inquiry">
+      <section className="blog-ets-cta-sec" aria-label="Technical Consultation and Sizing">
         <div className="wrap">
           <div className="blog-ets-cta-card">
             <div className="blog-ets-cta-inner">

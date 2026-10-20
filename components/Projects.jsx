@@ -36,7 +36,7 @@ const Chevron = ({ d }) => (
   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={d} /></svg>
 );
 
-export default function Projects({ viewAll = true }) {
+export default function Projects({ viewAll = true, isGrid = false }) {
   const router = useRouter();
   const [filter, setFilter] = useState('all');
   const [active, setActive] = useState(1);
@@ -156,7 +156,7 @@ export default function Projects({ viewAll = true }) {
     return () => io.disconnect();
   }, []);
 
-  const playing = visible && !paused && count > 1;
+  const playing = !isGrid && visible && !paused && count > 1;
   useEffect(() => {
     if (!playing || reduced()) return;
     const t = setTimeout(() => { if (!document.hidden) go(active + 1); }, AUTOPLAY_MS);
@@ -196,58 +196,115 @@ export default function Projects({ viewAll = true }) {
         </div>
       </div>
 
-      <div className="pcar fade-in-up" data-playing={playing ? 'true' : 'false'} data-delay="120" {...hold}>
-        <button type="button" className="pcar__arrow pcar__arrow--prev" aria-label="Previous project" onClick={() => go(active - 1)} disabled={count < 2}><Chevron d="m15 18-6-6 6-6" /></button>
-        <button type="button" className="pcar__arrow pcar__arrow--next" aria-label="Next project" onClick={() => go(active + 1)} disabled={count < 2}><Chevron d="m9 18 6-6-6-6" /></button>
+      {isGrid ? (
+        <div className="wrap proj-grid-wrap fade-in-up" data-delay="120">
+          <div className="proj-grid">
+            {items.map((p, i) => (
+              <article
+                key={`${filter}-${p.slug}`}
+                className="pcar__card is-active proj-grid__card"
+                data-project={p.index}
+                data-category={getCategorySlug(p.cat)}
+                role="article"
+                aria-label={`${i + 1} of ${count}: ${p.title}`}
+                style={{ '--i': i }}
+                onClick={() => router.push(`/projects/${p.slug}/`)}
+              >
+                <img className="pcar__img" src={p.image} alt="" loading="lazy" decoding="async" draggable="false" />
+                <span className="pcar__shade" aria-hidden="true"></span>
 
-        <div className="pcar__track" ref={trackRef} tabIndex="0" role="region" aria-roledescription="carousel" aria-label="Project portfolio"
-             onScroll={onScroll} onPointerDown={onPointerDown} onPointerMove={onPointerMove}
-             onPointerUp={endDrag} onPointerCancel={endDrag} onClickCapture={onClickCapture} onDragStart={e => e.preventDefault()}
-             onKeyDown={e => {
-               if (e.key === 'ArrowRight') { e.preventDefault(); go(active + 1); }
-               if (e.key === 'ArrowLeft') { e.preventDefault(); go(active - 1); }
-             }}>
-          {items.map((p, i) => (
-            <article key={`${filter}-${p.slug}`} ref={el => { cardRefs.current[i] = el; }}
-                     className={`pcar__card${i === active ? ' is-active' : ''}`} data-project={p.index} data-category={getCategorySlug(p.cat)}
-                     role="group" aria-roledescription="slide" aria-label={`${i + 1} of ${count}: ${p.title}`}
-                     style={{ '--i': i }} onClick={() => onCardClick(i)}>
-              <img className="pcar__img" src={p.image} alt="" loading="lazy" decoding="async" draggable="false" />
-              <span className="pcar__shade" aria-hidden="true"></span>
+                <div className="pcar__top">
+                  <span className="pcar__num" aria-hidden="true">{pad(i + 1)}</span>
+                  <span className="pcar__cat">{p.cat}</span>
+                </div>
 
-              <div className="pcar__top">
-                <span className="pcar__num" aria-hidden="true">{pad(i + 1)}</span>
-                <span className="pcar__cat">{p.cat}</span>
-              </div>
-
-              <div className="pcar__panel">
-                <p className="pcar__loc">
-                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg>
-                  {p.location}
-                </p>
-                <h3 className="pcar__title">{p.title}</h3>
-                {p.scope ? <p className="pcar__scope">{p.scope}</p> : null}
-                <div className="pcar__more">
-                  <div>
-                    {p.specs ? (
-                      <ul className="pcar__specs">
-                        {p.specs.split('•').map(s => s.trim()).filter(Boolean).map(s => <li key={s}>{s}</li>)}
-                      </ul>
-                    ) : null}
-                    <p className="pcar__desc">{p.desc}</p>
-                    <a className="pcar__cta" href={`/projects/${p.slug}/`} tabIndex={i === active ? 0 : -1} onClick={e => e.stopPropagation()}>
-                      <span>Explore Case Study</span>
-                      <span className="pcar__cta-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17 17 7M8 7h9v9" /></svg>
-                      </span>
-                    </a>
+                <div className="pcar__panel">
+                  <p className="pcar__loc">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                      <circle cx="12" cy="10" r="3" />
+                    </svg>
+                    {p.location}
+                  </p>
+                  <h3 className="pcar__title">{p.title}</h3>
+                  {p.scope ? <p className="pcar__scope">{p.scope}</p> : null}
+                  <div className="pcar__more">
+                    <div>
+                      {p.specs ? (
+                        <ul className="pcar__specs">
+                          {p.specs.split('•').map(s => s.trim()).filter(Boolean).map(s => <li key={s}>{s}</li>)}
+                        </ul>
+                      ) : null}
+                      <p className="pcar__desc">{p.desc}</p>
+                      <a className="pcar__cta" href={`/projects/${p.slug}/`} onClick={e => e.stopPropagation()}>
+                        <span>Explore Case Study</span>
+                        <span className="pcar__cta-icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M7 17 17 7M8 7h9v9" />
+                          </svg>
+                        </span>
+                      </a>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </article>
-          ))}
+              </article>
+            ))}
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="pcar fade-in-up" data-playing={playing ? 'true' : 'false'} data-delay="120" {...hold}>
+          <button type="button" className="pcar__arrow pcar__arrow--prev" aria-label="Previous project" onClick={() => go(active - 1)} disabled={count < 2}><Chevron d="m15 18-6-6 6-6" /></button>
+          <button type="button" className="pcar__arrow pcar__arrow--next" aria-label="Next project" onClick={() => go(active + 1)} disabled={count < 2}><Chevron d="m9 18 6-6-6-6" /></button>
+
+          <div className="pcar__track" ref={trackRef} tabIndex="0" role="region" aria-roledescription="carousel" aria-label="Project portfolio"
+               onScroll={onScroll} onPointerDown={onPointerDown} onPointerMove={onPointerMove}
+               onPointerUp={endDrag} onPointerCancel={endDrag} onClickCapture={onClickCapture} onDragStart={e => e.preventDefault()}
+               onKeyDown={e => {
+                 if (e.key === 'ArrowRight') { e.preventDefault(); go(active + 1); }
+                 if (e.key === 'ArrowLeft') { e.preventDefault(); go(active - 1); }
+               }}>
+            {items.map((p, i) => (
+              <article key={`${filter}-${p.slug}`} ref={el => { cardRefs.current[i] = el; }}
+                       className={`pcar__card${i === active ? ' is-active' : ''}`} data-project={p.index} data-category={getCategorySlug(p.cat)}
+                       role="group" aria-roledescription="slide" aria-label={`${i + 1} of ${count}: ${p.title}`}
+                       style={{ '--i': i }} onClick={() => onCardClick(i)}>
+                <img className="pcar__img" src={p.image} alt="" loading="lazy" decoding="async" draggable="false" />
+                <span className="pcar__shade" aria-hidden="true"></span>
+
+                <div className="pcar__top">
+                  <span className="pcar__num" aria-hidden="true">{pad(i + 1)}</span>
+                  <span className="pcar__cat">{p.cat}</span>
+                </div>
+
+                <div className="pcar__panel">
+                  <p className="pcar__loc">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg>
+                    {p.location}
+                  </p>
+                  <h3 className="pcar__title">{p.title}</h3>
+                  {p.scope ? <p className="pcar__scope">{p.scope}</p> : null}
+                  <div className="pcar__more">
+                    <div>
+                      {p.specs ? (
+                        <ul className="pcar__specs">
+                          {p.specs.split('•').map(s => s.trim()).filter(Boolean).map(s => <li key={s}>{s}</li>)}
+                        </ul>
+                      ) : null}
+                      <p className="pcar__desc">{p.desc}</p>
+                      <a className="pcar__cta" href={`/projects/${p.slug}/`} tabIndex={i === active ? 0 : -1} onClick={e => e.stopPropagation()}>
+                        <span>Explore Case Study</span>
+                        <span className="pcar__cta-icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17 17 7M8 7h9v9" /></svg>
+                        </span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      )}
 
       <div className="wrap">
         {/* Bottom Consultation Callout Banner */}
