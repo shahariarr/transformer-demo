@@ -1,5 +1,4 @@
 import { PageHero, ArrowRight } from '@/components/PageParts';
-import CareersAbout from '@/components/CareersAbout';
 import CareersVacancyDirectory from '@/components/CareersVacancyDirectory';
 import CareersCulture from '@/components/CareersCulture';
 import CareersHiringProcess from '@/components/CareersHiringProcess';
@@ -16,48 +15,48 @@ export const metadata = {
 
 const CAREER_FACTS = [
   {
-    metric: '35+ Years',
-    label: 'Engineering Legacy',
-    desc: 'Powering Bangladesh’s critical industrial and utility grids since 1985.',
+    metric: '1,000+',
+    label: 'Company Employees',
+    desc: 'Multidisciplinary design engineers, factory craftsmen, R&D specialists, and commissioning teams.',
     icon: (
       <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-      </svg>
-    )
-  },
-  {
-    metric: '500+ Team',
-    label: 'Technical Specialists',
-    desc: 'Multidisciplinary design engineers, factory craftsmen, and field technicians.',
-    icon: (
-      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
         <circle cx="9" cy="7" r="4" />
-        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+        <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
         <path d="M16 3.13a4 4 0 0 1 0 7.75" />
       </svg>
     )
   },
   {
-    metric: '200 kV FAT',
-    label: 'In-House Testing Bay',
-    desc: 'Fully accredited high-voltage laboratory with lightning impulse test capability.',
+    metric: '92%',
+    label: 'Retention & Career Growth',
+    desc: 'Structured technical ladders from Graduate Trainee Engineer to Senior Specialist and Technical Director.',
     icon: (
       <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-        <polyline points="9 12 11 14 15 10" />
+        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+        <polyline points="17 6 23 6 23 12" />
       </svg>
     )
   },
   {
-    metric: 'Zero LTI',
-    label: 'Stringent Safety Culture',
-    desc: 'ISO 45001 & OHSAS compliant occupational health, lockout-tagout (LOTO) and PPE.',
+    metric: '100+ Hrs',
+    label: 'Annual Training & CPD',
+    desc: 'Company-sponsored certifications, IEB continuing professional development credits, and technical workshops.',
     icon: (
       <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="10" />
-        <path d="M12 8v4" />
-        <path d="M12 16h.01" />
+        <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+        <path d="M6 12v5c3 3 9 3 12 0v-5" />
+      </svg>
+    )
+  },
+  {
+    metric: '100%',
+    label: 'Welfare, Health & Safety',
+    desc: 'Comprehensive medical cover, dual festival bonuses, provident fund, staff transport, and zero-accident culture.',
+    icon: (
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+        <path d="m9 12 2 2 4-4" />
       </svg>
     )
   }
@@ -102,11 +101,6 @@ export default function CareersPage() {
             ))}
           </div>
         </div>
-      </section>
-
-      {/* 3. Life at Basic Power / Engineering Leadership (matching About) */}
-      <section id="life-at-bpel" className="sec about" aria-label="Life at Basic Power">
-        <CareersAbout />
       </section>
 
       {/* 4. CURRENT OPENINGS Section (matching Products & Services Directory) */}

@@ -1,13 +1,27 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useRef } from 'react';
 import Link from 'next/link';
 import { BLOG_CATEGORIES } from '@/lib/blog';
 import { waLink } from '@/lib/data';
 import { WA_PATH } from '@/lib/icons';
 import { ArrowRight } from '@/components/PageParts';
 
+const POSTS_PER_PAGE = 6;
+
 // SVG Icons matching ETS Lucide icon set
+const ChevronLeftIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="m15 18-6-6 6-6" />
+  </svg>
+);
+
+const ChevronRightIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="m9 18 6-6-6-6" />
+  </svg>
+);
+
 const RssIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
     <path d="M4 11a9 9 0 0 1 9 9" />
@@ -48,6 +62,8 @@ const SearchIcon = () => (
 export default function BlogDirectory({ posts = [] }) {
   const [selectedCat, setSelectedCat] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const gridSectionRef = useRef(null);
 
   // Default unmodified state (shows 2-column featured card + grid)
   const isDefaultView = selectedCat === 'All' && !searchQuery.trim();
@@ -83,6 +99,39 @@ export default function BlogDirectory({ posts = [] }) {
     }
     return filteredPosts;
   }, [filteredPosts, isDefaultView, featuredPost]);
+
+  // Total pages
+  const totalPages = Math.ceil(gridPosts.length / POSTS_PER_PAGE);
+
+  // Paginated articles for the current page
+  const paginatedPosts = useMemo(() => {
+    const start = (currentPage - 1) * POSTS_PER_PAGE;
+    return gridPosts.slice(start, start + POSTS_PER_PAGE);
+  }, [gridPosts, currentPage]);
+
+  const handlePageChange = (page) => {
+    if (page < 1 || page > totalPages) return;
+    setCurrentPage(page);
+    if (gridSectionRef.current) {
+      gridSectionRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  const handleCatChange = (cat) => {
+    setSelectedCat(cat);
+    setCurrentPage(1);
+  };
+
+  const handleSearchChange = (val) => {
+    setSearchQuery(val);
+    setCurrentPage(1);
+  };
+
+  const handleResetFilters = () => {
+    setSelectedCat('All');
+    setSearchQuery('');
+    setCurrentPage(1);
+  };
 
   return (
     <div className="blog-ets-page-wrapper">
@@ -168,7 +217,7 @@ export default function BlogDirectory({ posts = [] }) {
       {/* =========================================================
           3. CATEGORY FILTERS & ARTICLE GRID SECTION
           ========================================================= */}
-      <section className="blog-ets-grid-sec" aria-label="Articles Grid">
+      <section className="blog-ets-grid-sec" ref={gridSectionRef} id="blog-grid" aria-label="Articles Grid">
         <div className="wrap">
           {/* Category Filter Pills & Search Input */}
           <div className="blog-ets-toolbar">
@@ -179,7 +228,7 @@ export default function BlogDirectory({ posts = [] }) {
                   <button
                     key={cat}
                     type="button"
-                    onClick={() => setSelectedCat(cat)}
+                    onClick={() => handleCatChange(cat)}
                     role="tab"
                     aria-selected={isActive}
                     className={`blog-ets-cat-pill${isActive ? ' is-active' : ''}`}
@@ -199,14 +248,14 @@ export default function BlogDirectory({ posts = [] }) {
                 type="text"
                 placeholder="Search articles..."
                 value={searchQuery}
-                onChange={e => setSearchQuery(e.target.value)}
+                onChange={e => handleSearchChange(e.target.value)}
                 className="blog-ets-search-input"
                 aria-label="Search articles by title or keyword"
               />
               {searchQuery && (
                 <button
                   type="button"
-                  onClick={() => setSearchQuery('')}
+                  onClick={() => handleSearchChange('')}
                   className="blog-ets-search-clear"
                   aria-label="Clear search input"
                 >
@@ -226,7 +275,7 @@ export default function BlogDirectory({ posts = [] }) {
               </p>
               <button
                 type="button"
-                onClick={() => { setSelectedCat('All'); setSearchQuery(''); }}
+                onClick={handleResetFilters}
                 className="blog-ets-reset-btn"
               >
                 Reset filters
@@ -236,59 +285,111 @@ export default function BlogDirectory({ posts = [] }) {
 
           {/* 3-Column Article Grid */}
           {gridPosts.length > 0 ? (
-            <div className="blog-ets-grid">
-              {gridPosts.map(post => (
-                <Link
-                  key={post.slug}
-                  href={`/blog/${post.slug}/`}
-                  className="blog-ets-card group"
-                >
-                  {/* 16:10 Cover image */}
-                  <div className="blog-ets-card-media">
-                    <img
-                      src={post.image}
-                      alt={post.title}
-                      loading="lazy"
-                      className="blog-ets-card-img"
-                    />
-                  </div>
-
-                  {/* Card Body */}
-                  <div className="blog-ets-card-body">
-                    <div className="blog-ets-card-tag-row">
-                      <span className="blog-ets-card-tag">
-                        {post.category}
-                      </span>
+            <>
+              <div className="blog-ets-grid">
+                {paginatedPosts.map(post => (
+                  <Link
+                    key={post.slug}
+                    href={`/blog/${post.slug}/`}
+                    className="blog-ets-card group"
+                  >
+                    {/* 16:10 Cover image */}
+                    <div className="blog-ets-card-media">
+                      <img
+                        src={post.image}
+                        alt={post.title}
+                        loading="lazy"
+                        className="blog-ets-card-img"
+                      />
                     </div>
 
-                    <h3 className="blog-ets-card-title">
-                      {post.title}
-                    </h3>
+                    {/* Card Body */}
+                    <div className="blog-ets-card-body">
+                      <div className="blog-ets-card-tag-row">
+                        <span className="blog-ets-card-tag">
+                          {post.category}
+                        </span>
+                      </div>
 
-                    <p className="blog-ets-card-excerpt">
-                      {post.excerpt}
-                    </p>
+                      <h3 className="blog-ets-card-title">
+                        {post.title}
+                      </h3>
 
-                    {/* Card Footer with hover-revealing arrow */}
-                    <div className="blog-ets-card-footer">
-                      <span className="blog-ets-card-meta">
-                        {post.readTime || `${post.readMinutes || 7} min read`}
-                      </span>
-                      <span className="blog-ets-card-arrow">
-                        <ArrowRightIcon />
-                      </span>
+                      <p className="blog-ets-card-excerpt">
+                        {post.excerpt}
+                      </p>
+
+                      {/* Card Footer with hover-revealing arrow */}
+                      <div className="blog-ets-card-footer">
+                        <span className="blog-ets-card-meta">
+                          {post.readTime || `${post.readMinutes || 7} min read`}
+                        </span>
+                        <span className="blog-ets-card-arrow">
+                          <ArrowRightIcon />
+                        </span>
+                      </div>
                     </div>
+                  </Link>
+                ))}
+              </div>
+
+              {/* Pagination Controls */}
+              {totalPages > 1 && (
+                <nav className="blog-ets-pagination" aria-label="Blog pagination">
+                  <div className="blog-ets-pagination-info">
+                    Showing <span>{(currentPage - 1) * POSTS_PER_PAGE + 1}</span>–
+                    <span>{Math.min(currentPage * POSTS_PER_PAGE, gridPosts.length)}</span> of{' '}
+                    <span>{gridPosts.length}</span> articles
                   </div>
-                </Link>
-              ))}
-            </div>
+
+                  <div className="blog-ets-pagination-controls">
+                    <button
+                      type="button"
+                      onClick={() => handlePageChange(currentPage - 1)}
+                      disabled={currentPage === 1}
+                      className="blog-ets-page-btn blog-ets-page-prev"
+                      aria-label="Previous page"
+                    >
+                      <ChevronLeftIcon />
+                      <span>Previous</span>
+                    </button>
+
+                    <div className="blog-ets-page-numbers" role="navigation" aria-label="Page numbers">
+                      {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+                        <button
+                          key={page}
+                          type="button"
+                          onClick={() => handlePageChange(page)}
+                          className={`blog-ets-page-num${currentPage === page ? ' is-active' : ''}`}
+                          aria-current={currentPage === page ? 'page' : undefined}
+                          aria-label={`Page ${page}`}
+                        >
+                          {page}
+                        </button>
+                      ))}
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => handlePageChange(currentPage + 1)}
+                      disabled={currentPage === totalPages}
+                      className="blog-ets-page-btn blog-ets-page-next"
+                      aria-label="Next page"
+                    >
+                      <span>Next</span>
+                      <ChevronRightIcon />
+                    </button>
+                  </div>
+                </nav>
+              )}
+            </>
           ) : (
             <div className="blog-ets-empty">
               <h3>No articles found</h3>
               <p>We could not find any insights matching your filter or search keywords.</p>
               <button
                 type="button"
-                onClick={() => { setSelectedCat('All'); setSearchQuery(''); }}
+                onClick={handleResetFilters}
                 className="blog-ets-empty__btn"
               >
                 View all articles
@@ -303,24 +404,27 @@ export default function BlogDirectory({ posts = [] }) {
           ========================================================= */}
       <section className="blog-ets-cta-sec" aria-label="Technical Consultation and Sizing">
         <div className="wrap">
-          <div className="standards-consult-box fade-in-up" style={{ marginTop: 0 }}>
-            <div className="standards-consult-copy">
-              <span className="standards-consult-tag">TECHNICAL CONSULTATION &amp; SIZING</span>
-              <h3>Have complex substation or custom transformer requirements?</h3>
-              <p>
-                Our practicing electrical engineers can review your single-line diagram (SLD), calculate short-circuit tolerances, and issue an engineering proposal within 48 hours.
-              </p>
-            </div>
-            <div className="standards-consult-actions">
-              <Link className="btn btn--primary" href="/contact/">
-                Talk to an Engineer <ArrowRight />
-              </Link>
-              <a className="btn btn--wa" href={waLink()} target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
-                  <path d={WA_PATH} />
-                </svg>
-                <span>WhatsApp Us</span>
-              </a>
+          <div className="blog-ets-cta-card">
+            <div className="blog-ets-cta-inner">
+              <div>
+                <span className="blog-ets-cta-tag">Engineering Collaboration &amp; Tenders</span>
+                <h2 className="blog-ets-cta-heading">
+                  Have a Project in Mind?
+                </h2>
+                <p className="blog-ets-cta-sub">
+                  Our engineering team is ready to discuss your transformer and turnkey substation requirements.
+                </p>
+              </div>
+
+              <div className="blog-ets-cta-btn-wrap">
+                <Link
+                  href="/contact/"
+                  className="blog-ets-cta-action group"
+                >
+                  <span>Get in Touch</span>
+                  <ArrowRightIcon />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
