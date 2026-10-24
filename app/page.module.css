@@ -1138,10 +1138,42 @@
 }
 
 /* =====================================================================
-   Industries
+   Industries (Homepage specific dark theme)
    ===================================================================== */
-:global(#industries) {
-  background: #ffffff !important;
+.homeIndustries {
+  color: #ffffff;
+  isolation: isolate;
+  background: var(--grad-dark) !important;
+  overflow: clip;
+}
+
+.homeIndustries :global(h2),
+.homeIndustries :global(h3),
+.homeIndustries :global(p),
+.homeIndustries :global(.sec-head__desc),
+.homeIndustries :global(.demo-note) {
+  color: #ffffff;
+}
+
+.homeIndustries :global(.label) {
+  color: var(--on-dark-label);
+}
+
+.homeIndustries :global(.view-all) {
+  border-color: rgba(255, 255, 255, .25);
+  background: rgba(255, 255, 255, .06);
+  color: #ffffff;
+}
+
+.homeIndustries :global(.view-all__icon) {
+  background: #ffffff;
+  color: var(--navy);
+}
+
+.homeIndustries :global(.view-all:hover) {
+  border-color: rgba(255, 255, 255, .6);
+  background: rgba(255, 255, 255, .12);
+  color: #ffffff;
 }
 
 :global(.stars-container) {
