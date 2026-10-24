@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 import { PageHero } from '@/components/PageParts';
 import JobApplicationForm from '@/components/JobApplicationForm';
+import styles from './page.module.css';
 
 export const metadata = {
   title: 'Apply For Job | Career Opportunities at BPEL',

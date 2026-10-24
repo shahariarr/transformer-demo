@@ -1,0 +1,8 @@
+/* =========================================================
+   Glossary Page Styles (CSS Module)
+   app/resources/glossary/page.module.css
+   ========================================================= */
+
+.glossarySec {
+  position: relative;
+}

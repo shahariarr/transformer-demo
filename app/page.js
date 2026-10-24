@@ -9,6 +9,7 @@ import Lifecycle from '@/components/Lifecycle';
 import Faq from '@/components/Faq';
 import Partners from '@/components/Partners';
 import Contact from '@/components/Contact';
+import styles from './page.module.css';
 
 export default function Home() {
   return (

@@ -1,0 +1,8 @@
+/* =========================================================
+   Sizing Guide Tool Page Styles (CSS Module)
+   app/resources/sizing-guide/[slug]/page.module.css
+   ========================================================= */
+
+.sizingToolWrap {
+  width: 100%;
+}

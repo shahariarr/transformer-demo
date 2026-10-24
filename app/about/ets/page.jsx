@@ -1,4 +1,5 @@
 import ETSAboutPage from '@/components/ETSAboutPage';
+import styles from './page.module.css';
 
 export const metadata = {
   title: 'About Emirates Transformer & Switchgear | Dubai Since 1987',

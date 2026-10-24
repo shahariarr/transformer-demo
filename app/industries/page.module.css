@@ -1,0 +1,12 @@
+/* =========================================================
+   Industries Index Page Styles (CSS Module)
+   app/industries/page.module.css
+   ========================================================= */
+
+.industriesSection {
+  background: #ffffff;
+}
+
+.faqFooterHelp {
+  margin-top: 4rem;
+}

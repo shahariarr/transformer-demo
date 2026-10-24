@@ -1,5 +1,6 @@
 import { PageHero } from '@/components/PageParts';
 import { GLOSSARY } from '@/lib/resources';
+import styles from './page.module.css';
 
 export const metadata = {
   title: 'Glossary',

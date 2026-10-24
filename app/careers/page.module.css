@@ -1,0 +1,30 @@
+/* =========================================================
+   Careers Page Styles (CSS Module)
+   app/careers/page.module.css
+   ========================================================= */
+
+.factsSec {
+  background: #ffffff;
+  padding-top: 2.5rem;
+  padding-bottom: 0;
+}
+
+.vacanciesSec {
+  position: relative;
+}
+
+.cultureSec {
+  background: #ffffff;
+}
+
+.hiringSec {
+  position: relative;
+}
+
+.workplacesSec {
+  position: relative;
+}
+
+.faqSec {
+  position: relative;
+}

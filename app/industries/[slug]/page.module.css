@@ -1,0 +1,227 @@
+/* =========================================================
+   Industry Detail Page Styles (CSS Module)
+   app/industries/[slug]/page.module.css
+   ========================================================= */
+
+.detailContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.detailHeaderBlock {
+  margin-bottom: 1.5rem;
+}
+
+.detailIntroBox {
+  margin-top: 1rem;
+}
+
+.detailIntroBox p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--ink-2);
+}
+
+.detailStandardsCard {
+  margin-top: 1.25rem;
+  padding: 1.15rem 1.4rem;
+  background: rgba(11, 92, 171, 0.03);
+  border: 1px dashed rgba(11, 92, 171, 0.25);
+  border-radius: 12px;
+}
+
+.detailStandardsHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.725rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+}
+
+.detailStandardsChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.detailStdChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.75rem;
+  background: #FFFFFF;
+  border: 1px solid rgba(11, 92, 171, 0.2);
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #0B5CAB;
+  box-shadow: 0 1px 3px rgba(11, 92, 171, 0.04);
+  transition: all 0.2s ease;
+}
+
+.detailStdChip:hover {
+  border-color: var(--primary);
+  background: rgba(11, 92, 171, 0.08);
+}
+
+.detailStdDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #0B5CAB;
+}
+
+.detailActions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Technical Criteria & Turnkey Supply Scope (2 Cards) */
+.industrySpecsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.75rem;
+  align-items: stretch;
+}
+
+.detailSpecCard {
+  margin-top: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 1.75rem 2rem;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px -4px rgba(10, 30, 60, 0.05);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.detailSpecCard:hover {
+  transform: translateY(-3px);
+  border-color: rgba(11, 92, 171, 0.4);
+  box-shadow: 0 12px 30px -6px rgba(11, 92, 171, 0.12);
+}
+
+.detailSpecCardHead {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.detailSpecCardIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(11, 92, 171, 0.08);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.detailSpecCardIconCriteria {
+  background: rgba(11, 92, 171, 0.08);
+  color: var(--primary);
+}
+
+.detailSpecCard:hover .detailSpecCardIconCriteria {
+  background: var(--primary);
+  color: #FFFFFF;
+}
+
+.detailSpecCardIconScope {
+  background: rgba(224, 159, 62, 0.12);
+  color: #C07D1E;
+}
+
+.detailSpecCard:hover .detailSpecCardIconScope {
+  background: #C07D1E;
+  color: #FFFFFF;
+}
+
+.detailSpecCardLabel {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--primary);
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+
+.detailSpecCardTitle {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--navy);
+  margin: 0;
+  line-height: 1.25;
+}
+
+.detailSpecList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+}
+
+.detailSpecItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.7rem 0.95rem;
+  background: #F8FAFC;
+  border: 1px solid #EEF2F6;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+  transition: all 0.2s ease;
+}
+
+.detailSpecItem:hover {
+  background: #FFFFFF;
+  border-color: rgba(11, 92, 171, 0.25);
+  color: var(--navy);
+  transform: translateX(3px);
+  box-shadow: 0 2px 8px rgba(11, 92, 171, 0.05);
+}
+
+.detailSpecIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #FFFFFF;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.detailSpecIconGold {
+  background: #C07D1E;
+}
+
+@media (max-width: 900px) {
+  .industrySpecsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .detailSpecCard {
+    padding: 1.4rem 1.5rem;
+  }
+}

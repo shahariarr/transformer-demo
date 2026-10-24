@@ -1,0 +1,584 @@
+/* ==========================================================================
+   EMIRATES TRANSFORMER & SWITCHGEAR (ETS) ABOUT PAGE STYLES (CSS Module)
+   app/about/ets/page.module.css
+   ========================================================================== */
+
+.etsAboutPage {
+  background: var(--bg);
+  color: var(--ink);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* 1. ETS About Hero */
+.etsAboutHero {
+  --accent: #fff;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: calc(var(--header-h) + clamp(3rem, 6vw, 4.5rem)) 0 clamp(3rem, 6vw, 4.5rem);
+  color: var(--on-dark);
+  background:
+    radial-gradient(ellipse 50% 90% at 100% 0%, rgba(95, 176, 255, .28), transparent 70%),
+    var(--grad-hero);
+}
+
+.etsAboutHero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(rgba(255, 255, 255, .045) 1px, transparent 1px) 0 0/40px 40px,
+    linear-gradient(90deg, rgba(255, 255, 255, .045) 1px, transparent 1px) 0 0/40px 40px;
+  -webkit-mask-image: linear-gradient(110deg, transparent 25%, #000 85%);
+  mask-image: linear-gradient(110deg, transparent 25%, #000 85%);
+}
+
+.etsAboutHeroBg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: .22;
+  filter: none;
+}
+
+.etsAboutHero h1 {
+  max-width: 22ch;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.etsAboutHeroDesc {
+  max-width: 44rem;
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--on-dark);
+}
+
+.etsAboutHeroCtaGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+  margin-top: 2rem;
+}
+
+/* 2. Stats / Milestones Band */
+.etsAboutStatsSec {
+  padding: 2.5rem 0 3.5rem;
+  background: var(--bg);
+}
+
+.etsAboutStatsBox {
+  background: var(--grad-brand);
+  border-radius: var(--radius-lg);
+  padding: 3rem 2rem;
+  box-shadow: 0 12px 32px -8px rgba(10, 30, 60, 0.18);
+  position: relative;
+  overflow: hidden;
+}
+
+.etsAboutStatsBox::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(110deg, transparent 35%, rgba(255, 255, 255, 0.09) 50%, transparent 65%);
+  transform: translateX(-100%);
+  animation: sweep 9s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .etsAboutStatsBox {
+    padding: 3.5rem 3rem;
+  }
+}
+
+.etsAboutStatsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 900px) {
+  .etsAboutStatsGrid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+.etsAboutStatItem {
+  text-align: center;
+  position: relative;
+}
+
+@media (min-width: 900px) {
+  .etsAboutStatItem:not(:last-child)::after {
+    content: "";
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 15%;
+    height: 70%;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.18);
+  }
+}
+
+.etsAboutStatValue {
+  font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.etsAboutStatLabel {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #D3DCF2;
+  margin-top: 0.65rem;
+}
+
+.etsAboutStatSub {
+  font-size: 0.775rem;
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: 0.35rem;
+}
+
+/* 3. Narrative Story Section */
+.etsAboutStorySec {
+  padding: 5rem 0;
+  background: var(--bg);
+}
+
+.etsStoryLayout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .etsStoryLayout {
+    grid-template-columns: 1.15fr 1fr;
+    gap: 4.5rem;
+  }
+}
+
+.etsStoryContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.etsStoryTitle {
+  font-size: clamp(1.85rem, 3.2vw, 2.75rem);
+  font-weight: 800;
+  color: var(--navy-900);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.etsStoryLead {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: var(--ink);
+  font-weight: 500;
+  margin: 0;
+}
+
+.etsStoryBody {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--ink-2);
+  margin: 0;
+}
+
+.etsStoryPillars {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+@media (min-width: 640px) {
+  .etsStoryPillars {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.etsStoryPillarItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+.etsStoryPillarIcon {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: var(--primary-50);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.etsStoryPillarText h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 0.25rem;
+}
+
+.etsStoryPillarText p {
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: var(--ink-3);
+  margin: 0;
+}
+
+.etsStoryVisual {
+  position: relative;
+}
+
+.etsStoryImgWrap {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 16px 40px -12px rgba(10, 30, 60, 0.16);
+  aspect-ratio: 4 / 3.2;
+  background: var(--navy-900);
+}
+
+.etsStoryImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.etsStoryBadge {
+  position: absolute;
+  bottom: -20px;
+  right: -15px;
+  background: #FFFFFF;
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.6rem;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+@media (max-width: 640px) {
+  .etsStoryBadge {
+    position: static;
+    margin-top: 1.5rem;
+  }
+}
+
+.etsStoryBadgeNum {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1;
+}
+
+.etsStoryBadgeLabel {
+  font-size: 0.775rem;
+  font-weight: 700;
+  color: var(--ink-2);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  line-height: 1.35;
+}
+
+/* 4. Heritage Timeline */
+.etsTimelineSec {
+  padding: 5.5rem 0;
+  background: #FFFFFF;
+}
+
+.etsTimelineLayout {
+  position: relative;
+  max-width: 900px;
+  margin: 3.5rem auto 0;
+}
+
+.etsTimelineLayout::before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--line-2);
+}
+
+@media (min-width: 768px) {
+  .etsTimelineLayout::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.etsTimelineItem {
+  position: relative;
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .etsTimelineItem {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .etsTimelineItem:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+}
+
+.etsTimelineDot {
+  position: absolute;
+  left: 11px;
+  top: 8px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--primary);
+  border: 4px solid #FFFFFF;
+  box-shadow: 0 0 0 2px var(--primary);
+  z-index: 2;
+}
+
+@media (min-width: 768px) {
+  .etsTimelineDot {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.etsTimelineCard {
+  width: calc(100% - 50px);
+  margin-left: 50px;
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.75rem 2rem;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s var(--ease);
+}
+
+@media (min-width: 768px) {
+  .etsTimelineCard {
+    width: 44%;
+    margin-left: 0;
+  }
+}
+
+.etsTimelineCard:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.etsTimelineYear {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.etsTimelineTagRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.etsTimelineBadge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--primary);
+  background: var(--primary-50);
+  border: 1px solid rgba(11, 92, 171, 0.18);
+  border-radius: 9999px;
+  padding: 3px 10px;
+}
+
+.etsTimelineItemTitle {
+  font-size: clamp(1.25rem, 2vw, 1.55rem);
+  font-weight: 800;
+  color: var(--navy-900);
+  line-height: 1.25;
+  margin: 0 0 0.85rem;
+}
+
+.etsTimelineItemDesc {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--ink-2);
+  margin: 0;
+}
+
+/* 5. Global Footprint & Facility Switcher */
+.etsAboutFacilitiesSec {
+  padding: 5.5rem 0 6.5rem;
+  background: var(--alt);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.etsFacilitiesLayout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+@media (min-width: 1024px) {
+  .etsFacilitiesLayout {
+    grid-template-columns: 1fr 1.35fr;
+    gap: 3rem;
+  }
+}
+
+.etsFacilitiesTabs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.etsFacilityTab {
+  width: 100%;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 1.15rem;
+  padding: 1.25rem 1.4rem;
+  border-radius: var(--radius-lg);
+  border: 1.5px solid var(--line);
+  background: #FFFFFF;
+  cursor: pointer;
+  transition: all 0.25s var(--ease);
+}
+
+.etsFacilityTab:hover {
+  border-color: rgba(11, 92, 171, 0.35);
+  box-shadow: var(--shadow-sm);
+}
+
+.etsFacilityTabActive {
+  border-color: var(--primary);
+  border-left: 4px solid var(--primary);
+  background: #FFFFFF;
+  box-shadow: 0 8px 24px -4px rgba(11, 92, 171, 0.12);
+}
+
+.etsFacilityTabIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: var(--alt);
+  color: var(--ink-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.25s var(--ease);
+}
+
+.etsFacilityTabActive .etsFacilityTabIcon {
+  background: var(--primary);
+  color: #FFFFFF;
+}
+
+.etsFacilityTabContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.etsFacilityTabName {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--ink);
+  margin: 0;
+}
+
+.etsFacilityTabActive .etsFacilityTabName {
+  color: var(--primary);
+}
+
+/* 6. Bottom CTA Card */
+.etsAboutCtaSec {
+  padding: 5rem 0 6rem;
+  background: var(--bg);
+}
+
+.etsAboutCtaCard {
+  background:
+    radial-gradient(ellipse 45% 120% at 100% 50%, rgba(95, 176, 255, 0.32), transparent 70%),
+    radial-gradient(ellipse 35% 90% at 0% 100%, rgba(11, 92, 171, 0.55), transparent 70%),
+    var(--grad-hero);
+  border-radius: var(--radius-xl);
+  padding: 3.5rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.etsAboutCtaInner {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (min-width: 900px) {
+  .etsAboutCtaInner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.etsAboutCtaHeading {
+  font-size: clamp(1.85rem, 3.5vw, 2.75rem);
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.85rem;
+}
+
+.etsAboutCtaSub {
+  font-size: 1rem;
+  color: var(--on-dark);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 36rem;
+}
+
+.etsAboutCtaActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}

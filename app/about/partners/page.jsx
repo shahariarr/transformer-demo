@@ -5,6 +5,7 @@ import PartnersDirectory from '@/components/PartnersDirectory';
 import { PARTNER_STATS, PARTNERSHIP_PILLARS } from '@/lib/partners';
 import { waLink } from '@/lib/data';
 import { WA_PATH } from '@/lib/icons';
+import styles from './page.module.css';
 
 export const metadata = {
   title: 'Global Partners & Strategic Alliances | BPEL',

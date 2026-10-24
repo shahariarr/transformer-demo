@@ -4,6 +4,7 @@ import CertificatesGrid from '@/components/CertificatesGrid';
 import StandardsSection from '@/components/StandardsSection';
 import { waLink } from '@/lib/data';
 import { WA_PATH } from '@/lib/icons';
+import styles from './page.module.css';
 
 export const metadata = {
   title: 'Certifications & Test Reports | BPEL',

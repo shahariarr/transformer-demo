@@ -5,6 +5,7 @@ import Link from 'next/link';
 import LeaderCard from '@/components/LeaderCard';
 import { waLink } from '@/lib/data';
 import { WA_PATH } from '@/lib/icons';
+import styles from './page.module.css';
 
 const findLeader = (slug) => LEADERS.find((l) => l.slug === slug);
 
@@ -54,55 +55,55 @@ export default async function LeaderProfilePage({ params }) {
       </PageHero>
 
       {/* Member Full Dossier Section */}
-      <section className="sec leader-profile-sec" aria-label={`Profile of ${leader.name}`}>
+      <section className={`sec ${styles.leaderProfileSec}`} aria-label={`Profile of ${leader.name}`}>
         <div className="wrap">
-          <div className="leader-profile-grid">
+          <div className={styles.leaderProfileGrid}>
             {/* Left Column: Visual Portrait & Key Metrics */}
-            <div className="leader-profile-aside fade-in-left">
-              <div className="leader-profile-photo-card">
-                <div className="leader-profile-photo-wrap">
+            <div className={`${styles.leaderProfileAside} fade-in-left`}>
+              <div className={styles.leaderProfilePhotoCard}>
+                <div className={styles.leaderProfilePhotoWrap}>
                   <img
                     src={leader.image}
                     alt={leader.name}
-                    className="leader-profile-photo"
+                    className={styles.leaderProfilePhoto}
                   />
-                  <div className="leader-profile-scrim" aria-hidden="true" />
+                  <div className={styles.leaderProfileScrim} aria-hidden="true" />
                 </div>
-                <div className="leader-profile-badges">
-                  <span className="leader-profile-badge">
+                <div className={styles.leaderProfileBadges}>
+                  <span className={styles.leaderProfileBadge}>
                     <span
-                      className="leader-profile-dot"
+                      className={styles.leaderProfileDot}
                       style={{ backgroundColor: leader.dotColor || '#0B5CAB' }}
                     />
                     {leader.dept}
                   </span>
-                  <span className="leader-profile-badge leader-profile-badge--tenure">
+                  <span className={`${styles.leaderProfileBadge} ${styles.leaderProfileBadgeTenure}`}>
                     {leader.tenure}
                   </span>
                 </div>
               </div>
 
               {/* Quick Profile Facts */}
-              <div className="leader-profile-facts">
-                <div className="profile-fact-item">
-                  <span className="fact-label">Department</span>
-                  <strong className="fact-val">{leader.dept}</strong>
+              <div className={styles.leaderProfileFacts}>
+                <div className={styles.profileFactItem}>
+                  <span className={styles.factLabel}>Department</span>
+                  <strong className={styles.factVal}>{leader.dept}</strong>
                 </div>
-                <div className="profile-fact-item">
-                  <span className="fact-label">Experience</span>
-                  <strong className="fact-val">{leader.experience}</strong>
+                <div className={styles.profileFactItem}>
+                  <span className={styles.factLabel}>Experience</span>
+                  <strong className={styles.factVal}>{leader.experience}</strong>
                 </div>
-                <div className="profile-fact-item">
-                  <span className="fact-label">Credentials</span>
-                  <strong className="fact-val">{leader.educationShort}</strong>
+                <div className={styles.profileFactItem}>
+                  <span className={styles.factLabel}>Credentials</span>
+                  <strong className={styles.factVal}>{leader.educationShort}</strong>
                 </div>
               </div>
 
               {/* Direct Connect Buttons */}
-              <div className="leader-profile-connect">
+              <div className={styles.leaderProfileConnect}>
                 <a
                   href={`mailto:info@bpel-power.com?subject=Consultation%20with%20${encodeURIComponent(leader.name)}`}
-                  className="btn btn--primary profile-contact-btn"
+                  className={`btn btn--primary ${styles.profileContactBtn}`}
                 >
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <rect width="20" height="16" x="2" y="4" rx="2" />
@@ -112,7 +113,7 @@ export default async function LeaderProfilePage({ params }) {
                 </a>
                 <a
                   href="/contact/"
-                  className="btn btn--ghost profile-contact-btn"
+                  className={`btn btn--ghost ${styles.profileContactBtn}`}
                 >
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
@@ -123,37 +124,37 @@ export default async function LeaderProfilePage({ params }) {
             </div>
 
             {/* Right Column: Detailed Career Dossier */}
-            <div className="leader-profile-main fade-in-right">
-              <div className="profile-header-strip">
-                <span className="profile-kicker">EXECUTIVE LEADERSHIP DOSSIER</span>
-                <h1 className="profile-title">{leader.name}</h1>
-                <p className="profile-role">{leader.role}</p>
+            <div className={`${styles.leaderProfileMain} fade-in-right`}>
+              <div className={styles.profileHeaderStrip}>
+                <span className={styles.profileKicker}>EXECUTIVE LEADERSHIP DOSSIER</span>
+                <h1 className={styles.profileTitle}>{leader.name}</h1>
+                <p className={styles.profileRole}>{leader.role}</p>
               </div>
 
               {/* Executive Summary Blockquote */}
-              <blockquote className="profile-quote">
+              <blockquote className={styles.profileQuote}>
                 "{leader.summary}"
               </blockquote>
 
               {/* Biography Details */}
-              <div className="profile-content-block">
+              <div className={styles.profileContentBlock}>
                 <h2>Executive Background & Leadership Career</h2>
-                <p className="profile-bio-text">{leader.bio}</p>
+                <p className={styles.profileBioText}>{leader.bio}</p>
               </div>
 
               {/* Academic Qualifications & Fellowships */}
-              <div className="profile-content-block">
+              <div className={styles.profileContentBlock}>
                 <h2>Academic Credentials & Accreditations</h2>
-                <div className="profile-education-card">
-                  <div className="education-icon-wrap" aria-hidden="true">
+                <div className={styles.profileEducationCard}>
+                  <div className={styles.educationIconWrap} aria-hidden="true">
                     <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
                       <path d="M6 12v5c3 3 9 3 12 0v-5" />
                     </svg>
                   </div>
                   <div>
-                    <strong className="education-title">Verified Engineering Qualifications</strong>
-                    <p className="education-detail">{leader.education}</p>
+                    <strong className={styles.educationTitle}>Verified Engineering Qualifications</strong>
+                    <p className={styles.educationDetail}>{leader.education}</p>
                   </div>
                 </div>
               </div>
