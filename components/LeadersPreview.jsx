@@ -30,18 +30,17 @@ export default function LeadersPreview() {
       </div>
 
       {/* Corporate Executive Cards Grid */}
-      <div className="creative-team-section" style={{ padding: '24px 0 0' }}>
-        <div className="row">
-          {featured.map((leader, i) => (
-            <LeaderCard
-              key={leader.slug}
-              leader={leader}
-              delay={80 + i * 80}
-              isFullPage={false}
-            />
-          ))}
-        </div>
+      <div className="leaders-grid">
+        {featured.map((leader, i) => (
+          <LeaderCard
+            key={leader.slug}
+            leader={leader}
+            delay={80 + i * 80}
+            isFullPage={false}
+          />
+        ))}
       </div>
     </div>
   );
 }
+

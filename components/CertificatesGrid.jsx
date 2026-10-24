@@ -30,47 +30,45 @@ export default function CertificatesGrid() {
   return (
     <div className="wrap">
       {/* Section Header */}
-      <div className="cert-grid-header fade-in-up">
-        <div className="cert-header-eyebrow">
-          <span className="cert-eyebrow-pulse" aria-hidden="true" />
-          <span>INDEPENDENT THIRD-PARTY VERIFICATION</span>
-        </div>
-        <h2 className="cert-grid-title">Official Certificates &amp; Laboratory Test Reports</h2>
-        <p className="cert-grid-lead">
-          Every certificate, ISO accreditation, and laboratory type-test report is issued by accredited national and international inspection bodies (CNAS, IAF, ilac-MRA, UDEM). Click any document to inspect the full report.
+      <header className="sec-head fade-in-up">
+        <p className="label">INDEPENDENT THIRD-PARTY VERIFICATION</p>
+        <h2>Official Certificates &amp; Laboratory Test Reports</h2>
+        <p className="sec-head__desc">
+          Every certificate, ISO accreditation, and laboratory type-test report is issued by accredited national and international inspection bodies (CNAS, IAF, ilac-MRA, UDEM). Click any document to inspect the full verified report.
         </p>
+      </header>
 
-        {/* Filter Tabs */}
-        <div className="cert-filter-bar" role="tablist" aria-label="Filter Certificates by Category">
-          {CATEGORIES.map((cat) => {
-            const count = cat.id === 'all'
-              ? QA_CERTS.length
-              : QA_CERTS.filter((c) => {
-                  if (cat.id === 'iso') return c.badge.includes('ISO');
-                  if (cat.id === 'type-test') return c.badge.includes('Type Test') || c.badge.includes('IEC 60076-2') || c.badge.includes('IEC 60076-10');
-                  if (cat.id === 'iec-special') return c.badge.includes('IEC 60076-5') || c.badge.includes('IEC 60076-3') || c.badge.includes('IEC 60296') || c.badge.includes('Routine');
-                  if (cat.id === 'conformity') return c.badge.includes('CE');
-                  return true;
-                }).length;
+      {/* Filter Tabs */}
+      <div className="cert-filter-bar fade-in-up" role="tablist" aria-label="Filter Certificates by Category">
+        {CATEGORIES.map((cat) => {
+          const count = cat.id === 'all'
+            ? QA_CERTS.length
+            : QA_CERTS.filter((c) => {
+                if (cat.id === 'iso') return c.badge.includes('ISO');
+                if (cat.id === 'type-test') return c.badge.includes('Type Test') || c.badge.includes('IEC 60076-2') || c.badge.includes('IEC 60076-10');
+                if (cat.id === 'iec-special') return c.badge.includes('IEC 60076-5') || c.badge.includes('IEC 60076-3') || c.badge.includes('IEC 60296') || c.badge.includes('Routine');
+                if (cat.id === 'conformity') return c.badge.includes('CE');
+                return true;
+              }).length;
 
-            const isActive = activeTab === cat.id;
+          const isActive = activeTab === cat.id;
 
-            return (
-              <button
-                key={cat.id}
-                type="button"
-                role="tab"
-                aria-selected={isActive}
-                className={`cert-pill-btn ${isActive ? 'is-active' : ''}`}
-                onClick={() => setActiveTab(cat.id)}
-              >
-                <span>{cat.label}</span>
-                <span className="cert-pill-count">{count}</span>
-              </button>
-            );
-          })}
-        </div>
+          return (
+            <button
+              key={cat.id}
+              type="button"
+              role="tab"
+              aria-selected={isActive}
+              className={`cert-pill-btn ${isActive ? 'is-active' : ''}`}
+              onClick={() => setActiveTab(cat.id)}
+            >
+              <span>{cat.label}</span>
+              <span className="cert-pill-count">{count}</span>
+            </button>
+          );
+        })}
       </div>
+
 
       {/* Grid of Certificate Cards */}
       <div className="cert-cards-grid">

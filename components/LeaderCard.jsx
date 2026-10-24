@@ -2,56 +2,74 @@
 
 import Link from 'next/link';
 
-export default function LeaderCard({
-  leader,
-  delay = 0
-}) {
+export default function LeaderCard({ leader, delay = 0 }) {
   return (
-    <div
-      className="creative-team--block fade-in-up"
+    <article
+      className="leader-card fade-in-up"
       data-delay={delay}
       id={leader.slug}
     >
-      <div className="inner-box">
-        {/* Top Image Frame */}
-        <div className="image-box">
-          <figure className="image">
-            <Link href={`/about/leaders/${leader.slug}/`} aria-label={`View ${leader.name} profile`}>
-              <img
-                src={leader.image}
-                alt={leader.name}
-                loading="lazy"
-                decoding="async"
-              />
-            </Link>
-          </figure>
+      {/* Top Image Box */}
+      <div className="leader-card__media">
+        <Link href={`/about/leaders/${leader.slug}/`} aria-label={`View ${leader.name} profile`}>
+          <img
+            src={leader.image}
+            alt={leader.name}
+            loading="lazy"
+            decoding="async"
+            className="leader-card__img"
+          />
+        </Link>
+        <div className="leader-card__scrim" aria-hidden="true" />
 
-          {/* Floating Badges */}
-          <div className="creative-team__floating-badge">
+        {/* Floating Badges */}
+        <div className="leader-card__badges">
+          <span className="leader-card__badge-dept">
             <span
-              className="creative-team__dot"
-              style={{ backgroundColor: leader.dotColor || 'var(--primary, #0B5CAB)' }}
+              className="leader-card__dot"
+              style={{ backgroundColor: leader.dotColor || '#0B5CAB' }}
               aria-hidden="true"
             />
             <span>{leader.dept}</span>
-          </div>
-          <div className="creative-team__tenure-badge">{leader.tenure}</div>
+          </span>
+          <span className="leader-card__badge-tenure">{leader.tenure}</span>
         </div>
+      </div>
 
-        {/* Clean, Focused Info Box */}
-        <div className="info-box">
-          <h4 className="name">
-            <Link href={`/about/leaders/${leader.slug}/`}>{leader.name}</Link>
-          </h4>
-          <span className="designation">{leader.role}</span>
-          <p className="info-box__desc">{leader.summary}</p>
+      {/* Body Info */}
+      <div className="leader-card__body">
+        <h3 className="leader-card__name">
+          <Link href={`/about/leaders/${leader.slug}/`}>{leader.name}</Link>
+        </h3>
+        <span className="leader-card__role">{leader.role}</span>
 
+        {leader.educationShort && (
+          <div className="leader-card__edu">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+              <path d="M6 12v5c3 3 9 3 12 0v-5" />
+            </svg>
+            <span>{leader.educationShort}</span>
+          </div>
+        )}
+
+        <p className="leader-card__desc">{leader.summary}</p>
+
+        {leader.keyFocus && leader.keyFocus.length > 0 && (
+          <div className="leader-card__tags">
+            {leader.keyFocus.map((tag) => (
+              <span key={tag} className="leader-card__tag">{tag}</span>
+            ))}
+          </div>
+        )}
+
+        <div className="leader-card__foot">
           <Link
             href={`/about/leaders/${leader.slug}/`}
-            className="info-box__view-btn"
-            aria-label={`View full details of ${leader.name}`}
+            className="leader-card__btn"
+            aria-label={`View full dossier of ${leader.name}`}
           >
-            <span>View Profile</span>
+            <span>View Executive Dossier</span>
             <svg
               viewBox="0 0 24 24"
               width="15"
@@ -69,6 +87,7 @@ export default function LeaderCard({
           </Link>
         </div>
       </div>
-    </div>
+    </article>
   );
 }
+
