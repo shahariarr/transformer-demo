@@ -10,3 +10,411 @@
 .faqFooterHelp {
   margin-top: 4rem;
 }
+
+/* ---------- Stars background container ---------- */
+:global(.stars-container) {
+  display: none;
+}
+
+/* ---------- Section Header ---------- */
+:global(.prod-head) {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2.75rem;
+}
+
+:global(.prod-head .sec-head) {
+  margin-bottom: 0;
+}
+
+/* ---------- Media / Image Slots ---------- */
+:global(.media) {
+  position: relative;
+  overflow: hidden;
+  background: #E6EBF2;
+}
+
+:global(.media__shift) {
+  position: absolute;
+  inset: 0;
+  transform: translate3d(0, var(--py, 0px), 0);
+}
+
+:global(.media--par .media__shift) {
+  inset: -7% 0;
+}
+
+:global(.media img),
+:global(.ph) {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .7s var(--ease);
+}
+
+:global(.media__shift:has(img) .ph) {
+  display: none;
+}
+
+:global(.ph) {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .15rem;
+  padding: .9rem 1rem;
+  color: #5B6B80;
+  font-size: .8rem;
+  font-weight: 600;
+  background-color: #E6EBF2;
+  background-image: linear-gradient(#D5DCE6 1px, transparent 1px), linear-gradient(90deg, #D5DCE6 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+:global(.media--par .ph) {
+  padding-top: calc(7% + 1rem);
+}
+
+:global(.ph small) {
+  font-weight: 400;
+  font-size: .7rem;
+  word-break: break-all;
+  opacity: .85;
+}
+
+/* =========================================================
+   Industries Grid & Cards
+   ========================================================= */
+:global(#industries) {
+  background: #ffffff !important;
+}
+
+:global(.ind-grid) {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+:global(.ind) {
+  grid-column: span var(--span, 4);
+  position: relative;
+  isolation: isolate;
+  min-height: 300px;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 18px rgba(10, 30, 60, .07);
+  border: 1px solid rgba(10, 30, 60, .06);
+  transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+  --accent: #38bdf8;
+}
+
+:global(.ind:hover) {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px -6px rgba(10, 30, 60, .18);
+}
+
+:global(.ind .media) {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+:global(.ind::after) {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(6, 19, 40, 0) 25%, rgba(6, 19, 40, .92) 100%);
+}
+
+:global(.ind:hover .media img) {
+  transform: scale(1.05);
+}
+
+:global(.media__num),
+:global(.ind__num) {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  z-index: 2;
+  font-family: var(--font);
+  font-size: 2.2rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -.04em;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, .85);
+  text-shadow: 0 2px 14px rgba(6, 19, 40, .65);
+  pointer-events: none;
+  user-select: none;
+  transition: transform .35s var(--ease), -webkit-text-stroke-color .35s var(--ease), color .35s var(--ease);
+}
+
+:global(.ind:hover .media__num),
+:global(.ind:hover .ind__num) {
+  -webkit-text-stroke-color: #fff;
+  color: rgba(255, 255, 255, .15);
+  transform: translateY(-2px);
+}
+
+:global(.ind__body) {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1.5rem;
+}
+
+:global(.ind__body::before) {
+  content: "";
+  display: block;
+  width: 32px;
+  height: 3px;
+  margin-bottom: .85rem;
+  background: var(--accent);
+}
+
+:global(.ind__body h3) {
+  margin: 0 0 .35rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+:global(.ind__body p) {
+  margin: 0;
+  font-size: .9rem;
+  line-height: 1.5;
+  color: #D3DBEA;
+}
+
+:global(.ind__link) {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+}
+
+/* =========================================================
+   Engineering Support Footer Help Banner
+   ========================================================= */
+:global(.faq__footer-help) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  margin-top: 3rem;
+  overflow: hidden;
+  border-radius: 22px;
+  background: #fff;
+  border: 1px solid var(--line);
+  box-shadow: 0 28px 56px -28px rgba(6, 19, 40, .45);
+}
+
+:global(.faq-help__main) {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(1.75rem, 4vw, 2.75rem);
+  color: #fff;
+  background:
+    radial-gradient(ellipse 60% 90% at 100% 0%, rgba(95, 176, 255, .3), transparent 70%),
+    var(--grad-hero);
+}
+
+:global(.faq-help__main::before) {
+  content: "?";
+  position: absolute;
+  right: -.5rem;
+  bottom: -3.5rem;
+  z-index: -1;
+  font-size: 15rem;
+  font-weight: 800;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(255, 255, 255, .08);
+}
+
+:global(.faq-help__main::after) {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(rgba(255, 255, 255, .045) 1px, transparent 1px) 0 0/28px 28px,
+    linear-gradient(90deg, rgba(255, 255, 255, .045) 1px, transparent 1px) 0 0/28px 28px;
+  -webkit-mask-image: linear-gradient(120deg, transparent 20%, #000 90%);
+  mask-image: linear-gradient(120deg, transparent 20%, #000 90%);
+}
+
+:global(.faq-help__eyebrow) {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  padding: .35rem .8rem;
+  border: 1px solid rgba(143, 195, 245, .35);
+  border-radius: 999px;
+  background: rgba(95, 176, 255, .12);
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--on-dark-label);
+}
+
+:global(.faq-help__main h4) {
+  margin: 1rem 0 .6rem;
+  max-width: 28ch;
+  font-size: clamp(1.35rem, 2.6vw, 1.75rem);
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -.01em;
+  color: #fff;
+}
+
+:global(.faq-help__main > p) {
+  margin: 0;
+  max-width: 48ch;
+  font-size: .95rem;
+  color: var(--on-dark);
+}
+
+:global(.faq-help__services) {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  gap: clamp(.35rem, .8vw, .55rem);
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+:global(.faq-help__services::-webkit-scrollbar) {
+  display: none;
+}
+
+:global(.faq-help__services li) {
+  display: inline-flex !important;
+  align-items: center;
+  gap: .42rem;
+  padding: .38rem .65rem .38rem .4rem;
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, .06);
+  font-size: .8rem;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+  backdrop-filter: blur(4px);
+}
+
+:global(.faq-help__services svg) {
+  flex: none;
+  width: 26px;
+  height: 26px;
+  padding: 4px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--primary), var(--sky));
+  color: #fff;
+}
+
+:global(.faq-help__aside) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: .75rem;
+  width: clamp(250px, 25vw, 290px);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  background:
+    radial-gradient(var(--primary-100) 1.2px, transparent 1.4px) 0 0/16px 16px,
+    linear-gradient(180deg, #fff, var(--primary-50));
+}
+
+:global(.faq-help__aside-title) {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+:global(.faq-help__aside-text) {
+  margin: 0 0 .5rem;
+  font-size: .9rem;
+  color: var(--ink-2);
+}
+
+:global(.faq-help__actions) {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  width: 100%;
+}
+
+:global(.faq-help__actions .btn) {
+  width: 100%;
+  justify-content: center;
+  padding: 0.8rem 1.35rem;
+  font-size: 0.9rem;
+  border-radius: 6px;
+}
+
+:global(.faq-help__actions .btn svg) {
+  flex-shrink: 0;
+  transition: transform 0.25s var(--ease);
+}
+
+:global(.faq-help__actions .btn--primary:hover svg) {
+  transform: translateX(3px);
+}
+
+:global(.faq-help__actions .btn--wa:hover svg) {
+  transform: scale(1.1);
+}
+
+:global(.facility-wa-btn) {
+  background: #25D366 !important;
+  border-color: #25D366 !important;
+  color: #ffffff !important;
+}
+
+/* =========================================================
+   Responsive Breakpoints
+   ========================================================= */
+@media (max-width: 900px) {
+  :global(.ind) {
+    grid-column: span 6;
+    min-height: 260px;
+  }
+}
+
+@media (max-width: 860px) {
+  :global(.faq__footer-help) {
+    grid-template-columns: 1fr;
+  }
+
+  :global(.faq-help__aside) {
+    width: 100%;
+  }
+
+  :global(.faq-help__services) {
+    flex-wrap: nowrap !important;
+  }
+}
+
+@media (max-width: 768px) {
+  :global(.prod-head) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  :global(.ind) {
+    grid-column: span 12;
+  }
+}
