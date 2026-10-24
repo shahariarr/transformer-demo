@@ -2417,13 +2417,85 @@
   color: var(--on-dark-label)
 }
 
-:global(.lcv-circuit__status) {
+:global(.lcv-progress-track) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(255, 255, 255, .08);
+  z-index: 10;
+  overflow: hidden;
+}
+
+:global(.lcv-progress-fill) {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #38BDF8, #FFFFFF, #60A5FA);
+  box-shadow: 0 0 10px rgba(56, 189, 248, .85);
+  border-radius: 0 2px 2px 0;
+  transition: width 0.05s linear;
+}
+
+:global(.lcv-circuit__status-wrap) {
+  position: absolute;
+  top: 1rem;
   right: 1.4rem;
-  color: var(--on-dark-2)
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+}
+
+:global(.lcv-btn-toggle) {
+  background: rgba(255, 255, 255, .06);
+  border: 1px solid rgba(255, 255, 255, .16);
+  border-radius: 999px;
+  padding: .2rem .55rem;
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--on-dark);
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+:global(.lcv-btn-toggle:hover) {
+  background: rgba(255, 255, 255, .15);
+  color: #fff;
+  border-color: rgba(255, 255, 255, .35);
+}
+
+:global(.lcv-auto-badge) {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  padding: .15rem .5rem;
+  border-radius: 999px;
+  background: rgba(95, 176, 255, .12);
+  border: 1px solid rgba(95, 176, 255, .25);
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--sky);
+}
+
+:global(.lcv-circuit__status) {
+  margin: 0;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--on-dark-2);
 }
 
 :global(.lcv-circuit__status span) {
-  color: var(--accent)
+  color: var(--accent);
 }
 
 :global(.lcv-live-dot) {
@@ -2512,7 +2584,14 @@
   pointer-events: none;
   opacity: 0;
   background: radial-gradient(circle, #fff 0 25%, rgba(159, 208, 255, .9) 45%, rgba(95, 176, 255, 0) 72%);
-  box-shadow: 0 0 18px 6px rgba(95, 176, 255, .55)
+  box-shadow: 0 0 18px 6px rgba(95, 176, 255, .55);
+}
+
+:global(.lcv-spark--2) {
+  width: 12px;
+  height: 12px;
+  margin: -6px 0 0 -6px;
+  box-shadow: 0 0 14px 4px rgba(56, 189, 248, .75);
 }
 
 :global(.lcv-node) {
