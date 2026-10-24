@@ -1,0 +1,13 @@
+/* =========================================================
+   Job Application Page Styles (CSS Module)
+   app/careers/apply/page.module.css
+   ========================================================= */
+
+.applySec {
+  position: relative;
+}
+
+.loading {
+  padding: 60px 0;
+  text-align: center;
+}

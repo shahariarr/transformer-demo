@@ -1,0 +1,48 @@
+/* =========================================================
+   Homepage Styles (CSS Module)
+   app/page.module.css
+   ========================================================= */
+
+.homeHeroSec {
+  position: relative;
+}
+
+.homeStatsSec {
+  position: relative;
+}
+
+.homeAboutSec {
+  position: relative;
+}
+
+.homeProductsSec {
+  position: relative;
+}
+
+.homeIndustriesSec {
+  background: #ffffff;
+}
+
+.homeProjectsSec {
+  position: relative;
+}
+
+.homeQualitySec {
+  position: relative;
+}
+
+.homeLifecycleSec {
+  position: relative;
+}
+
+.homeFaqSec {
+  position: relative;
+}
+
+.homePartnersSec {
+  position: relative;
+}
+
+.homeContactSec {
+  position: relative;
+}

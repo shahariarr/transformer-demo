@@ -1,0 +1,173 @@
+/* =========================================================
+   Project Case Study Detail Page Styles (CSS Module)
+   app/projects/[slug]/page.module.css
+   ========================================================= */
+
+.detailContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.detailHeaderBlock {
+  margin-bottom: 1.5rem;
+}
+
+.detailIntroBox {
+  margin-top: 1rem;
+}
+
+.detailIntroBox p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--ink-2);
+}
+
+/* Engineering Spec Cards */
+.specCard {
+  margin-top: 1.75rem;
+  padding: 1.5rem 1.6rem;
+  background: #ffffff;
+  border: 1px solid var(--line-2, #e2e8f0);
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(10, 30, 60, 0.05);
+}
+
+.specCardHead {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.15rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--line-3, #f1f5f9);
+}
+
+.specCardIcon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: rgba(11, 92, 171, 0.08);
+  color: var(--primary, #0B5CAB);
+}
+
+.specCardIconCriteria {
+  background: rgba(11, 92, 171, 0.08);
+  color: var(--primary, #0B5CAB);
+}
+
+.specCardIconScope {
+  background: rgba(217, 119, 6, 0.1);
+  color: #D97706;
+}
+
+.specCardLabel {
+  display: block;
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--primary, #0B5CAB);
+  margin-bottom: 0.2rem;
+}
+
+.specCardTitle {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--ink, #0f172a);
+  margin: 0;
+}
+
+.specList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.specItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.925rem;
+  line-height: 1.55;
+  color: var(--ink-2, #334155);
+}
+
+.specIcon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(11, 92, 171, 0.1);
+  color: var(--primary, #0B5CAB);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.specIconGold {
+  background: rgba(217, 119, 6, 0.12);
+  color: #D97706;
+}
+
+/* Standards Card */
+.standardsCard {
+  margin-top: 1.75rem;
+  padding: 1.25rem 1.5rem;
+  background: rgba(11, 92, 171, 0.03);
+  border: 1px dashed rgba(11, 92, 171, 0.25);
+  border-radius: 12px;
+}
+
+.standardsHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.725rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--primary, #0B5CAB);
+  margin-bottom: 0.85rem;
+}
+
+.standardsChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.stdChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 1px solid rgba(11, 92, 171, 0.18);
+  font-size: 0.775rem;
+  font-weight: 700;
+  color: var(--ink, #0f172a);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.stdDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary, #0B5CAB);
+}
+
+.detailActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2.25rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--line-2, #e2e8f0);
+}

@@ -1,0 +1,12 @@
+/* =========================================================
+   About Page Styles (CSS Module)
+   app/about/page.module.css
+   ========================================================= */
+
+.aboutSection {
+  position: relative;
+}
+
+.moreSection {
+  position: relative;
+}

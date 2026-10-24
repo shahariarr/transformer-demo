@@ -5,6 +5,7 @@ import Stats from '@/components/Stats';
 import LeadersDirectory from '@/components/LeadersDirectory';
 import { waLink } from '@/lib/data';
 import { WA_PATH } from '@/lib/icons';
+import styles from './page.module.css';
 
 export const metadata = {
   title: 'Company Leadership & Executive Governance | BPEL',

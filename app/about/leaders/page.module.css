@@ -1,0 +1,231 @@
+/* =====================================================================
+   BPEL Leadership Directory & Card Grid System (CSS Module)
+   app/about/leaders/page.module.css
+   ===================================================================== */
+
+.leadersGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.75rem;
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+  .leadersGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .leadersGrid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+.leaderCard {
+  background: #FFFFFF;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 16px -2px rgba(10, 30, 60, 0.05);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease,
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.leaderCard:hover {
+  transform: translateY(-4px);
+  border-color: #0B5CAB;
+  box-shadow: 0 16px 36px -8px rgba(11, 92, 171, 0.16);
+}
+
+.leaderCardMedia {
+  position: relative;
+  aspect-ratio: 4 / 3.4;
+  overflow: hidden;
+  background: #0A1E3C;
+}
+
+.leaderCardImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  display: block;
+}
+
+.leaderCard:hover .leaderCardImg {
+  transform: scale(1.05);
+}
+
+.leaderCardScrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(10, 30, 60, 0.5) 100%);
+  pointer-events: none;
+}
+
+.leaderCardBadges {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.leaderCardBadgeDept {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #0A1E3C;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.leaderCardDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.leaderCardBadgeTenure {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  background: rgba(10, 30, 60, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.leaderCardBody {
+  padding: 1.35rem 1.45rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.leaderCardName {
+  margin: 0 0 0.25rem;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #0A1E3C;
+  line-height: 1.3;
+}
+
+.leaderCardName a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.leaderCardName a:hover {
+  color: #0B5CAB;
+}
+
+.leaderCardRole {
+  margin: 0 0 0.75rem;
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: #0B5CAB;
+  line-height: 1.4;
+}
+
+.leaderCardBio {
+  margin: 0 0 1rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #475569;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.leaderCardCredentials {
+  margin-top: auto;
+  padding-top: 0.85rem;
+  border-top: 1px solid #F1F5F9;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 1rem;
+}
+
+.leaderCardCredChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 6px;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: #334155;
+  white-space: nowrap;
+}
+
+.leaderCardCredChip svg {
+  color: #0B5CAB;
+  flex-shrink: 0;
+}
+
+.leaderCardActions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-top: 0.85rem;
+  border-top: 1px solid #F1F5F9;
+}
+
+.leaderCardBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.825rem;
+  font-weight: 700;
+  color: #0B5CAB;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.leaderCardBtn:hover {
+  background: rgba(11, 92, 171, 0.08);
+  color: #084B8A;
+}
+
+.leaderCardBtn svg {
+  transition: transform 0.2s ease;
+}
+
+.leaderCardBtn:hover svg {
+  transform: translateX(3px);
+}

@@ -2,6 +2,7 @@ import ProductsDirectory from '@/components/ProductsDirectory';
 import { PageHero } from '@/components/PageParts';
 import { waLink } from '@/lib/data';
 import { WA_PATH } from '@/lib/icons';
+import styles from './page.module.css';
 
 export const metadata = {
   title: 'Transformer & Switchgear Catalogue | Proven to Perform',

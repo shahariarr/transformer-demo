@@ -7,6 +7,7 @@ import CareersFaq from '@/components/CareersFaq';
 import SectionHead from '@/components/SectionHead';
 import { waLink } from '@/lib/data';
 import { WA_PATH } from '@/lib/icons';
+import styles from './page.module.css';
 
 export const metadata = {
   title: 'Careers & Open Engineering Vacancies | BPEL',

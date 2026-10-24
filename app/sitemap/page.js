@@ -1,6 +1,7 @@
 import { PageHero } from '@/components/PageParts';
 import { DATA } from '@/lib/data';
 import { SERVICES } from '@/lib/services';
+import styles from './page.module.css';
 
 export const metadata = { title: 'Sitemap' };
 

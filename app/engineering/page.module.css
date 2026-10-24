@@ -1,0 +1,16 @@
+/* =========================================================
+   Engineering Page Styles (CSS Module)
+   app/engineering/page.module.css
+   ========================================================= */
+
+.processSec {
+  position: relative;
+}
+
+.lifecycleSec {
+  position: relative;
+}
+
+.certsSec {
+  position: relative;
+}

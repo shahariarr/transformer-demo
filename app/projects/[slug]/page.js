@@ -6,6 +6,7 @@ import { PageHero, LinkCard, ArrowRight } from '@/components/PageParts';
 import DetailGallery from '@/components/DetailGallery';
 import Stats from '@/components/Stats';
 import { PROJECTS_DETAILS } from '@/lib/projects';
+import styles from './page.module.css';
 
 const BoltIcon = () => (
   <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true">
@@ -100,7 +101,7 @@ export default async function ProjectPage({ params }) {
             badgeLabel="Turnkey Case Study"
           />
 
-          <div className="detail__content">
+          <div className={`detail__content ${styles.detailContent}`}>
             {/* Project Quick Facts Bar */}
             <dl className="facts fade-in-up">
               <div>
@@ -122,19 +123,19 @@ export default async function ProjectPage({ params }) {
             </dl>
 
             {/* 1. Project Overview Intro */}
-            <div className="detail__header-block fade-in-up">
+            <div className={`detail__header-block ${styles.detailHeaderBlock} fade-in-up`}>
               <span className="label" style={{ marginBottom: '0.35rem' }}>PROJECT SUMMARY</span>
               <h2>Engineering Scope &amp; Deployment</h2>
-              <div className="detail__intro-box">
+              <div className={`detail__intro-box ${styles.detailIntroBox}`}>
                 <p>{d.overview || p.desc}</p>
               </div>
             </div>
 
             {/* 2. Site & Engineering Challenges Card */}
             {d.challenges && d.challenges.length > 0 && (
-              <div className="detail__spec-card fade-in-up" data-delay="100">
-                <div className="detail__spec-card-head">
-                  <div className="detail__spec-card-icon detail__spec-card-icon--criteria" aria-hidden="true">
+              <div className={`detail__spec-card ${styles.specCard} fade-in-up`} data-delay="100">
+                <div className={`detail__spec-card-head ${styles.specCardHead}`}>
+                  <div className={`detail__spec-card-icon detail__spec-card-icon--criteria ${styles.specCardIcon} ${styles.specCardIconCriteria}`} aria-hidden="true">
                     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                       <polygon points="12 2 2 7 12 12 22 7 12 2" />
                       <polyline points="2 17 12 22 22 17" />
@@ -142,14 +143,14 @@ export default async function ProjectPage({ params }) {
                     </svg>
                   </div>
                   <div>
-                    <span className="detail__spec-card-label">ENGINEERING CHALLENGES</span>
-                    <h3 className="detail__spec-card-title">Site Conditions &amp; Solutions</h3>
+                    <span className={`detail__spec-card-label ${styles.specCardLabel}`}>ENGINEERING CHALLENGES</span>
+                    <h3 className={`detail__spec-card-title ${styles.specCardTitle}`}>Site Conditions &amp; Solutions</h3>
                   </div>
                 </div>
-                <ul className="detail__spec-list">
+                <ul className={`detail__spec-list ${styles.specList}`}>
                   {d.challenges.map((c) => (
-                    <li key={c} className="detail__spec-item">
-                      <span className="detail__spec-icon" aria-hidden="true">
+                    <li key={c} className={`detail__spec-item ${styles.specItem}`}>
+                      <span className={`detail__spec-icon ${styles.specIcon}`} aria-hidden="true">
                         <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
                           <polyline points="20 6 9 17 4 12" />
                         </svg>
@@ -163,23 +164,23 @@ export default async function ProjectPage({ params }) {
 
             {/* 3. Turnkey Scope & Technical Deliverables Card */}
             {d.scope && d.scope.length > 0 && (
-              <div className="detail__spec-card fade-in-up" data-delay="180">
-                <div className="detail__spec-card-head">
-                  <div className="detail__spec-card-icon detail__spec-card-icon--scope" aria-hidden="true">
+              <div className={`detail__spec-card ${styles.specCard} fade-in-up`} data-delay="180">
+                <div className={`detail__spec-card-head ${styles.specCardHead}`}>
+                  <div className={`detail__spec-card-icon detail__spec-card-icon--scope ${styles.specCardIcon} ${styles.specCardIconScope}`} aria-hidden="true">
                     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                       <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
                       <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
                     </svg>
                   </div>
                   <div>
-                    <span className="detail__spec-card-label">TURNKEY SCOPE &amp; SPECS</span>
-                    <h3 className="detail__spec-card-title">Equipment &amp; Systems Commissioned</h3>
+                    <span className={`detail__spec-card-label ${styles.specCardLabel}`}>TURNKEY SCOPE &amp; SPECS</span>
+                    <h3 className={`detail__spec-card-title ${styles.specCardTitle}`}>Equipment &amp; Systems Commissioned</h3>
                   </div>
                 </div>
-                <ul className="detail__spec-list">
+                <ul className={`detail__spec-list ${styles.specList}`}>
                   {d.scope.map((s) => (
-                    <li key={s} className="detail__spec-item">
-                      <span className="detail__spec-icon detail__spec-icon--gold" aria-hidden="true">
+                    <li key={s} className={`detail__spec-item ${styles.specItem}`}>
+                      <span className={`detail__spec-icon detail__spec-icon--gold ${styles.specIcon} ${styles.specIconGold}`} aria-hidden="true">
                         <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
                           <polyline points="20 6 9 17 4 12" />
                         </svg>
@@ -193,18 +194,18 @@ export default async function ProjectPage({ params }) {
 
             {/* 4. Standards Verified */}
             {d.standards && d.standards.length > 0 && (
-              <div className="detail__standards-card fade-in-up" data-delay="240">
-                <div className="detail__standards-header">
+              <div className={`detail__standards-card ${styles.standardsCard} fade-in-up`} data-delay="240">
+                <div className={`detail__standards-header ${styles.standardsHeader}`}>
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                     <path d="m9 12 2 2 4-4" />
                   </svg>
                   <span>VERIFIED COMPLIANCE &amp; STANDARDS</span>
                 </div>
-                <div className="detail__standards-chips">
+                <div className={`detail__standards-chips ${styles.standardsChips}`}>
                   {d.standards.map((std) => (
-                    <span key={std} className="detail__std-chip">
-                      <span className="detail__std-dot" aria-hidden="true" />
+                    <span key={std} className={`detail__std-chip ${styles.stdChip}`}>
+                      <span className={`detail__std-dot ${styles.stdDot}`} aria-hidden="true" />
                       <span>{std}</span>
                     </span>
                   ))}
@@ -213,7 +214,7 @@ export default async function ProjectPage({ params }) {
             )}
 
             {/* 5. CTAs */}
-            <div className="detail__actions fade-in-up">
+            <div className={`detail__actions ${styles.detailActions} fade-in-up`}>
               <Link className="btn btn--primary" href={`/contact/?service=${encodeURIComponent(p.title)}`}>
                 Discuss a Similar Project <ArrowRight />
               </Link>
@@ -342,4 +343,3 @@ export default async function ProjectPage({ params }) {
     </>
   );
 }
-

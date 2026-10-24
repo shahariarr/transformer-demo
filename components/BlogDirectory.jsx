@@ -6,6 +6,7 @@ import { BLOG_CATEGORIES } from '@/lib/blog';
 import { waLink } from '@/lib/data';
 import { WA_PATH } from '@/lib/icons';
 import { ArrowRight } from '@/components/PageParts';
+import styles from '@/app/blog/page.module.css';
 
 const POSTS_PER_PAGE = 6;
 
@@ -65,28 +66,27 @@ export default function BlogDirectory({ posts = [] }) {
   const [currentPage, setCurrentPage] = useState(1);
   const gridSectionRef = useRef(null);
 
-  // Default unmodified state (shows 2-column featured card + grid)
+  // Check if we are in the default unfiltered state
   const isDefaultView = selectedCat === 'All' && !searchQuery.trim();
 
-  // Featured Post detection
+  // Find featured post (post with featured: true, or default to the newest one)
   const featuredPost = useMemo(() => {
     return posts.find(p => p.featured) || posts[0] || null;
   }, [posts]);
 
-  // Filtered posts based on category and search query
+  // Filter posts based on category and search query
   const filteredPosts = useMemo(() => {
-    const q = searchQuery.trim().toLowerCase();
-
     return posts.filter(post => {
       // Category match
       if (selectedCat !== 'All' && post.category !== selectedCat) {
         return false;
       }
-      // Search match
-      if (!q) return true;
-      const matchTitle = (post.title || '').toLowerCase().includes(q);
-      const matchExcerpt = (post.excerpt || '').toLowerCase().includes(q);
-      const matchCat = (post.category || '').toLowerCase().includes(q);
+      // Search match (title, excerpt, category, or tags)
+      if (!searchQuery.trim()) return true;
+      const q = searchQuery.toLowerCase().trim();
+      const matchTitle = post.title?.toLowerCase().includes(q);
+      const matchExcerpt = post.excerpt?.toLowerCase().includes(q);
+      const matchCat = post.category?.toLowerCase().includes(q);
       const matchTags = (post.tags || []).some(t => t.toLowerCase().includes(q));
       return matchTitle || matchExcerpt || matchCat || matchTags;
     });
@@ -134,16 +134,16 @@ export default function BlogDirectory({ posts = [] }) {
   };
 
   return (
-    <div className="blog-ets-page-wrapper">
+    <div className={styles.pageWrapper}>
       {/* =========================================================
           1. HERO SECTION (Cloned from /about/ PageHero)
           ========================================================= */}
-      <section className="page-hero blog-ets-hero" aria-label="Blog Header">
+      <section className={`page-hero ${styles.hero}`} aria-label="Blog Header">
         {/* Background Image matching PageHero opacity and position */}
         <img
           src="/assets/images/about-campus.jpg"
           alt=""
-          className="page-hero__img blog-ets-hero__bg"
+          className={`page-hero__img ${styles.heroBg}`}
           loading="lazy"
           decoding="async"
         />
@@ -162,7 +162,7 @@ export default function BlogDirectory({ posts = [] }) {
             Engineering Knowledge, Shared
           </h1>
 
-          <p className="page-hero__desc blog-ets-hero__desc fade-in-up" data-delay="160">
+          <p className={`page-hero__desc ${styles.heroDesc} fade-in-up`} data-delay="160">
             Technical deep-dives, industry analysis, and the latest from our engineering and project teams.
           </p>
         </div>
@@ -172,38 +172,38 @@ export default function BlogDirectory({ posts = [] }) {
           2. FEATURED ARTICLE SECTION (When in default view)
           ========================================================= */}
       {isDefaultView && featuredPost && (
-        <section className="blog-ets-featured-sec" aria-label="Featured Article">
+        <section className={styles.featuredSec} aria-label="Featured Article">
           <div className="wrap">
             <Link
               href={`/blog/${featuredPost.slug}/`}
-              className="blog-ets-featured-card group"
+              className={`${styles.featuredCard} group`}
             >
-              <div className="blog-ets-featured-grid">
+              <div className={styles.featuredGrid}>
                 {/* 16:10 / responsive cover image */}
-                <div className="blog-ets-featured-media">
+                <div className={styles.featuredMedia}>
                   <img
                     src={featuredPost.image}
                     alt={featuredPost.title}
                     loading="eager"
-                    className="blog-ets-featured-img"
+                    className={styles.featuredImg}
                   />
                 </div>
 
                 {/* Right content box */}
-                <div className="blog-ets-featured-content">
-                  <span className="blog-ets-featured-tag">
+                <div className={styles.featuredContent}>
+                  <span className={styles.featuredTag}>
                     Featured Article
                   </span>
 
-                  <h2 className="blog-ets-featured-title">
+                  <h2 className={styles.featuredTitle}>
                     {featuredPost.title}
                   </h2>
 
-                  <p className="blog-ets-featured-excerpt">
+                  <p className={styles.featuredExcerpt}>
                     {featuredPost.excerpt}
                   </p>
 
-                  <div className="blog-ets-featured-link">
+                  <div className={styles.featuredLink}>
                     <span>Read Article</span>
                     <ArrowRightIcon />
                   </div>
@@ -217,11 +217,11 @@ export default function BlogDirectory({ posts = [] }) {
       {/* =========================================================
           3. CATEGORY FILTERS & ARTICLE GRID SECTION
           ========================================================= */}
-      <section className="blog-ets-grid-sec" ref={gridSectionRef} id="blog-grid" aria-label="Articles Grid">
+      <section className={styles.gridSec} ref={gridSectionRef} id="blog-grid" aria-label="Articles Grid">
         <div className="wrap">
           {/* Category Filter Pills & Search Input */}
-          <div className="blog-ets-toolbar">
-            <div className="blog-ets-cat-tabs" role="tablist" aria-label="Filter by category">
+          <div className={styles.toolbar}>
+            <div className={styles.catTabs} role="tablist" aria-label="Filter by category">
               {BLOG_CATEGORIES.map(cat => {
                 const isActive = selectedCat === cat;
                 return (
@@ -231,7 +231,7 @@ export default function BlogDirectory({ posts = [] }) {
                     onClick={() => handleCatChange(cat)}
                     role="tab"
                     aria-selected={isActive}
-                    className={`blog-ets-cat-pill${isActive ? ' is-active' : ''}`}
+                    className={`${styles.catPill}${isActive ? ` ${styles.isActive}` : ''}`}
                   >
                     {cat}
                   </button>
@@ -240,8 +240,8 @@ export default function BlogDirectory({ posts = [] }) {
             </div>
 
             {/* Quick Search */}
-            <div className="blog-ets-search-wrap">
-              <span className="blog-ets-search-icon" aria-hidden="true">
+            <div className={styles.searchWrap}>
+              <span className={styles.searchIcon} aria-hidden="true">
                 <SearchIcon />
               </span>
               <input
@@ -249,14 +249,14 @@ export default function BlogDirectory({ posts = [] }) {
                 placeholder="Search articles..."
                 value={searchQuery}
                 onChange={e => handleSearchChange(e.target.value)}
-                className="blog-ets-search-input"
+                className={styles.searchInput}
                 aria-label="Search articles by title or keyword"
               />
               {searchQuery && (
                 <button
                   type="button"
                   onClick={() => handleSearchChange('')}
-                  className="blog-ets-search-clear"
+                  className={styles.searchClear}
                   aria-label="Clear search input"
                 >
                   &times;
@@ -267,7 +267,7 @@ export default function BlogDirectory({ posts = [] }) {
 
           {/* Active Filter Notification Bar if searching/filtering */}
           {!isDefaultView && (
-            <div className="blog-ets-filter-status">
+            <div className={styles.filterStatus}>
               <p>
                 Showing <strong>{gridPosts.length}</strong> {gridPosts.length === 1 ? 'article' : 'articles'}
                 {selectedCat !== 'All' && <span> in <strong>{selectedCat}</strong></span>}
@@ -276,7 +276,7 @@ export default function BlogDirectory({ posts = [] }) {
               <button
                 type="button"
                 onClick={handleResetFilters}
-                className="blog-ets-reset-btn"
+                className={styles.resetBtn}
               >
                 Reset filters
               </button>
@@ -286,45 +286,45 @@ export default function BlogDirectory({ posts = [] }) {
           {/* 3-Column Article Grid */}
           {gridPosts.length > 0 ? (
             <>
-              <div className="blog-ets-grid">
+              <div className={styles.grid}>
                 {paginatedPosts.map(post => (
                   <Link
                     key={post.slug}
                     href={`/blog/${post.slug}/`}
-                    className="blog-ets-card group"
+                    className={`${styles.card} group`}
                   >
                     {/* 16:10 Cover image */}
-                    <div className="blog-ets-card-media">
+                    <div className={styles.cardMedia}>
                       <img
                         src={post.image}
                         alt={post.title}
                         loading="lazy"
-                        className="blog-ets-card-img"
+                        className={styles.cardImg}
                       />
                     </div>
 
                     {/* Card Body */}
-                    <div className="blog-ets-card-body">
-                      <div className="blog-ets-card-tag-row">
-                        <span className="blog-ets-card-tag">
+                    <div className={styles.cardBody}>
+                      <div className={styles.cardTagRow}>
+                        <span className={styles.cardTag}>
                           {post.category}
                         </span>
                       </div>
 
-                      <h3 className="blog-ets-card-title">
+                      <h3 className={styles.cardTitle}>
                         {post.title}
                       </h3>
 
-                      <p className="blog-ets-card-excerpt">
+                      <p className={styles.cardExcerpt}>
                         {post.excerpt}
                       </p>
 
                       {/* Card Footer with hover-revealing arrow */}
-                      <div className="blog-ets-card-footer">
-                        <span className="blog-ets-card-meta">
+                      <div className={styles.cardFooter}>
+                        <span className={styles.cardMeta}>
                           {post.readTime || `${post.readMinutes || 7} min read`}
                         </span>
-                        <span className="blog-ets-card-arrow">
+                        <span className={styles.cardArrow}>
                           <ArrowRightIcon />
                         </span>
                       </div>
@@ -335,32 +335,32 @@ export default function BlogDirectory({ posts = [] }) {
 
               {/* Pagination Controls */}
               {totalPages > 1 && (
-                <nav className="blog-ets-pagination" aria-label="Blog pagination">
-                  <div className="blog-ets-pagination-info">
+                <nav className={styles.pagination} aria-label="Blog pagination">
+                  <div className={styles.paginationInfo}>
                     Showing <span>{(currentPage - 1) * POSTS_PER_PAGE + 1}</span>–
                     <span>{Math.min(currentPage * POSTS_PER_PAGE, gridPosts.length)}</span> of{' '}
                     <span>{gridPosts.length}</span> articles
                   </div>
 
-                  <div className="blog-ets-pagination-controls">
+                  <div className={styles.paginationControls}>
                     <button
                       type="button"
                       onClick={() => handlePageChange(currentPage - 1)}
                       disabled={currentPage === 1}
-                      className="blog-ets-page-btn blog-ets-page-prev"
+                      className={styles.pageBtn}
                       aria-label="Previous page"
                     >
                       <ChevronLeftIcon />
                       <span>Previous</span>
                     </button>
 
-                    <div className="blog-ets-page-numbers" role="navigation" aria-label="Page numbers">
+                    <div className={styles.pageNumbers} role="navigation" aria-label="Page numbers">
                       {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
                         <button
                           key={page}
                           type="button"
                           onClick={() => handlePageChange(page)}
-                          className={`blog-ets-page-num${currentPage === page ? ' is-active' : ''}`}
+                          className={`${styles.pageNum}${currentPage === page ? ` ${styles.isActive}` : ''}`}
                           aria-current={currentPage === page ? 'page' : undefined}
                           aria-label={`Page ${page}`}
                         >
@@ -373,7 +373,7 @@ export default function BlogDirectory({ posts = [] }) {
                       type="button"
                       onClick={() => handlePageChange(currentPage + 1)}
                       disabled={currentPage === totalPages}
-                      className="blog-ets-page-btn blog-ets-page-next"
+                      className={styles.pageBtn}
                       aria-label="Next page"
                     >
                       <span>Next</span>
@@ -384,13 +384,13 @@ export default function BlogDirectory({ posts = [] }) {
               )}
             </>
           ) : (
-            <div className="blog-ets-empty">
+            <div className={styles.empty}>
               <h3>No articles found</h3>
               <p>We could not find any insights matching your filter or search keywords.</p>
               <button
                 type="button"
                 onClick={handleResetFilters}
-                className="blog-ets-empty__btn"
+                className={styles.emptyBtn}
               >
                 View all articles
               </button>
@@ -402,24 +402,24 @@ export default function BlogDirectory({ posts = [] }) {
       {/* =========================================================
           4. TECHNICAL CONSULTATION & SIZING SECTION
           ========================================================= */}
-      <section className="blog-ets-cta-sec" aria-label="Technical Consultation and Sizing">
+      <section className={styles.ctaSec} aria-label="Technical Consultation and Sizing">
         <div className="wrap">
-          <div className="blog-ets-cta-card">
-            <div className="blog-ets-cta-inner">
+          <div className={styles.ctaCard}>
+            <div className={styles.ctaInner}>
               <div>
-                <span className="blog-ets-cta-tag">Engineering Collaboration &amp; Tenders</span>
-                <h2 className="blog-ets-cta-heading">
+                <span className={styles.ctaTag}>Engineering Collaboration &amp; Tenders</span>
+                <h2 className={styles.ctaHeading}>
                   Have a Project in Mind?
                 </h2>
-                <p className="blog-ets-cta-sub">
+                <p className={styles.ctaSub}>
                   Our engineering team is ready to discuss your transformer and turnkey substation requirements.
                 </p>
               </div>
 
-              <div className="blog-ets-cta-btn-wrap">
+              <div className={styles.ctaBtnWrap}>
                 <Link
                   href="/contact/"
-                  className="blog-ets-cta-action group"
+                  className={`${styles.ctaAction} group`}
                 >
                   <span>Get in Touch</span>
                   <ArrowRightIcon />
