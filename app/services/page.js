@@ -2,6 +2,7 @@ import { PageHero, ArrowRight } from '@/components/PageParts';
 import { SERVICES } from '@/lib/services';
 import { waLink } from '@/lib/data';
 import { WA_PATH } from '@/lib/icons';
+import Stats from '@/components/Stats';
 
 export const metadata = {
   title: 'Services',
@@ -12,49 +13,11 @@ const ServiceIcon = ({ children }) => (
   <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{children}</svg>
 );
 
-const SERVICE_FACTS = [
-  {
-    metric: '100 MVA',
-    label: 'Turnkey Power Scope',
-    desc: 'From compact 100kVA distribution units to 100MVA primary grid transformers.',
-    icon: (
-      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-      </svg>
-    )
-  },
-  {
-    metric: 'Up to 230kV',
-    label: 'Substation Voltage Class',
-    desc: 'Serving primary utilities, heavy industries, metro rails, and renewable plants.',
-    icon: (
-      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-      </svg>
-    )
-  },
-  {
-    metric: '100% FAT',
-    label: 'Direct Test Access',
-    desc: 'Full client and third-party witness inspection inside our accredited laboratory bay.',
-    icon: (
-      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-        <polyline points="9 12 11 14 15 10" />
-      </svg>
-    )
-  },
-  {
-    metric: '24/7 Field',
-    label: 'Rapid Response Team',
-    desc: 'Licensed high-voltage field engineers on call nationwide for emergency deployment.',
-    icon: (
-      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="10" />
-        <polyline points="12 6 12 12 16 14" />
-      </svg>
-    )
-  }
+const SERVICE_STATS = [
+  { target: 35, suffix: ' kV', label: 'GRID TIE-IN STEP-UP VOLTAGE', format: false },
+  { target: 100, suffix: '%', label: 'INVERTER HARMONIC TOLERANCE', format: false },
+  { target: 5000, suffix: ' kVA', label: 'SOLAR INVERTER TRANSFORMERS', format: true },
+  { target: 99, suffix: '.4%', label: 'PEAK INVERTER DUTY EFFICIENCY', format: false }
 ];
 
 const TURNKEY_PACKAGES = [
@@ -106,23 +69,14 @@ export default function ServicesPage() {
         </a>
       </PageHero>
 
-      {/* Core Services Showcase & Strategic Metrics */}
+      {/* Metrics / Stats Band (Follows BPEL Stats Bar Standard) */}
+      <section id="stats" className="stats-bar" aria-label="Sector Engineering Benchmarks">
+        <Stats items={SERVICE_STATS} />
+      </section>
+
+      {/* Core Services Showcase */}
       <section className="sec services-showcase-section" aria-label="Core services directory">
         <div className="wrap">
-          {/* Services Capabilities Highlights */}
-          <div className="services-facts-strip fade-in-up" role="region" aria-label="Service Capabilities Highlights">
-            {SERVICE_FACTS.map((item, idx) => (
-              <div className="exec-fact-item" key={idx}>
-                <div className="exec-fact-item__head">
-                  <span className="exec-fact-item__icon">{item.icon}</span>
-                  <span className="exec-fact-item__metric">{item.metric}</span>
-                </div>
-                <h4 className="exec-fact-item__label">{item.label}</h4>
-                <p className="exec-fact-item__desc">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-
           <header className="sec-head fade-in-up">
             <p className="label">FOUR CORE DISCIPLINES</p>
             <h2>Engineered Services for Grid &amp; Industrial Power</h2>
