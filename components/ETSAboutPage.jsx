@@ -2,12 +2,16 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { PageHero, ArrowRight } from '@/components/PageParts';
+import Stats from '@/components/Stats';
+import { waLink } from '@/lib/data';
+import { WA_PATH } from '@/lib/icons';
 
-const STATS = [
-  { value: '1987', label: 'FOUNDED', sub: 'Established in Dubai, UAE' },
-  { value: '1,000+', label: 'EMPLOYEES', sub: 'Global Engineering & Technical Staff' },
-  { value: '4', label: 'FACILITIES', sub: 'Campuses Across UAE & Europe' },
-  { value: '45+', label: 'COUNTRIES', sub: 'Critical Utility & Industrial Grids' }
+const ETS_STATS = [
+  { target: 1987, suffix: '', label: 'FOUNDED IN DUBAI', format: false },
+  { target: 1000, suffix: '+', label: 'GLOBAL EMPLOYEES', format: true },
+  { target: 4, suffix: '', label: 'MANUFACTURING CAMPUSES', format: false },
+  { target: 45, suffix: '+', label: 'EXPORT COUNTRIES', format: false }
 ];
 
 const TIMELINE = [
@@ -89,17 +93,18 @@ const FACILITIES = [
 ];
 
 const CERTIFICATIONS = [
-  { code: 'ISO 9001:2015', name: 'Quality Management System', desc: 'Quality Management System — internationally recognised framework ensuring consistent quality across all manufacturing processes.' },
-  { code: 'ISO 14001:2015', name: 'Environmental Management System', desc: 'Environmental Management System — systematic approach to minimising environmental impact.' },
-  { code: 'ISO 50001:2018', name: 'Energy Management System', desc: 'Energy Management System — systematic framework to improve energy performance, efficiency, and consumption across manufacturing operations.' },
-  { code: 'ISO 45001:2018', name: 'Occupational Health & Safety', desc: 'Occupational Health & Safety Management System for workplace safety excellence.' },
-  { code: 'ISO/IEC 17025:2017', name: 'Testing Laboratory Accreditation', desc: 'Testing Laboratory Accreditation — the gold standard for testing and calibration laboratories worldwide.' },
-  { code: 'IEC 60076', name: 'International Power Transformer Standard', desc: 'International Power Transformer Standard — the primary standard for transformer design and testing globally.' },
-  { code: 'IEC 60076-11', name: 'Dry-Type Transformer Standard', desc: 'Dry-Type Transformer Standard for cast resin and air-cooled transformer design and testing.' },
-  { code: 'UL 1562 Listed', name: 'Pad-Mounted Transformer Standard', desc: 'Underwriters Laboratories listing for pad-mounted transformers — required for North American utility markets.' },
-  { code: 'UL 1561 Listed', name: 'Dry-Type Distribution Transformers', desc: 'UL listing for dry-type distribution transformers for indoor and outdoor applications.' },
-  { code: 'ANSI / IEEE C57', name: 'North American Transformer Standard', desc: 'North American Transformer Standard — the definitive standard series for transformer design and testing in the Americas.' },
-  { code: 'ISO 3834', name: 'Welding Quality Requirements', desc: 'Welding Quality Requirements — comprehensive standard for fusion welding of metallic materials in transformer tank and structural fabrication.' }
+  { code: 'ISO 9001:2015', name: 'Quality Management System', desc: 'Internationally recognised framework ensuring consistent quality across all manufacturing processes.' },
+  { code: 'ISO 14001:2015', name: 'Environmental Management System', desc: 'Systematic approach to minimising environmental footprint and energy consumption.' },
+  { code: 'ISO 50001:2018', name: 'Energy Management System', desc: 'Framework to continuously improve energy efficiency across manufacturing operations.' },
+  { code: 'ISO 45001:2018', name: 'Occupational Health & Safety', desc: 'Occupational health & safety management system for factory and site engineering excellence.' },
+  { code: 'ISO/IEC 17025:2017', name: 'Testing Laboratory Accreditation', desc: 'The international gold standard for testing and calibration laboratories worldwide.' },
+  { code: 'IEC 60076', name: 'International Power Transformer Standard', desc: 'The primary international standard for transformer design, routine, and type testing.' },
+  { code: 'IEC 60076-11', name: 'Dry-Type Transformer Standard', desc: 'Standard for cast resin dry-type and air-cooled transformer manufacturing and testing.' },
+  { code: 'UL 1562 Listed', name: 'Pad-Mounted Transformer Standard', desc: 'Underwriters Laboratories listing for pad-mounted units required for global utility networks.' },
+  { code: 'UL 1561 Listed', name: 'Dry-Type Distribution Standard', desc: 'UL listing for indoor and outdoor dry-type distribution transformer installations.' },
+  { code: 'ANSI / IEEE C57', name: 'North American Transformer Standard', desc: 'The definitive standard series for transformer design and withstand tolerance in the Americas.' },
+  { code: 'ISO 3834', name: 'Welding Quality Requirements', desc: 'Standard for fusion welding of metallic materials in transformer tank and radiator fabrication.' },
+  { code: 'EcoDesign 2019/1783', name: 'EU Tier 2 Loss Directive', desc: 'European Union mandate for ultra-low no-load core and copper loss performance.' }
 ];
 
 const WITNESSES = ['CESI (IT)', 'ASTA (UK)', 'INTERTEK (Global)', 'KEMA (NL)', 'DEWA Approved', 'ADNOC Approved', 'ARAMCO Approved', 'TRANSCO Certified'];
@@ -108,72 +113,47 @@ export default function ETSAboutPage() {
   const [activeFacility, setActiveFacility] = useState(FACILITIES[0]);
 
   return (
-    <div className="ets-about-page">
+    <div className="ets-page-wrap">
       {/* =========================================================
-          1. HERO SECTION (Cloned from /about/ PageHero)
+          1. HERO SECTION (Follows BPEL PageHero Standard)
           ========================================================= */}
-      <section className="page-hero ets-about-hero" aria-label="About ETS Hero">
-        <img
-          src="/assets/images/about-campus.jpg"
-          alt=""
-          loading="lazy"
-          decoding="async"
-          className="page-hero__img ets-about-hero__bg"
-        />
+      <PageHero
+        crumbs={[{ label: 'About Us', href: '/about/' }, { label: 'Emirates Transformer & Switchgear' }]}
+        label="GLOBAL MANUFACTURING & ENGINEERING"
+        title="Emirates Transformer & Switchgear (ETS)"
+        desc="Founded in Dubai in 1987, ETS is Dubai's pioneer and most experienced transformer manufacturer with four world-class manufacturing campuses across the UAE and Europe, type-approved by DEWA, ADNOC, and ARAMCO."
+        image="/assets/images/about-campus.jpg"
+      >
+        <a className="btn btn--primary" href="#facilities">
+          Explore Facilities <ArrowRight />
+        </a>
+        <a className="btn btn--wa" href={waLink()} target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+            <path d={WA_PATH} />
+          </svg>
+          <span>WhatsApp Chat</span>
+        </a>
+      </PageHero>
 
-        <div className="wrap">
-          <nav aria-label="Breadcrumb">
-            <ol className="crumbs">
-              <li><Link href="/">Home</Link></li>
-              <li><Link href="/about/">About Us</Link></li>
-              <li><span aria-current="page">ETS</span></li>
-            </ol>
-          </nav>
-
-          <p className="label fade-in-up">ABOUT ETS</p>
-
-          <h1 className="fade-in-up" data-delay="80">
-            Engineering Excellence Since 1987.
-          </h1>
-
-          <p className="page-hero__desc ets-about-hero__desc fade-in-up" data-delay="160">
-            From a single facility in Dubai to a global network — powering critical infrastructure worldwide.
-          </p>
-         
-        </div>
+      {/* =========================================================
+          2. METRICS / STATS BAND (Follows BPEL Stats Bar Standard)
+          ========================================================= */}
+      <section id="stats" className="stats-bar" aria-label="Key Milestones & Metrics">
+        <Stats items={ETS_STATS} />
       </section>
 
       {/* =========================================================
-          2. METRICS / STATS BAND
+          3. HERITAGE & MILESTONES TIMELINE
           ========================================================= */}
-      <section className="ets-about-stats-sec" aria-label="Key Milestones & Metrics">
+      <section id="heritage" className="sec sec--tight" aria-label="Our Heritage & Milestones">
         <div className="wrap">
-          <div className="ets-about-stats-box">
-            <div className="ets-about-stats-grid">
-              {STATS.map((s, idx) => (
-                <div key={idx} className="ets-about-stat-item">
-                  <div className="ets-about-stat-value">{s.value}</div>
-                  <div className="ets-about-stat-label">{s.label}</div>
-                  <div className="ets-about-stat-sub">{s.sub}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* =========================================================
-          3. HERITAGE / TIMELINE SECTION ("Our Heritage")
-          ========================================================= */}
-      <section id="heritage" className="ets-about-heritage-sec" aria-label="Our Heritage & Milestones">
-        <div className="wrap">
-          <div className="ets-about-sec-head text-center">
-            <span className="ets-about-kicker">Our Heritage</span>
-            <h2 className="ets-about-title">Nearly Four Decades of Impact.</h2>
-            <p className="ets-about-subtitle">
-              Key engineering and industrial milestones that shaped ETS into a global power infrastructure leader.
+          <header className="sec-head fade-in-up">
+            <p className="label">OUR HERITAGE</p>
+            <h2>Nearly Four Decades of Engineering Impact</h2>
+            <p className="sec-head__desc">
+              Key industrial and engineering milestones that established ETS as an international leader in high-voltage power transformation.
             </p>
-          </div>
+          </header>
 
           <div className="ets-timeline">
             <div className="ets-timeline__line" aria-hidden="true" />
@@ -185,7 +165,7 @@ export default function ETSAboutPage() {
                   <div key={item.year} className={`ets-timeline-row ${isEven ? 'ets-timeline-row--reverse' : ''}`}>
                     {/* Media Card */}
                     <div className="ets-timeline-col ets-timeline-col--media">
-                      <div className="ets-timeline-card group">
+                      <div className="ets-timeline-card">
                         <img
                           src={item.image}
                           alt={item.title}
@@ -205,10 +185,10 @@ export default function ETSAboutPage() {
                     {/* Content Card */}
                     <div className="ets-timeline-col ets-timeline-col--content">
                       <div className="ets-timeline-info">
-                        <span className="ets-timeline-watermark-lg">{item.year}</span>
                         <div className="ets-timeline-tag-row">
                           <span className="ets-timeline-bar" />
-                          <span className="ets-timeline-badge">{item.badge} · {item.year}</span>
+                          <span className="ets-timeline-badge">{item.badge}</span>
+                          <span className="ets-timeline-year-tag">{item.year}</span>
                         </div>
                         <h3 className="ets-timeline-item-title">{item.title}</h3>
                         <p className="ets-timeline-item-desc">{item.desc}</p>
@@ -223,15 +203,17 @@ export default function ETSAboutPage() {
       </section>
 
       {/* =========================================================
-          4. GLOBAL FOOTPRINT / FACILITIES SELECTOR
+          4. GLOBAL FOOTPRINT (4 MANUFACTURING FACILITIES)
           ========================================================= */}
-      <section id="facilities" className="ets-about-facilities-sec" aria-label="Global Manufacturing Facilities">
+      <section id="facilities" className="sec sec--alt" aria-label="Global Manufacturing Campuses">
         <div className="wrap">
-          <div className="ets-about-sec-head">
-            <span className="ets-about-kicker">Global Footprint</span>
-            <h2 className="ets-about-title">Four Facilities. UAE &amp; Europe.</h2>
-            <p className="ets-about-facilities-tag">4 world-class campuses · UAE &amp; European Union</p>
-          </div>
+          <header className="sec-head fade-in-up">
+            <p className="label">GLOBAL MANUFACTURING FOOTPRINT</p>
+            <h2>Four World-Class Facilities Across UAE &amp; Europe</h2>
+            <p className="sec-head__desc">
+              Over 65,000 m² of specialized production capacity engineered to international IEC, ANSI/IEEE, and UL standards.
+            </p>
+          </header>
 
           <div className="ets-facilities-layout">
             {/* Left Column: Interactive Facility Tabs */}
@@ -244,11 +226,11 @@ export default function ETSAboutPage() {
                     type="button"
                     role="tab"
                     aria-selected={isSelected}
-                    className={`ets-facility-tab ${isSelected ? 'ets-facility-tab--active' : ''}`}
+                    className={`ets-facility-tab ${isSelected ? 'is-active' : ''}`}
                     onClick={() => setActiveFacility(fac)}
                   >
                     <div className="ets-facility-tab__icon">
-                      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                         <path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4H2z" />
                       </svg>
                     </div>
@@ -294,7 +276,7 @@ export default function ETSAboutPage() {
                 <div className="ets-facility-showcase__specs">
                   {activeFacility.highlights.map((h, i) => (
                     <div key={i} className="ets-facility-spec-item">
-                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="ets-spec-check" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="ets-spec-check" aria-hidden="true">
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
                       <span>{h}</span>
@@ -308,28 +290,23 @@ export default function ETSAboutPage() {
       </section>
 
       {/* =========================================================
-          5. CERTIFICATIONS & STANDARDS SECTION
+          5. CERTIFICATIONS & ACCREDITATIONS
           ========================================================= */}
-      <section id="certifications" className="ets-about-certs-sec" aria-label="Certifications and Testing Accreditations">
+      <section id="certifications" className="sec sec--tight" aria-label="Certifications & Accreditations">
         <div className="wrap">
-          <div className="ets-about-certs-head">
-            <div>
-              <span className="ets-about-kicker">Certifications &amp; Standards</span>
-              <h2 className="ets-about-title">Globally Certified. Locally Trusted.</h2>
-            </div>
-            <p className="ets-about-certs-lead">
-              Triple-standard compliance across IEC, ANSI/IEEE, and UL — rare among Middle Eastern manufacturers. Audited by Lloyd&apos;s Register and UKAS-recognised bodies.
+          <header className="sec-head fade-in-up">
+            <p className="label">CERTIFICATIONS &amp; STANDARDS</p>
+            <h2>Globally Certified. Locally Trusted.</h2>
+            <p className="sec-head__desc">
+              Triple-standard compliance across IEC, ANSI/IEEE, and UL standards — verified by Lloyd&apos;s Register, UKAS, and accredited independent laboratories.
             </p>
-          </div>
+          </header>
 
           <div className="ets-certs-grid">
             {CERTIFICATIONS.map((cert, idx) => (
-              <div key={idx} className="ets-cert-card group">
-                <div className="ets-cert-card__icon-box">
-                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <circle cx="12" cy="8" r="6" />
-                    <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
-                  </svg>
+              <div key={idx} className="ets-cert-card">
+                <div className="ets-cert-card__top">
+                  <span className="ets-cert-card__num">{String(idx + 1).padStart(2, '0')}</span>
                 </div>
                 <div className="ets-cert-card__text">
                   <h3 className="ets-cert-card__code">{cert.code}</h3>
@@ -343,9 +320,10 @@ export default function ETSAboutPage() {
           {/* Third-Party Laboratory Witnesses */}
           <div className="ets-witnesses-bar">
             <div className="ets-witnesses-bar__left">
-              <h3 className="ets-witnesses-title">Independent Test Witnesses</h3>
+              <span className="label" style={{ marginBottom: '0.25rem' }}>TYPE APPROVALS &amp; WITNESSES</span>
+              <h3 className="ets-witnesses-title">Independent Test Laboratories</h3>
               <p className="ets-witnesses-sub">
-                Type-test reports witnessed by independent third-party laboratories — accepted by utilities and grid operators worldwide.
+                Type-test reports witnessed by accredited independent third-party laboratories — approved by utilities and regional grid operators.
               </p>
             </div>
             <div className="ets-witnesses-pills">
@@ -358,31 +336,29 @@ export default function ETSAboutPage() {
       </section>
 
       {/* =========================================================
-          6. CALL TO ACTION SECTION ("Ready to Partner With Us?")
+          6. SIGNATURE BOTTOM CONSULTATION BANNER
           ========================================================= */}
-      <section className="ets-about-cta-sec" aria-label="Partner With ETS">
+      <section className="sec sec--tight" aria-label="Technical Consultation & Quotation">
         <div className="wrap">
-          <div className="ets-about-cta-card">
-            <div className="ets-about-cta-inner">
-              <div>
-                <h2 className="ets-about-cta-heading">Ready to Partner With Us?</h2>
-                <p className="ets-about-cta-sub">
-                  Whether you need a technical consultation or a competitive quotation — our team is ready.
-                </p>
-              </div>
-
-              <div className="ets-about-cta-actions">
-                <Link href="/contact/" className="ets-about-cta-btn ets-about-cta-btn--quote group">
-                  <span>Get a Quote</span>
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M5 12h14" />
-                    <path d="m12 5 7 7-7 7" />
-                  </svg>
-                </Link>
-                <Link href="/contact/" className="ets-about-cta-btn ets-about-cta-btn--contact">
-                  <span>Contact Us</span>
-                </Link>
-              </div>
+          <div className="standards-consult-box fade-in-up" style={{ marginTop: 0 }}>
+            <div className="standards-consult-copy">
+              <span className="standards-consult-tag">GLOBAL ENGINEERING &amp; PROCUREMENT</span>
+              <h3>Need an Engineered Transformer Specification or Tender Quotation?</h3>
+              <p>
+                Our engineering team reviews single-line diagrams (SLD), calculates transformer load flows, evaluates regional grid clearances, and provides type-tested technical submittals.
+              </p>
+            </div>
+            <div className="standards-consult-actions">
+              <Link className="btn btn--primary" href="/contact/">
+                <span>Request Quotation</span>
+                <ArrowRight />
+              </Link>
+              <a className="btn btn--wa" href={waLink()} target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+                  <path d={WA_PATH} />
+                </svg>
+                <span>WhatsApp Us</span>
+              </a>
             </div>
           </div>
         </div>

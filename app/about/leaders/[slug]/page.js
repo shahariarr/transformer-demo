@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import { LEADERS } from '@/lib/leaders';
 import { PageHero, ArrowRight } from '@/components/PageParts';
 import Link from 'next/link';
+import LeaderCard from '@/components/LeaderCard';
 
 const findLeader = (slug) => LEADERS.find((l) => l.slug === slug);
 
@@ -191,47 +192,22 @@ export default async function LeaderProfilePage({ params }) {
       </section>
 
       {/* Explore Other Directorate Members */}
-      <section className="sec sec--alt" aria-label="Other Directorate Members">
+      <section className="sec sec--tight sec--alt" aria-label="Other Directorate Members">
         <div className="wrap">
           <header className="sec-head fade-in-up">
             <p className="label">EXECUTIVE GOVERNANCE</p>
             <h2>Explore Other Engineering Directors</h2>
-            <p className="lead">Meet the peer engineering directors guiding power transformer innovation and turnkey EPC execution.</p>
+            <p className="sec-head__desc">Meet the peer engineering directors guiding power transformer innovation and turnkey EPC execution.</p>
           </header>
 
-          <div className="creative-team-section" style={{ padding: '10px 0 0' }}>
-            <div className="row">
-              {otherLeaders.slice(0, 3).map((peer, i) => (
-                <div key={peer.slug} className="creative-team--block fade-in-up" data-delay={i * 80}>
-                  <div className="inner-box">
-                    <div className="image-box">
-                      <figure className="image">
-                        <Link href={`/about/leaders/${peer.slug}/`}>
-                          <img src={peer.image} alt={peer.name} loading="lazy" decoding="async" />
-                        </Link>
-                      </figure>
-                    </div>
-                    <div className="info-box">
-                      <h4 className="name">
-                        <Link href={`/about/leaders/${peer.slug}/`}>{peer.name}</Link>
-                      </h4>
-                      <span className="designation">{peer.role}</span>
-                      <p className="info-box__desc">{peer.summary}</p>
-                      <Link href={`/about/leaders/${peer.slug}/`} className="info-box__view-btn">
-                        <span>View Profile</span>
-                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                          <line x1="5" y1="12" x2="19" y2="12" />
-                          <polyline points="12 5 19 12 12 19" />
-                        </svg>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+          <div className="leaders-grid">
+            {otherLeaders.slice(0, 3).map((peer, i) => (
+              <LeaderCard key={peer.slug} leader={peer} delay={i * 80} />
+            ))}
           </div>
         </div>
       </section>
     </>
   );
 }
+
