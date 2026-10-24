@@ -13,36 +13,92 @@ const ServiceIcon = ({ children }) => (
   <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{children}</svg>
 );
 
-const SERVICE_STATS = [
-  { target: 35, suffix: ' kV', label: 'GRID TIE-IN STEP-UP VOLTAGE', format: false },
-  { target: 100, suffix: '%', label: 'INVERTER HARMONIC TOLERANCE', format: false },
-  { target: 5000, suffix: ' kVA', label: 'SOLAR INVERTER TRANSFORMERS', format: true },
-  { target: 99, suffix: '.4%', label: 'PEAK INVERTER DUTY EFFICIENCY', format: false }
+const SERVICE_FACTS = [
+  {
+    metric: '100 MVA',
+    label: 'Turnkey Power Scope',
+    desc: 'From compact 100kVA distribution units to 100MVA primary grid transformers.',
+    icon: (
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+      </svg>
+    )
+  },
+  {
+    metric: 'Up to 230kV',
+    label: 'Substation Voltage Class',
+    desc: 'Serving primary utilities, heavy industries, metro rails, and renewable plants.',
+    icon: (
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+      </svg>
+    )
+  },
+  {
+    metric: '100% FAT',
+    label: 'Direct Test Access',
+    desc: 'Full client and third-party witness inspection inside our accredited laboratory bay.',
+    icon: (
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+        <polyline points="9 12 11 14 15 10" />
+      </svg>
+    )
+  },
+  {
+    metric: '24/7 Field',
+    label: 'Rapid Response Team',
+    desc: 'Licensed high-voltage field engineers on call nationwide for emergency deployment.',
+    icon: (
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10" />
+        <polyline points="12 6 12 12 16 14" />
+      </svg>
+    )
+  }
 ];
 
 const TURNKEY_PACKAGES = [
   {
-    badge: 'PACKAGE 01',
-    title: 'Turnkey Substation EPC',
-    target: 'Utilities, Industrial Parks & Commercial Towers',
-    desc: 'End-to-end delivery combining custom transformer manufacturing, civil foundation layout, crane rigging, MV switchgear coupling, and energized commissioning.',
-    highlights: ['Single-source engineering accountability', 'Zero interface conflict between supplier & installer', 'Complete SAT test dossier & warranty'],
-    href: '/services/equipment-supply/'
+    badge: 'FULL-SCOPE EPC',
+    title: 'BPEL Substation EPC (11kV – 132kV)',
+    target: 'Industrial Parks, Garment Mills, Commercial Towers & Utilities',
+    desc: 'Complete engineering, procurement, and execution from civil foundation layout and heavy transformer crane rigging to HT/LT switchgear integration, PFI coupling, and energized grid commissioning.',
+    highlights: [
+      'Custom power transformer manufacturing & precision placement',
+      'Integrated MV/LV switchgear, VCB, RMU & automatic PFI plants',
+      'Statutory utility inspection, BPDB/BREB/DESCO clearance & energization',
+      'Single-source accountability with zero interface conflict'
+    ],
+    actionText: 'Explore Substation EPC',
+    href: '/services/installation/'
   },
   {
-    badge: 'PACKAGE 02',
-    title: 'Asset Health & Diagnostic AMC',
-    target: 'Continuous Process Plants & Data Centers',
-    desc: 'Comprehensive annual maintenance and testing contracts including periodic DGA oil chromatography, SFRA frequency response scans, and thermal imaging.',
-    highlights: ['Scheduled online oil sampling without shutdown', 'Early detection of thermal hotspots & partial discharge', 'Detailed asset residual life reporting'],
+    badge: 'PREVENTIVE AMC',
+    title: 'Substation Asset Health & Diagnostic AMC',
+    target: 'Continuous Production Facilities, Spinning Mills & Data Centers',
+    desc: 'Proactive diagnostic testing and comprehensive annual maintenance designed to prevent unplanned downtime, identify incipient faults, and ensure continuous, uninterrupted facility power.',
+    highlights: [
+      'Scheduled oil sampling: DGA gas chromatography, BDV & moisture tests',
+      'Tan Delta dielectric loss, winding resistance & insulation resistance (Megger)',
+      'Infrared thermography scans to detect loose joints and thermal hotspots',
+      '24/7 priority emergency response team for critical power restoration'
+    ],
+    actionText: 'Explore Diagnostic AMC',
     href: '/services/testing/'
   },
   {
-    badge: 'PACKAGE 03',
-    title: 'Substation Modernization & Overhaul',
-    target: 'Aging Substations & Grid Expansion',
-    desc: 'Rehabilitate aging power infrastructure with high-vacuum mobile oil dehydration, OLTC contact replacement, leak mitigation, and coil rewinding.',
-    highlights: ['Adds 10–15 years to operational transformer life', 'Mobile oil processing plant mobilized directly to site', 'Significant capital expenditure savings'],
+    badge: 'RETROFIT & OVERHAUL',
+    title: 'Transformer Overhaul & Substation Modernization',
+    target: 'Aging Substations, Facility Expansions & High-Load Grids',
+    desc: 'Extend asset operational life by 10–15 years without the massive capital cost of complete equipment replacement. Includes mobile high-vacuum oil dehydration, OLTC overhaul, and protection upgrades.',
+    highlights: [
+      'On-site mobile high-vacuum oil filtration & BDV voltage restoration',
+      'Complete gasket replacement, nitrogen leak testing & bushing overhaul',
+      'On-Load Tap Changer (OLTC) contact maintenance & timing calibration',
+      'Microprocessor protection relay retrofitting & digital SCADA integration'
+    ],
+    actionText: 'Explore Overhaul Services',
     href: '/services/maintenance/'
   }
 ];
@@ -81,7 +137,7 @@ export default function ServicesPage() {
             <p className="label">FOUR CORE DISCIPLINES</p>
             <h2>Engineered Services for Grid &amp; Industrial Power</h2>
             <p className="sec-head__desc">
-              Choose an individual specialized discipline or contract an integrated turnkey package.
+              Choose an individual specialized discipline or contract an integrated BPEL package.
             </p>
           </header>
 
@@ -122,13 +178,13 @@ export default function ServicesPage() {
       </section>
 
       {/* Turnkey EPC & Integrated Solutions Section */}
-      <section className="sec sec--alt turnkey-solutions-section" aria-label="Integrated turnkey packages">
+      <section className="sec sec--alt turnkey-solutions-section" aria-label="Integrated BPEL packages">
         <div className="wrap">
           <header className="sec-head fade-in-up">
-            <p className="label">INTEGRATED TURNKEY SOLUTIONS</p>
-            <h2>Combine Services for Single-Source Reliability</h2>
+            <p className="label">BPEL INTEGRATED SOLUTIONS</p>
+            <h2>Single-Source Substation &amp; Power Engineering Packages</h2>
             <p className="sec-head__desc">
-              Bundling manufacturing, site installation, and routine diagnostics reduces project handoff risks by 35% and guarantees end-to-end performance.
+              Eliminate vendor disputes and project handoff delays. We combine custom equipment manufacturing, on-site installation, and lifecycle diagnostics into unified BPEL contracts backed by single-source warranty accountability.
             </p>
           </header>
 
@@ -158,7 +214,7 @@ export default function ServicesPage() {
                 </ul>
                 <div className="turnkey-pkg-action">
                   <a className="btn btn--ghost btn--sm" href={pkg.href}>
-                    View Core Service <ArrowRight />
+                    {pkg.actionText || 'Explore Package'} <ArrowRight />
                   </a>
                 </div>
               </div>
@@ -173,13 +229,13 @@ export default function ServicesPage() {
                 Engineering Support
               </span>
               <h4>Still have questions about your project requirements?</h4>
-              <p>Our power engineering team can provide single-line diagram (SLD) reviews, turnkey EPC pricing, and on-site commissioning support.</p>
+              <p>Our power engineering team can provide single-line diagram (SLD) reviews, BPEL EPC pricing, and on-site commissioning support.</p>
               <ul className="faq-help__services">
                 <li>
                   <ServiceIcon>
                     <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
                   </ServiceIcon>
-                  <span>Turnkey EPC Execution</span>
+                  <span>BPEL EPC Execution</span>
                 </li>
                 <li>
                   <ServiceIcon>
