@@ -74,13 +74,13 @@ export default function Contact() {
       <SectionHead label="LET'S DISCUSS YOUR PROJECT" title="Have a Power Engineering Requirement?"
         desc="Share your project requirements and connect with our team to discuss the next steps." />
       <div className="contact__grid">
-        <div className="contact__cards fade-in-left">
+        <div className="contact__cards" data-animate="slideInLeft">
           <a className="ccard" href={mailLink()}><Ico name="mail" /><span><b>Email</b>{c.email}<small>Direct technical desk • 24h response</small></span></a>
           <a className="ccard" href={waLink()} target="_blank" rel="noopener"><Ico name="wa" /><span><b>WhatsApp</b>{c.phoneDisplay}<small>Chat live with application engineers</small></span></a>
           <div className="ccard"><Ico name="phone" /><span><b>Business phone</b>{c.phoneDisplay}<small>Sun–Thu: 08:30 – 18:00 BST</small></span></div>
           <div className="ccard"><Ico name="pin" /><span><b>Office address</b>{c.address}<small>Corporate HQ, Gulshan-1, Dhaka</small></span></div>
         </div>
-        <form id="contact-form" className="form fade-in-right" data-delay="150" noValidate ref={formRef} onSubmit={onSubmit}>
+        <form id="contact-form" className="form" data-animate="slideInRight" noValidate ref={formRef} onSubmit={onSubmit}>
           <div className="form__row">
             {Field({ id: 'name', label: 'Full Name', type: 'text', req: true, autoComplete: 'name' })}
             {Field({ id: 'company', label: 'Company Name', type: 'text', req: false, autoComplete: 'organization' })}

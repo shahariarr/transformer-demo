@@ -55,7 +55,7 @@ export default function Partners() {
         <SectionHead label="OUR PARTNERS" title="Trusted by Industry Leaders"
           desc="We collaborate with world-class manufacturers and certification bodies to deliver reliable power solutions." />
       </div>
-      <div className="partners-wrap fade-in-up" aria-label="Partner logos" data-delay="100">
+      <div className="partners-wrap" data-animate="slideInRight" aria-label="Partner logos">
         <div className="partners-inner" id="partners-inner" ref={innerRef}>
           <Row rowRef={rowRef} />
           <Row hidden />

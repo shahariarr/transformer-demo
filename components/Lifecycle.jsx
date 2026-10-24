@@ -45,8 +45,7 @@ export default function Lifecycle() {
   const stageStartRef = useRef(0);
 
   const geo = useRef({ upTo: [], total: 0 });
-  const STAGE_DURATION = 1200; // 3.8s per energisation stage
-
+  const STAGE_DURATION = 2600; // 2.6s per energisation stage for calm, readable pacing
   currentRef.current = current;
   isPlayingRef.current = isPlaying;
 

@@ -45,6 +45,7 @@
   --bar-h: 76px;
   --header-h: calc(var(--topbar-h) + var(--bar-h));
   --font: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
 }
 
 /* ---------- base ---------- */
@@ -21436,3 +21437,106 @@ a.btn.btn--light {
     padding: 1.4rem 1.5rem;
   }
 }
+
+/* =========================================================
+   Silky Smooth Sliding Entrance Animations (animate.css)
+   ========================================================= */
+@keyframes slideInDown {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -32px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideInUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 36px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translate3d(-40px, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translate3d(40px, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate__slideInDown,
+.slideInDown {
+  animation-name: slideInDown !important;
+}
+
+.animate__slideInLeft,
+.slideInLeft {
+  animation-name: slideInLeft !important;
+}
+
+.animate__slideInRight,
+.slideInRight {
+  animation-name: slideInRight !important;
+}
+
+.animate__slideInUp,
+.slideInUp {
+  animation-name: slideInUp !important;
+}
+
+.animate__slideInDown,
+.animate__slideInUp,
+.animate__slideInLeft,
+.animate__slideInRight,
+.slideInDown,
+.slideInUp,
+.slideInLeft,
+.slideInRight {
+  animation-duration: var(--animate-duration, 1.15s) !important;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1) !important;
+  animation-fill-mode: both !important;
+}
+
+:root {
+  --animate-duration: 1.15s;
+  --animate-delay: 0.15s;
+}
+
+html.js [data-animate]:not(.animate__animated):not(.in) {
+  opacity: 0;
+  visibility: hidden;
+}
+
+[data-animate] {
+  --animate-duration: 1.15s;
+  animation-duration: 1.15s !important;
+  will-change: transform, opacity;
+}
+
+[data-animate].in {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+

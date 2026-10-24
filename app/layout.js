@@ -1,3 +1,4 @@
+import 'animate.css';
 import './common.css';
 import UIProvider from '@/components/UIProvider';
 import Header from '@/components/Header';
