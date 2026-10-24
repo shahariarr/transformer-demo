@@ -1,10 +1,15 @@
-/.claude
-/.agent
-/.agents
 node_modules/
 .next/
 out/
 next-env.d.ts
+
+# IDE & Tooling
+/.claude
+/.agent
+.agents
 AGENTS.md
+.vscode/
+
+# OS files
 .DS_Store
 Thumbs.db
