@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 import { PARTNERS } from '@/lib/partners';
 import RawSvg from './RawSvg';
@@ -61,12 +60,6 @@ export default function Partners() {
           <Row rowRef={rowRef} />
           <Row hidden />
         </div>
-      </div>
-      <div className="fade-in-up" style={{ textAlign: 'center', marginTop: '2rem' }}>
-        <Link href="/about/partners/" className="btn btn--ghost" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-          <span>Explore All Strategic Partners &amp; Alliances</span>
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-        </Link>
       </div>
     </>
   );
