@@ -2,6 +2,7 @@ import { PageHero, ArrowRight } from '@/components/PageParts';
 import { SERVICES } from '@/lib/services';
 import { waLink } from '@/lib/data';
 import { WA_PATH } from '@/lib/icons';
+import Stats from '@/components/Stats';
 
 export const metadata = {
   title: 'Services',
@@ -11,6 +12,13 @@ export const metadata = {
 const ServiceIcon = ({ children }) => (
   <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{children}</svg>
 );
+
+const SERVICE_STATS = [
+  { target: 35, suffix: ' kV', label: 'GRID TIE-IN STEP-UP VOLTAGE', format: false },
+  { target: 100, suffix: '%', label: 'INVERTER HARMONIC TOLERANCE', format: false },
+  { target: 5000, suffix: ' kVA', label: 'SOLAR INVERTER TRANSFORMERS', format: true },
+  { target: 99, suffix: '.4%', label: 'PEAK INVERTER DUTY EFFICIENCY', format: false }
+];
 
 const SERVICE_FACTS = [
   {
@@ -124,23 +132,14 @@ export default function ServicesPage() {
         </a>
       </PageHero>
 
-      {/* Core Services Showcase & Strategic Metrics */}
+      {/* Metrics / Stats Band (Follows BPEL Stats Bar Standard) */}
+      <section id="stats" className="stats-bar" aria-label="Sector Engineering Benchmarks">
+        <Stats items={SERVICE_STATS} />
+      </section>
+
+      {/* Core Services Showcase */}
       <section className="sec services-showcase-section" aria-label="Core services directory">
         <div className="wrap">
-          {/* Services Capabilities Highlights */}
-          <div className="services-facts-strip fade-in-up" role="region" aria-label="Service Capabilities Highlights">
-            {SERVICE_FACTS.map((item, idx) => (
-              <div className="exec-fact-item" key={idx}>
-                <div className="exec-fact-item__head">
-                  <span className="exec-fact-item__icon">{item.icon}</span>
-                  <span className="exec-fact-item__metric">{item.metric}</span>
-                </div>
-                <h4 className="exec-fact-item__label">{item.label}</h4>
-                <p className="exec-fact-item__desc">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-
           <header className="sec-head fade-in-up">
             <p className="label">FOUR CORE DISCIPLINES</p>
             <h2>Engineered Services for Grid &amp; Industrial Power</h2>
