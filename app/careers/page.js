@@ -1,9 +1,5 @@
 import { PageHero, ArrowRight } from '@/components/PageParts';
 import CareersVacancyDirectory from '@/components/CareersVacancyDirectory';
-import CareersCulture from '@/components/CareersCulture';
-import CareersHiringProcess from '@/components/CareersHiringProcess';
-import CareersWorkplaces from '@/components/CareersWorkplaces';
-import CareersFaq from '@/components/CareersFaq';
 import SectionHead from '@/components/SectionHead';
 import { waLink } from '@/lib/data';
 import { WA_PATH } from '@/lib/icons';
@@ -86,23 +82,6 @@ export default function CareersPage() {
         </a>
       </PageHero>
 
-      {/* 2. Strategic Metrics / Key Facts Strip (like /services) */}
-      <section className="sec sec--tight" style={{ background: '#fff', paddingTop: '2.5rem', paddingBottom: '0' }} aria-label="Key Facts">
-        <div className="wrap">
-          <div className="services-facts-strip fade-in-up" role="region" aria-label="Engineering Career Highlights">
-            {CAREER_FACTS.map((item, idx) => (
-              <div className="exec-fact-item" key={idx}>
-                <div className="exec-fact-item__head">
-                  <span className="exec-fact-item__icon">{item.icon}</span>
-                  <span className="exec-fact-item__metric">{item.metric}</span>
-                </div>
-                <h4 className="exec-fact-item__label">{item.label}</h4>
-                <p className="exec-fact-item__desc">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* 4. CURRENT OPENINGS Section (matching Products & Services Directory) */}
       <section id="vacancies" className="sec sec--alt" aria-label="Currently Open Vacancies">
@@ -114,26 +93,8 @@ export default function CareersPage() {
           <CareersVacancyDirectory />
         </div>
       </section>
+  
 
-      {/* 5. Engineering Culture & Benefits (matching Quality / Why BPEL) */}
-      <section id="culture" className="sec" style={{ background: '#fff' }} aria-label="Engineering Culture & Rewards">
-        <CareersCulture />
-      </section>
-
-      {/* 6. OUR HIRING METHODOLOGY Section (matching Lifecycle Dark Section) */}
-      <section id="hiring-process" className="sec sec--dark" aria-label="Our Hiring Methodology">
-        <CareersHiringProcess />
-      </section>
-
-      {/* 7. OUR STRATEGIC WORKPLACES Section (matching Industries Section) */}
-      <section id="workplaces" className="sec sec--alt" aria-label="Our Strategic Workplaces">
-        <CareersWorkplaces />
-      </section>
-
-      {/* 8. Recruitment FAQ & Signature 2-Column Support Banner (matching Home & Services FAQ) */}
-      <section id="faq" className="sec" aria-label="Frequently Asked Questions & Support">
-        <CareersFaq />
-      </section>
     </>
   );
 }
