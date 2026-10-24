@@ -407,20 +407,7 @@ export default function PadMountedProductView({
 
   return (
     <article className="pad-mounted-page">
-      
-      {/* 1. AUTHORITY & STANDARDS TRUST BAR (Matches Emirates Transformer trust strip) */}
-      <section className="pad-trust-bar" aria-label="Utility Pre-Approvals & Standards">
-        <div className="wrap pad-trust-bar__inner">
-          {trustSignals.map((item, idx) => (
-            <div key={idx} className="pad-trust-bar__item">
-              <span className="pad-trust-bar__icon">
-                <CheckIcon />
-              </span>
-              <span>{item.title}</span>
-            </div>
-          ))}
-        </div>
-      </section>
+
 
       {/* 2. HERO SHOWCASE & PROCUREMENT SIDEBAR */}
       <section className="sec pad-hero-sec" aria-label="Product Showcase & Technical Specifications">
