@@ -432,7 +432,8 @@ h2 {
   margin-bottom: .85rem
 }
 
-.sec-head__desc {
+.sec-head__desc,
+.sec-head__sub {
   margin: 0;
   color: var(--ink-2);
   font-size: 1.075rem;
@@ -19077,6 +19078,16 @@ a.btn.btn--light {
 
 .prod-grid-2col .pcard:hover {
   transform: translateY(-5px) !important;
+}
+
+/* =====================================================================
+   Product 3-Column Grid (.pgrid)
+   ===================================================================== */
+.pgrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.75rem;
+  align-items: stretch;
 }
 
 /* =====================================================================
