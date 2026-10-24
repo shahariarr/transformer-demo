@@ -88,10 +88,6 @@
 /* =========================================================
    Industries Grid & Cards
    ========================================================= */
-:global(#industries) {
-  background: #ffffff !important;
-}
-
 :global(.ind-grid) {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
