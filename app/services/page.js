@@ -15,7 +15,7 @@ const ServiceIcon = ({ children }) => (
 const SERVICE_FACTS = [
   {
     metric: '100 MVA',
-    label: 'Turnkey Power Scope',
+    label: 'BPEL Power Scope',
     desc: 'From compact 100kVA distribution units to 100MVA primary grid transformers.',
     icon: (
       <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -60,7 +60,7 @@ const SERVICE_FACTS = [
 const TURNKEY_PACKAGES = [
   {
     badge: 'FULL-SCOPE EPC',
-    title: 'Turnkey Substation EPC (11kV – 132kV)',
+    title: 'BPEL Substation EPC (11kV – 132kV)',
     target: 'Industrial Parks, Garment Mills, Commercial Towers & Utilities',
     desc: 'Complete engineering, procurement, and execution from civil foundation layout and heavy transformer crane rigging to HT/LT switchgear integration, PFI coupling, and energized grid commissioning.',
     highlights: [
@@ -145,7 +145,7 @@ export default function ServicesPage() {
             <p className="label">FOUR CORE DISCIPLINES</p>
             <h2>Engineered Services for Grid &amp; Industrial Power</h2>
             <p className="sec-head__desc">
-              Choose an individual specialized discipline or contract an integrated turnkey package.
+              Choose an individual specialized discipline or contract an integrated BPEL package.
             </p>
           </header>
 
@@ -186,13 +186,13 @@ export default function ServicesPage() {
       </section>
 
       {/* Turnkey EPC & Integrated Solutions Section */}
-      <section className="sec sec--alt turnkey-solutions-section" aria-label="Integrated turnkey packages">
+      <section className="sec sec--alt turnkey-solutions-section" aria-label="Integrated BPEL packages">
         <div className="wrap">
           <header className="sec-head fade-in-up">
-            <p className="label">INTEGRATED TURNKEY SOLUTIONS</p>
+            <p className="label">BPEL INTEGRATED SOLUTIONS</p>
             <h2>Single-Source Substation &amp; Power Engineering Packages</h2>
             <p className="sec-head__desc">
-              Eliminate vendor disputes and project handoff delays. We combine custom equipment manufacturing, on-site installation, and lifecycle diagnostics into unified, turnkey contracts backed by single-source warranty accountability.
+              Eliminate vendor disputes and project handoff delays. We combine custom equipment manufacturing, on-site installation, and lifecycle diagnostics into unified BPEL contracts backed by single-source warranty accountability.
             </p>
           </header>
 
@@ -237,13 +237,13 @@ export default function ServicesPage() {
                 Engineering Support
               </span>
               <h4>Still have questions about your project requirements?</h4>
-              <p>Our power engineering team can provide single-line diagram (SLD) reviews, turnkey EPC pricing, and on-site commissioning support.</p>
+              <p>Our power engineering team can provide single-line diagram (SLD) reviews, BPEL EPC pricing, and on-site commissioning support.</p>
               <ul className="faq-help__services">
                 <li>
                   <ServiceIcon>
                     <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
                   </ServiceIcon>
-                  <span>Turnkey EPC Execution</span>
+                  <span>BPEL EPC Execution</span>
                 </li>
                 <li>
                   <ServiceIcon>
