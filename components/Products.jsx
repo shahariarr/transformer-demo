@@ -33,7 +33,7 @@ export default function Products({ viewAll = true }) {
       </div>
 
       <div className="pgrid">
-        {DATA.products.map((p, i) => {
+        {(viewAll ? DATA.products.slice(0, 6) : DATA.products).map((p, i) => {
           const rawRating = (p.name.match(/([\d,]+)\s*kva/i) || [])[1];
           const numRating = rawRating ? parseInt(rawRating.replace(/,/g, ''), 10) : null;
           const rating = numRating ? numRating.toLocaleString('en-US') : rawRating;

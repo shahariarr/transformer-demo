@@ -142,7 +142,55 @@ export default async function IndustryPage({ params }) {
               </div>
             </div>
 
-            {/* 2. Technical Criteria Card */}
+            {/* 2. Compliance & Standards Badges */}
+            {d.standards && d.standards.length > 0 && (
+              <div className="detail__standards-card fade-in-up" data-delay="100">
+                <div className="detail__standards-header">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    <path d="m9 12 2 2 4-4" />
+                  </svg>
+                  <span>VERIFIED COMPLIANCE &amp; CODES</span>
+                </div>
+                <div className="detail__standards-chips">
+                  {d.standards.map((std) => (
+                    <span key={std} className="detail__std-chip">
+                      <span className="detail__std-dot" aria-hidden="true" />
+                      <span>{std}</span>
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* 3. CTAs */}
+            <div className="detail__actions fade-in-up">
+              <Link className="btn btn--primary" href="/products/">
+                View Products Range <ArrowRight />
+              </Link>
+              <Link className="btn btn--ghost" href="/engineering/">
+                Factory &amp; FAT Testing
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================
+          4. TECHNICAL CRITERIA & TURNKEY SUPPLY SCOPE (2 CARDS)
+          ========================================================= */}
+      <section className="sec sec--tight sec--alt" aria-label="Technical Criteria and Turnkey Supply Scope">
+        <div className="wrap">
+          <header className="sec-head fade-in-up">
+            <p className="label">TECHNICAL CRITERIA &amp; SUPPLY SCOPE</p>
+            <h2>Sector Engineering Standards &amp; Turnkey Scope</h2>
+            <p className="sec-head__desc">
+              Guaranteed electrical performance benchmarks and complete turnkey supply scope engineered for {ind.name}.
+            </p>
+          </header>
+
+          <div className="industry-specs-grid">
+            {/* Technical Criteria Card */}
             <div className="detail__spec-card fade-in-up" data-delay="100">
               <div className="detail__spec-card-head">
                 <div className="detail__spec-card-icon detail__spec-card-icon--criteria" aria-hidden="true">
@@ -171,7 +219,7 @@ export default async function IndustryPage({ params }) {
               </ul>
             </div>
 
-            {/* 3. Turnkey Supply Scope Card */}
+            {/* Turnkey Supply Scope Card */}
             <div className="detail__spec-card fade-in-up" data-delay="180">
               <div className="detail__spec-card-head">
                 <div className="detail__spec-card-icon detail__spec-card-icon--scope" aria-hidden="true">
@@ -198,45 +246,14 @@ export default async function IndustryPage({ params }) {
                 ))}
               </ul>
             </div>
-
-            {/* 4. Compliance & Standards Badges */}
-            {d.standards && d.standards.length > 0 && (
-              <div className="detail__standards-card fade-in-up" data-delay="240">
-                <div className="detail__standards-header">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                    <path d="m9 12 2 2 4-4" />
-                  </svg>
-                  <span>VERIFIED COMPLIANCE &amp; CODES</span>
-                </div>
-                <div className="detail__standards-chips">
-                  {d.standards.map((std) => (
-                    <span key={std} className="detail__std-chip">
-                      <span className="detail__std-dot" aria-hidden="true" />
-                      <span>{std}</span>
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* 5. CTAs */}
-            <div className="detail__actions fade-in-up">
-              <Link className="btn btn--primary" href="/products/">
-                View Products Range <ArrowRight />
-              </Link>
-              <Link className="btn btn--ghost" href="/engineering/">
-                Factory &amp; FAT Testing
-              </Link>
-            </div>
           </div>
         </div>
       </section>
 
       {/* =========================================================
-          4. RECOMMENDED PRIMARY EQUIPMENT FOR THIS SECTOR
+          5. RECOMMENDED PRIMARY EQUIPMENT FOR THIS SECTOR
           ========================================================= */}
-      <section className="sec sec--tight sec--alt" aria-label="Recommended Sector Equipment">
+      <section className="sec sec--tight" aria-label="Recommended Sector Equipment">
         <div className="wrap">
           <header className="sec-head fade-in-up">
             <p className="label">RECOMMENDED EQUIPMENT</p>
@@ -291,9 +308,9 @@ export default async function IndustryPage({ params }) {
       </section>
 
       {/* =========================================================
-          5. OTHER SECTORS WE SERVE
+          6. OTHER SECTORS WE SERVE
           ========================================================= */}
-      <section className="sec sec--tight" aria-label="Other industries">
+      <section className="sec sec--tight sec--alt" aria-label="Other industries">
         <div className="wrap">
           <header className="sec-head fade-in-up">
             <p className="label">EXPLORE SECTORS</p>

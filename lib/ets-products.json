@@ -1,0 +1,1003 @@
+[
+  {
+    "id": 1,
+    "name": "Pad Mounted Transformers",
+    "slug": "pad-mounted-transformers",
+    "division": "Transformers",
+    "productType": "Pad Mounted (UL)",
+    "cat": "Transformers",
+    "typeTag": "Dead-Front Padmount",
+    "image": "/assets/images/products/ets/pad-mounted-transformers.webp",
+    "badges": [
+      "UL Listed",
+      "ANSI/IEEE"
+    ],
+    "desc": "High-performance pad mounted transformers engineered to international standards for critical power infrastructure.",
+    "specs": [
+      "Capacity: 300 kVA – 5 MVA (up to 10 MVA)",
+      "Voltage: ≤36 kV",
+      "Design: Dead-Front",
+      "Listing: UL 1562"
+    ],
+    "specRows": [
+      {
+        "key": "Capacity",
+        "val": "300 kVA – 5 MVA (up to 10 MVA)"
+      },
+      {
+        "key": "Voltage",
+        "val": "≤36 kV"
+      },
+      {
+        "key": "Design",
+        "val": "Dead-Front"
+      },
+      {
+        "key": "Listing",
+        "val": "UL 1562"
+      }
+    ],
+    "voltageClasses": [
+      "Up to 36 kV"
+    ],
+    "powerRatings": [
+      "≤ 1 MVA",
+      "1–10 MVA"
+    ],
+    "cooling": [
+      "ONAN"
+    ],
+    "standards": [
+      "IEC",
+      "UL Listed",
+      "IEEE / ANSI",
+      "CSA"
+    ],
+    "applications": [
+      "Utility / Grid",
+      "Industrial",
+      "Commercial"
+    ],
+    "tags": [
+      "Transformers",
+      "Pad Mounted (UL)",
+      "UL Listed",
+      "ANSI/IEEE"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Medium Power Transformers (GSU)",
+    "slug": "medium-power-transformers-gsu",
+    "division": "Transformers",
+    "productType": "Medium Power (GSU)",
+    "cat": "Transformers",
+    "typeTag": "Oil-Immersed",
+    "image": "/assets/images/products/ets/medium-power-transformers-gsu.webp",
+    "badges": [
+      "Tested",
+      "IEC + ANSI"
+    ],
+    "desc": "High-performance medium power transformers (gsu) engineered to international standards for critical power infrastructure.",
+    "specs": [
+      "Capacity: Up to 150 MVA",
+      "Voltage: Up to 220 kV",
+      "Cooling: ONAN / KNAN / ONAF / KNAF / ODAF / OFAF",
+      "Standard: IEC 60076 / IEEE C57"
+    ],
+    "specRows": [
+      {
+        "key": "Capacity",
+        "val": "Up to 150 MVA"
+      },
+      {
+        "key": "Voltage",
+        "val": "Up to 220 kV"
+      },
+      {
+        "key": "Cooling",
+        "val": "ONAN / KNAN / ONAF / KNAF / ODAF / OFAF"
+      },
+      {
+        "key": "Standard",
+        "val": "IEC 60076 / IEEE C57"
+      }
+    ],
+    "voltageClasses": [
+      "36–132 kV",
+      "132–220 kV",
+      "Up to 36 kV"
+    ],
+    "powerRatings": [
+      "10–60 MVA",
+      "60–200 MVA",
+      "1–10 MVA"
+    ],
+    "cooling": [
+      "ONAN",
+      "KNAN",
+      "ONAF",
+      "KNAF",
+      "ODAF",
+      "OFAF"
+    ],
+    "standards": [
+      "IEC",
+      "IEEE / ANSI"
+    ],
+    "applications": [
+      "Utility / Grid",
+      "Industrial",
+      "Commercial"
+    ],
+    "tags": [
+      "Transformers",
+      "Medium Power (GSU)",
+      "Tested",
+      "IEC + ANSI"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "EHV Power Transformers",
+    "slug": "ehv-power-transformers",
+    "division": "Transformers",
+    "productType": "EHV Transformers",
+    "cat": "Transformers",
+    "typeTag": "Oil-Immersed",
+    "image": "/assets/images/products/ets/ehv-power-transformers.webp",
+    "badges": [
+      "Tested",
+      "EHV Class"
+    ],
+    "desc": "High-performance ehv power transformers engineered to international standards for critical power infrastructure.",
+    "specs": [
+      "Capacity: Up to 300 MVA",
+      "Voltage: 220–400 kV",
+      "Cooling: ONAN / KNAN / ONAF / KNAF / ODAF / OFAF",
+      "Standard: IEC 60076 / IEEE C57"
+    ],
+    "specRows": [
+      {
+        "key": "Capacity",
+        "val": "Up to 300 MVA"
+      },
+      {
+        "key": "Voltage",
+        "val": "220–400 kV"
+      },
+      {
+        "key": "Cooling",
+        "val": "ONAN / KNAN / ONAF / KNAF / ODAF / OFAF"
+      },
+      {
+        "key": "Standard",
+        "val": "IEC 60076 / IEEE C57"
+      }
+    ],
+    "voltageClasses": [
+      "220–765 kV",
+      "132–220 kV"
+    ],
+    "powerRatings": [
+      "200+ MVA",
+      "60–200 MVA"
+    ],
+    "cooling": [
+      "ONAN",
+      "KNAN",
+      "ONAF",
+      "KNAF",
+      "ODAF",
+      "OFAF"
+    ],
+    "standards": [
+      "IEC",
+      "IEEE / ANSI"
+    ],
+    "applications": [
+      "Transmission",
+      "Generation",
+      "Utility / Grid"
+    ],
+    "tags": [
+      "Transformers",
+      "EHV Transformers",
+      "Tested",
+      "EHV Class"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Inverter Duty Transformers",
+    "slug": "inverter-duty-transformers",
+    "division": "Transformers",
+    "productType": "Application-Specific",
+    "cat": "Transformers",
+    "typeTag": "Oil-Immersed",
+    "image": "/assets/images/products/ets/inverter-duty-transformers.webp",
+    "badges": [
+      "Converter Duty",
+      "Low THD"
+    ],
+    "desc": "High-performance inverter duty transformers engineered to international standards for critical power infrastructure.",
+    "specs": [
+      "Application: Solar / Wind / BESS Inverters",
+      "Capacity: 500 kVA – 20 MVA",
+      "Feature: K-13 to K-20 Rated",
+      "Standard: IEC 60076 / IEEE C57.159"
+    ],
+    "specRows": [
+      {
+        "key": "Application",
+        "val": "Solar / Wind / BESS Inverters"
+      },
+      {
+        "key": "Capacity",
+        "val": "500 kVA – 20 MVA"
+      },
+      {
+        "key": "Feature",
+        "val": "K-13 to K-20 Rated"
+      },
+      {
+        "key": "Standard",
+        "val": "IEC 60076 / IEEE C57.159"
+      }
+    ],
+    "voltageClasses": [
+      "Up to 36 kV"
+    ],
+    "powerRatings": [
+      "≤ 1 MVA",
+      "1–10 MVA",
+      "10–60 MVA"
+    ],
+    "cooling": [
+      "ONAN"
+    ],
+    "standards": [
+      "IEC",
+      "IEEE / ANSI"
+    ],
+    "applications": [
+      "Renewable Energy",
+      "Utility / Grid",
+      "Industrial"
+    ],
+    "tags": [
+      "Transformers",
+      "Application-Specific",
+      "Converter Duty",
+      "Low THD"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Solar PV Transformers",
+    "slug": "solar-pv-transformers",
+    "division": "Transformers",
+    "productType": "Application-Specific",
+    "cat": "Transformers",
+    "typeTag": "Oil-Immersed",
+    "image": "/assets/images/products/ets/solar-pv-transformers.webp",
+    "badges": [
+      "Renewable",
+      "Low THD"
+    ],
+    "desc": "High-performance solar pv transformers engineered to international standards for critical power infrastructure.",
+    "specs": [
+      "Application: Solar PV Plants",
+      "Capacity: 200 kVA–15 MVA",
+      "Feature: Low Harmonics",
+      "Standard: IEC / IEEE"
+    ],
+    "specRows": [
+      {
+        "key": "Application",
+        "val": "Solar PV Plants"
+      },
+      {
+        "key": "Capacity",
+        "val": "200 kVA–15 MVA"
+      },
+      {
+        "key": "Feature",
+        "val": "Low Harmonics"
+      },
+      {
+        "key": "Standard",
+        "val": "IEC / IEEE"
+      }
+    ],
+    "voltageClasses": [
+      "Up to 36 kV"
+    ],
+    "powerRatings": [
+      "≤ 1 MVA",
+      "1–10 MVA",
+      "10–60 MVA"
+    ],
+    "cooling": [
+      "ONAN"
+    ],
+    "standards": [
+      "IEC"
+    ],
+    "applications": [
+      "Renewable Energy",
+      "Utility / Grid",
+      "Industrial"
+    ],
+    "tags": [
+      "Transformers",
+      "Application-Specific",
+      "Renewable",
+      "Low THD"
+    ]
+  },
+  {
+    "id": 6,
+    "name": "BESS Transformers",
+    "slug": "bess-transformers",
+    "division": "Transformers",
+    "productType": "BESS",
+    "cat": "Transformers",
+    "typeTag": "Oil-Immersed",
+    "image": "/assets/images/products/ets/bess-transformers.webp",
+    "badges": [
+      "BESS",
+      "Bidirectional"
+    ],
+    "desc": "High-performance bess transformers engineered to international standards for critical power infrastructure.",
+    "specs": [
+      "Capacity: 1–300 MVA",
+      "Voltage: Up to 132 kV",
+      "Cooling: ONAN / KNAN / ONAF / KNAF",
+      "Standard: IEC 60076 / IEEE C57"
+    ],
+    "specRows": [
+      {
+        "key": "Capacity",
+        "val": "1–300 MVA"
+      },
+      {
+        "key": "Voltage",
+        "val": "Up to 132 kV"
+      },
+      {
+        "key": "Cooling",
+        "val": "ONAN / KNAN / ONAF / KNAF"
+      },
+      {
+        "key": "Standard",
+        "val": "IEC 60076 / IEEE C57"
+      }
+    ],
+    "voltageClasses": [
+      "Up to 36 kV",
+      "36–132 kV",
+      "132–220 kV"
+    ],
+    "powerRatings": [
+      "≤ 1 MVA",
+      "1–10 MVA",
+      "10–60 MVA",
+      "60–200 MVA",
+      "200+ MVA"
+    ],
+    "cooling": [
+      "ONAN",
+      "KNAN",
+      "ONAF",
+      "KNAF"
+    ],
+    "standards": [
+      "IEC"
+    ],
+    "applications": [
+      "BESS",
+      "Renewable Energy",
+      "Utility / Grid"
+    ],
+    "tags": [
+      "Transformers",
+      "BESS",
+      "BESS",
+      "Bidirectional"
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Distribution Transformers",
+    "slug": "distribution-transformers",
+    "division": "Transformers",
+    "productType": "Distribution",
+    "cat": "Transformers",
+    "typeTag": "Oil-Immersed",
+    "image": "/assets/images/products/ets/distribution-transformers.webp",
+    "badges": [
+      "Type Tested",
+      "Low Loss"
+    ],
+    "desc": "High-performance distribution transformers engineered to international standards for critical power infrastructure.",
+    "specs": [
+      "Capacity: Up to 5 MVA",
+      "Voltage: ≤36 kV",
+      "Cooling: ONAN",
+      "Standard: IEC 60076"
+    ],
+    "specRows": [
+      {
+        "key": "Capacity",
+        "val": "Up to 5 MVA"
+      },
+      {
+        "key": "Voltage",
+        "val": "≤36 kV"
+      },
+      {
+        "key": "Cooling",
+        "val": "ONAN"
+      },
+      {
+        "key": "Standard",
+        "val": "IEC 60076"
+      }
+    ],
+    "voltageClasses": [
+      "Up to 36 kV"
+    ],
+    "powerRatings": [
+      "≤ 1 MVA",
+      "1–10 MVA"
+    ],
+    "cooling": [
+      "ONAN"
+    ],
+    "standards": [
+      "IEC"
+    ],
+    "applications": [
+      "Utility / Grid",
+      "Industrial",
+      "Commercial"
+    ],
+    "tags": [
+      "Transformers",
+      "Distribution",
+      "Type Tested",
+      "Low Loss"
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Cast Resin Dry Type Transformers",
+    "slug": "cast-resin-dry-type-transformers",
+    "division": "Transformers",
+    "productType": "Dry Type / Cast Resin",
+    "cat": "Transformers",
+    "typeTag": "Cast Resin Dry Type",
+    "image": "/assets/images/products/ets/cast-resin-dry-type-transformers.webp",
+    "badges": [
+      "Zero Oil",
+      "Indoor Rated"
+    ],
+    "desc": "High-performance cast resin dry type transformers engineered to international standards for critical power infrastructure.",
+    "specs": [
+      "Capacity: Up to 25 MVA",
+      "Voltage: Up to 36 kV",
+      "Protection: IP31 / IP54",
+      "Class: F1 / C2 / E2"
+    ],
+    "specRows": [
+      {
+        "key": "Capacity",
+        "val": "Up to 25 MVA"
+      },
+      {
+        "key": "Voltage",
+        "val": "Up to 36 kV"
+      },
+      {
+        "key": "Protection",
+        "val": "IP31 / IP54"
+      },
+      {
+        "key": "Class",
+        "val": "F1 / C2 / E2"
+      }
+    ],
+    "voltageClasses": [
+      "Up to 36 kV"
+    ],
+    "powerRatings": [
+      "≤ 1 MVA",
+      "1–10 MVA",
+      "10–60 MVA"
+    ],
+    "cooling": [
+      "AN (Air Natural)",
+      "AF"
+    ],
+    "standards": [
+      "IEC"
+    ],
+    "applications": [
+      "Commercial",
+      "Data Centre",
+      "Hospital",
+      "Industrial"
+    ],
+    "tags": [
+      "Transformers",
+      "Dry Type / Cast Resin",
+      "Zero Oil",
+      "Indoor Rated"
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Package Substation Transformers",
+    "slug": "package-substation-transformers",
+    "division": "Transformers",
+    "productType": "Package Substations",
+    "cat": "Transformers",
+    "typeTag": "Oil-Immersed",
+    "image": "/assets/images/products/ets/package-substation-transformers.webp",
+    "badges": [
+      "Factory Tested",
+      "Rapid Deploy"
+    ],
+    "desc": "High-performance package substation transformers engineered to international standards for critical power infrastructure.",
+    "specs": [
+      "Capacity: 300 kVA – 5 MVA",
+      "Voltage: ≤72 kV",
+      "Cooling: ONAN / ONAF",
+      "Standard: IEC 60076 / IEC 62271"
+    ],
+    "specRows": [
+      {
+        "key": "Capacity",
+        "val": "300 kVA – 5 MVA"
+      },
+      {
+        "key": "Voltage",
+        "val": "≤72 kV"
+      },
+      {
+        "key": "Cooling",
+        "val": "ONAN / ONAF"
+      },
+      {
+        "key": "Standard",
+        "val": "IEC 60076 / IEC 62271"
+      }
+    ],
+    "voltageClasses": [
+      "Up to 36 kV",
+      "36–132 kV"
+    ],
+    "powerRatings": [
+      "≤ 1 MVA",
+      "1–10 MVA"
+    ],
+    "cooling": [
+      "ONAN",
+      "ONAF"
+    ],
+    "standards": [
+      "IEC"
+    ],
+    "applications": [
+      "Utility / Grid",
+      "Industrial",
+      "Commercial"
+    ],
+    "tags": [
+      "Transformers",
+      "Package Substations",
+      "Factory Tested",
+      "Rapid Deploy"
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Containerized Substation",
+    "slug": "containerized-substation",
+    "division": "Transformers",
+    "productType": "Containerized",
+    "cat": "Transformers",
+    "typeTag": "Integrated Skid",
+    "image": "/assets/images/products/ets/containerized-substation.webp",
+    "badges": [
+      "Plug & Play",
+      "UL Certified"
+    ],
+    "desc": "High-performance containerized substation engineered to international standards for critical power infrastructure.",
+    "specs": [
+      "Capacity: 500 kVA – 5 MVA",
+      "Voltage: Up to 36 kV",
+      "Protection: IP54 / IP64 / IP65",
+      "Testing: Factory Tested"
+    ],
+    "specRows": [
+      {
+        "key": "Capacity",
+        "val": "500 kVA – 5 MVA"
+      },
+      {
+        "key": "Voltage",
+        "val": "Up to 36 kV"
+      },
+      {
+        "key": "Protection",
+        "val": "IP54 / IP64 / IP65"
+      },
+      {
+        "key": "Testing",
+        "val": "Factory Tested"
+      }
+    ],
+    "voltageClasses": [
+      "Up to 36 kV"
+    ],
+    "powerRatings": [
+      "≤ 1 MVA",
+      "1–10 MVA"
+    ],
+    "cooling": [
+      "ONAN"
+    ],
+    "standards": [
+      "IEC",
+      "UL Listed",
+      "IEEE / ANSI",
+      "CSA"
+    ],
+    "applications": [
+      "Utility / Grid",
+      "Industrial",
+      "Commercial"
+    ],
+    "tags": [
+      "Transformers",
+      "Containerized",
+      "Plug & Play",
+      "UL Certified"
+    ]
+  },
+  {
+    "id": 11,
+    "name": "Special Transformers",
+    "slug": "special-transformers",
+    "division": "Transformers",
+    "productType": "Special Transformers",
+    "cat": "Transformers",
+    "typeTag": "Oil-Immersed",
+    "image": "/assets/images/products/ets/special-transformers.webp",
+    "badges": [
+      "Custom-Engineered",
+      "10 Variants"
+    ],
+    "desc": "High-performance special transformers engineered to international standards for critical power infrastructure.",
+    "specs": [
+      "Capacity: 50 kVA – 100 MVA",
+      "Voltage: Up to 220 kV",
+      "Application: 10 Specialised Variants",
+      "Standard: IEC 60076 / IEEE C57 / ATEX / IECEx"
+    ],
+    "specRows": [
+      {
+        "key": "Capacity",
+        "val": "50 kVA – 100 MVA"
+      },
+      {
+        "key": "Voltage",
+        "val": "Up to 220 kV"
+      },
+      {
+        "key": "Application",
+        "val": "10 Specialised Variants"
+      },
+      {
+        "key": "Standard",
+        "val": "IEC 60076 / IEEE C57 / ATEX / IECEx"
+      }
+    ],
+    "voltageClasses": [
+      "Up to 36 kV",
+      "36–132 kV",
+      "132–220 kV"
+    ],
+    "powerRatings": [
+      "≤ 1 MVA",
+      "1–10 MVA",
+      "10–60 MVA",
+      "60–200 MVA"
+    ],
+    "cooling": [
+      "ONAN"
+    ],
+    "standards": [
+      "IEC",
+      "IEEE / ANSI",
+      "ATEX / IECEx"
+    ],
+    "applications": [
+      "Utility / Grid",
+      "Industrial",
+      "Commercial"
+    ],
+    "tags": [
+      "Transformers",
+      "Special Transformers",
+      "Custom-Engineered",
+      "10 Variants"
+    ]
+  },
+  {
+    "id": 12,
+    "name": "Auxiliary Transformers",
+    "slug": "auxiliary-transformers",
+    "division": "Transformers",
+    "productType": "Auxiliary",
+    "cat": "Transformers",
+    "typeTag": "Oil-Immersed",
+    "image": "/assets/images/products/ets/auxiliary-transformers.webp",
+    "badges": [
+      "Station Service",
+      "Multi-Winding"
+    ],
+    "desc": "High-performance auxiliary transformers engineered to international standards for critical power infrastructure.",
+    "specs": [
+      "Capacity: 50 kVA – 2 MVA",
+      "Voltage: Up to 36 kV",
+      "Cooling: ONAN / KNAN / ONAF / KNAF / ODAF / OFAF",
+      "Standard: IEC 60076 / IEEE C57"
+    ],
+    "specRows": [
+      {
+        "key": "Capacity",
+        "val": "50 kVA – 2 MVA"
+      },
+      {
+        "key": "Voltage",
+        "val": "Up to 36 kV"
+      },
+      {
+        "key": "Cooling",
+        "val": "ONAN / KNAN / ONAF / KNAF / ODAF / OFAF"
+      },
+      {
+        "key": "Standard",
+        "val": "IEC 60076 / IEEE C57"
+      }
+    ],
+    "voltageClasses": [
+      "Up to 36 kV"
+    ],
+    "powerRatings": [
+      "≤ 1 MVA",
+      "1–10 MVA"
+    ],
+    "cooling": [
+      "ONAN",
+      "KNAN",
+      "ONAF",
+      "KNAF",
+      "ODAF",
+      "OFAF"
+    ],
+    "standards": [
+      "IEC",
+      "IEEE / ANSI"
+    ],
+    "applications": [
+      "Utility / Grid",
+      "Industrial",
+      "Commercial"
+    ],
+    "tags": [
+      "Transformers",
+      "Auxiliary",
+      "Station Service",
+      "Multi-Winding"
+    ]
+  },
+  {
+    "id": 13,
+    "name": "Oil & Gas Transformers",
+    "slug": "oil-and-gas-transformers",
+    "division": "Transformers",
+    "productType": "Application-Specific",
+    "cat": "Transformers",
+    "typeTag": "Oil-Immersed",
+    "image": "/assets/images/products/ets/oil-amp-gas-transformers.webp",
+    "badges": [
+      "ATEX Certified",
+      "Explosion-Proof"
+    ],
+    "desc": "High-performance oil & gas transformers engineered to international standards for critical power infrastructure.",
+    "specs": [
+      "Capacity: 100 kVA – 40 MVA",
+      "Voltage: Up to 72 kV",
+      "Cooling: ONAN / KNAN / ONAF / KNAF",
+      "Delivery: EXW Jebel Ali"
+    ],
+    "specRows": [
+      {
+        "key": "Capacity",
+        "val": "100 kVA – 40 MVA"
+      },
+      {
+        "key": "Voltage",
+        "val": "Up to 72 kV"
+      },
+      {
+        "key": "Cooling",
+        "val": "ONAN / KNAN / ONAF / KNAF"
+      },
+      {
+        "key": "Delivery",
+        "val": "EXW Jebel Ali"
+      }
+    ],
+    "voltageClasses": [
+      "Up to 36 kV",
+      "36–132 kV"
+    ],
+    "powerRatings": [
+      "≤ 1 MVA",
+      "1–10 MVA",
+      "10–60 MVA"
+    ],
+    "cooling": [
+      "ONAN",
+      "KNAN",
+      "ONAF",
+      "KNAF"
+    ],
+    "standards": [
+      "IEC",
+      "ATEX / IECEx"
+    ],
+    "applications": [
+      "Oil & Gas",
+      "Industrial",
+      "Generation"
+    ],
+    "tags": [
+      "Transformers",
+      "Application-Specific",
+      "ATEX Certified",
+      "Explosion-Proof"
+    ]
+  },
+  {
+    "id": 14,
+    "name": "MV Switchgear — Eclipse Range",
+    "slug": "mv-switchgear-eclipse-range",
+    "division": "Switchgear",
+    "productType": "MV Switchgear",
+    "cat": "Switchgear",
+    "typeTag": "Vacuum / SF6-Free",
+    "image": "/assets/images/products/ets/mv-switchgear-eclipse-range.webp",
+    "badges": [
+      "SF6-Free",
+      "IEC 62271"
+    ],
+    "desc": "High-performance mv switchgear — eclipse range engineered to international standards for critical power infrastructure.",
+    "specs": [
+      "Voltage: 12 kV",
+      "Current: 630 / 1250 / 2000 A",
+      "Breaking: Vacuum CB",
+      "Standard: IEC 62271-200"
+    ],
+    "specRows": [
+      {
+        "key": "Voltage",
+        "val": "12 kV"
+      },
+      {
+        "key": "Current",
+        "val": "630 / 1250 / 2000 A"
+      },
+      {
+        "key": "Breaking",
+        "val": "Vacuum CB"
+      },
+      {
+        "key": "Standard",
+        "val": "IEC 62271-200"
+      }
+    ],
+    "voltageClasses": [
+      "Up to 36 kV"
+    ],
+    "powerRatings": [
+      "≤ 1 MVA",
+      "1–10 MVA"
+    ],
+    "cooling": [
+      "AN (Air Natural)"
+    ],
+    "standards": [
+      "IEC"
+    ],
+    "applications": [
+      "Utility / Grid",
+      "Industrial",
+      "Commercial"
+    ],
+    "tags": [
+      "Switchgear",
+      "MV Switchgear",
+      "SF6-Free",
+      "IEC 62271"
+    ]
+  },
+  {
+    "id": 15,
+    "name": "LV Switchgear & Control Panels",
+    "slug": "lv-switchgear-and-control-panels",
+    "division": "Switchgear",
+    "productType": "LV Switchgear",
+    "cat": "Switchgear",
+    "typeTag": "Low Voltage",
+    "image": "/assets/images/products/ets/lv-switchgear-amp-control-panels.webp",
+    "badges": [
+      "IEC 61439",
+      "IP65"
+    ],
+    "desc": "High-performance lv switchgear & control panels engineered to international standards for critical power infrastructure.",
+    "specs": [
+      "Current Rating: 160 – 4000 A",
+      "Voltage: 433V AC",
+      "Protection: IP43 / IP54 / IP65",
+      "Standard: IEC 61439-1"
+    ],
+    "specRows": [
+      {
+        "key": "Current Rating",
+        "val": "160 – 4000 A"
+      },
+      {
+        "key": "Voltage",
+        "val": "433V AC"
+      },
+      {
+        "key": "Protection",
+        "val": "IP43 / IP54 / IP65"
+      },
+      {
+        "key": "Standard",
+        "val": "IEC 61439-1"
+      }
+    ],
+    "voltageClasses": [
+      "Up to 36 kV"
+    ],
+    "powerRatings": [
+      "≤ 1 MVA",
+      "1–10 MVA"
+    ],
+    "cooling": [
+      "AN (Air Natural)"
+    ],
+    "standards": [
+      "IEC"
+    ],
+    "applications": [
+      "Utility / Grid",
+      "Industrial",
+      "Commercial"
+    ],
+    "tags": [
+      "Switchgear",
+      "LV Switchgear",
+      "IEC 61439",
+      "IP65"
+    ]
+  }
+]

@@ -2,6 +2,7 @@ import { PageHero, ArrowRight } from '@/components/PageParts';
 import { SERVICES } from '@/lib/services';
 import { waLink } from '@/lib/data';
 import { WA_PATH } from '@/lib/icons';
+import Stats from '@/components/Stats';
 
 export const metadata = {
   title: 'Services',
@@ -15,7 +16,7 @@ const ServiceIcon = ({ children }) => (
 const SERVICE_FACTS = [
   {
     metric: '100 MVA',
-    label: 'BPEL Power Scope',
+    label: 'Turnkey Power Scope',
     desc: 'From compact 100kVA distribution units to 100MVA primary grid transformers.',
     icon: (
       <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -124,23 +125,14 @@ export default function ServicesPage() {
         </a>
       </PageHero>
 
-      {/* Core Services Showcase & Strategic Metrics */}
+      {/* Metrics / Stats Band (Follows BPEL Stats Bar Standard) */}
+      <section id="stats" className="stats-bar" aria-label="Sector Engineering Benchmarks">
+        <Stats items={SERVICE_STATS} />
+      </section>
+
+      {/* Core Services Showcase */}
       <section className="sec services-showcase-section" aria-label="Core services directory">
         <div className="wrap">
-          {/* Services Capabilities Highlights */}
-          <div className="services-facts-strip fade-in-up" role="region" aria-label="Service Capabilities Highlights">
-            {SERVICE_FACTS.map((item, idx) => (
-              <div className="exec-fact-item" key={idx}>
-                <div className="exec-fact-item__head">
-                  <span className="exec-fact-item__icon">{item.icon}</span>
-                  <span className="exec-fact-item__metric">{item.metric}</span>
-                </div>
-                <h4 className="exec-fact-item__label">{item.label}</h4>
-                <p className="exec-fact-item__desc">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-
           <header className="sec-head fade-in-up">
             <p className="label">FOUR CORE DISCIPLINES</p>
             <h2>Engineered Services for Grid &amp; Industrial Power</h2>
