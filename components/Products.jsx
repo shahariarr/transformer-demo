@@ -29,7 +29,7 @@ export default function Products({ viewAll = true }) {
           title="Engineered Products for Critical Power Infrastructure"
           desc="Oil-immersed power and distribution transformers built for reliable, low-loss performance in utility and industrial networks."
         />
-        {viewAll ? <ViewAll href="/products/" className="fade-in-up">View all products</ViewAll> : null}
+        {viewAll ? <ViewAll href="/products/" data-animate="slideInRight">View all products</ViewAll> : null}
       </div>
 
       <div className="pgrid">
@@ -46,7 +46,7 @@ export default function Products({ viewAll = true }) {
           const tags = specs.filter(s => !s.includes(':')).map(s => <li key={s}>{s}</li>);
 
           return (
-            <article className="pcard fade-in-up" data-delay={(i % 3) * 90} key={p.name}>
+            <article className="pcard" data-animate="slideInUp" data-delay={(i % 3) * 120} key={p.name}>
               <div className="pcard__img">
                 <img src={p.image} alt={p.name} loading="lazy" decoding="async" />
                 {rating ? (

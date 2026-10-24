@@ -23,9 +23,9 @@ export default function Faq() {
     <div className="wrap">
       <SectionHead label="COMMON INQUIRIES & TECHNICAL SPECIFICATIONS" title="Frequently Asked Questions"
         desc="Clear guidance on transformer engineering configurations, manufacturing lead times, testing protocols, and substation EPC integration." />
-      <div className="faq">
+      <div className="faq" data-animate="slideInLeft">
         {DATA.faq.map((f, i) => (
-          <div className="faq__item fade-in-up" data-delay={(i % 3) * 110} key={f.q} ref={el => { items.current[i] = el; }}>
+          <div className="faq__item" key={f.q} ref={el => { items.current[i] = el; }}>
             <h3>
               <button type="button" className="faq__q" id={`faq-q${i}`} aria-expanded={openFaqs.has(i)} aria-controls={`faq-a${i}`} onClick={() => toggleFaq(i)}>
                 <span className="faq__q-wrap">
@@ -49,7 +49,7 @@ export default function Faq() {
         ))}
       </div>
 
-      <div className="faq__footer-help fade-in-up" data-delay="160">
+      <div className="faq__footer-help" data-animate="slideInUp">
         <div className="faq-help__main">
           <span className="faq-help__eyebrow">
             <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>

@@ -20,17 +20,17 @@ const settle = el => {
 };
 
 function reveal(el, direction, delay) {
-  const xFrom = direction === 'left' ? -24 : direction === 'right' ? 24 : 0;
-  const yFrom = direction === 'left' || direction === 'right' ? 0 : 20;
+  const xFrom = direction === 'left' ? -32 : direction === 'right' ? 32 : 0;
+  const yFrom = direction === 'left' || direction === 'right' ? 0 : 28;
   anime.remove(el);
   anime({
     targets: el,
     translateX: [xFrom, 0],
     translateY: [yFrom, 0],
     opacity: [0, 1],
-    duration: 700,
+    duration: 1050,
     delay,
-    easing: 'easeOutCubic',
+    easing: 'easeOutQuart',
     complete: () => settle(el)
   });
 }
@@ -76,6 +76,40 @@ export default function Motion() {
       els.forEach(e => io.observe(e));
     }
 
+    // Animate.css sliding entrances for main sections
+    const animEls = [...document.querySelectorAll('[data-animate]')].filter(el => !el.classList.contains('in'));
+    let animIo;
+
+    if (reduce || !('IntersectionObserver' in window)) {
+      animEls.forEach(el => {
+        el.classList.add('in');
+        el.style.visibility = 'visible';
+        el.style.opacity = '1';
+      });
+    } else {
+      animIo = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target;
+          const anim = el.dataset.animate || 'slideInUp';
+          const fullClass = anim.startsWith('animate__') ? anim : `animate__${anim}`;
+          const delay = el.dataset.delay ? parseInt(el.dataset.delay, 10) : 0;
+          if (delay) {
+            el.style.animationDelay = `${delay}ms`;
+          }
+          el.style.visibility = 'visible';
+          el.style.opacity = '1';
+          el.classList.add('animate__animated', fullClass);
+          el.addEventListener('animationend', () => {
+            el.classList.add('in');
+            el.style.transform = 'none';
+          }, { once: true });
+          animIo.unobserve(el);
+        });
+      }, { threshold: 0.05, rootMargin: '0px 0px 40px 0px' });
+      animEls.forEach(e => animIo.observe(e));
+    }
+
     // Parallax
     const pars = [...document.querySelectorAll('[data-parallax]')];
     let ticking = false;
@@ -94,6 +128,7 @@ export default function Motion() {
 
     return () => {
       if (io) io.disconnect();
+      if (animIo) animIo.disconnect();
       removeEventListener('scroll', onScroll);
     };
   }, [pathname]);

@@ -179,14 +179,14 @@ export default function Projects({ viewAll = true, isGrid = false }) {
         <div className="proj-head">
           <SectionHead label="OUR PROJECT PORTFOLIO" title="Turnkey Engineering & Infrastructure Deployments"
             desc="Explore real-world execution examples showcasing substation planning, heavy transformer delivery, medium-voltage distribution automation, and utility energisation." />
-          <div className="proj-nav fade-in-right" data-delay="150">
+          <div className="proj-nav" data-animate="slideInRight">
             <span className="proj-counter">{deployments(count)}</span>
             {viewAll ? <ViewAll href="/projects/">View all</ViewAll> : null}
           </div>
         </div>
 
         {/* Category Filter Bar */}
-        <div className="proj-filter-bar fade-in-up" data-delay="180" role="tablist" aria-label="Filter project portfolio by category">
+        <div className="proj-filter-bar" data-animate="slideInLeft" role="tablist" aria-label="Filter project portfolio by category">
           {FILTERS.map(([key, label]) => (
             <button type="button" className={`proj-filter-pill${filter === key ? ' is-active' : ''}`} data-filter={key} role="tab" key={key}
                     aria-selected={filter === key ? 'true' : 'false'} onClick={() => pickFilter(key)}>
@@ -197,7 +197,7 @@ export default function Projects({ viewAll = true, isGrid = false }) {
       </div>
 
       {isGrid ? (
-        <div className="wrap proj-grid-wrap fade-in-up" data-delay="120">
+        <div className="wrap proj-grid-wrap" data-animate="slideInUp">
           <div className="proj-grid">
             {items.map((p, i) => (
               <article
@@ -252,7 +252,7 @@ export default function Projects({ viewAll = true, isGrid = false }) {
           </div>
         </div>
       ) : (
-        <div className="pcar fade-in-up" data-playing={playing ? 'true' : 'false'} data-delay="120" {...hold}>
+        <div className="pcar" data-animate="slideInRight" data-playing={playing ? 'true' : 'false'} {...hold}>
           <button type="button" className="pcar__arrow pcar__arrow--prev" aria-label="Previous project" onClick={() => go(active - 1)} disabled={count < 2}><Chevron d="m15 18-6-6 6-6" /></button>
           <button type="button" className="pcar__arrow pcar__arrow--next" aria-label="Next project" onClick={() => go(active + 1)} disabled={count < 2}><Chevron d="m9 18 6-6-6-6" /></button>
 
