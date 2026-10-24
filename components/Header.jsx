@@ -41,15 +41,22 @@ export default function Header() {
   const navList = SITE.nav || [];
 
   // Active top-level item index calculation:
-  // 1. Direct top-level path match takes highest precedence (e.g., /blog/ matches Blog, not Resources)
+  // 1. Direct top-level path match takes highest precedence
   let calculatedIndex = navList.findIndex(n => {
     if (n.href === '/') return pathname === '/';
     return pathname === n.href || (n.href !== '/' && pathname.startsWith(n.href));
   });
 
-  // 2. If no direct top-level match, check children (e.g., /engineering/ or /careers/ under About)
+  // 2. If no direct top-level match, check sections or children
   if (calculatedIndex === -1) {
     calculatedIndex = navList.findIndex(n => {
+      if (Array.isArray(n.sections)) {
+        const matchesSection = n.sections.some(s => {
+          if (s.href !== '/' && (pathname === s.href || pathname.startsWith(s.href))) return true;
+          return s.items?.some(c => c.href !== '/' && c.href !== '/contact/' && (pathname === c.href || pathname.startsWith(c.href)));
+        });
+        if (matchesSection) return true;
+      }
       if (!n.children || n.children.length === 0) return false;
       return n.children.some(c => c.href !== '/' && c.href !== '/contact/' && (pathname === c.href || pathname.startsWith(c.href)));
     });
@@ -141,7 +148,7 @@ export default function Header() {
     const key = n.label.toLowerCase();
     const isCurrentActive = idx === current;
     const isCurrent = isCurrentActive ? { 'aria-current': 'true' } : {};
-    const hasDropdown = Array.isArray(n.children) && n.children.length > 0;
+    const hasDropdown = (Array.isArray(n.children) && n.children.length > 0) || (Array.isArray(n.sections) && n.sections.length > 0);
 
     if (!hasDropdown) {
       return (
@@ -161,7 +168,8 @@ export default function Header() {
     }
 
     const footer = NAV_FOOTERS[key];
-    const isTwoCol = n.children.length > 4;
+    const isTwoCol = (n.children && n.children.length > 4) || (n.sections && n.sections.length === 2);
+    const isMega = n.label === 'Products' || (n.sections && n.sections.length >= 3);
     const isOpen = subOpen === key;
     const isDropdownClosed = closedDropdownKey === key;
 
@@ -203,7 +211,13 @@ export default function Header() {
           </button>
         </div>
 
-        <div className={`dropdown-menu dropdown-menu--${key} ${isTwoCol ? 'dropdown-menu--wide' : ''}`} role="menu" aria-label={`${n.label} submenu`}>
+        <div
+          className={`dropdown-menu dropdown-menu--${key} ${
+            isMega ? 'dropdown-menu--mega' : n.sections ? 'dropdown-menu--sectioned' : isTwoCol ? 'dropdown-menu--wide' : ''
+          }`}
+          role="menu"
+          aria-label={`${n.label} submenu`}
+        >
           <div className="dropdown-menu__header">
             <span className="dropdown-menu__tag">{n.label}</span>
             <Link
@@ -218,29 +232,213 @@ export default function Header() {
               </svg>
             </Link>
           </div>
-          <div className={`dropdown-menu__grid ${isTwoCol ? 'dropdown-menu__grid--2col' : ''}`}>
-            {n.children.map(ch => {
-              const isChildActive = ch.href === n.href ? pathname === ch.href : (pathname === ch.href || (ch.href !== '/' && ch.href !== '/contact/' && pathname.startsWith(ch.href)));
-              return (
-                <Link
-                  href={ch.href}
-                  className={`dropdown-item${isChildActive ? ' is-active' : ''}`}
-                  aria-current={isChildActive ? 'page' : undefined}
-                  role="menuitem"
-                  key={ch.title}
-                  onClick={() => handleNavClick(idx, key)}
-                >
-                  <span className="dropdown-item__icon" aria-hidden="true">
-                    <RawSvg markup={NAV_ICONS[ch.icon] || NAV_ICONS.zap} />
-                  </span>
-                  <span className="dropdown-item__content">
-                    <span className="dropdown-item__title">{ch.title}</span>
-                    <span className="dropdown-item__desc">{ch.desc}</span>
-                  </span>
-                </Link>
-              );
-            })}
-          </div>
+
+          {n.sections ? (
+            n.label === 'About' ? (
+              /* Balanced 2-Column Sectioned Layout for About BPEL & Resources + Blog */
+              <div className="dropdown-mega__grid dropdown-mega__grid--2col">
+                {/* Column 1: About BPEL */}
+                <div className="dropdown-mega__col">
+                  {n.sections[0] && (
+                    <>
+                      <div className="dropdown-mega__col-header">
+                        <Link
+                          href={n.sections[0].href}
+                          className={`dropdown-mega__col-title${pathname === n.sections[0].href ? ' is-active' : ''}`}
+                          onClick={() => handleNavClick(idx, key)}
+                        >
+                          <span>{n.sections[0].title}</span>
+                          <svg viewBox="0 0 16 16" width="10" height="10" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                            <line x1="3" y1="8" x2="13" y2="8"></line>
+                            <polyline points="9 4 13 8 9 12"></polyline>
+                          </svg>
+                        </Link>
+                      </div>
+                      <div className="dropdown-mega__col-items">
+                        {n.sections[0].items.map(ch => {
+                          const isChildActive = pathname === ch.href || (ch.href !== '/' && ch.href !== '/contact/' && pathname.startsWith(ch.href));
+                          return (
+                            <Link
+                              href={ch.href}
+                              className={`dropdown-item${isChildActive ? ' is-active' : ''}`}
+                              aria-current={isChildActive ? 'page' : undefined}
+                              role="menuitem"
+                              key={ch.title}
+                              onClick={() => handleNavClick(idx, key)}
+                            >
+                              <span className="dropdown-item__icon" aria-hidden="true">
+                                <RawSvg markup={NAV_ICONS[ch.icon] || NAV_ICONS.zap} />
+                              </span>
+                              <span className="dropdown-item__content">
+                                <span className="dropdown-item__title">{ch.title}</span>
+                                <span className="dropdown-item__desc">{ch.desc}</span>
+                              </span>
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    </>
+                  )}
+                </div>
+
+                {/* Column 2: Resources & Blog */}
+                <div className="dropdown-mega__col">
+                  {/* Resources */}
+                  {n.sections[1] && (
+                    <>
+                      <div className="dropdown-mega__col-header">
+                        <Link
+                          href={n.sections[1].href}
+                          className={`dropdown-mega__col-title${pathname === n.sections[1].href ? ' is-active' : ''}`}
+                          onClick={() => handleNavClick(idx, key)}
+                        >
+                          <span>{n.sections[1].title}</span>
+                          <svg viewBox="0 0 16 16" width="10" height="10" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                            <line x1="3" y1="8" x2="13" y2="8"></line>
+                            <polyline points="9 4 13 8 9 12"></polyline>
+                          </svg>
+                        </Link>
+                      </div>
+                      <div className="dropdown-mega__col-items">
+                        {n.sections[1].items.map(ch => {
+                          const isChildActive = pathname === ch.href || (ch.href !== '/' && ch.href !== '/contact/' && pathname.startsWith(ch.href));
+                          return (
+                            <Link
+                              href={ch.href}
+                              className={`dropdown-item${isChildActive ? ' is-active' : ''}`}
+                              aria-current={isChildActive ? 'page' : undefined}
+                              role="menuitem"
+                              key={ch.title}
+                              onClick={() => handleNavClick(idx, key)}
+                            >
+                              <span className="dropdown-item__icon" aria-hidden="true">
+                                <RawSvg markup={NAV_ICONS[ch.icon] || NAV_ICONS.zap} />
+                              </span>
+                              <span className="dropdown-item__content">
+                                <span className="dropdown-item__title">{ch.title}</span>
+                                <span className="dropdown-item__desc">{ch.desc}</span>
+                              </span>
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    </>
+                  )}
+
+                  {/* Blog */}
+                  {n.sections[2] && (
+                    <>
+                      <div className="dropdown-mega__col-header" style={{ marginTop: '0.85rem' }}>
+                        <Link
+                          href={n.sections[2].href}
+                          className={`dropdown-mega__col-title${pathname === n.sections[2].href ? ' is-active' : ''}`}
+                          onClick={() => handleNavClick(idx, key)}
+                        >
+                          <span>{n.sections[2].title}</span>
+                          <svg viewBox="0 0 16 16" width="10" height="10" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                            <line x1="3" y1="8" x2="13" y2="8"></line>
+                            <polyline points="9 4 13 8 9 12"></polyline>
+                          </svg>
+                        </Link>
+                      </div>
+                      <div className="dropdown-mega__col-items">
+                        {n.sections[2].items.map(ch => {
+                          const isChildActive = pathname === ch.href || (ch.href !== '/' && ch.href !== '/contact/' && pathname.startsWith(ch.href));
+                          return (
+                            <Link
+                              href={ch.href}
+                              className={`dropdown-item${isChildActive ? ' is-active' : ''}`}
+                              aria-current={isChildActive ? 'page' : undefined}
+                              role="menuitem"
+                              key={ch.title}
+                              onClick={() => handleNavClick(idx, key)}
+                            >
+                              <span className="dropdown-item__icon" aria-hidden="true">
+                                <RawSvg markup={NAV_ICONS[ch.icon] || NAV_ICONS.zap} />
+                              </span>
+                              <span className="dropdown-item__content">
+                                <span className="dropdown-item__title">{ch.title}</span>
+                                <span className="dropdown-item__desc">{ch.desc}</span>
+                              </span>
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    </>
+                  )}
+                </div>
+              </div>
+            ) : (
+              /* 3-Column Mega Menu for Products (Products, Services, Industries) */
+              <div className="dropdown-mega__grid dropdown-mega__grid--3col">
+                {n.sections.map(sec => (
+                  <div className="dropdown-mega__col" key={sec.title}>
+                    <div className="dropdown-mega__col-header">
+                      <Link
+                        href={sec.href}
+                        className={`dropdown-mega__col-title${pathname === sec.href ? ' is-active' : ''}`}
+                        onClick={() => handleNavClick(idx, key)}
+                      >
+                        <span>{sec.title}</span>
+                        <svg viewBox="0 0 16 16" width="10" height="10" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                          <line x1="3" y1="8" x2="13" y2="8"></line>
+                          <polyline points="9 4 13 8 9 12"></polyline>
+                        </svg>
+                      </Link>
+                    </div>
+                    <div className="dropdown-mega__col-items">
+                      {sec.items.map(ch => {
+                        const isChildActive = pathname === ch.href || (ch.href !== '/' && ch.href !== '/contact/' && pathname.startsWith(ch.href));
+                        return (
+                          <Link
+                            href={ch.href}
+                            className={`dropdown-item${isChildActive ? ' is-active' : ''}`}
+                            aria-current={isChildActive ? 'page' : undefined}
+                            role="menuitem"
+                            key={ch.title}
+                            onClick={() => handleNavClick(idx, key)}
+                          >
+                            <span className="dropdown-item__icon" aria-hidden="true">
+                              <RawSvg markup={NAV_ICONS[ch.icon] || NAV_ICONS.zap} />
+                            </span>
+                            <span className="dropdown-item__content">
+                              <span className="dropdown-item__title">{ch.title}</span>
+                              <span className="dropdown-item__desc">{ch.desc}</span>
+                            </span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )
+          ) : (
+            <div className={`dropdown-menu__grid ${isTwoCol ? 'dropdown-menu__grid--2col' : ''}`}>
+              {n.children.map(ch => {
+                const isChildActive = ch.href === n.href ? pathname === ch.href : (pathname === ch.href || (ch.href !== '/' && ch.href !== '/contact/' && pathname.startsWith(ch.href)));
+                return (
+                  <Link
+                    href={ch.href}
+                    className={`dropdown-item${isChildActive ? ' is-active' : ''}`}
+                    aria-current={isChildActive ? 'page' : undefined}
+                    role="menuitem"
+                    key={ch.title}
+                    onClick={() => handleNavClick(idx, key)}
+                  >
+                    <span className="dropdown-item__icon" aria-hidden="true">
+                      <RawSvg markup={NAV_ICONS[ch.icon] || NAV_ICONS.zap} />
+                    </span>
+                    <span className="dropdown-item__content">
+                      <span className="dropdown-item__title">{ch.title}</span>
+                      <span className="dropdown-item__desc">{ch.desc}</span>
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
+          )}
+
           {footer ? (
             <div className="dropdown-menu__footer">
               <span className="dropdown-menu__footer-text">{footer.text}</span>
