@@ -24613,3 +24613,198 @@ a.btn.btn--light {
   line-height: 1.5;
   margin: 0;
 }
+
+/* =========================================================
+   Consultation Box (Standards, Profile, Industry, Calculators)
+   ========================================================= */
+.standards-consult-box {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  margin-top: 48px;
+  padding: clamp(1.75rem, 3.5vw, 2.75rem) clamp(1.5rem, 4vw, 3rem);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, .12);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  background:
+    radial-gradient(ellipse 45% 120% at 100% 50%, rgba(95, 176, 255, .32), transparent 70%),
+    radial-gradient(ellipse 35% 90% at 0% 100%, rgba(11, 92, 171, .55), transparent 70%),
+    var(--grad-hero);
+  box-shadow: 0 24px 48px -20px rgba(6, 19, 40, .55);
+  text-align: left;
+}
+
+.standards-consult-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(rgba(255, 255, 255, .05) 1px, transparent 1px) 0 0/32px 32px,
+    linear-gradient(90deg, rgba(255, 255, 255, .05) 1px, transparent 1px) 0 0/32px 32px;
+  -webkit-mask-image: linear-gradient(90deg, transparent 10%, #000 75%);
+  mask-image: linear-gradient(90deg, transparent 10%, #000 75%);
+  pointer-events: none;
+}
+
+.standards-consult-box::after {
+  content: "";
+  position: absolute;
+  right: -90px;
+  top: 50%;
+  z-index: -1;
+  width: 320px;
+  height: 320px;
+  translate: 0 -50%;
+  border-radius: 50%;
+  background: repeating-radial-gradient(circle, transparent 0 34px, rgba(255, 255, 255, .07) 35px 36px);
+  pointer-events: none;
+}
+
+.standards-consult-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .35rem .8rem;
+  border: 1px solid rgba(143, 195, 245, .35);
+  border-radius: 999px;
+  background: rgba(95, 176, 255, .12);
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--on-dark-label);
+  margin-bottom: 12px;
+}
+
+.standards-consult-tag::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--sky);
+  box-shadow: 0 0 0 3px rgba(95, 176, 255, .25), 0 0 10px var(--sky);
+}
+
+.standards-consult-copy h3 {
+  margin: 0 0 8px;
+  font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.25;
+  letter-spacing: -.01em;
+}
+
+.standards-consult-copy p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--on-dark);
+  max-width: 640px;
+}
+
+.standards-consult-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.standards-consult-actions .btn {
+  white-space: nowrap;
+}
+
+@media (max-width: 981px) {
+  .standards-consult-box {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .standards-consult-actions {
+    width: 100%;
+  }
+}
+
+.profile-consult-box {
+  margin-top: 36px;
+  padding: clamp(1.5rem, 3vw, 2.25rem) clamp(1.35rem, 3vw, 2.25rem);
+}
+
+@media (max-width: 1180px) {
+  .profile-consult-box {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .profile-consult-box .standards-consult-actions {
+    width: 100%;
+  }
+  .profile-consult-box .standards-consult-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+.profile-cta-box {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  margin-top: 36px;
+  padding: clamp(1.5rem, 3vw, 2.25rem) clamp(1.35rem, 3vw, 2.25rem);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, .12);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  background:
+    radial-gradient(ellipse 45% 120% at 100% 50%, rgba(95, 176, 255, .32), transparent 70%),
+    radial-gradient(ellipse 35% 90% at 0% 100%, rgba(11, 92, 171, .55), transparent 70%),
+    var(--grad-hero);
+  box-shadow: 0 24px 48px -20px rgba(6, 19, 40, .55);
+}
+
+/* =========================================================
+   Industry Page 2-Card Specs & Supply Scope Grid
+   ========================================================= */
+.industry-specs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.75rem;
+  align-items: stretch;
+}
+
+.industry-specs-grid .detail__spec-card {
+  margin-top: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 1.75rem 2rem;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px -4px rgba(10, 30, 60, 0.05);
+}
+
+.industry-specs-grid .detail__spec-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(11, 92, 171, 0.4);
+  box-shadow: 0 12px 30px -6px rgba(11, 92, 171, 0.12);
+}
+
+.industry-specs-grid .detail__spec-list {
+  flex: 1;
+}
+
+@media (max-width: 900px) {
+  .industry-specs-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .industry-specs-grid .detail__spec-card {
+    padding: 1.4rem 1.5rem;
+  }
+}

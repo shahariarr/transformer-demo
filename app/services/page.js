@@ -13,10 +13,17 @@ const ServiceIcon = ({ children }) => (
   <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{children}</svg>
 );
 
+const SERVICE_STATS = [
+  { target: 35, suffix: ' kV', label: 'GRID TIE-IN STEP-UP VOLTAGE', format: false },
+  { target: 100, suffix: '%', label: 'INVERTER HARMONIC TOLERANCE', format: false },
+  { target: 5000, suffix: ' kVA', label: 'SOLAR INVERTER TRANSFORMERS', format: true },
+  { target: 99, suffix: '.4%', label: 'PEAK INVERTER DUTY EFFICIENCY', format: false }
+];
+
 const SERVICE_FACTS = [
   {
     metric: '100 MVA',
-    label: 'Turnkey Power Scope',
+    label: 'BPEL Power Scope',
     desc: 'From compact 100kVA distribution units to 100MVA primary grid transformers.',
     icon: (
       <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
