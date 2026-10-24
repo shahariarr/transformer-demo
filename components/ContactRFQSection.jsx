@@ -135,8 +135,7 @@ export default function ContactRFQSection({ preselectedOfficeId }) {
                     type="text"
                     required
                     aria-required="true"
-                    autoComplete="name"
-                    placeholder="Engr. M. Rahman"
+                    autoComplete="name"                    
                     aria-describedby="name-err"
                     {...invalid('name')}
                     onBlur={() => check('name')}
@@ -159,7 +158,6 @@ export default function ContactRFQSection({ preselectedOfficeId }) {
                     name="company"
                     type="text"
                     autoComplete="organization"
-                    placeholder="e.g. Apex Spinning / Power EPC Ltd."
                   />
                 </div>
               </div>
@@ -182,7 +180,6 @@ export default function ContactRFQSection({ preselectedOfficeId }) {
                     required
                     aria-required="true"
                     autoComplete="email"
-                    placeholder="name@company.com"
                     aria-describedby="email-err"
                     {...invalid('email')}
                     onBlur={() => check('email')}
@@ -202,7 +199,6 @@ export default function ContactRFQSection({ preselectedOfficeId }) {
                     name="phone"
                     type="tel"
                     autoComplete="tel"
-                    placeholder="+880 1700 000000"
                   />
                 </div>
               </div>
@@ -253,7 +249,6 @@ export default function ContactRFQSection({ preselectedOfficeId }) {
                     id="location"
                     name="location"
                     type="text"
-                    placeholder="e.g. Gazipur Industrial Zone, Chattogram EPZ"
                   />
                 </div>
               </div>
@@ -270,7 +265,6 @@ export default function ContactRFQSection({ preselectedOfficeId }) {
                   rows="4"
                   required
                   aria-required="true"
-                  placeholder="Outline your transformer capacity, primary/secondary voltages, ambient temperature constraints, tender timeline, or special standards (IEC / ANSI / IEEE / REB)..."
                   aria-describedby="message-err"
                   {...invalid('message')}
                   onBlur={() => check('message')}
