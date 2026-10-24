@@ -68,19 +68,28 @@ export default function ProductsPage() {
             <div className="faq-help__aside">
               <p className="faq-help__aside-title">Talk to our engineers</p>
               <p className="faq-help__aside-text">Share your requirement and get a clear technical answer.</p>
-              <a href="/contact/" className="faq-help__btn faq-help__btn--primary">
-                <span>Ask an Engineer</span>
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-              </a>
-              <a href={waLink()} target="_blank" rel="noopener noreferrer" className="faq-help__btn faq-help__btn--wa">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
-                  <path d={WA_PATH} />
-                </svg>
-                <span>WhatsApp Chat</span>
-              </a>
+              <div className="faq-help__actions">
+                <a
+                  href="/contact/"
+                  className="btn btn--primary"
+                >
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <polygon points="3 11 22 2 13 21 11 13 3 11" />
+                  </svg>
+                  <span>Ask an Engineer</span>
+                </a>
+                <a
+                  href={waLink()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn--wa facility-wa-btn"
+                >
+                  <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true">
+                    <path d={WA_PATH} />
+                  </svg>
+                  <span>WhatsApp</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
