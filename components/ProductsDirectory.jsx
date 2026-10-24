@@ -621,9 +621,9 @@ export default function ProductsDirectory() {
                       </dl>
 
                       {/* Tags */}
-                      {p.tags.length > 0 && (
+                      {p.tags && p.tags.length > 0 && (
                         <ul className="pcard__tags">
-                          {p.tags.map(t => (
+                          {Array.from(new Set(p.tags)).map(t => (
                             <li key={t}>{t}</li>
                           ))}
                         </ul>
