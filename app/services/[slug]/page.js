@@ -5,6 +5,7 @@ import { PageHero, LinkCard, ArrowRight } from '@/components/PageParts';
 import ServiceFaq from '@/components/ServiceFaq';
 import { waLink } from '@/lib/data';
 import { WA_PATH } from '@/lib/icons';
+import styles from './page.module.css';
 
 const find = slug => SERVICES.find(s => s.slug === slug);
 
@@ -528,37 +529,37 @@ export default async function ServicePage({ params }) {
       </PageHero>
 
       {/* 2. Executive Capability & Facility Overview (Image Left, Text Right) */}
-      <section className="ets-lead-sec" aria-label="Executive Service Overview">
+      <section className={styles.etsLeadSec} aria-label="Executive Service Overview">
         <div className="wrap">
-          <div className="ets-lead-grid">
+          <div className={styles.etsLeadGrid}>
             {/* Left Column: Image with Facility Badge */}
-            <div className="ets-lead-media fade-in-left">
+            <div className={`${styles.etsLeadMedia} fade-in-left`}>
               <img
                 src={s.gallery?.[0] || s.image}
                 alt={`${s.title} — Engineering & Execution Facility`}
                 loading="lazy"
                 decoding="async"
               />
-              <span className="ets-lead-media__badge">
-                <span className="ets-lead-media__dot" aria-hidden="true" />
+              <span className={styles.etsLeadMediaBadge}>
+                <span className={styles.etsLeadMediaDot} aria-hidden="true" />
                 <span>{s.badge || 'Field & Factory View'}</span>
               </span>
             </div>
 
             {/* Right Column: Text & Engineering Authority */}
-            <div className="ets-lead-content fade-in-right">
+            <div className={`${styles.etsLeadContent} fade-in-right`}>
               <span className="label">ENGINEERING AUTHORITY &amp; CAPACITY</span>
               <h2>Turnkey Accountability From Design to Handover</h2>
-              <div className="ets-lead-box">
+              <div className={styles.etsLeadBox}>
                 <p>{data.introLead || s.intro}</p>
               </div>
 
-              <ul className="ets-lead-trust-list">
-                <li className="ets-lead-trust-item">
+              <ul className={styles.etsLeadTrustList}>
+                <li className={styles.etsLeadTrustItem}>
                   <Icons.ShieldCheck />
                   <span>Utility Pre-Approved &amp; Certified to IEC / IEEE Standards</span>
                 </li>
-                <li className="ets-lead-trust-item">
+                <li className={styles.etsLeadTrustItem}>
                   <Icons.ShieldCheck />
                   <span>Direct Access to Practicing High-Voltage Substation Engineers</span>
                 </li>
@@ -577,25 +578,25 @@ export default async function ServicePage({ params }) {
             <p className="sec-head__desc">{data.portfolioDesc}</p>
           </header>
 
-          <div className="ets-portfolio-grid">
+          <div className={styles.etsPortfolioGrid}>
             {data.portfolioCards.map((card, idx) => {
               const IconComp = Icons[card.icon] || Icons.Package;
               return (
-                <div key={idx} className="ets-pcard fade-in-up" data-delay={idx * 80}>
-                  <div className="ets-pcard__head">
-                    <div className="ets-pcard__icon">
+                <div key={idx} className={`${styles.etsPcard} fade-in-up`} data-delay={idx * 80}>
+                  <div className={styles.etsPcardHead}>
+                    <div className={styles.etsPcardIcon}>
                       <IconComp />
                     </div>
-                    <div className="ets-pcard__header-text">
+                    <div className={styles.etsPcardHeaderText}>
                       <h3>{card.title}</h3>
                       <p>{card.desc}</p>
                     </div>
                   </div>
 
-                  <ul className="ets-pcard__bullets">
+                  <ul className={styles.etsPcardBullets}>
                     {card.bullets.map((bullet, bIdx) => (
-                      <li key={bIdx} className="ets-pcard__bullet-item">
-                        <span className="ets-pcard__bullet-dot" aria-hidden="true" />
+                      <li key={bIdx} className={styles.etsPcardBulletItem}>
+                        <span className={styles.etsPcardBulletDot} aria-hidden="true" />
                         <span>{bullet}</span>
                       </li>
                     ))}
@@ -616,14 +617,14 @@ export default async function ServicePage({ params }) {
             <p className="sec-head__desc">{data.processDesc}</p>
           </header>
 
-          <div className="ets-steps-grid">
+          <div className={styles.etsStepsGrid}>
             {data.processSteps.map((step, idx) => {
               const stepIcons = [Icons.FileCheck, Icons.Cpu, Icons.Factory, Icons.ClipboardCheck, Icons.Gauge, Icons.Truck];
               const StepIcon = stepIcons[idx % stepIcons.length];
               return (
-                <div key={idx} className="ets-step-card fade-in-up" data-delay={idx * 60}>
-                  <span className="ets-step-card__num">{step.num}</span>
-                  <div className="ets-step-card__icon">
+                <div key={idx} className={`${styles.etsStepCard} fade-in-up`} data-delay={idx * 60}>
+                  <span className={styles.etsStepCardNum}>{step.num}</span>
+                  <div className={styles.etsStepCardIcon}>
                     <StepIcon />
                   </div>
                   <h4>{step.title}</h4>
@@ -638,50 +639,50 @@ export default async function ServicePage({ params }) {
       {/* 5. Two Differentiators: Custom Engineering & Delivery / Logistics */}
       <section className="sec" aria-label="Engineering differentiators">
         <div className="wrap">
-          <div className="ets-diff-grid">
+          <div className={styles.etsDiffGrid}>
             {/* Left Card: Dark Card for Custom Engineering Rigor */}
-            <div className="ets-diff-card ets-diff-card--dark fade-in-up">
+            <div className={`${styles.etsDiffCard} ${styles.etsDiffCardDark} fade-in-up`}>
               <div style={{ marginBottom: '1.25rem', color: '#E09F3E' }}>
                 <Icons.Cog />
               </div>
               <h3>{data.customCard.title}</h3>
-              <p className="ets-diff-desc">{data.customCard.desc}</p>
+              <p className={styles.etsDiffDesc}>{data.customCard.desc}</p>
 
-              <ul className="ets-diff-bullets">
+              <ul className={styles.etsDiffBullets}>
                 {data.customCard.bullets.map((bullet, idx) => (
-                  <li key={idx} className="ets-diff-bullet">
+                  <li key={idx} className={styles.etsDiffBullet}>
                     <Icons.ShieldCheck />
                     <span>{bullet}</span>
                   </li>
                 ))}
               </ul>
 
-              <div className="ets-diff-action">
-                <a className="ets-diff-link" href={`/contact/?service=${encodeURIComponent(s.title)}`}>
+              <div className={styles.etsDiffAction}>
+                <a className={styles.etsDiffLink} href={`/contact/?service=${encodeURIComponent(s.title)}`}>
                   {data.customCard.linkText} <ArrowRight />
                 </a>
               </div>
             </div>
 
             {/* Right Card: Light Card with 4-KPI Metric Grid */}
-            <div className="ets-diff-card ets-diff-card--light fade-in-up" data-delay="100">
+            <div className={`${styles.etsDiffCard} ${styles.etsDiffCardLight} fade-in-up`} data-delay="100">
               <div style={{ marginBottom: '1.25rem', color: 'var(--primary)' }}>
                 <Icons.Clock />
               </div>
               <h3>{data.deliveryCard.title}</h3>
-              <p className="ets-diff-desc">{data.deliveryCard.desc}</p>
+              <p className={styles.etsDiffDesc}>{data.deliveryCard.desc}</p>
 
-              <div className="ets-metric-grid">
+              <div className={styles.etsMetricGrid}>
                 {data.deliveryCard.metrics.map((m, idx) => (
-                  <div key={idx} className="ets-metric-item">
-                    <div className="ets-metric-item__val">{m.val}</div>
-                    <div className="ets-metric-item__lbl">{m.lbl}</div>
+                  <div key={idx} className={styles.etsMetricItem}>
+                    <div className={styles.etsMetricItemVal}>{m.val}</div>
+                    <div className={styles.etsMetricItemLbl}>{m.lbl}</div>
                   </div>
                 ))}
               </div>
 
-              <div className="ets-diff-action">
-                <a className="ets-diff-link" href={`/contact/?service=${encodeURIComponent(s.title)}`}>
+              <div className={styles.etsDiffAction}>
+                <a className={styles.etsDiffLink} href={`/contact/?service=${encodeURIComponent(s.title)}`}>
                   {data.deliveryCard.linkText} <ArrowRight />
                 </a>
               </div>
@@ -699,14 +700,14 @@ export default async function ServicePage({ params }) {
               <h2>Operating Specifications &amp; Handover Package</h2>
             </header>
 
-            <div className="service-specs-wrap">
+            <div className={styles.serviceSpecsWrap}>
               {/* Spec Table */}
-              <div className="service-specs-card fade-in-up">
-                <div className="service-specs-card__head">
+              <div className={`${styles.serviceSpecsCard} fade-in-up`}>
+                <div className={styles.serviceSpecsCardHead}>
                   <Icons.Gauge />
                   <h3>Key Technical Parameters</h3>
                 </div>
-                <table className="service-spec-table">
+                <table className={styles.serviceSpecTable}>
                   <tbody>
                     {s.specs.map(item => (
                       <tr key={item.label}>
@@ -720,9 +721,9 @@ export default async function ServicePage({ params }) {
 
               {/* Documentation Deliverables Dossier */}
               {s.deliverables && (
-                <div className="service-deliverables-card fade-in-up" data-delay="100">
-                  <div className="service-deliv__head">
-                    <div className="service-deliv__badge">
+                <div className={`${styles.serviceDeliverablesCard} fade-in-up`} data-delay="100">
+                  <div className={styles.serviceDelivHead}>
+                    <div className={styles.serviceDelivBadge}>
                       <Icons.FileCheck />
                       <span>OFFICIAL DOSSIER</span>
                     </div>
@@ -730,7 +731,7 @@ export default async function ServicePage({ params }) {
                     <p>Every service contract includes a formal, signed engineering handover dossier:</p>
                   </div>
 
-                  <ul className="service-deliv-list">
+                  <ul className={styles.serviceDelivList}>
                     {s.deliverables.map((doc, idx) => (
                       <li key={idx}>
                         <Icons.ShieldCheck />
@@ -739,7 +740,7 @@ export default async function ServicePage({ params }) {
                     ))}
                   </ul>
 
-                  <div className="service-deliv-footer">
+                  <div className={styles.serviceDelivFooter}>
                     <a className="btn btn--primary btn--sm" href={`/contact/?service=${encodeURIComponent(s.title)}`}>
                       Request Technical Proposal <ArrowRight />
                     </a>
@@ -754,12 +755,12 @@ export default async function ServicePage({ params }) {
       {/* 7. Signature High-Impact Ready to Specify CTA Banner */}
       <section className="sec" aria-label="Ready to specify CTA">
         <div className="wrap">
-          <div className="ets-cta-card fade-in-up">
-            <div className="ets-cta-card__content">
+          <div className={`${styles.etsCtaCard} fade-in-up`}>
+            <div className={styles.etsCtaCardContent}>
               <h2>{data.ctaTitle}</h2>
               <p>{data.ctaDesc}</p>
             </div>
-            <div className="ets-cta-card__actions">
+            <div className={styles.etsCtaCardActions}>
               <a className="btn btn--primary" href={`/contact/?service=${encodeURIComponent(s.title)}`}>
                 Request a Quote <ArrowRight />
               </a>

@@ -1,0 +1,300 @@
+/* =========================================================
+   Services Index Page Styles (CSS Module)
+   app/services/page.module.css
+   ========================================================= */
+
+.servicesFactsStrip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2.75rem;
+}
+
+@media (max-width: 1024px) {
+  .servicesFactsStrip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-bottom: 2.25rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .servicesFactsStrip {
+    grid-template-columns: 1fr;
+    margin-bottom: 2rem;
+  }
+}
+
+/* Four Core Disciplines Showcase */
+.servicesShowcaseSection {
+  padding-bottom: clamp(2rem, 3.5vw, 3rem) !important;
+}
+
+.servicesIndexGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.servicesShowcaseCard {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform .3s cubic-bezier(.16, 1, .3, 1), border-color .3s ease, box-shadow .3s ease;
+  box-shadow: 0 4px 20px -6px rgba(10, 30, 60, 0.05);
+}
+
+.servicesShowcaseCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(11, 92, 171, 0.35);
+  box-shadow: 0 16px 36px -8px rgba(10, 30, 60, 0.1);
+}
+
+.servicesShowcaseMedia {
+  position: relative;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  background: var(--alt);
+}
+
+.servicesShowcaseMedia img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .45s ease;
+}
+
+.servicesShowcaseCard:hover .servicesShowcaseMedia img {
+  transform: scale(1.05);
+}
+
+.servicesShowcaseKicker {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(10, 30, 60, 0.82);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  padding: .35rem .85rem;
+  border-radius: 999px;
+  font-size: .725rem;
+  font-weight: 800;
+  letter-spacing: .06em;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.servicesShowcaseNum {
+  position: absolute;
+  top: 1rem;
+  right: 1.25rem;
+  z-index: 2;
+  font-family: var(--font);
+  font-size: 2.35rem;
+  font-weight: 850;
+  line-height: 1;
+  letter-spacing: -.04em;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, .88);
+  text-shadow: 0 2px 14px rgba(6, 19, 40, .65);
+  pointer-events: none;
+  user-select: none;
+  transition: transform .35s var(--ease), -webkit-text-stroke-color .35s var(--ease), color .35s var(--ease);
+}
+
+.servicesShowcaseCard:hover .servicesShowcaseNum {
+  -webkit-text-stroke-color: #ffffff;
+  color: rgba(255, 255, 255, .18);
+  transform: translateY(-2px);
+}
+
+.servicesShowcaseBody {
+  padding: 1.85rem 1.95rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.servicesShowcaseBadge {
+  display: inline-block;
+  font-size: .725rem;
+  font-weight: 800;
+  color: var(--primary);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  margin-bottom: .5rem;
+}
+
+.servicesShowcaseBody h3 {
+  font-size: 1.35rem;
+  font-weight: 850;
+  color: var(--navy);
+  margin: 0 0 .65rem 0;
+  line-height: 1.3;
+}
+
+.servicesShowcaseBody p {
+  font-size: .92rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0 0 1.25rem 0;
+}
+
+.servicesShowcaseTicks {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.65rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+
+.servicesShowcaseTicks li {
+  display: flex;
+  align-items: flex-start;
+  gap: .6rem;
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.4;
+}
+
+.servicesShowcaseTicks li svg {
+  color: var(--primary);
+  flex-shrink: 0;
+  margin-top: .15rem;
+}
+
+.servicesShowcaseAction {
+  margin-top: auto;
+  padding-top: 1.15rem;
+  border-top: 1px solid var(--line);
+}
+
+.servicesShowcaseAction :global(.btn) {
+  width: 100%;
+  justify-content: center;
+}
+
+/* Turnkey Solutions & Integrated Packages */
+.turnkeySolutionsSection {
+  padding-top: clamp(2.25rem, 4vw, 3.25rem) !important;
+}
+
+.turnkeyPackagesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.turnkeyPkgCard {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 1.85rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 18px -4px rgba(10, 30, 60, 0.05);
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+
+.turnkeyPkgCard:hover {
+  transform: translateY(-3px);
+  border-color: var(--primary);
+  box-shadow: 0 12px 30px -6px rgba(10, 30, 60, 0.08);
+}
+
+.turnkeyPkgBadge {
+  display: inline-block;
+  font-size: .725rem;
+  font-weight: 800;
+  color: var(--primary);
+  background: var(--primary-50);
+  border: 1px solid rgba(11, 92, 171, 0.15);
+  padding: .25rem .65rem;
+  border-radius: 6px;
+  width: fit-content;
+  margin-bottom: .85rem;
+  letter-spacing: .04em;
+}
+
+.turnkeyPkgCard h3 {
+  font-size: 1.22rem;
+  font-weight: 850;
+  color: var(--navy);
+  margin: 0 0 .45rem 0;
+  line-height: 1.3;
+}
+
+.turnkeyPkgTarget {
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  font-size: .8rem;
+  font-weight: 700;
+  color: #0284c7;
+  margin: 0 0 1rem 0;
+}
+
+.turnkeyPkgTarget svg {
+  color: #0284c7;
+  flex-shrink: 0;
+}
+
+.turnkeyPkgDesc {
+  font-size: .885rem;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 0 0 1.25rem 0;
+}
+
+.turnkeyPkgList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+
+.turnkeyPkgList li {
+  display: flex;
+  align-items: flex-start;
+  gap: .55rem;
+  font-size: .825rem;
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.45;
+}
+
+.turnkeyPkgList li svg {
+  color: #059669;
+  flex-shrink: 0;
+  margin-top: .15rem;
+}
+
+.turnkeyPkgAction {
+  margin-top: auto;
+  padding-top: 1.15rem;
+  border-top: 1px solid var(--line);
+}
+
+.turnkeyPkgAction :global(.btn) {
+  width: 100%;
+  justify-content: center;
+}
+
+@media (max-width: 980px) {
+  .turnkeyPackagesGrid {
+    grid-template-columns: 1fr;
+  }
+  .servicesIndexGrid {
+    grid-template-columns: 1fr;
+  }
+}

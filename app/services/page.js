@@ -3,6 +3,7 @@ import { SERVICES } from '@/lib/services';
 import { waLink } from '@/lib/data';
 import { WA_PATH } from '@/lib/icons';
 import Stats from '@/components/Stats';
+import styles from './page.module.css';
 
 export const metadata = {
   title: 'Services',
@@ -138,7 +139,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Core Services Showcase */}
-      <section className="sec services-showcase-section" aria-label="Core services directory">
+      <section className={`sec ${styles.servicesShowcaseSection}`} aria-label="Core services directory">
         <div className="wrap">
           <header className="sec-head fade-in-up">
             <p className="label">FOUR CORE DISCIPLINES</p>
@@ -148,20 +149,20 @@ export default function ServicesPage() {
             </p>
           </header>
 
-          <div className="services-index-grid">
+          <div className={styles.servicesIndexGrid}>
             {SERVICES.map((s, i) => (
-              <article key={s.slug} className="services-showcase-card fade-in-up" data-delay={i * 90}>
-                <div className="services-showcase-media">
+              <article key={s.slug} className={`${styles.servicesShowcaseCard} fade-in-up`} data-delay={i * 90}>
+                <div className={styles.servicesShowcaseMedia}>
                   <img src={s.image} alt={s.title} loading="lazy" decoding="async" />
-                  <span className="services-showcase-kicker">SERVICE</span>
-                  <span className="services-showcase-num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+                  <span className={styles.servicesShowcaseKicker}>SERVICE</span>
+                  <span className={styles.servicesShowcaseNum} aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
                 </div>
-                <div className="services-showcase-body">
-                  <span className="services-showcase-badge">{s.badge || 'ENGINEERING DISCIPLINE'}</span>
+                <div className={styles.servicesShowcaseBody}>
+                  <span className={styles.servicesShowcaseBadge}>{s.badge || 'ENGINEERING DISCIPLINE'}</span>
                   <h3>{s.title}</h3>
                   <p>{s.short}</p>
 
-                  <ul className="services-showcase-ticks">
+                  <ul className={styles.servicesShowcaseTicks}>
                     {s.includes.slice(0, 3).map((item, idx) => (
                       <li key={idx}>
                         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -172,7 +173,7 @@ export default function ServicesPage() {
                     ))}
                   </ul>
 
-                  <div className="services-showcase-action">
+                  <div className={styles.servicesShowcaseAction}>
                     <a className="btn btn--primary" href={`/services/${s.slug}/`}>
                       Explore Service Scope <ArrowRight />
                     </a>
@@ -185,7 +186,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Turnkey EPC & Integrated Solutions Section */}
-      <section className="sec sec--alt turnkey-solutions-section" aria-label="Integrated BPEL packages">
+      <section className={`sec sec--alt ${styles.turnkeySolutionsSection}`} aria-label="Integrated BPEL packages">
         <div className="wrap">
           <header className="sec-head fade-in-up">
             <p className="label">BPEL INTEGRATED SOLUTIONS</p>
@@ -195,12 +196,12 @@ export default function ServicesPage() {
             </p>
           </header>
 
-          <div className="turnkey-packages-grid">
+          <div className={styles.turnkeyPackagesGrid}>
             {TURNKEY_PACKAGES.map((pkg, idx) => (
-              <div key={idx} className="turnkey-pkg-card fade-in-up" data-delay={idx * 100}>
-                <span className="turnkey-pkg-badge">{pkg.badge}</span>
+              <div key={idx} className={`${styles.turnkeyPkgCard} fade-in-up`} data-delay={idx * 100}>
+                <span className={styles.turnkeyPkgBadge}>{pkg.badge}</span>
                 <h3>{pkg.title}</h3>
-                <p className="turnkey-pkg-target">
+                <p className={styles.turnkeyPkgTarget}>
                   <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <circle cx="12" cy="12" r="10" />
                     <line x1="2" y1="12" x2="22" y2="12" />
@@ -208,8 +209,8 @@ export default function ServicesPage() {
                   </svg>
                   <span>{pkg.target}</span>
                 </p>
-                <p className="turnkey-pkg-desc">{pkg.desc}</p>
-                <ul className="turnkey-pkg-list">
+                <p className={styles.turnkeyPkgDesc}>{pkg.desc}</p>
+                <ul className={styles.turnkeyPkgList}>
                   {pkg.highlights.map((h, i) => (
                     <li key={i}>
                       <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -219,7 +220,7 @@ export default function ServicesPage() {
                     </li>
                   ))}
                 </ul>
-                <div className="turnkey-pkg-action">
+                <div className={styles.turnkeyPkgAction}>
                   <a className="btn btn--ghost btn--sm" href={pkg.href}>
                     {pkg.actionText || 'Explore Package'} <ArrowRight />
                   </a>
