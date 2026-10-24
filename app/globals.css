@@ -9224,16 +9224,43 @@ a.ccard:hover,
   flex-shrink: 0;
 }
 
-.profile-cta-box {
+.profile-consult-box {
   margin-top: 36px;
-  padding: 24px 28px;
-  background: linear-gradient(135deg, #0A1E3C 0%, #0B4A8F 100%);
-  border-radius: 16px;
+  padding: clamp(1.5rem, 3vw, 2.25rem) clamp(1.35rem, 3vw, 2.25rem);
+}
+
+@media (max-width: 1180px) {
+  .profile-consult-box {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .profile-consult-box .standards-consult-actions {
+    width: 100%;
+  }
+  .profile-consult-box .standards-consult-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+.profile-cta-box {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  margin-top: 36px;
+  padding: clamp(1.5rem, 3vw, 2.25rem) clamp(1.35rem, 3vw, 2.25rem);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, .12);
   color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  gap: 24px;
+  background:
+    radial-gradient(ellipse 45% 120% at 100% 50%, rgba(95, 176, 255, .32), transparent 70%),
+    radial-gradient(ellipse 35% 90% at 0% 100%, rgba(11, 92, 171, .55), transparent 70%),
+    var(--grad-hero);
+  box-shadow: 0 24px 48px -20px rgba(6, 19, 40, .55);
 }
 
 .cta-box-copy h3 {
@@ -9247,7 +9274,7 @@ a.ccard:hover,
   margin: 0;
   font-size: 0.9rem;
   line-height: 1.5;
-  color: #CBD5E1;
+  color: var(--on-dark);
 }
 
 /* --------------------------------------------------
@@ -9884,6 +9911,10 @@ a.ccard:hover,
   flex-direction: column;
   gap: 10px;
   flex-shrink: 0;
+}
+
+.standards-consult-actions .btn {
+  white-space: nowrap;
 }
 
 @media (max-width: 1200px) and (min-width: 982px) {

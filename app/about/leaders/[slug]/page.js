@@ -3,6 +3,8 @@ import { LEADERS } from '@/lib/leaders';
 import { PageHero, ArrowRight } from '@/components/PageParts';
 import Link from 'next/link';
 import LeaderCard from '@/components/LeaderCard';
+import { waLink } from '@/lib/data';
+import { WA_PATH } from '@/lib/icons';
 
 const findLeader = (slug) => LEADERS.find((l) => l.slug === slug);
 
@@ -174,17 +176,28 @@ export default async function LeaderProfilePage({ params }) {
               )}
 
               {/* Consultation Callout */}
-              <div className="profile-cta-box">
-                <div className="cta-box-copy">
+              <div className="standards-consult-box profile-consult-box fade-in-up">
+                <div className="standards-consult-copy">
+                  <span className="standards-consult-tag">DIRECT EXECUTIVE CONSULTATION</span>
                   <h3>Direct Technical Consultation</h3>
                   <p>
                     For utility grid tenders, high-voltage specifications, or specialized manufacturing inspections, connect directly with the office of {leader.name}.
                   </p>
                 </div>
-                <a href="/contact/" className="btn btn--primary">
-                  <span>Schedule Technical Discussion</span>
-                  <ArrowRight />
-                </a>
+                <div className="standards-consult-actions">
+                  <Link href="/contact/" className="btn btn--primary">
+                    <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <polygon points="3 11 22 2 13 21 11 13 3 11" />
+                    </svg>
+                    <span>Schedule Technical Discussion</span>
+                  </Link>
+                  <a className="btn btn--wa" href={waLink()} target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true">
+                      <path d={WA_PATH} />
+                    </svg>
+                    <span>WhatsApp</span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
