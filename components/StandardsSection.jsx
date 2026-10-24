@@ -2,6 +2,9 @@
 
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
+import { ArrowRight } from '@/components/PageParts';
+import { waLink } from '@/lib/data';
+import { WA_PATH } from '@/lib/icons';
 
 const STANDARDS_DETAILED = [
   {
@@ -154,31 +157,28 @@ export default function StandardsSection() {
   return (
     <div className="wrap">
       {/* Standards Masthead */}
-      <div className="standards-masthead fade-in-up">
-        <div className="cert-header-eyebrow">
-          <span className="cert-eyebrow-pulse" aria-hidden="true" />
-          <span>GLOBAL COMPLIANCE ARCHITECTURE</span>
-        </div>
-        <h2 className="standards-title">International Engineering Standards &amp; Codes</h2>
-        <p className="standards-lead">
+      <header className="sec-head fade-in-up">
+        <p className="label">GLOBAL COMPLIANCE ARCHITECTURE</p>
+        <h2>International Engineering Standards &amp; Codes</h2>
+        <p className="sec-head__desc">
           Every power transformer, medium-voltage switchgear panel, and substation enclosure engineered by BPEL follows rigorous IEC, IEEE, and ISO technical standards — ensuring seamless utility grid synchronisation, dielectric safety, and continuous industrial reliability.
         </p>
+      </header>
 
-        {/* Filter Buttons */}
-        <div className="standards-filter-bar" role="tablist" aria-label="Filter Standards by Category">
-          {FILTER_TABS.map((tab) => (
-            <button
-              key={tab.id}
-              type="button"
-              role="tab"
-              aria-selected={activeTab === tab.id}
-              className={`standards-tab-btn ${activeTab === tab.id ? 'is-active' : ''}`}
-              onClick={() => setActiveTab(tab.id)}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
+      {/* Filter Buttons */}
+      <div className="standards-filter-bar fade-in-up" role="tablist" aria-label="Filter Standards by Category">
+        {FILTER_TABS.map((tab) => (
+          <button
+            key={tab.id}
+            type="button"
+            role="tab"
+            aria-selected={activeTab === tab.id}
+            className={`standards-tab-btn ${activeTab === tab.id ? 'is-active' : ''}`}
+            onClick={() => setActiveTab(tab.id)}
+          >
+            {tab.label}
+          </button>
+        ))}
       </div>
 
       {/* Grid of Elevated Standards Cards */}
@@ -227,15 +227,17 @@ export default function StandardsSection() {
         <div className="standards-consult-actions">
           <Link href="/contact/" className="btn btn--primary">
             <span>Request Compliance Pack</span>
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <path d="M5 12h14M12 5l7 7-7 7" />
+            <ArrowRight />
+          </Link>
+          <a className="btn btn--wa" href={waLink()} target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+              <path d={WA_PATH} />
             </svg>
-          </Link>
-          <Link href="/engineering/" className="btn btn--ghost">
-            <span>Explore Factory FAT Testing</span>
-          </Link>
+            <span>WhatsApp Us</span>
+          </a>
         </div>
       </div>
     </div>
   );
 }
+
