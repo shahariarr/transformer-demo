@@ -37,11 +37,11 @@ function getProductBadges(p) {
 const FILTERS = [
   ['all', `All Products (${DATA.products.length})`],
   ['power', 'Power Transformers'],
-  ['distribution', 'Distribution Transformers'],
-  ['substations', 'High-Voltage Substations & BESS'],
-  ['switchgear', 'Medium-Voltage Switchgear'],
-  ['padmounted', 'Pad-Mounted Substations'],
-  ['drytype', 'Dry-Type & Cast Resin']
+  ['distribution', 'Distribution'],
+  ['substations', 'Substations & BESS'],
+  ['switchgear', 'Switchgear'],
+  ['padmounted', 'Pad-Mounted'],
+  ['drytype', 'Dry-Type']
 ];
 
 const AUTOPLAY_MS = 5000;
@@ -270,7 +270,17 @@ export default function Products({ viewAll = true, isGrid = false }) {
         </div>
 
         {/* Category Filter Bar */}
-        <div className="proj-filter-bar" data-animate="slideInLeft" role="tablist" aria-label="Filter products by category">
+        <div
+          className="proj-filter-bar"
+          data-animate="slideInLeft"
+          role="tablist"
+          aria-label="Filter products by category"
+          onWheel={e => {
+            if (e.deltaY !== 0 && e.currentTarget.scrollWidth > e.currentTarget.clientWidth) {
+              e.currentTarget.scrollLeft += e.deltaY;
+            }
+          }}
+        >
           {FILTERS.map(([key, label]) => (
             <button
               type="button"
