@@ -3,7 +3,7 @@
 /* Products Showcase: spotlight carousel following the exact design, style, and structure
    of the flagship Project Portfolio. Centred card is active (full details, open specs, and CTA),
    neighbours shrink and dim. Prev/next arrows, touch swipe, mouse drag, and category filters. */
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { DATA } from '@/lib/data';
 import SectionHead from './SectionHead';
@@ -13,21 +13,21 @@ function getProductCategorySlug(p) {
   const c = `${p.productType || ''} ${p.cat || ''} ${p.division || ''} ${p.typeTag || ''} ${p.name || ''}`.toLowerCase();
   if (c.includes('pad mounted') || c.includes('padmount') || c.includes('dead-front')) return 'padmounted';
   if (c.includes('gsu') || c.includes('ehv') || c.includes('power transformer') || c.includes('medium power') || c.includes('16000') || c.includes('10000')) return 'power';
-  if (c.includes('distribution') || c.includes('6000') || c.includes('5000') || c.includes('4000') || c.includes('hermetically') || c.includes('corrugated')) return 'distribution';
   if (c.includes('dry') || c.includes('cast resin')) return 'drytype';
   if (c.includes('switchgear')) return 'switchgear';
   if (c.includes('package') || c.includes('substation') || c.includes('containerized') || c.includes('bess')) return 'substations';
-  return 'special';
+  if (c.includes('distribution') || c.includes('6000') || c.includes('5000') || c.includes('4000') || c.includes('hermetically') || c.includes('corrugated') || c.includes('oil-filled') || c.includes('oil-immersed')) return 'distribution';
+  return 'distribution';
 }
 
-const FILTERS = [
-  ['all', `All Products (${DATA.products.length})`],
-  ['power', 'Power Transformers (GSU/EHV)'],
-  ['distribution', 'Distribution Transformers'],
-  ['padmounted', 'Pad-Mounted Substations'],
-  ['drytype', 'Dry-Type & Cast Resin'],
-  ['substations', 'Package Substations & BESS'],
-  ['switchgear', 'Medium & LV Switchgear']
+const CATEGORY_TABS = [
+  { key: 'all', label: 'All Products' },
+  { key: 'power', label: 'Power Transformers' },
+  { key: 'distribution', label: 'Distribution' },
+  { key: 'padmounted', label: 'Pad-Mounted' },
+  { key: 'drytype', label: 'Dry-Type' },
+  { key: 'substations', label: 'Substations & BESS' },
+  { key: 'switchgear', label: 'Switchgear' }
 ];
 
 const AUTOPLAY_MS = 5000;
@@ -53,6 +53,19 @@ export default function Products({ viewAll = true, isGrid = false }) {
   const scrollTimer = useRef(null);
   const drag = useRef(null);
   const dragged = useRef(false);
+
+  // Category counts memo
+  const categoryCounts = useMemo(() => {
+    const counts = { all: DATA.products.length };
+    CATEGORY_TABS.forEach(t => {
+      if (t.key !== 'all') counts[t.key] = 0;
+    });
+    DATA.products.forEach(p => {
+      const cat = getProductCategorySlug(p);
+      if (counts[cat] !== undefined) counts[cat]++;
+    });
+    return counts;
+  }, []);
 
   // Filtered products list
   const items = DATA.products
@@ -238,19 +251,23 @@ export default function Products({ viewAll = true, isGrid = false }) {
 
         {/* Category Filter Bar */}
         <div className="proj-filter-bar" data-animate="slideInLeft" role="tablist" aria-label="Filter products by category">
-          {FILTERS.map(([key, label]) => (
-            <button
-              type="button"
-              className={`proj-filter-pill${filter === key ? ' is-active' : ''}`}
-              data-filter={key}
-              role="tab"
-              key={key}
-              aria-selected={filter === key ? 'true' : 'false'}
-              onClick={() => pickFilter(key)}
-            >
-              {label}
-            </button>
-          ))}
+          {CATEGORY_TABS.map(({ key, label }) => {
+            const countNum = categoryCounts[key] ?? 0;
+            return (
+              <button
+                type="button"
+                className={`proj-filter-pill${filter === key ? ' is-active' : ''}`}
+                data-filter={key}
+                role="tab"
+                key={key}
+                aria-selected={filter === key ? 'true' : 'false'}
+                onClick={() => pickFilter(key)}
+              >
+                <span>{label}</span>
+                <span className="proj-filter-count">{countNum}</span>
+              </button>
+            );
+          })}
         </div>
       </div>
 
