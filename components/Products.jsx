@@ -5,7 +5,8 @@
    neighbours shrink and dim. Prev/next arrows, touch swipe, mouse drag, and category filters. */
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { DATA } from '@/lib/data';
+import { DATA, waLink } from '@/lib/data';
+import { WA_PATH } from '@/lib/icons';
 import SectionHead from './SectionHead';
 import ViewAll from './ViewAll';
 
@@ -478,20 +479,42 @@ export default function Products({ viewAll = true, isGrid = false }) {
       )}
 
       <div className="wrap">
-        {/* Bottom Consultation Callout Banner */}
-        <div className="proj-bottom-banner fade-in-up" data-delay="150">
-          <div className="proj-bottom-copy">
-            <span className="proj-bottom-tag">Custom Engineering &amp; Tenders</span>
-            <h4>Need Custom Tap Changers, Higher BIL, or Special Voltage Ratios?</h4>
-            <p>Our senior engineering team configures bespoke impedance values, on-load tap changers (OLTC), K-factor harmonic ratings, and full factory acceptance testing (FAT) for utility and industrial projects.</p>
+        {/* Support Help Banner */}
+        <div className="faq__footer-help" data-animate="slideInUp">
+          <div className="faq-help__main">
+            <span className="faq-help__eyebrow">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+              Engineering Support
+            </span>
+            <h4>Still have questions about your project requirements?</h4>
+            <p>Our power engineering team can provide custom calculation sheets, thermal ratings, and turnkey feasibility studies.</p>
           </div>
-          <a href="/contact/?ref=products-banner" className="btn btn--primary proj-bottom-btn">
-            <span>Request Custom Technical Quote</span>
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </a>
+          <div className="faq-help__aside">
+            <p className="faq-help__aside-title">Talk to our engineers</p>
+            <div className="faq-help__actions">
+              <a href="/contact/?ref=products-help" className="btn btn--primary">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <polygon points="3 11 22 2 13 21 11 13 3 11" />
+                </svg>
+                <span>Ask an Engineer</span>
+              </a>
+              <a
+                href={waLink()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn--wa facility-wa-btn"
+              >
+                <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true">
+                  <path d={WA_PATH} />
+                </svg>
+                <span>WhatsApp</span>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </>
