@@ -16,10 +16,11 @@ export default function Home() {
       <section id="home" className="hero" aria-label="Introduction"><Hero /></section>
       <section id="stats" className="stats-bar" aria-label="Key Performance Indicators"><Stats /></section>
       <section id="about" className="sec about" aria-label="About"><About /></section>
-      <section id="products" className="sec sec--alt" aria-label="Products"><Products /></section>
-      <section id="industries" className="sec" style={{ background: '#fff' }} aria-label="Industries"><Industries /></section>
+      <section id="certificates" className="sec sec--alt" aria-label="Certificates & Test Reports"><Quality showWhy={false} viewAll={true} /></section>
+      <section id="products" className="sec" aria-label="Products"><Products /></section>
+      <section id="industries" className="sec sec--alt" aria-label="Industries"><Industries /></section>
       <section id="projects" className="sec" aria-label="Projects"><Projects /></section>
-      <section id="quality" className="sec sec--alt" aria-label="Why Work With BPEL"><Quality /></section>
+      <section id="quality" className="sec sec--alt" aria-label="Why Work With BPEL"><Quality showCerts={false} /></section>
       <section id="lifecycle" className="sec sec--dark" aria-label="Project Lifecycle"><Lifecycle /></section>
       <section id="faq" className="sec" aria-label="FAQ"><Faq /></section>
       <section id="partners" className="sec sec--alt sec--tight" aria-label="Our Partners"><Partners /></section>
