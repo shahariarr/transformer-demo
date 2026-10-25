@@ -5,6 +5,14 @@ import Link from 'next/link';
 import { ALL_PARTNERS, PARTNER_CATEGORIES } from '@/lib/partners';
 import RawSvg from '@/components/RawSvg';
 import { ArrowRight } from '@/components/PageParts';
+import styles from '@/app/about/partners/page.module.css';
+
+const SearchIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <circle cx="11" cy="11" r="8" />
+    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+  </svg>
+);
 
 export default function PartnersDirectory() {
   const [activeCategory, setActiveCategory] = useState('all');
@@ -28,14 +36,12 @@ export default function PartnersDirectory() {
 
   return (
     <div className="partners-dir">
-      {/* ── Controls Bar: Category Pills + Search Filter ── */}
-      <div className="partners-dir__controls fade-in-up">
-        <div className="partners-tabs" role="tablist" aria-label="Filter partners by category">
+      {/* ── Controls Bar: Category Pills + Search Filter (matches Blog & Insights) ── */}
+      <div className={`${styles.toolbar} fade-in-up`}>
+        <div className={styles.catTabs} role="tablist" aria-label="Filter partners by category">
           {PARTNER_CATEGORIES.map(cat => {
-            const count = cat.id === 'all' 
-              ? ALL_PARTNERS.length 
-              : ALL_PARTNERS.filter(p => p.category === cat.id).length;
             const isActive = activeCategory === cat.id;
+            const label = cat.id === 'all' ? 'All' : cat.label;
 
             return (
               <button
@@ -43,37 +49,35 @@ export default function PartnersDirectory() {
                 type="button"
                 role="tab"
                 aria-selected={isActive}
-                className={`partners-tab${isActive ? ' is-active' : ''}`}
+                className={`${styles.catPill}${isActive ? ` ${styles.isActive}` : ''}`}
                 onClick={() => setActiveCategory(cat.id)}
               >
-                <span className="partners-tab__label">{cat.label}</span>
-                <span className="partners-tab__count">{count}</span>
+                {label}
               </button>
             );
           })}
         </div>
 
-        <div className="partners-search-wrap">
-          <svg className="partners-search-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
+        <div className={styles.searchWrap}>
+          <span className={styles.searchIcon} aria-hidden="true">
+            <SearchIcon />
+          </span>
           <input
-            type="search"
+            type="text"
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
             placeholder="Search OEM, standard, laboratory or fluid..."
-            className="partners-search-input"
+            className={styles.searchInput}
             aria-label="Search partners and alliances"
           />
           {searchQuery ? (
             <button
               type="button"
-              className="partners-search-clear"
+              className={styles.searchClear}
               onClick={() => setSearchQuery('')}
-              aria-label="Clear search"
+              aria-label="Clear search input"
             >
-              ×
+              &times;
             </button>
           ) : null}
         </div>
