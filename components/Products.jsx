@@ -3,7 +3,7 @@
 /* Products Showcase: spotlight carousel following the exact design, style, and structure
    of the flagship Project Portfolio. Centred card is active (full details, open specs, and CTA),
    neighbours shrink and dim. Prev/next arrows, touch swipe, mouse drag, and category filters. */
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { DATA } from '@/lib/data';
 import SectionHead from './SectionHead';
@@ -20,14 +20,28 @@ function getProductCategorySlug(p) {
   return 'distribution';
 }
 
-const CATEGORY_TABS = [
-  { key: 'all', label: 'All Products' },
-  { key: 'power', label: 'Power Transformers' },
-  { key: 'distribution', label: 'Distribution' },
-  { key: 'padmounted', label: 'Pad-Mounted' },
-  { key: 'drytype', label: 'Dry-Type' },
-  { key: 'substations', label: 'Substations & BESS' },
-  { key: 'switchgear', label: 'Switchgear' }
+function getProductBadges(p) {
+  const list = [];
+  if (p.badges && Array.isArray(p.badges)) list.push(...p.badges);
+  if (p.cooling && p.cooling[0] && !list.includes(p.cooling[0])) list.push(p.cooling[0]);
+  if (p.standards && p.standards[0] && !list.includes(p.standards[0])) list.push(p.standards[0]);
+  if (list.length === 0 && p.specs) {
+    p.specs.slice(0, 3).forEach(s => {
+      const clean = s.split(':')[1]?.trim() || s;
+      list.push(clean);
+    });
+  }
+  return list.slice(0, 3);
+}
+
+const FILTERS = [
+  ['all', `All Products (${DATA.products.length})`],
+  ['power', 'Power Transformers'],
+  ['distribution', 'Distribution Transformers'],
+  ['substations', 'High-Voltage Substations & BESS'],
+  ['switchgear', 'Medium-Voltage Switchgear'],
+  ['padmounted', 'Pad-Mounted Substations'],
+  ['drytype', 'Dry-Type & Cast Resin']
 ];
 
 const AUTOPLAY_MS = 5000;
@@ -44,7 +58,7 @@ const Chevron = ({ d }) => (
 export default function Products({ viewAll = true, isGrid = false }) {
   const router = useRouter();
   const [filter, setFilter] = useState('all');
-  const [active, setActive] = useState(0);
+  const [active, setActive] = useState(1);
   const [paused, setPaused] = useState(false);
   const [visible, setVisible] = useState(false);
   const trackRef = useRef(null);
@@ -53,19 +67,7 @@ export default function Products({ viewAll = true, isGrid = false }) {
   const scrollTimer = useRef(null);
   const drag = useRef(null);
   const dragged = useRef(false);
-
-  // Category counts memo
-  const categoryCounts = useMemo(() => {
-    const counts = { all: DATA.products.length };
-    CATEGORY_TABS.forEach(t => {
-      if (t.key !== 'all') counts[t.key] = 0;
-    });
-    DATA.products.forEach(p => {
-      const cat = getProductCategorySlug(p);
-      if (counts[cat] !== undefined) counts[cat]++;
-    });
-    return counts;
-  }, []);
+  const mountedRef = useRef(false);
 
   // Filtered products list
   const items = DATA.products
@@ -89,7 +91,7 @@ export default function Products({ viewAll = true, isGrid = false }) {
     setActive(((i % count) + count) % count);
   }, [count]);
 
-  // Center the active card in the viewport
+  // Center active card: instant alignment on initial load, smooth on user action
   useEffect(() => {
     if (fromScroll.current) {
       fromScroll.current = false;
@@ -98,10 +100,28 @@ export default function Products({ viewAll = true, isGrid = false }) {
     const track = trackRef.current;
     const card = cardRefs.current[active];
     if (!track || !card) return;
+
+    const targetLeft = card.offsetLeft - (track.clientWidth - card.offsetWidth) / 2;
+    const isFirst = !mountedRef.current;
+    mountedRef.current = true;
+
     track.scrollTo({
-      left: card.offsetLeft - (track.clientWidth - card.offsetWidth) / 2,
-      behavior: reduced() ? 'auto' : 'smooth'
+      left: targetLeft,
+      behavior: isFirst || reduced() ? 'auto' : 'smooth'
     });
+
+    if (isFirst) {
+      const t1 = setTimeout(() => {
+        if (track && card) track.scrollLeft = card.offsetLeft - (track.clientWidth - card.offsetWidth) / 2;
+      }, 50);
+      const t2 = setTimeout(() => {
+        if (track && card) track.scrollLeft = card.offsetLeft - (track.clientWidth - card.offsetWidth) / 2;
+      }, 200);
+      return () => {
+        clearTimeout(t1);
+        clearTimeout(t2);
+      };
+    }
   }, [active, filter]);
 
   // Clean up pending scroll timer on unmount
@@ -251,23 +271,19 @@ export default function Products({ viewAll = true, isGrid = false }) {
 
         {/* Category Filter Bar */}
         <div className="proj-filter-bar" data-animate="slideInLeft" role="tablist" aria-label="Filter products by category">
-          {CATEGORY_TABS.map(({ key, label }) => {
-            const countNum = categoryCounts[key] ?? 0;
-            return (
-              <button
-                type="button"
-                className={`proj-filter-pill${filter === key ? ' is-active' : ''}`}
-                data-filter={key}
-                role="tab"
-                key={key}
-                aria-selected={filter === key ? 'true' : 'false'}
-                onClick={() => pickFilter(key)}
-              >
-                <span>{label}</span>
-                <span className="proj-filter-count">{countNum}</span>
-              </button>
-            );
-          })}
+          {FILTERS.map(([key, label]) => (
+            <button
+              type="button"
+              className={`proj-filter-pill${filter === key ? ' is-active' : ''}`}
+              data-filter={key}
+              role="tab"
+              key={key}
+              aria-selected={filter === key ? 'true' : 'false'}
+              onClick={() => pickFilter(key)}
+            >
+              {label}
+            </button>
+          ))}
         </div>
       </div>
 
@@ -277,6 +293,8 @@ export default function Products({ viewAll = true, isGrid = false }) {
             {items.map((p, i) => {
               const voltage = p.voltageClasses?.[0] || (p.specs?.find(s => s.toLowerCase().includes('voltage'))?.replace(/^voltage:\s*/i, '')) || '≤36 kV';
               const topBadge = p.typeTag || p.productType || p.cat || 'Oil-Immersed';
+              const badges = getProductBadges(p);
+              const scopeText = p.productType || p.typeTag || p.cat || 'Power Infrastructure';
 
               return (
                 <article
@@ -299,22 +317,25 @@ export default function Products({ viewAll = true, isGrid = false }) {
 
                   <div className="pcar__panel">
                     <p className="pcar__loc">
-                      <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                         <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" />
                       </svg>
                       <span>{voltage}</span>
                     </p>
                     <h3 className="pcar__title">{p.name}</h3>
-                    {p.desc ? <p className="pcar__scope">{p.desc}</p> : null}
+                    {scopeText ? <p className="pcar__scope">{scopeText}</p> : null}
                     <div className="pcar__more">
                       <div>
-                        {p.specs ? (
+                        {badges.length ? (
                           <ul className="pcar__specs">
-                            {p.specs.slice(0, 4).map(s => <li key={s}>{s}</li>)}
+                            {badges.map(b => (
+                              <li key={b}>{b}</li>
+                            ))}
                           </ul>
                         ) : null}
+                        <p className="pcar__desc">{p.desc}</p>
                         <a className="pcar__cta" href={`/products/${p.slug}/`} onClick={e => e.stopPropagation()}>
-                          <span>View Product Details</span>
+                          <span>Explore Product Details</span>
                           <span className="pcar__cta-icon" aria-hidden="true">
                             <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
                               <path d="M7 17 17 7M8 7h9v9" />
@@ -378,6 +399,8 @@ export default function Products({ viewAll = true, isGrid = false }) {
             {items.map((p, i) => {
               const voltage = p.voltageClasses?.[0] || (p.specs?.find(s => s.toLowerCase().includes('voltage'))?.replace(/^voltage:\s*/i, '')) || '≤36 kV';
               const topBadge = p.typeTag || p.productType || p.cat || 'Oil-Immersed';
+              const badges = getProductBadges(p);
+              const scopeText = p.productType || p.typeTag || p.cat || 'Power Infrastructure';
 
               return (
                 <article
@@ -404,20 +427,23 @@ export default function Products({ viewAll = true, isGrid = false }) {
 
                   <div className="pcar__panel">
                     <p className="pcar__loc">
-                      <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                         <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" />
                       </svg>
                       <span>{voltage}</span>
                     </p>
                     <h3 className="pcar__title">{p.name}</h3>
-                    {p.desc ? <p className="pcar__scope">{p.desc}</p> : null}
+                    {scopeText ? <p className="pcar__scope">{scopeText}</p> : null}
                     <div className="pcar__more">
                       <div>
-                        {p.specs ? (
+                        {badges.length ? (
                           <ul className="pcar__specs">
-                            {p.specs.slice(0, 4).map(s => <li key={s}>{s}</li>)}
+                            {badges.map(b => (
+                              <li key={b}>{b}</li>
+                            ))}
                           </ul>
                         ) : null}
+                        <p className="pcar__desc">{p.desc}</p>
                         <a
                           className="pcar__cta"
                           href={`/products/${p.slug}/`}
