@@ -2,8 +2,6 @@ import Hero from '@/components/Hero';
 import Stats from '@/components/Stats';
 import About from '@/components/About';
 import Products from '@/components/Products';
-import Industries from '@/components/Industries';
-import Projects from '@/components/Projects';
 import Quality from '@/components/Quality';
 import Lifecycle from '@/components/Lifecycle';
 import Faq from '@/components/Faq';
@@ -19,8 +17,6 @@ export default function Home() {
       <section id="about" className="sec about" aria-label="About"><About /></section>
       <section id="certificates" className="sec sec--alt" aria-label="Certificates & Test Reports"><Quality showWhy={false} viewAll={true} /></section>
       <section id="products" className="sec" aria-label="Products"><Products /></section>
-      <section id="industries" className={`sec ${styles.homeIndustries || styles.homeIndustriesSec || ''}`} aria-label="Industries"><Industries /></section>
-      <section id="projects" className="sec" aria-label="Projects"><Projects /></section>
       <section id="quality" className="sec sec--alt" aria-label="Why Work With BPEL"><Quality showCerts={false} /></section>
       <section id="lifecycle" className="sec sec--dark" aria-label="Project Lifecycle"><Lifecycle /></section>
       <section id="faq" className="sec" aria-label="FAQ"><Faq /></section>
