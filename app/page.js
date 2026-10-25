@@ -9,6 +9,7 @@ import Lifecycle from '@/components/Lifecycle';
 import Faq from '@/components/Faq';
 import Partners from '@/components/Partners';
 import Contact from '@/components/Contact';
+import styles from './page.module.css';
 
 export default function Home() {
   return (
@@ -18,7 +19,7 @@ export default function Home() {
       <section id="about" className="sec about" aria-label="About"><About /></section>
       <section id="certificates" className="sec sec--alt" aria-label="Certificates & Test Reports"><Quality showWhy={false} viewAll={true} /></section>
       <section id="products" className="sec" aria-label="Products"><Products /></section>
-      <section id="industries" className="sec sec--alt" aria-label="Industries"><Industries /></section>
+      <section id="industries" className={`sec ${styles.homeIndustries || styles.homeIndustriesSec || ''}`} aria-label="Industries"><Industries /></section>
       <section id="projects" className="sec" aria-label="Projects"><Projects /></section>
       <section id="quality" className="sec sec--alt" aria-label="Why Work With BPEL"><Quality showCerts={false} /></section>
       <section id="lifecycle" className="sec sec--dark" aria-label="Project Lifecycle"><Lifecycle /></section>

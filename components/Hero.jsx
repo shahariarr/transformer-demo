@@ -134,7 +134,7 @@ export default function Hero() {
                 <div className="tv" data-tv="" id={`tv-hero-${i}`} style={{ '--poster': `url('${s.poster}')` }}>
                   <video className="tv__video" ref={el => { videos.current[i] = el; }} muted loop autoPlay={i === 0} playsInline
                          disablePictureInPicture disableRemotePlayback preload={i === 0 ? 'auto' : 'metadata'}
-                         poster={s.poster} aria-label={s.title}>
+                         poster={s.poster} aria-label={s.title} suppressHydrationWarning>
                     <source src={s.video} type="video/mp4" />
                   </video>
                   <p className="tv__fallback" role="status" hidden={!failed[i]}>The animation could not be loaded.</p>

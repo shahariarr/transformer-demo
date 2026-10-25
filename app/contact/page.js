@@ -1,4 +1,5 @@
 import ContactClient from './ContactClient';
+import styles from './page.module.css';
 
 export const metadata = {
   title: 'Contact Us | Request a Quote | Basic Power Engineering Ltd',

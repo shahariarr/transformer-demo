@@ -4,6 +4,7 @@ import { getAllPosts, getPostBySlug, getRelatedPosts } from '@/lib/blog';
 import { waLink } from '@/lib/data';
 import { WA_PATH } from '@/lib/icons';
 import { ArrowRight } from '@/components/PageParts';
+import styles from './page.module.css';
 
 export async function generateStaticParams() {
   const posts = getAllPosts();
@@ -76,17 +77,17 @@ export default async function BlogPostPage({ params }) {
   const related = getRelatedPosts(post.slug, 3);
 
   return (
-    <article className="blog-single-page">
+    <article className={styles.blogSinglePage}>
       {/* =========================================================
           1. HERO HEADER FOR SINGLE ARTICLE (Cloned from /about/ PageHero)
           ========================================================= */}
-      <section className="page-hero blog-single-hero" aria-label="Article Banner">
+      <section className={`page-hero ${styles.blogSingleHero}`} aria-label="Article Banner">
         <img
           src={post.image}
           alt=""
           loading="lazy"
           decoding="async"
-          className="page-hero__img blog-single-hero__bg"
+          className={`page-hero__img ${styles.blogSingleHeroBg}`}
         />
 
         <div className="wrap">
@@ -105,20 +106,20 @@ export default async function BlogPostPage({ params }) {
           </h1>
 
           {/* Metadata (Reading Time, Date, Author) */}
-          <div className="blog-single-hero__meta fade-in-up" data-delay="160">
-            <span className="blog-single-hero__meta-item">
+          <div className={`${styles.blogSingleHeroMeta} fade-in-up`} data-delay="160">
+            <span className={styles.blogSingleHeroMetaItem}>
               <ClockIcon />
               <span>{post.readTime || `${post.readMinutes || 7} min read`}</span>
             </span>
-            <span className="blog-single-hero__meta-sep">•</span>
-            <span className="blog-single-hero__meta-item">
+            <span className={styles.blogSingleHeroMetaSep}>•</span>
+            <span className={styles.blogSingleHeroMetaItem}>
               <CalendarIcon />
               <span>{post.date}</span>
             </span>
             {post.author?.name && (
               <>
-                <span className="blog-single-hero__meta-sep">•</span>
-                <span className="blog-single-hero__meta-item">By {post.author.name}</span>
+                <span className={styles.blogSingleHeroMetaSep}>•</span>
+                <span className={styles.blogSingleHeroMetaItem}>By {post.author.name}</span>
               </>
             )}
           </div>
@@ -128,61 +129,61 @@ export default async function BlogPostPage({ params }) {
       {/* =========================================================
           2. MAIN ARTICLE READER SECTION
           ========================================================= */}
-      <section className="blog-single-sec" aria-label="Article Content">
+      <section className={styles.blogSingleSec} aria-label="Article Content">
         <div className="wrap">
           {/* Back to Blog Directory Link */}
-          <Link href="/blog/" className="blog-single-back-link">
+          <Link href="/blog/" className={styles.blogSingleBackLink}>
             <ArrowLeftIcon />
             <span>Back to News &amp; Insights</span>
           </Link>
 
-          <div className="blog-single-layout">
+          <div className={styles.blogSingleLayout}>
             {/* Main Reader Column */}
-            <div className="blog-single-reader">
+            <div className={styles.blogSingleReader}>
               {/* Prominent Featured Image */}
               {post.image && (
-                <div className="blog-single-featured-image-box">
+                <div className={styles.blogSingleFeaturedImageBox}>
                   <img
                     src={post.image}
                     alt={post.title}
-                    className="blog-single-featured-image"
+                    className={styles.blogSingleFeaturedImage}
                     loading="eager"
                   />
-                  <div className="blog-single-featured-image-caption">
-                    <span className="blog-single-featured-image-caption__title">{post.title}</span>
-                    <span className="blog-single-featured-image-caption__tag">{post.category}</span>
+                  <div className={styles.blogSingleFeaturedImageCaption}>
+                    <span className={styles.blogSingleFeaturedImageCaptionTitle}>{post.title}</span>
+                    <span className={styles.blogSingleFeaturedImageCaptionTag}>{post.category}</span>
                   </div>
                 </div>
               )}
 
               {/* Lead Paragraph */}
-              <p className="blog-single-lead">
+              <p className={styles.blogSingleLead}>
                 {post.excerpt}
               </p>
 
               {/* Author & Share Bar */}
-              <div className="blog-single-author-bar">
-                <div className="blog-single-author-info">
+              <div className={styles.blogSingleAuthorBar}>
+                <div className={styles.blogSingleAuthorInfo}>
                   {post.author?.avatar && (
                     <img
                       src={post.author.avatar}
                       alt={post.author.name}
-                      className="blog-single-author-avatar"
+                      className={styles.blogSingleAuthorAvatar}
                     />
                   )}
                   <div>
-                    <strong className="blog-single-author-name">{post.author?.name}</strong>
-                    <span className="blog-single-author-role">{post.author?.role}</span>
+                    <strong className={styles.blogSingleAuthorName}>{post.author?.name}</strong>
+                    <span className={styles.blogSingleAuthorRole}>{post.author?.role}</span>
                   </div>
                 </div>
 
-                <div className="blog-single-share">
-                  <span className="blog-single-share-label">Share:</span>
+                <div className={styles.blogSingleShare}>
+                  <span className={styles.blogSingleShareLabel}>Share:</span>
                   <a
                     href={`https://api.whatsapp.com/send?text=${encodeURIComponent(post.title)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="blog-single-share-btn"
+                    className={styles.blogSingleShareBtn}
                     title="Share on WhatsApp"
                     aria-label="Share on WhatsApp"
                   >
@@ -192,7 +193,7 @@ export default async function BlogPostPage({ params }) {
                     href="https://www.linkedin.com/sharing/share-offsite/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="blog-single-share-btn"
+                    className={styles.blogSingleShareBtn}
                     title="Share on LinkedIn"
                     aria-label="Share on LinkedIn"
                   >
@@ -203,7 +204,7 @@ export default async function BlogPostPage({ params }) {
 
               {/* Executive Takeaways Box */}
               {post.takeaways && post.takeaways.length > 0 && (
-                <div className="blog-single-takeaways">
+                <div className={styles.blogSingleTakeaways}>
                   <h3>
                     <CheckIcon />
                     <span>Executive Engineering Takeaways</span>
@@ -211,7 +212,7 @@ export default async function BlogPostPage({ params }) {
                   <ul>
                     {post.takeaways.map((item, idx) => (
                       <li key={idx}>
-                        <span className="blog-single-takeaways-check"><CheckIcon /></span>
+                        <span className={styles.blogSingleTakeawaysCheck}><CheckIcon /></span>
                         <span>{item}</span>
                       </li>
                     ))}
@@ -220,7 +221,7 @@ export default async function BlogPostPage({ params }) {
               )}
 
               {/* Structured Body Content */}
-              <div className="blog-single-body">
+              <div className={styles.blogSingleBody}>
                 {post.content.map((block, idx) => {
                   if (block.type === 'paragraph') {
                     return <p key={idx}>{block.text}</p>;
@@ -232,7 +233,7 @@ export default async function BlogPostPage({ params }) {
                   }
                   if (block.type === 'callout') {
                     return (
-                      <div key={idx} className="blog-single-callout">
+                      <div key={idx} className={styles.blogSingleCallout}>
                         {block.title && <h4>{block.title}</h4>}
                         <p>{block.text}</p>
                       </div>
@@ -240,12 +241,12 @@ export default async function BlogPostPage({ params }) {
                   }
                   if (block.type === 'specTable') {
                     return (
-                      <div key={idx} className="blog-single-table-wrap">
+                      <div key={idx} className={styles.blogSingleTableWrap}>
                         {block.caption && (
-                          <div className="blog-single-table-caption">{block.caption}</div>
+                          <div className={styles.blogSingleTableCaption}>{block.caption}</div>
                         )}
-                        <div className="blog-single-table-scroll">
-                          <table className="blog-single-table">
+                        <div className={styles.blogSingleTableScroll}>
+                          <table className={styles.blogSingleTable}>
                             <thead>
                               <tr>
                                 {block.headers.map((h, i) => <th key={i}>{h}</th>)}
@@ -265,19 +266,19 @@ export default async function BlogPostPage({ params }) {
                   }
                   if (block.type === 'image') {
                     return (
-                      <figure key={idx} className="blog-single-figure">
-                        <div className="blog-single-figure-media">
+                      <figure key={idx} className={styles.blogSingleFigure}>
+                        <div className={styles.blogSingleFigureMedia}>
                           <img
                             src={block.src}
                             alt={block.alt || block.caption || post.title}
-                            className="blog-single-figure-img"
+                            className={styles.blogSingleFigureImg}
                             loading="lazy"
                           />
                         </div>
                         {(block.caption || block.credit) && (
-                          <figcaption className="blog-single-figure-caption">
-                            {block.caption && <span className="blog-single-figure-caption__text">{block.caption}</span>}
-                            {block.credit && <span className="blog-single-figure-caption__credit">{block.credit}</span>}
+                          <figcaption className={styles.blogSingleFigureCaption}>
+                            {block.caption && <span className={styles.blogSingleFigureCaptionText}>{block.caption}</span>}
+                            {block.credit && <span className={styles.blogSingleFigureCaptionCredit}>{block.credit}</span>}
                           </figcaption>
                         )}
                       </figure>
@@ -289,19 +290,19 @@ export default async function BlogPostPage({ params }) {
 
               {/* Author Signature Box */}
               {post.author && (
-                <div className="blog-single-author-card">
+                <div className={styles.blogSingleAuthorCard}>
                   {post.author.avatar && (
                     <img
                       src={post.author.avatar}
                       alt={post.author.name}
-                      className="blog-single-author-card__avatar"
+                      className={styles.blogSingleAuthorCardAvatar}
                     />
                   )}
                   <div>
-                    <span className="blog-single-author-card__kicker">Written By</span>
-                    <h4 className="blog-single-author-card__name">{post.author.name}</h4>
-                    <p className="blog-single-author-card__role">{post.author.role}</p>
-                    <p className="blog-single-author-card__bio">
+                    <span className={styles.blogSingleAuthorCardKicker}>Written By</span>
+                    <h4 className={styles.blogSingleAuthorCardName}>{post.author.name}</h4>
+                    <p className={styles.blogSingleAuthorCardRole}>{post.author.role}</p>
+                    <p className={styles.blogSingleAuthorCardBio}>
                       Specialized in high-voltage transformer design, dielectric condition monitoring, and custom substation integration for heavy industrial and utility projects.
                     </p>
                   </div>
@@ -310,20 +311,20 @@ export default async function BlogPostPage({ params }) {
             </div>
 
             {/* Sticky Sidebar */}
-            <aside className="blog-single-sidebar" aria-label="Technical Consultation">
-              <div className="blog-single-side-card">
+            <aside className={styles.blogSingleSidebar} aria-label="Technical Consultation">
+              <div className={styles.blogSingleSideCard}>
                 <h4>Need Technical Guidance?</h4>
                 <p>
                   Speak directly with our power engineering directors regarding transformer ratings, vector groups, BIL withstand, and on-site testing.
                 </p>
-                <Link href="/contact/" className="blog-single-side-btn">
+                <Link href="/contact/" className={styles.blogSingleSideBtn}>
                   Consult Our Engineers
                 </Link>
               </div>
 
-              <div className="blog-single-side-card">
+              <div className={styles.blogSingleSideCard}>
                 <h4>Explore Products</h4>
-                <ul className="blog-single-side-links">
+                <ul className={styles.blogSingleSideLinks}>
                   <li><Link href="/products/">Oil-Immersed Transformers</Link></li>
                   <li><Link href="/products/16000-kva-oil-filled-transformer/">16,000 kVA Power Units</Link></li>
                   <li><Link href="/products/5000-kva-oil-filled-transformer/">Hermetically Sealed Units</Link></li>
@@ -340,56 +341,56 @@ export default async function BlogPostPage({ params }) {
           3. RELATED ARTICLES SECTION (Using ETS 3-Column Card Style)
           ========================================================= */}
       {related.length > 0 && (
-        <section className="blog-single-related-sec" aria-label="Related Insights">
+        <section className={styles.blogSingleRelatedSec} aria-label="Related Insights">
           <div className="wrap">
-            <div className="blog-single-related-head">
+            <div className={styles.blogSingleRelatedHead}>
               <div>
-                <span className="blog-single-related-kicker">Recommended Reading</span>
-                <h2 className="blog-single-related-title">Related Engineering Insights</h2>
+                <span className={styles.blogSingleRelatedKicker}>Recommended Reading</span>
+                <h2 className={styles.blogSingleRelatedTitle}>Related Engineering Insights</h2>
               </div>
-              <Link href="/blog/" className="blog-single-view-all">
+              <Link href="/blog/" className={styles.blogSingleViewAll}>
                 <span>View All Articles</span>
                 <ArrowRightIcon />
               </Link>
             </div>
 
             {/* Exact ETS 3-column Grid Cards */}
-            <div className="blog-ets-grid">
+            <div className={styles.relatedGrid}>
               {related.map(item => (
                 <Link
                   key={item.slug}
                   href={`/blog/${item.slug}/`}
-                  className="blog-ets-card group"
+                  className={`${styles.relatedCard} group`}
                 >
-                  <div className="blog-ets-card-media">
+                  <div className={styles.relatedCardMedia}>
                     <img
                       src={item.image}
                       alt={item.title}
                       loading="lazy"
-                      className="blog-ets-card-img"
+                      className={styles.relatedCardImg}
                     />
                   </div>
 
-                  <div className="blog-ets-card-body">
-                    <div className="blog-ets-card-tag-row">
-                      <span className="blog-ets-card-tag">
+                  <div className={styles.relatedCardBody}>
+                    <div className={styles.relatedCardTagRow}>
+                      <span className={styles.relatedCardTag}>
                         {item.category}
                       </span>
                     </div>
 
-                    <h3 className="blog-ets-card-title">
+                    <h3 className={styles.relatedCardTitle}>
                       {item.title}
                     </h3>
 
-                    <p className="blog-ets-card-excerpt">
+                    <p className={styles.relatedCardExcerpt}>
                       {item.excerpt}
                     </p>
 
-                    <div className="blog-ets-card-footer">
-                      <span className="blog-ets-card-meta">
+                    <div className={styles.relatedCardFooter}>
+                      <span className={styles.relatedCardMeta}>
                         {item.readTime || `${item.readMinutes || 7} min read`}
                       </span>
-                      <span className="blog-ets-card-arrow">
+                      <span className={styles.relatedCardArrow}>
                         <ArrowRightIcon />
                       </span>
                     </div>
@@ -404,24 +405,24 @@ export default async function BlogPostPage({ params }) {
       {/* =========================================================
           4. TECHNICAL CONSULTATION & SIZING SECTION
           ========================================================= */}
-      <section className="blog-ets-cta-sec" aria-label="Technical Consultation and Sizing">
+      <section className={styles.ctaSec} aria-label="Technical Consultation and Sizing">
         <div className="wrap">
-          <div className="blog-ets-cta-card">
-            <div className="blog-ets-cta-inner">
+          <div className={styles.ctaCard}>
+            <div className={styles.ctaInner}>
               <div>
-                <span className="blog-ets-cta-tag">Engineering Collaboration &amp; Tenders</span>
-                <h2 className="blog-ets-cta-heading">
+                <span className={styles.ctaTag}>Engineering Collaboration &amp; Tenders</span>
+                <h2 className={styles.ctaHeading}>
                   Have a Project in Mind?
                 </h2>
-                <p className="blog-ets-cta-sub">
+                <p className={styles.ctaSub}>
                   Our engineering team is ready to discuss your transformer and turnkey substation requirements.
                 </p>
               </div>
 
-              <div className="blog-ets-cta-btn-wrap">
+              <div className={styles.ctaBtnWrap}>
                 <Link
                   href="/contact/"
-                  className="blog-ets-cta-action group"
+                  className={`${styles.ctaAction} group`}
                 >
                   <span>Get in Touch</span>
                   <ArrowRightIcon />

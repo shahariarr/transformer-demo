@@ -1,4 +1,5 @@
 import { PageHero, LinkCard, Icon } from '@/components/PageParts';
+import styles from './page.module.css';
 
 export const metadata = {
   title: 'Resources',

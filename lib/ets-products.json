@@ -75,7 +75,7 @@
     "typeTag": "Oil-Immersed",
     "image": "/assets/images/products/ets/medium-power-transformers-gsu.webp",
     "badges": [
-      "Tested",
+      "Type Tested",
       "IEC + ANSI"
     ],
     "desc": "High-performance medium power transformers (gsu) engineered to international standards for critical power infrastructure.",
@@ -133,7 +133,7 @@
     "tags": [
       "Transformers",
       "Medium Power (GSU)",
-      "Tested",
+      "Type Tested",
       "IEC + ANSI"
     ]
   },
@@ -147,7 +147,7 @@
     "typeTag": "Oil-Immersed",
     "image": "/assets/images/products/ets/ehv-power-transformers.webp",
     "badges": [
-      "Tested",
+      "Type Tested",
       "EHV Class"
     ],
     "desc": "High-performance ehv power transformers engineered to international standards for critical power infrastructure.",
@@ -203,7 +203,7 @@
     "tags": [
       "Transformers",
       "EHV Transformers",
-      "Tested",
+      "Type Tested",
       "EHV Class"
     ]
   },
@@ -402,7 +402,6 @@
     ],
     "tags": [
       "Transformers",
-      "BESS",
       "BESS",
       "Bidirectional"
     ]

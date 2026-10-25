@@ -1,0 +1,8 @@
+/* =========================================================
+   Product Showcase Details Page Styles (CSS Module)
+   app/products/[slug]/page.module.css
+   ========================================================= */
+
+.productDetailWrap {
+  position: relative;
+}

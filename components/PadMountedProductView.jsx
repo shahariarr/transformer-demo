@@ -387,20 +387,45 @@ export default function PadMountedProductView({
     }
   ];
 
-  const alternativeCapacities = others.length >= 3 ? others.slice(0, 3).map(o => ({
-    name: o.name,
-    slug: o.slug,
-    cat: o.cat || 'Transformers',
-    badge: (o.name.match(/([\d,]+)\s*kva/i) || [])[1] ? `${(o.name.match(/([\d,]+)\s*kva/i) || [])[1]} kVA` : 'Type Tested',
-    typeTag: o.typeTag || 'Oil-Immersed',
-    image: o.image,
-    desc: o.desc,
-    specRows: (o.specs || []).filter(s => s.includes(':')).map(s => {
-      const [k, ...v] = s.split(':');
-      return { key: k.trim(), val: v.join(':').trim() };
-    }),
-    tags: o.tags || ['Utility Grade', 'Low Loss', 'IEC 60076']
-  })) : defaultAlternatives;
+  const candidates = (others && others.length > 0)
+    ? (product?.cat ? others.filter(x => x.cat === product.cat) : others)
+    : [];
+  const chosenOthers = (candidates.length >= 3 ? candidates : (others || [])).slice(0, 3);
+
+  const alternativeCapacities = (chosenOthers.length >= 3 ? chosenOthers : defaultAlternatives).map(o => {
+    const specRows = (o.specRows && o.specRows.length > 0)
+      ? o.specRows
+      : (o.specs || []).filter(s => s.includes(':')).map(s => {
+          const [k, ...v] = s.split(':');
+          return { key: k.trim(), val: v.join(':').trim() };
+        });
+
+    const capacitySpec = specRows.find(r => /capacity|rating/i.test(r.key))?.val
+      || (o.specs || []).find(s => /^capacity:/i.test(s))?.replace(/^capacity:\s*/i, '');
+
+    const rawBadge = capacitySpec
+      || (o.badges && o.badges[0])
+      || o.badge
+      || ((o.name.match(/([\d,]+)\s*kva/i) || [])[1] ? `${(o.name.match(/([\d,]+)\s*kva/i) || [])[1]} kVA` : 'Type Tested');
+
+    return {
+      name: o.name,
+      slug: o.slug,
+      cat: o.cat || 'Transformers',
+      badge: rawBadge,
+      typeTag: o.typeTag || (o.cat === 'Switchgear' ? 'Switchgear' : 'Oil-Immersed'),
+      image: o.image || '/assets/images/products/oil-immersed-transformer.png',
+      desc: o.desc,
+      specRows,
+      tags: (o.tags && o.tags.length > 0) ? o.tags : ['Utility Grade', 'Low Loss', 'IEC 60076']
+    };
+  });
+
+  const currentSlug = product?.slug;
+  const allList = (others && others.length > 0) ? [product, ...others].filter(Boolean) : defaultAlternatives;
+  const currentIdx = allList.findIndex(x => x.slug === currentSlug);
+  const prevProd = currentIdx > 0 ? allList[currentIdx - 1] : allList[allList.length - 1];
+  const nextProd = currentIdx >= 0 && currentIdx < allList.length - 1 ? allList[currentIdx + 1] : allList[0];
 
   const productName = product?.name || 'Pad Mounted Transformers';
   const productDesc = details?.overviewParagraph || product?.desc || 'Tamper-resistant, dead-front pad-mounted transformers designed for underground distribution systems. UL 1562 listed and built to ANSI/IEEE C57.12.34.';
@@ -972,7 +997,7 @@ export default function PadMountedProductView({
                   {/* Tags */}
                   {p.tags && p.tags.length > 0 && (
                     <ul className="pcard__tags">
-                      {p.tags.map(t => (
+                      {Array.from(new Set(p.tags)).map(t => (
                         <li key={t}>{t}</li>
                       ))}
                     </ul>
@@ -997,25 +1022,29 @@ export default function PadMountedProductView({
           </div>
 
           <div className="pad-nav-bar">
-            <Link href="/products/cast-resin-dry-type-transformers/" className="pad-nav-link">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="m12 19-7-7 7-7" />
-                <path d="M19 12H5" />
-              </svg>
-              <span>Cast Resin Dry Type Transformers</span>
-            </Link>
+            {prevProd && prevProd.slug !== currentSlug ? (
+              <Link href={`/products/${prevProd.slug}/`} className="pad-nav-link">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="m12 19-7-7 7-7" />
+                  <path d="M19 12H5" />
+                </svg>
+                <span>{prevProd.name}</span>
+              </Link>
+            ) : <span />}
 
             <Link href="/products/" className="pad-nav-all">
               All Products
             </Link>
 
-            <Link href="/products/solar-pv-transformers/" className="pad-nav-link">
-              <span>Solar PV Transformers</span>
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M5 12h14" />
-                <path d="m12 5 7 7-7 7" />
-              </svg>
-            </Link>
+            {nextProd && nextProd.slug !== currentSlug ? (
+              <Link href={`/products/${nextProd.slug}/`} className="pad-nav-link">
+                <span>{nextProd.name}</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M5 12h14" />
+                  <path d="m12 5 7 7-7 7" />
+                </svg>
+              </Link>
+            ) : <span />}
           </div>
         </div>
       </section>

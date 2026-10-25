@@ -1,0 +1,12 @@
+/* =========================================================
+   Certifications Page Styles (CSS Module)
+   app/certifications/page.module.css
+   ========================================================= */
+
+.certsSec {
+  position: relative;
+}
+
+.standardsSec {
+  position: relative;
+}

@@ -764,7 +764,7 @@ export default async function ServicePage({ params }) {
               <a className="btn btn--primary" href={`/contact/?service=${encodeURIComponent(s.title)}`}>
                 Request a Quote <ArrowRight />
               </a>
-              <a className="btn btn--ghost" style={{ color: '#fff', borderColor: 'rgba(255,255,255,0.3)' }} href={waLink()} target="_blank" rel="noopener noreferrer">
+              <a className="btn btn--wa facility-wa-btn" href={waLink()} target="_blank" rel="noopener noreferrer">
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
                   <path d={WA_PATH} />
                 </svg>

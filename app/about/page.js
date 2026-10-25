@@ -4,6 +4,7 @@ import Stats from '@/components/Stats';
 import Quality from '@/components/Quality';
 import Partners from '@/components/Partners';
 import { PageHero, LinkCard, Icon } from '@/components/PageParts';
+import styles from './page.module.css';
 
 export const metadata = {
   title: 'About Us',

@@ -1,4 +1,5 @@
 import CalculatorsDirectory from '@/components/CalculatorsDirectory';
+import styles from './page.module.css';
 
 export function generateStaticParams() {
   return [

@@ -3,6 +3,7 @@ import { DATA } from '@/lib/data';
 import { TRANSFORMER_DETAILS } from '@/lib/products-data';
 import { PageHero, ArrowRight } from '@/components/PageParts';
 import PadMountedProductView from '@/components/PadMountedProductView';
+import styles from './page.module.css';
 
 const find = slug => {
   if (!slug) return null;

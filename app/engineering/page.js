@@ -4,6 +4,7 @@ import { PageHero, ArrowRight } from '@/components/PageParts';
 import { MANUFACTURING_STEPS } from '@/lib/resources';
 import { waLink } from '@/lib/data';
 import { WA_PATH } from '@/lib/icons';
+import styles from './page.module.css';
 
 export const metadata = {
   title: 'Engineering & Manufacturing',

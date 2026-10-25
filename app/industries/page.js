@@ -2,6 +2,7 @@ import Industries from '@/components/Industries';
 import { PageHero } from '@/components/PageParts';
 import { waLink } from '@/lib/data';
 import { WA_PATH } from '@/lib/icons';
+import styles from './page.module.css';
 
 export const metadata = {
   title: 'Industries',
@@ -21,11 +22,11 @@ export default function IndustriesPage() {
         <a className="btn btn--primary" href="/contact/">Discuss Your Sector</a>
       </PageHero>
 
-      <section id="industries" className="sec" style={{ background: '#fff' }} aria-label="Industries">
+      <section id="industries" className={`sec ${styles.industriesSection}`} aria-label="Industries">
         <Industries viewAll={false} />
 
         <div className="wrap">
-          <div className="faq__footer-help fade-in-up" data-delay="160" style={{ marginTop: '4rem' }}>
+          <div className={`faq__footer-help fade-in-up ${styles.faqFooterHelp}`} data-delay="160">
             <div className="faq-help__main">
               <span className="faq-help__eyebrow">
                 <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>

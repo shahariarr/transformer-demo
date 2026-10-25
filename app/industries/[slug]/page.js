@@ -6,6 +6,7 @@ import { INDUSTRY_DETAILS } from '@/lib/industries';
 import { PageHero, LinkCard, ArrowRight } from '@/components/PageParts';
 import DetailGallery from '@/components/DetailGallery';
 import Stats from '@/components/Stats';
+import styles from './page.module.css';
 
 const BoltIcon = () => (
   <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true">
@@ -132,30 +133,30 @@ export default async function IndustryPage({ params }) {
             badgeLabel="Sector Application"
           />
 
-          <div className="detail__content">
+          <div className={styles.detailContent}>
             {/* 1. Sector Challenge Intro */}
-            <div className="detail__header-block fade-in-up">
+            <div className={`${styles.detailHeaderBlock} fade-in-up`}>
               <span className="label" style={{ marginBottom: '0.35rem' }}>THE SECTOR CHALLENGE</span>
               <h2>Engineering Demand &amp; Operating Environment</h2>
-              <div className="detail__intro-box">
+              <div className={styles.detailIntroBox}>
                 <p>{d.intro}</p>
               </div>
             </div>
 
             {/* 2. Compliance & Standards Badges */}
             {d.standards && d.standards.length > 0 && (
-              <div className="detail__standards-card fade-in-up" data-delay="100">
-                <div className="detail__standards-header">
+              <div className={`${styles.detailStandardsCard} fade-in-up`} data-delay="100">
+                <div className={styles.detailStandardsHeader}>
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                     <path d="m9 12 2 2 4-4" />
                   </svg>
                   <span>VERIFIED COMPLIANCE &amp; CODES</span>
                 </div>
-                <div className="detail__standards-chips">
+                <div className={styles.detailStandardsChips}>
                   {d.standards.map((std) => (
-                    <span key={std} className="detail__std-chip">
-                      <span className="detail__std-dot" aria-hidden="true" />
+                    <span key={std} className={styles.detailStdChip}>
+                      <span className={styles.detailStdDot} aria-hidden="true" />
                       <span>{std}</span>
                     </span>
                   ))}
@@ -164,7 +165,7 @@ export default async function IndustryPage({ params }) {
             )}
 
             {/* 3. CTAs */}
-            <div className="detail__actions fade-in-up">
+            <div className={`${styles.detailActions} fade-in-up`}>
               <Link className="btn btn--primary" href="/products/">
                 View Products Range <ArrowRight />
               </Link>
@@ -189,11 +190,11 @@ export default async function IndustryPage({ params }) {
             </p>
           </header>
 
-          <div className="industry-specs-grid">
+          <div className={styles.industrySpecsGrid}>
             {/* Technical Criteria Card */}
-            <div className="detail__spec-card fade-in-up" data-delay="100">
-              <div className="detail__spec-card-head">
-                <div className="detail__spec-card-icon detail__spec-card-icon--criteria" aria-hidden="true">
+            <div className={`${styles.detailSpecCard} fade-in-up`} data-delay="100">
+              <div className={styles.detailSpecCardHead}>
+                <div className={`${styles.detailSpecCardIcon} ${styles.detailSpecCardIconCriteria}`} aria-hidden="true">
                   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                     <circle cx="12" cy="12" r="10" />
                     <circle cx="12" cy="12" r="6" />
@@ -201,14 +202,14 @@ export default async function IndustryPage({ params }) {
                   </svg>
                 </div>
                 <div>
-                  <span className="detail__spec-card-label">TECHNICAL CRITERIA</span>
-                  <h3 className="detail__spec-card-title">What the Equipment Must Deliver</h3>
+                  <span className={styles.detailSpecCardLabel}>TECHNICAL CRITERIA</span>
+                  <h3 className={styles.detailSpecCardTitle}>What the Equipment Must Deliver</h3>
                 </div>
               </div>
-              <ul className="detail__spec-list">
+              <ul className={styles.detailSpecList}>
                 {d.needs.map((x) => (
-                  <li key={x} className="detail__spec-item">
-                    <span className="detail__spec-icon" aria-hidden="true">
+                  <li key={x} className={styles.detailSpecItem}>
+                    <span className={styles.detailSpecIcon} aria-hidden="true">
                       <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
@@ -220,23 +221,23 @@ export default async function IndustryPage({ params }) {
             </div>
 
             {/* Turnkey Supply Scope Card */}
-            <div className="detail__spec-card fade-in-up" data-delay="180">
-              <div className="detail__spec-card-head">
-                <div className="detail__spec-card-icon detail__spec-card-icon--scope" aria-hidden="true">
+            <div className={`${styles.detailSpecCard} fade-in-up`} data-delay="180">
+              <div className={styles.detailSpecCardHead}>
+                <div className={`${styles.detailSpecCardIcon} ${styles.detailSpecCardIconScope}`} aria-hidden="true">
                   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                     <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
                     <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
                   </svg>
                 </div>
                 <div>
-                  <span className="detail__spec-card-label">TURNKEY SUPPLY SCOPE</span>
-                  <h3 className="detail__spec-card-title">What We Engineer &amp; Deliver</h3>
+                  <span className={styles.detailSpecCardLabel}>TURNKEY SUPPLY SCOPE</span>
+                  <h3 className={styles.detailSpecCardTitle}>What We Engineer &amp; Deliver</h3>
                 </div>
               </div>
-              <ul className="detail__spec-list">
+              <ul className={styles.detailSpecList}>
                 {d.supply.map((x) => (
-                  <li key={x} className="detail__spec-item">
-                    <span className="detail__spec-icon detail__spec-icon--gold" aria-hidden="true">
+                  <li key={x} className={styles.detailSpecItem}>
+                    <span className={`${styles.detailSpecIcon} ${styles.detailSpecIconGold}`} aria-hidden="true">
                       <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
                         <polyline points="20 6 9 17 4 12" />
                       </svg>

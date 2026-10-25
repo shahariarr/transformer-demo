@@ -36,7 +36,7 @@ export default function Quality({ showWhy = true, showCerts = true, viewAll = tr
     <div className="wrap">
       {/* Top Section: Why Work With BPEL (image collage left, reasons right) */}
       {showWhy ? <div className="why-bpel">
-        <div className="why-bpel__gallery fade-in-left" aria-hidden="true">
+        <div className="why-bpel__gallery" data-animate="slideInLeft" aria-hidden="true">
           <span className="why-bpel__deco"></span>
           <span className="why-bpel__dots"></span>
           <figure className="why-bpel__img why-bpel__img--main">
@@ -58,7 +58,7 @@ export default function Quality({ showWhy = true, showCerts = true, viewAll = tr
         </div>
 
         <div className="why-bpel__content">
-          <div className="why-bpel__intro fade-in-right">
+          <div className="why-bpel__intro" data-animate="slideInRight">
             <p className="label">WHY WORK WITH BPEL</p>
             <h2 className="why-bpel__title">Built in-house. Backed by engineers.</h2>
             <p className="why-bpel__lead">From raw material to final test, every transformer is designed, built and supported by one accountable team — so you get consistent quality, predictable delivery and support for the life of the equipment.</p>
@@ -66,7 +66,7 @@ export default function Quality({ showWhy = true, showCerts = true, viewAll = tr
 
           <div className="why-bpel__grid">
             {WHY_BPEL_CARDS.map((card, i) => (
-              <article className="why-bpel__card fade-in-up" data-delay={i * 90} key={card.title}>
+              <article className="why-bpel__card" data-animate="slideInUp" data-delay={i * 90} key={card.title}>
                 <span className="why-bpel__num" aria-hidden="true">{`0${i + 1}`}</span>
                 <span className="why-bpel__icon-box" aria-hidden="true"><RawSvg markup={card.icon} /></span>
                 <div>
@@ -76,7 +76,8 @@ export default function Quality({ showWhy = true, showCerts = true, viewAll = tr
               </article>
             ))}
           </div>
-          <a href="/contact/" className="why-bpel__btn fade-in-up">
+
+          <a href="/contact/" className="why-bpel__btn" data-animate="slideInUp">
             <span>Talk to an engineer</span>
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
           </a>
@@ -84,7 +85,7 @@ export default function Quality({ showWhy = true, showCerts = true, viewAll = tr
       </div> : null}
 
       {/* Bottom Section: Framed Certificates Gallery */}
-      {showCerts ? <div className="qa-certs-wrap fade-in-up">
+      {showCerts ? <div className="qa-certs-wrap" data-animate="slideInUp">
         <div className="qa-certs-header">
           <div className="qa-certs-titles">
             <h3>Certificates & Test Reports</h3>

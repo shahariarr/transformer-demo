@@ -1,0 +1,8 @@
+/* =========================================================
+   Products Directory Page Styles (CSS Module)
+   app/products/page.module.css
+   ========================================================= */
+
+.productRangeSec {
+  position: relative;
+}

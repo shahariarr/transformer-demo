@@ -1,5 +1,6 @@
 import Faq from '@/components/Faq';
 import { PageHero } from '@/components/PageParts';
+import styles from './page.module.css';
 
 export const metadata = {
   title: 'Technical FAQ',

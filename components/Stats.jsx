@@ -77,7 +77,7 @@ export default function Stats({ items = STATS }) {
 
   return (
     <div className="wrap">
-      <div className="stats-grid" ref={gridRef}>
+      <div className="stats-grid" ref={gridRef} data-animate="slideInUp">
         {items.map((s, i) => (
           <div className="stat-item" data-stat={i} key={s.label}>
             <div className="stat-num" data-target={s.target} data-suffix={s.suffix} data-format={String(s.format)}>
