@@ -12,6 +12,7 @@ export default function Quality({ showWhy = true, showCerts = true, viewAll = tr
 
   const step = () => {
     const track = trackRef.current;
+    if (!track) return 220;
     const card = track.firstElementChild;
     if (!card) return 220;
     return card.offsetWidth + (parseFloat(getComputedStyle(track).gap) || 24);
@@ -19,12 +20,14 @@ export default function Quality({ showWhy = true, showCerts = true, viewAll = tr
 
   const next = () => {
     const track = trackRef.current;
+    if (!track) return;
     if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 10) track.scrollTo({ left: 0, behavior: 'smooth' });
     else track.scrollBy({ left: step(), behavior: 'smooth' });
   };
 
   const prev = () => {
     const track = trackRef.current;
+    if (!track) return;
     if (track.scrollLeft <= 10) track.scrollTo({ left: track.scrollWidth, behavior: 'smooth' });
     else track.scrollBy({ left: -step(), behavior: 'smooth' });
   };
