@@ -239,30 +239,28 @@ export default function BlogDirectory({ posts = [] }) {
               })}
             </div>
 
-            {/* Quick Search */}
-            <div className={styles.searchWrap}>
-              <span className={styles.searchIcon} aria-hidden="true">
-                <SearchIcon />
-              </span>
+            {/* Search Form Cloned from Product Page */}
+            <form
+              className={styles.searchForm}
+              onSubmit={(e) => e.preventDefault()}
+              role="search"
+            >
               <input
                 type="text"
-                placeholder="Search articles..."
-                value={searchQuery}
-                onChange={e => handleSearchChange(e.target.value)}
                 className={styles.searchInput}
+                placeholder="INPUT ARTICLE TITLE"
+                value={searchQuery}
+                onChange={(e) => handleSearchChange(e.target.value)}
                 aria-label="Search articles by title or keyword"
               />
-              {searchQuery && (
-                <button
-                  type="button"
-                  onClick={() => handleSearchChange('')}
-                  className={styles.searchClear}
-                  aria-label="Clear search input"
-                >
-                  &times;
-                </button>
-              )}
-            </div>
+              <button
+                type="submit"
+                className={styles.searchBtn}
+                aria-label="Search articles"
+              >
+                <SearchIcon />
+              </button>
+            </form>
           </div>
 
           {/* Active Filter Notification Bar if searching/filtering */}
