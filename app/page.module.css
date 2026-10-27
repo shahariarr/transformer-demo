@@ -727,18 +727,48 @@
   overflow: hidden;
 }
 
-:global(.pcard__img img) {
+:global(.pcard__img-link) {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  z-index: 1;
+  text-decoration: none;
+}
+
+:global(.pcard__img img),
+:global(.pcard__img-link img) {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
-  transition: transform 0.5s var(--ease);
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), filter 0.45s ease;
+  will-change: transform;
 }
 
-:global(.pcard:hover .pcard__img img) {
-  transform: scale(1.04);
+:global(.pcard__img-overlay) {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.08) 0%, rgba(10, 30, 60, 0.12) 100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+:global(.pcard:hover .pcard__img img),
+:global(.pcard__img-link:hover img) {
+  transform: scale(1.08) translateY(-2px);
+  filter: contrast(1.02) brightness(1.03);
+}
+
+:global(.pcard:hover .pcard__img-overlay),
+:global(.pcard__img-link:hover .pcard__img-overlay) {
+  opacity: 1;
 }
 
 :global(.pcard__badge) {
@@ -4251,7 +4281,7 @@
 }
 
 /* =====================================================================
-   Andeli Outer Swiper Wrap (Replaces pcar__track)
+   Showcase Outer Swiper Wrap (Replaces pcar__track)
    ===================================================================== */
 :global(.outer-swiper-wrap) {
   --bs-theme-color: #006db8;
