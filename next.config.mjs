@@ -11,6 +11,14 @@ const nextConfig = {
       {
         source: '/products/transformers/:slug',
         destination: '/products/:slug/'
+      },
+      {
+        source: '/:slug-product/',
+        destination: '/products/'
+      },
+      {
+        source: '/:slug-product',
+        destination: '/products/'
       }
     ];
   }
