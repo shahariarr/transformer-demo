@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { DATA } from '@/lib/data';
 import SectionHead from './SectionHead';
@@ -11,7 +12,7 @@ const PRODUCTS = [
     title: 'Single Phase Overhead Transformer',
     desc: 'Transformer',
     more: 'LEARN MORE',
-    href: '/single-phase-overhead-transformer-product/',
+    href: '/products/single-phase-overhead-transformer-product/',
     img: '/assets/images/best-selling/single-phase-overhead-transformer.png',
     width: 644,
     height: 500,
@@ -21,37 +22,37 @@ const PRODUCTS = [
     title: '6-10kv Series Oil Immersed Distribution Transformer',
     desc: 'Transformer',
     more: 'LEARN MORE',
-    href: '/6-10kv-scb-series-dry-type-transformer-product/',
-    img: '/assets/images/best-selling/aa-removebg-preview.png',
-    width: 500,
-    height: 500,
-    aspectRatio: '1 / 1'
-  },
-  {
-    title: '6-10kv Series Oil Immersed Transformer',
-    desc: 'Transformer',
-    more: 'LEARN MORE',
-    href: '/6-10kv-series-oil-immersed-distribution-transformer-product/',
+    href: '/products/6-10kv-series-oil-immersed-distribution-transformer-product/',
     img: '/assets/images/best-selling/scb-series-dry-type-transformer.png',
     width: 724,
     height: 562,
     aspectRatio: '724 / 562'
   },
   {
-    title: 'AYB-12/0.4KV-1250',
+    title: '6~10kV SCB Series Dry-Type Transformer',
+    desc: 'Transformer',
+    more: 'LEARN MORE',
+    href: '/products/6-10kv-scb-series-dry-type-transformer-product/',
+    img: '/assets/images/best-selling/aa-removebg-preview.png',
+    width: 500,
+    height: 500,
+    aspectRatio: '1 / 1'
+  },
+  {
+    title: 'AYB Box-Type Substation (10kV Euro-Variable)',
     desc: 'Transformer Substation',
     more: 'LEARN MORE',
-    href: '/ayb-box-type-substation-10kv-euro-variable-product/',
+    href: '/products/ayb-box-type-substation-10kv-euro-variable-product/',
     img: '/assets/images/best-selling/1-transformer-substation.png',
     width: 600,
     height: 467,
     aspectRatio: '600 / 467'
   },
   {
-    title: 'AGCK Type',
+    title: 'AGCK Type Low Voltage Switchgear',
     desc: 'Low Voltage Switchgear',
     more: 'LEARN MORE',
-    href: '/agck-type-low-voltage-withdrawable-switchgear-product/',
+    href: '/products/agck-type-low-voltage-withdrawable-switchgear-product/',
     img: '/assets/images/best-selling/4-low-voltage-switchgear.png',
     width: 600,
     height: 466,
@@ -59,19 +60,19 @@ const PRODUCTS = [
   },
   {
     title: 'ZN63(VS1)-12 Vacuum Circuit Breaker',
-    desc: 'Vacuum Circuit Break',
+    desc: 'Vacuum Circuit Breaker',
     more: 'LEARN MORE',
-    href: '/zn63-vs1-12-vacuum-circuit-breaker-product/',
+    href: '/products/zn63-vs1-12-vacuum-circuit-breaker-product/',
     img: '/assets/images/best-selling/aaa-removebg-preview.png',
     width: 500,
     height: 500,
     aspectRatio: '1 / 1'
   },
   {
-    title: 'FKN12-12(R)',
+    title: 'FKN12-12(R) Air High Voltage Load Break Switch',
     desc: 'Load Switch',
     more: 'LEARN MORE',
-    href: '/fkn12-12-r-air-high-voltage-load-break-switch-with-fuse-product/',
+    href: '/products/fkn12-12-r-air-high-voltage-load-break-switch-with-fuse-product/',
     img: '/assets/images/best-selling/6-load-switch.png',
     width: 600,
     height: 466,
@@ -101,6 +102,8 @@ export default function Products({ viewAll = true, isGrid = false }) {
   const currentPixelOffsetRef = useRef(0);
   const didDragRef = useRef(false);
   const rafIdRef = useRef(null);
+  const hasCapturedRef = useRef(false);
+  const dragStartYRef = useRef(0);
 
   const currentIndexRef = useRef(CENTER_INDEX);
   const slidesPerViewRef = useRef(4);
@@ -208,14 +211,12 @@ export default function Products({ viewAll = true, isGrid = false }) {
     if (e.pointerType === 'mouse' && e.button !== 0) return;
     isDraggingRef.current = true;
     dragStartXRef.current = e.clientX;
+    dragStartYRef.current = e.clientY;
     dragStartTimeRef.current = performance.now();
     dragDeltaRef.current = 0;
     didDragRef.current = false;
+    hasCapturedRef.current = false;
     setIsPaused(true);
-
-    if (trackRef.current) {
-      trackRef.current.dataset.dragging = 'true';
-    }
 
     if (wrapperRef.current) {
       // Capture live computed position so swiping mid-motion never jumps
@@ -225,27 +226,36 @@ export default function Products({ viewAll = true, isGrid = false }) {
       wrapperRef.current.style.transition = 'none';
       wrapperRef.current.style.transform = `translate3d(${matrix.m41}px, 0, 0)`;
     }
-
-    try {
-      e.currentTarget.setPointerCapture(e.pointerId);
-    } catch (_) {}
   };
 
   const onPointerMove = (e) => {
     if (!isDraggingRef.current) return;
-    const delta = e.clientX - dragStartXRef.current;
-    dragDeltaRef.current = delta;
+    const deltaX = e.clientX - dragStartXRef.current;
+    const deltaY = e.clientY - dragStartYRef.current;
+    dragDeltaRef.current = deltaX;
 
-    if (Math.abs(delta) > 4) {
+    // Only engage drag if horizontal movement exceeds 10px (prevents locking normal clicks)
+    if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > Math.abs(deltaY)) {
       didDragRef.current = true;
+      if (!hasCapturedRef.current) {
+        hasCapturedRef.current = true;
+        try {
+          e.currentTarget.setPointerCapture(e.pointerId);
+        } catch (_) {}
+        if (trackRef.current) {
+          trackRef.current.dataset.dragging = 'true';
+        }
+      }
     }
+
+    if (!didDragRef.current) return;
 
     if (rafIdRef.current) {
       cancelAnimationFrame(rafIdRef.current);
     }
     rafIdRef.current = requestAnimationFrame(() => {
       if (!wrapperRef.current || !isDraggingRef.current) return;
-      const currentPx = currentPixelOffsetRef.current + delta;
+      const currentPx = currentPixelOffsetRef.current + deltaX;
       wrapperRef.current.style.transform = `translate3d(${currentPx}px, 0, 0)`;
     });
   };
@@ -260,16 +270,25 @@ export default function Products({ viewAll = true, isGrid = false }) {
 
     if (trackRef.current) {
       delete trackRef.current.dataset.dragging;
-      trackRef.current.dataset.animating = 'true';
+      if (didDragRef.current) {
+        trackRef.current.dataset.animating = 'true';
+      }
     }
 
     try {
-      if (e?.pointerId && e?.currentTarget?.hasPointerCapture?.(e.pointerId)) {
+      if (hasCapturedRef.current && e?.pointerId && e?.currentTarget?.hasPointerCapture?.(e.pointerId)) {
         e.currentTarget.releasePointerCapture(e.pointerId);
       }
     } catch (_) {}
+    hasCapturedRef.current = false;
 
     setIsPaused(false);
+
+    // If it was just a click without dragging, do nothing and let standard click navigate
+    if (!didDragRef.current) {
+      dragDeltaRef.current = 0;
+      return;
+    }
 
     const delta = dragDeltaRef.current;
     const elapsed = Math.max(1, performance.now() - dragStartTimeRef.current);
@@ -330,7 +349,9 @@ export default function Products({ viewAll = true, isGrid = false }) {
     if (didDragRef.current) {
       e.preventDefault();
       e.stopPropagation();
-      didDragRef.current = false;
+      setTimeout(() => {
+        didDragRef.current = false;
+      }, 50);
     }
   };
 
@@ -429,12 +450,17 @@ export default function Products({ viewAll = true, isGrid = false }) {
                   param_loop="1"
                   style={{ width: `${slideWidthPercent}%` }}
                 >
-                  <a
+                  <Link
                     href={item.href}
                     className="item-inner"
                     aria-label={item.title}
                     draggable={false}
-                    onDragStart={(e) => e.preventDefault()}
+                    onClick={(e) => {
+                      if (didDragRef.current) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                      }
+                    }}
                   >
                     <div className="item-img" itemScope itemType="http://schema.org/ImageObject">
                       <img
@@ -462,7 +488,7 @@ export default function Products({ viewAll = true, isGrid = false }) {
                         </div>
                       </div>
                     </div>
-                  </a>
+                  </Link>
                 </div>
               ))}
             </div>

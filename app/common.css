@@ -11298,6 +11298,20 @@ a.btn.btn--light {
   color: var(--primary, #0B5CAB);
 }
 
+.intl-phone-wrapper:focus-within {
+  border-color: var(--primary, #0B5CAB) !important;
+  box-shadow: 0 0 0 4px rgba(11, 92, 171, 0.12) !important;
+}
+
+.intl-phone-flag-btn:hover {
+  background-color: #E2E8F0 !important;
+}
+
+.intl-phone-container.is-invalid .intl-phone-wrapper:focus-within {
+  border-color: #dc2626 !important;
+  box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.16) !important;
+}
+
 /* Expandable Technical Specs */
 .rfq-tech-accordion {
   margin: 0.75rem 0 1.25rem;
@@ -11436,6 +11450,148 @@ a.btn.btn--light {
   font-weight: 700;
   text-decoration: underline;
 }
+
+/* =========================================================
+   RFQ Form Error & Validation States (Vivid Red Highlights)
+   ========================================================= */
+
+/* Error Text Message under Inputs */
+.err,
+p.err {
+  display: flex !important;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.83rem !important;
+  font-weight: 600 !important;
+  color: #dc2626 !important; /* Premium vivid red */
+  margin-top: 0.4rem !important;
+  margin-bottom: 0 !important;
+  line-height: 1.4 !important;
+  transition: all 0.2s ease;
+}
+
+.err:empty,
+p.err:empty {
+  display: none !important;
+}
+
+/* Inline Warning Icon for Error Text */
+.err:not(:empty)::before,
+p.err:not(:empty)::before {
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23dc2626' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' y1='8' x2='12' y2='12'/%3E%3Cline x1='12' y1='16' x2='12.01' y2='16'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+/* Red Highlight on Invalid Inputs, Selects, and Textareas */
+.rfq-input-wrap input[aria-invalid="true"],
+.rfq-input-wrap select[aria-invalid="true"],
+.rfq-textarea-wrap textarea[aria-invalid="true"],
+.field input[aria-invalid="true"],
+.field select[aria-invalid="true"],
+.field textarea[aria-invalid="true"],
+input[aria-invalid="true"],
+select[aria-invalid="true"],
+textarea[aria-invalid="true"] {
+  border-color: #ef4444 !important;
+  background-color: #fef2f2 !important;
+  color: #7f1d1d !important;
+  box-shadow: 0 0 0 1px #ef4444 !important;
+}
+
+/* Red Focus Glow on Invalid Fields */
+.rfq-input-wrap input[aria-invalid="true"]:focus,
+.rfq-input-wrap select[aria-invalid="true"]:focus,
+.rfq-textarea-wrap textarea[aria-invalid="true"]:focus,
+.field input[aria-invalid="true"]:focus,
+.field select[aria-invalid="true"]:focus,
+.field textarea[aria-invalid="true"]:focus,
+input[aria-invalid="true"]:focus,
+select[aria-invalid="true"]:focus,
+textarea[aria-invalid="true"]:focus {
+  border-color: #dc2626 !important;
+  background-color: #ffffff !important;
+  box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.16) !important;
+  outline: none !important;
+}
+
+/* Red Icon on Invalid Inputs */
+.rfq-input-wrap input[aria-invalid="true"] ~ .rfq-input-icon,
+.rfq-input-wrap select[aria-invalid="true"] ~ .rfq-input-icon {
+  color: #ef4444 !important;
+}
+
+/* Required Asterisk */
+.req,
+span.req {
+  color: #dc2626 !important;
+  font-weight: 700 !important;
+  margin-left: 2px;
+}
+
+/* Form Status Feedback Alerts */
+.form__status {
+  padding: 0.95rem 1.25rem;
+  border-radius: 10px;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  margin-top: 1.25rem;
+  display: none;
+  animation: rfqDrawerFade 0.25s ease-out forwards;
+}
+
+.form__status.is-error {
+  display: flex !important;
+  align-items: center;
+  gap: 0.75rem;
+  background: #fef2f2 !important;
+  border: 1.5px solid #fecaca !important;
+  color: #991b1b !important;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.08);
+}
+
+.form__status.is-error::before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23dc2626' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z'/%3E%3Cline x1='12' y1='9' x2='12' y2='13'/%3E%3Cline x1='12' y1='17' x2='12.01' y2='17'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.form__status.is-ok {
+  display: flex !important;
+  align-items: center;
+  gap: 0.75rem;
+  background: #ecfdf5 !important;
+  border: 1.5px solid #a7f3d0 !important;
+  color: #065f46 !important;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.08);
+}
+
+.form__status.is-ok::before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23059669' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 11.08V12a10 10 0 1 1-5.93-9.14'/%3E%3Cpolyline points='22 4 12 14.01 9 11.01'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
 
 /* 3. Direct Contact Sidebar Card */
 .rfq-direct-card {

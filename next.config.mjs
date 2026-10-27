@@ -14,11 +14,11 @@ const nextConfig = {
       },
       {
         source: '/:slug-product/',
-        destination: '/products/'
+        destination: '/products/:slug-product/'
       },
       {
         source: '/:slug-product',
-        destination: '/products/'
+        destination: '/products/:slug-product/'
       }
     ];
   }
