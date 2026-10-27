@@ -335,6 +335,8 @@ export default function ProductSingleView({
                         src={galleryImages[activeImgIndex]}
                         alt={`${productName} View ${activeImgIndex + 1}`}
                         className={styles.activeDisplayImg}
+                        fetchPriority="high"
+                        decoding="async"
                       />
                       <button
                         type="button"
@@ -371,7 +373,7 @@ export default function ProductSingleView({
                           className={`${styles.thumbSlide} ${activeImgIndex === i ? styles.thumbActive : ''}`}
                           onClick={() => setActiveImgIndex(i)}
                         >
-                          <img src={src} alt={`Thumbnail ${i + 1}`} />
+                          <img src={src} alt={`Thumbnail ${i + 1}`} loading="lazy" decoding="async" />
                         </div>
                       ))}
                     </div>

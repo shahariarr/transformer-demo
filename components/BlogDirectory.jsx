@@ -285,7 +285,7 @@ export default function BlogDirectory({ posts = [] }) {
           {gridPosts.length > 0 ? (
             <>
               <div className={styles.grid}>
-                {paginatedPosts.map(post => (
+                {paginatedPosts.map((post, idx) => (
                   <Link
                     key={post.slug}
                     href={`/blog/${post.slug}/`}
@@ -296,7 +296,9 @@ export default function BlogDirectory({ posts = [] }) {
                       <img
                         src={post.image}
                         alt={post.title}
-                        loading="lazy"
+                        loading={idx < 2 ? 'eager' : 'lazy'}
+                        fetchPriority={idx < 2 ? 'high' : 'auto'}
+                        decoding="async"
                         className={styles.cardImg}
                       />
                     </div>
