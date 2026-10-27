@@ -4355,6 +4355,10 @@
   transform: none !important;
 }
 
+:global(.swiper-slide.product-item) {
+  cursor: pointer;
+}
+
 :global(.swiper-slide.product-item:hover) {
   transform: translateY(-50px);
   background: linear-gradient(to top, var(--bs-theme-color, #006db8) 65%, #ffffff 35%);
@@ -4368,6 +4372,7 @@
   justify-content: flex-end;
   text-decoration: none;
   color: inherit;
+  cursor: pointer;
 }
 
 :global(.product-item .item-img) {

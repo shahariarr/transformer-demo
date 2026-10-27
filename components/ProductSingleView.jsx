@@ -2,8 +2,20 @@
 
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
+import { DATA, mailLink } from '@/lib/data';
 import { CATEGORY_TREE, FEATURED_PRODUCTS, ALL_PRODUCTS, norm } from '@/lib/products-catalog';
 import styles from '@/app/products/[slug]/page.module.css';
+import IntlPhoneInput from './IntlPhoneInput';
+import LocationAutocomplete from './LocationAutocomplete';
+
+const Req = () => <span className="req" style={{ color: '#ef4444', marginLeft: '3px' }} aria-hidden="true">*</span>;
+
+const RULES = {
+  name: v => (v?.trim() ? '' : 'Enter your full name.'),
+  email: v => (!v?.trim() ? 'Enter your email address.' : /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) ? '' : 'Enter a valid email address.'),
+  service: v => (v ? '' : 'Choose a product or service.'),
+  message: v => (v?.trim() ? '' : 'Describe your project requirements.')
+};
 
 const ChevronIcon = ({ isOpen }) => (
   <svg
@@ -138,6 +150,64 @@ export default function ProductSingleView({
   const productName = product?.name || 'Single Phase Overhead Transformer';
   const productDesc = product?.desc || 'BPEL power transformers adopt an efficient and energy-saving coil core structure design. Characteristics include compact footprint, reduced low-voltage power supply radius, and reduced distribution line loss. Built with a fully sealed structure, high overload endurance, continuous operation reliability, and low maintenance requirements.';
 
+  // RFQ Technical Inquiry Form State (Cloned from Contact Page)
+  const [rfqErrors, setRfqErrors] = useState({});
+  const [rfqStatus, setRfqStatus] = useState(null);
+  const [showTechSpecs, setShowTechSpecs] = useState(false);
+  const [selectedService, setSelectedService] = useState(productName);
+  const rfqFormRef = useRef(null);
+  const rfqStatusRef = useRef(null);
+
+  useEffect(() => {
+    if (productName) {
+      setSelectedService(productName);
+    }
+  }, [productName]);
+
+  const checkRfq = k => {
+    if (!rfqFormRef.current || !rfqFormRef.current.elements[k]) return true;
+    const msg = RULES[k] ? RULES[k](rfqFormRef.current.elements[k].value) : '';
+    setRfqErrors(e => ({ ...e, [k]: msg }));
+    return !msg;
+  };
+
+  const invalidRfq = k => (k in rfqErrors ? { 'aria-invalid': rfqErrors[k] ? 'true' : 'false' } : {});
+
+  const onRfqSubmit = e => {
+    e.preventDefault();
+    const bad = Object.keys(RULES).filter(k => !checkRfq(k));
+    if (bad.length) {
+      setRfqStatus({ ok: false });
+      if (rfqFormRef.current.elements[bad[0]]) {
+        rfqFormRef.current.elements[bad[0]].focus();
+      }
+      return;
+    }
+
+    const f = rfqFormRef.current.elements;
+    let body = `Name: ${f.name?.value || ''}\n`;
+    body += `Company: ${f.company?.value || 'N/A'}\n`;
+    body += `Email: ${f.email?.value || ''}\n`;
+    body += `Phone: ${f.phone?.value || 'N/A'}\n`;
+    body += `Product / Service: ${f.service?.value || ''}\n`;
+    body += `Location: ${f.location?.value || 'Bangladesh'}\n\n`;
+
+    if (showTechSpecs) {
+      body += `--- TECHNICAL SPECIFICATIONS ---\n`;
+      body += `Capacity: ${f.kva?.value || 'Not specified'}\n`;
+      body += `Primary HV: ${f.primary_v?.value || 'Not specified'}\n`;
+      body += `Secondary LV: ${f.secondary_v?.value || 'Not specified'}\n`;
+      body += `Cooling: ${f.cooling?.value || 'Not specified'}\n`;
+      body += `Tap Changer: ${f.tap_changer?.value || 'Not specified'}\n`;
+      body += `Target Timeline: ${f.timeline?.value || 'Not specified'}\n\n`;
+    }
+
+    body += `Project Requirements / Message:\n${f.message?.value || ''}`;
+
+    setRfqStatus({ ok: true, href: mailLink(body) });
+    requestAnimationFrame(() => rfqStatusRef.current?.focus());
+  };
+
   return (
     <div className={styles.productSinglePage}>
       {/* TWO-COLUMN PAGE CONTAINER */}
@@ -150,7 +220,15 @@ export default function ProductSingleView({
             {/* 1. Products Categories Block */}
             <div className={styles.sidebarBlock}>
               <div className={styles.titleBar}>
-                <h3>Products Categories</h3>
+                <div className={styles.titleWithIcon}>
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                    <rect x="3" y="3" width="7" height="7" />
+                    <rect x="14" y="3" width="7" height="7" />
+                    <rect x="14" y="14" width="7" height="7" />
+                    <rect x="3" y="14" width="7" height="7" />
+                  </svg>
+                  <h3>Products Categories</h3>
+                </div>
               </div>
 
               <ul className={styles.categoryNav}>
@@ -215,7 +293,12 @@ export default function ProductSingleView({
             {/* 2. Featured Products Block */}
             <div className={styles.sidebarBlock}>
               <div className={styles.titleBar}>
-                <h3>Featured Products</h3>
+                <div className={styles.titleWithIcon}>
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                  <h3>Featured Products</h3>
+                </div>
               </div>
               <div className={styles.featuredList}>
                 {FEATURED_PRODUCTS.slice(0, 6).map(fp => (
@@ -307,6 +390,10 @@ export default function ProductSingleView({
 
                 {/* Product Summary */}
                 <div className={styles.productSummary}>
+                  <div className={styles.eyebrowBadge}>
+                    <span className={styles.statusDot} />
+                    <span>{product?.subCategory || product?.category || 'INDUSTRIAL POWER EQUIPMENT'}</span>
+                  </div>
                   <h1 className={styles.productTitle}>{productName}</h1>
                   <div className={styles.productMeta}>
                     <div className={styles.editorText}>
@@ -325,7 +412,16 @@ export default function ProductSingleView({
                   <div className={styles.productBtnWrap}>
                     <button
                       type="button"
-                      onClick={() => setIsModalOpen(true)}
+                      onClick={() => {
+                        const el = document.getElementById('sectionIdForm');
+                        if (el) {
+                          el.scrollIntoView({ behavior: 'smooth' });
+                          const nameInput = el.querySelector('input[name="name"]');
+                          if (nameInput) setTimeout(() => nameInput.focus(), 600);
+                        } else {
+                          setIsModalOpen(true);
+                        }
+                      }}
                       className={`${styles.productBtn} ${styles.btnPrimary}`}
                     >
                       <span>Contact us</span>
@@ -346,6 +442,28 @@ export default function ProductSingleView({
                       </svg>
                     </a>
                   </div>
+
+                  {/* Trust Badges Strip */}
+                  <div className={styles.trustBadges}>
+                    <div className={styles.trustItem}>
+                      <svg viewBox="0 0 20 20" fill="currentColor" width="15" height="15" aria-hidden="true">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      <span>100% Routine Factory Tested & Guaranteed</span>
+                    </div>
+                    <div className={styles.trustItem}>
+                      <svg viewBox="0 0 20 20" fill="currentColor" width="15" height="15" aria-hidden="true">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      <span>Built to ANSI, IEEE & IEC Utility Standards</span>
+                    </div>
+                    <div className={styles.trustItem}>
+                      <svg viewBox="0 0 20 20" fill="currentColor" width="15" height="15" aria-hidden="true">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      <span>Custom Design Drawings & GA Layouts Available</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </section>
@@ -358,14 +476,24 @@ export default function ProductSingleView({
                   className={`${styles.tabBtn} ${activeTab === 'details' ? styles.tabActive : ''}`}
                   onClick={() => setActiveTab('details')}
                 >
-                  product details
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                    <line x1="16" y1="13" x2="8" y2="13" />
+                    <line x1="16" y1="17" x2="8" y2="17" />
+                  </svg>
+                  <span>Product Details</span>
                 </button>
                 <button
                   type="button"
                   className={`${styles.tabBtn} ${activeTab === 'technical' ? styles.tabActive : ''}`}
                   onClick={() => setActiveTab('technical')}
                 >
-                  Technical Data
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                    <path d="M3 3v18h18" />
+                    <path d="m19 9-5 5-4-4-3 3" />
+                  </svg>
+                  <span>Technical Data</span>
                 </button>
               </div>
 
@@ -718,60 +846,338 @@ export default function ProductSingleView({
               </div>
             </section>
 
-            {/* SECTION 3: INQUIRY MESSAGE FORM */}
-            <section className={styles.formSection} id="sectionIdForm">
+            {/* SECTION 3: INQUIRY MESSAGE FORM (Cloned from Contact Page RFQ) */}
+            <section className={styles.formSection} id="sectionIdForm" aria-label="Request for Quote">
               <div className={styles.formOuterWrap}>
-                <h2 className={styles.inquiryTitle}>Leave Your Message</h2>
-                <form className={styles.inquiryForm} onSubmit={handleInquirySubmit}>
-                  {formSubmitted ? (
-                    <div className={styles.formSuccessAlert}>
-                      <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="2.5">
-                        <polyline points="20 6 9 17 4 12" />
-                      </svg>
-                      <h4>Thank You!</h4>
-                      <p>Your message has been sent successfully. Our engineering desk will respond within 24 hours.</p>
+                <div className={styles.inquiryHeader}>
+                  <div className={styles.inquiryBadge}>
+                    <span className={styles.pulseDot} />
+                    REQUEST FOR QUOTE
+                  </div>
+                  <h2 className={styles.inquiryTitle}>Tell Us About Your Project.</h2>
+                  <p className={styles.inquirySubtitle}>
+                    Complete the form below and our power engineering team will evaluate your specifications and respond with preliminary technical data sheets within 24 hours.
+                  </p>
+                </div>
+
+                <div className="contact-rfq-form-card" style={{ border: 'none', boxShadow: 'none', borderRadius: 0, padding: 'clamp(1.5rem, 3vw, 2.5rem)' }}>
+                  <form
+                    id="product-rfq-form"
+                    className="contact-rfq-form"
+                    noValidate
+                    ref={rfqFormRef}
+                    onSubmit={onRfqSubmit}
+                  >
+                    {/* Honeypot spam guard */}
+                    <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', top: 'auto', width: '1px', height: '1px', overflow: 'hidden' }}>
+                      <label htmlFor="product-rfq-website">Website (leave blank)</label>
+                      <input id="product-rfq-website" type="text" name="website" tabIndex="-1" autoComplete="off" defaultValue="" />
                     </div>
-                  ) : (
-                    <>
-                      <div className={styles.formItem}>
-                        <input type="text" name="name" placeholder="* Name" required />
+
+                    <div className="rfq-form-row">
+                      <div className="field">
+                        <label htmlFor="rfq-name">
+                          Full Name <Req />
+                        </label>
+                        <div className="rfq-input-wrap">
+                          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="rfq-input-icon" aria-hidden="true">
+                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                            <circle cx="12" cy="7" r="4" />
+                          </svg>
+                          <input
+                            id="rfq-name"
+                            name="name"
+                            type="text"
+                            required
+                            aria-required="true"
+                            autoComplete="name"
+                            aria-describedby="rfq-name-err"
+                            {...invalidRfq('name')}
+                            onBlur={() => checkRfq('name')}
+                            onChange={() => { if (rfqErrors.name) checkRfq('name'); }}
+                          />
+                        </div>
+                        <p className="err" id="rfq-name-err">{rfqErrors.name || ''}</p>
                       </div>
-                      <div className={styles.formItem}>
-                        <input type="email" name="email" placeholder="* Email (We will reply you via email in 24 hours)" required />
+
+                      <div className="field">
+                        <label htmlFor="rfq-company">Company / Organization</label>
+                        <div className="rfq-input-wrap">
+                          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="rfq-input-icon" aria-hidden="true">
+                            <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" />
+                            <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" />
+                            <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" />
+                            <path d="M10 6h4" /><path d="M10 10h4" /><path d="M10 14h4" /><path d="M10 18h4" />
+                          </svg>
+                          <input
+                            id="rfq-company"
+                            name="company"
+                            type="text"
+                            autoComplete="organization"
+                          />
+                        </div>
                       </div>
-                      <div className={styles.formItem}>
-                        <input type="tel" name="phone" placeholder="Phone/WhatsApp/WeChat (Very important)" />
+                    </div>
+
+                    <div className="rfq-form-row">
+                      <div className="field">
+                        <label htmlFor="rfq-email">
+                          Business Email <Req />
+                        </label>
+                        <div className="rfq-input-wrap">
+                          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="rfq-input-icon" aria-hidden="true">
+                            <rect width="20" height="16" x="2" y="4" rx="2" />
+                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                          </svg>
+                          <input
+                            id="rfq-email"
+                            name="email"
+                            type="email"
+                            required
+                            aria-required="true"
+                            autoComplete="email"
+                            aria-describedby="rfq-email-err"
+                            {...invalidRfq('email')}
+                            onBlur={() => checkRfq('email')}
+                            onChange={() => { if (rfqErrors.email) checkRfq('email'); }}
+                          />
+                        </div>
+                        <p className="err" id="rfq-email-err">{rfqErrors.email || ''}</p>
                       </div>
-                      <div className={styles.formItem}>
-                        <textarea
-                          name="message"
-                          placeholder="* Enter product details such as size, color, materials etc. and other specific requirements to receive an accurate quote."
-                          required
-                          defaultValue={`Inquiry regarding ${productName}: Please provide detailed engineering specifications, GA drawings, and current price quotation.`}
+
+                      <div className="field">
+                        <label htmlFor="rfq-phone">Phone / Mobile Number</label>
+                        <IntlPhoneInput
+                          id="rfq-phone"
+                          name="phone"
+                          defaultCountry="BD"
                         />
                       </div>
-                      <div>
-                        <button type="submit" className={styles.btnSubmit}>
-                          <span>Send</span>
-                          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
-                          </svg>
-                        </button>
+                    </div>
+
+                    <div className="rfq-form-row">
+                      <div className="field">
+                        <label htmlFor="rfq-service">
+                          Product or Service Line <Req />
+                        </label>
+                        <div className="rfq-input-wrap">
+                          <select
+                            id="rfq-service"
+                            name="service"
+                            required
+                            aria-required="true"
+                            aria-describedby="rfq-service-err"
+                            value={selectedService}
+                            onChange={e => {
+                              setSelectedService(e.target.value);
+                              if (rfqErrors.service) checkRfq('service');
+                            }}
+                            onBlur={() => checkRfq('service')}
+                            {...invalidRfq('service')}
+                          >
+                            <option value="">Select Equipment or Service</option>
+                            {productName && (
+                              <option value={productName}>
+                                {productName} (Current Equipment)
+                              </option>
+                            )}
+                            {DATA.products
+                              .filter(p => p.name !== productName)
+                              .map(p => (
+                                <option key={p.name} value={p.name}>
+                                  {p.name}
+                                </option>
+                              ))}
+                            <option value="Package & Containerized Substations">Package &amp; Containerized Substations</option>
+                            <option value="Medium & Low Voltage Switchgear">Medium &amp; Low Voltage Switchgear</option>
+                            <option value="Turnkey Substation EPC & Installation">Turnkey Substation EPC &amp; Installation</option>
+                            <option value="Laboratory FAT Witness & Testing">Laboratory FAT Witness &amp; Testing</option>
+                            <option value="Custom Engineering & Sizing Consultation">Custom Engineering &amp; Sizing Consultation</option>
+                            <option value="Emergency Maintenance & Field Service">Emergency Maintenance &amp; Field Service</option>
+                          </select>
+                        </div>
+                        <p className="err" id="rfq-service-err">{rfqErrors.service || ''}</p>
                       </div>
-                    </>
-                  )}
-                </form>
+
+                      <div className="field">
+                        <label htmlFor="rfq-location">Project Location</label>
+                        <LocationAutocomplete
+                          id="rfq-location"
+                          name="location"
+                          defaultValue="Bangladesh"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="field">
+                      <label htmlFor="rfq-message">
+                        Project Scope &amp; Requirements <Req />
+                      </label>
+                      <div className="rfq-input-wrap rfq-textarea-wrap">
+                        <textarea
+                          id="rfq-message"
+                          name="message"
+                          rows="4"
+                          required
+                          aria-required="true"  
+                          aria-describedby="rfq-message-err"
+                          {...invalidRfq('message')}
+                          onBlur={() => checkRfq('message')}
+                          onChange={() => { if (rfqErrors.message) checkRfq('message'); }}
+                        />
+                      </div>
+                      <p className="err" id="rfq-message-err">{rfqErrors.message || ''}</p>
+                    </div>
+
+                    {/* Expandable Technical Specifications Drawer (Cloned from Contact Page) */}
+                    <div className="rfq-tech-accordion">
+                      <button
+                        type="button"
+                        className="rfq-tech-toggle"
+                        onClick={() => setShowTechSpecs(!showTechSpecs)}
+                        aria-expanded={showTechSpecs}
+                      >
+                        <span className="rfq-tech-toggle__left">
+                          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                            <circle cx="12" cy="12" r="3" />
+                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
+                          </svg>
+                          <span>Add Technical Specifications (Optional)</span>
+                        </span>
+                        <span className={`rfq-tech-chevron ${showTechSpecs ? 'is-open' : ''}`} aria-hidden="true">
+                          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                            <polyline points="6 9 12 15 18 9" />
+                          </svg>
+                        </span>
+                      </button>
+
+                      {showTechSpecs && (
+                        <div className="rfq-tech-drawer">
+                          <p className="rfq-tech-drawer__hint">
+                            Adding engineering parameters helps our technical team calculate magnetic loss, impedance, and preliminary sizing right away.
+                          </p>
+                          <div className="rfq-tech-grid">
+                            <div className="field">
+                              <label htmlFor="rfq-kva">Power Rating (kVA / MVA)</label>
+                              <select id="rfq-kva" name="kva">
+                                <option value="">Select kVA Rating</option>
+                                <option value="25 kVA">25 kVA</option>
+                                <option value="50 kVA">50 kVA</option>
+                                <option value="100 kVA">100 kVA</option>
+                                <option value="250 kVA">250 kVA</option>
+                                <option value="500 kVA">500 kVA</option>
+                                <option value="1000 kVA">1,000 kVA</option>
+                                <option value="2500 kVA">2,500 kVA</option>
+                                <option value="5000 kVA">5,000 kVA</option>
+                                <option value="Custom / Non-standard">Custom / Non-standard</option>
+                              </select>
+                            </div>
+
+                            <div className="field">
+                              <label htmlFor="rfq-primary-v">Primary Voltage (HV)</label>
+                              <select id="rfq-primary-v" name="primary_v">
+                                <option value="">Select Primary Voltage</option>
+                                <option value="11 kV">11 kV</option>
+                                <option value="33 kV">33 kV</option>
+                                <option value="35 kV">35 kV</option>
+                                <option value="Dual HV 11/33 kV">Dual HV 11 / 33 kV</option>
+                                <option value="Custom HV">Custom HV</option>
+                              </select>
+                            </div>
+
+                            <div className="field">
+                              <label htmlFor="rfq-secondary-v">Secondary Voltage (LV)</label>
+                              <select id="rfq-secondary-v" name="secondary_v">
+                                <option value="">Select Secondary Voltage</option>
+                                <option value="0.415 kV (415 V)">0.415 kV (415 V)</option>
+                                <option value="0.400 kV (400 V)">0.400 kV (400 V)</option>
+                                <option value="120/240 V">120/240 V (Single Phase)</option>
+                                <option value="6.6 kV">6.6 kV</option>
+                                <option value="11 kV">11 kV</option>
+                                <option value="Custom LV">Custom LV</option>
+                              </select>
+                            </div>
+
+                            <div className="field">
+                              <label htmlFor="rfq-cooling">Cooling Method</label>
+                              <select id="rfq-cooling" name="cooling">
+                                <option value="">Select Cooling</option>
+                                <option value="ONAN (Oil Natural Air Natural)">ONAN (Standard Natural)</option>
+                                <option value="ONAF (Oil Natural Air Forced)">ONAF (Forced Air)</option>
+                                <option value="AN (Dry Type)">AN (Dry-Type)</option>
+                                <option value="AF (Dry Type Forced)">AF (Dry Type Forced)</option>
+                              </select>
+                            </div>
+
+                            <div className="field">
+                              <label htmlFor="rfq-tap-changer">Tap Changer Regulation</label>
+                              <select id="rfq-tap-changer" name="tap_changer">
+                                <option value="">Select Tap Changer</option>
+                                <option value="Off-Circuit Tap Changer (OCTC ±2.5%, ±5%)">Off-Circuit (OCTC ±2.5%, ±5%)</option>
+                                <option value="On-Load Tap Changer (OLTC) with AVR">On-Load Tap Changer (OLTC) with AVR</option>
+                              </select>
+                            </div>
+
+                            <div className="field">
+                              <label htmlFor="rfq-timeline">Target Delivery Schedule</label>
+                              <select id="rfq-timeline" name="timeline">
+                                <option value="">Select Timeline</option>
+                                <option value="Immediate / Factory Stock">Immediate / Factory Stock</option>
+                                <option value="4 – 8 Weeks">4 – 8 Weeks</option>
+                                <option value="8 – 16 Weeks">8 – 16 Weeks</option>
+                                <option value="Tender Schedule / Future Turnkey">Tender Schedule / Future Turnkey</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="rfq-submit-row">
+                      <button className="btn btn--primary rfq-submit-btn" type="submit">
+                        <span>Submit RFQ &amp; Request Technical Dossier</span>
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                          <path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z" />
+                          <path d="m21.854 2.147-10.94 10.939" />
+                        </svg>
+                      </button>
+                    </div>
+
+                    <div
+                      className={`form__status${rfqStatus ? (rfqStatus.ok ? ' is-ok' : ' is-error') : ''}`}
+                      id="product-rfq-status"
+                      role="status"
+                      tabIndex="-1"
+                      ref={rfqStatusRef}
+                    >
+                      {rfqStatus && !rfqStatus.ok && (
+                        <span>Please complete the required fields highlighted in red and submit again.</span>
+                      )}
+                      {rfqStatus && rfqStatus.ok && (
+                        <>
+                          Your technical inquiry is prepared. In demonstration mode without an active SMTP gateway,{' '}
+                          <a href={rfqStatus.href} className="rfq-mail-action">click here to launch your email client</a>{' '}
+                          with pre-populated technical parameters, or send your single-line diagram directly to{' '}
+                          <strong>tenders@bpel-power.com</strong>.
+                        </>
+                      )}
+                    </div>
+                  </form>
+                </div>
               </div>
             </section>
 
             {/* SECTION 4: RELATED PRODUCTS CAROUSEL */}
             <section className={styles.relatedSection} id="sectionIdRelated">
               <div className={styles.relatedTitleBar}>
-                <h2>
-                  <strong>
-                    <em>Related products</em>
-                  </strong>
-                </h2>
+                <div className={styles.relatedTitleGroup}>
+                  <span className={styles.sectionEyebrow}>RECOMMENDED EQUIPMENT</span>
+                  <h2>
+                    <strong>
+                      <em>Related Products</em>
+                    </strong>
+                  </h2>
+                </div>
                 <div className={styles.carouselNavArrows}>
                   <button type="button" onClick={prevRelated} className={styles.carouselArrow} aria-label="Previous related products">
                     <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
@@ -819,7 +1225,7 @@ export default function ProductSingleView({
           <div className={styles.modalBackdrop} onClick={() => setIsModalOpen(false)} />
           <div className={styles.boxContainer}>
             <div className={styles.boxHeader}>
-              <h4>Leave Your Message</h4>
+              <h4>Request a Quote &amp; Technical Dossier</h4>
               <button
                 type="button"
                 className={styles.closeBtn}
@@ -838,34 +1244,62 @@ export default function ProductSingleView({
                     <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="2.5">
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
-                    <h4>Message Received</h4>
-                    <p>Our engineering team will contact you shortly.</p>
+                    <h4>Inquiry Received</h4>
+                    <p>Our engineering team will contact you shortly with the preliminary dossier.</p>
                   </div>
                 ) : (
                   <>
                     <div className={styles.formItem}>
-                      <input type="text" name="name" placeholder="* Name" required />
+                      <input type="text" name="name" placeholder="* Full Name" required />
                     </div>
                     <div className={styles.formItem}>
-                      <input type="email" name="email" placeholder="* Email (We will reply you via email in 24 hours)" required />
+                      <input type="email" name="email" placeholder="* Business Email" required />
                     </div>
                     <div className={styles.formItem}>
-                      <input type="tel" name="phone" placeholder="Phone/WhatsApp/WeChat (Very important)" />
+                      <input type="tel" name="phone" placeholder="Phone / Mobile Number" />
                     </div>
                     <div className={styles.formItem}>
-                      <input type="text" name="company" placeholder="Company Name" />
+                      <input type="text" name="company" placeholder="Company / Organization" />
+                    </div>
+                    <div className={styles.formItem}>
+                      <select
+                        name="service"
+                        value={selectedService}
+                        onChange={e => setSelectedService(e.target.value)}
+                        style={{
+                          width: '100%',
+                          border: '1.5px solid #e2e8f0',
+                          borderRadius: '10px',
+                          background: '#f8fafc',
+                          padding: '13px 16px',
+                          fontSize: '0.95rem',
+                          color: '#0f172a',
+                          outline: 'none'
+                        }}
+                      >
+                        {productName && <option value={productName}>{productName} (Current Equipment)</option>}
+                        {DATA.products.filter(p => p.name !== productName).map(p => (
+                          <option key={p.name} value={p.name}>{p.name}</option>
+                        ))}
+                        <option value="Package & Containerized Substations">Package &amp; Containerized Substations</option>
+                        <option value="Medium & Low Voltage Switchgear">Medium &amp; Low Voltage Switchgear</option>
+                        <option value="Turnkey Substation EPC & Installation">Turnkey Substation EPC &amp; Installation</option>
+                      </select>
                     </div>
                     <div className={styles.formItem}>
                       <textarea
                         name="message"
-                        placeholder="* Enter product details such as size, color, materials etc. and other specific requirements to receive an accurate quote."
+                        placeholder="* Enter product details such as size, voltage, delivery timeline, etc."
                         required
                         defaultValue={`Inquiry regarding ${productName}: Requesting price quotation, lead time, and technical data sheet.`}
                       />
                     </div>
                     <div>
                       <button type="submit" className={styles.btnSubmit}>
-                        Send
+                        <span>Submit Inquiry</span>
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                          <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+                        </svg>
                       </button>
                     </div>
                   </>

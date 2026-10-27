@@ -5,6 +5,8 @@ import { DATA, waLink, mailLink } from '@/lib/data';
 import { OFFICES } from '@/lib/offices';
 import { useUI } from './UIProvider';
 import SectionHead from './SectionHead';
+import IntlPhoneInput from './IntlPhoneInput';
+import LocationAutocomplete from './LocationAutocomplete';
 
 const Req = () => <span className="req" aria-hidden="true">*</span>;
 
@@ -190,17 +192,11 @@ export default function ContactRFQSection({ preselectedOfficeId }) {
 
               <div className="field">
                 <label htmlFor="phone">Phone / Mobile Number</label>
-                <div className="rfq-input-wrap">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="rfq-input-icon" aria-hidden="true">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                  </svg>
-                  <input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    autoComplete="tel"
-                  />
-                </div>
+                <IntlPhoneInput
+                  id="phone"
+                  name="phone"
+                  defaultCountry="BD"
+                />
               </div>
             </div>
 
@@ -217,7 +213,10 @@ export default function ContactRFQSection({ preselectedOfficeId }) {
                     aria-required="true"
                     aria-describedby="service-err"
                     value={service}
-                    onChange={e => setService(e.target.value)}
+                    onChange={e => {
+                      setService(e.target.value);
+                      if (errors.service) check('service');
+                    }}
                     onBlur={() => check('service')}
                     {...invalid('service')}
                   >
@@ -240,17 +239,11 @@ export default function ContactRFQSection({ preselectedOfficeId }) {
 
               <div className="field">
                 <label htmlFor="location">Project Location</label>
-                <div className="rfq-input-wrap">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="rfq-input-icon" aria-hidden="true">
-                    <path d="M12 21s7-6 7-11a7 7 0 0 0-14 0c0 5 7 11 7 11z" />
-                    <circle cx="12" cy="10" r="2.5" />
-                  </svg>
-                  <input
-                    id="location"
-                    name="location"
-                    type="text"
-                  />
-                </div>
+                <LocationAutocomplete
+                  id="location"
+                  name="location"
+                  defaultValue="Bangladesh"
+                />
               </div>
             </div>
 
