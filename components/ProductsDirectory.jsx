@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useMemo, useEffect, useRef } from 'react';
+import { useState, useMemo, useEffect, useRef, Suspense } from 'react';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import { ALL_PRODUCTS, CATEGORY_TREE, FEATURED_PRODUCTS, norm } from '@/lib/products-catalog';
 import styles from '@/app/products/page.module.css';
 
@@ -42,7 +43,8 @@ const ArrowRightIcon = () => (
 
 const ITEMS_PER_PAGE = 15;
 
-export default function ProductsDirectory() {
+function ProductsDirectoryContent() {
+  const searchParams = useSearchParams();
   const [selectedCatId, setSelectedCatId] = useState('all');
   const [selectedSubCat, setSelectedSubCat] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
@@ -58,6 +60,44 @@ export default function ProductsDirectory() {
 
   const gridTopRef = useRef(null);
 
+  // Sync category & subcategory reactively whenever URL search params change
+  useEffect(() => {
+    if (!searchParams) return;
+    const cat = searchParams.get('category') || searchParams.get('cat');
+    const sub = searchParams.get('sub') || searchParams.get('subcategory');
+
+    if (cat) {
+      const found = CATEGORY_TREE.find(c =>
+        c.id.toLowerCase() === cat.toLowerCase() ||
+        norm(c.title) === norm(cat) ||
+        norm(c.id) === norm(cat)
+      );
+      if (found) {
+        setSelectedCatId(found.id);
+        setOpenAccordion(prev => ({ ...prev, [found.id]: true }));
+      }
+    } else {
+      setSelectedCatId('all');
+    }
+
+    if (sub) {
+      setSelectedSubCat(sub);
+    } else {
+      setSelectedSubCat('all');
+    }
+
+    setCurrentPage(1);
+
+    // Scroll smoothly to products grid when selected from nav
+    if (cat && gridTopRef.current) {
+      setTimeout(() => {
+        const offset = -110;
+        const top = gridTopRef.current.getBoundingClientRect().top + window.pageYOffset + offset;
+        window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+      }, 60);
+    }
+  }, [searchParams]);
+
   const toggleAccordion = (catId) => {
     setOpenAccordion(prev => ({ ...prev, [catId]: !prev[catId] }));
   };
@@ -66,16 +106,34 @@ export default function ProductsDirectory() {
     if (selectedCatId === catId && selectedSubCat === 'all') {
       setSelectedCatId('all');
       setSelectedSubCat('all');
+      if (typeof window !== 'undefined') {
+        window.history.pushState({}, '', '/products/');
+      }
     } else {
       setSelectedCatId(catId);
       setSelectedSubCat('all');
+      if (typeof window !== 'undefined') {
+        const catConfig = CATEGORY_TREE.find(c => c.id === catId);
+        const catName = catConfig ? catConfig.title : catId;
+        window.history.pushState({}, '', `/products/?cat=${encodeURIComponent(catName)}`);
+      }
     }
     setCurrentPage(1);
   };
 
   const handleSelectSubCategory = (catId, subCat) => {
     setSelectedCatId(catId);
-    setSelectedSubCat(subCat === selectedSubCat ? 'all' : subCat);
+    const nextSub = subCat === selectedSubCat ? 'all' : subCat;
+    setSelectedSubCat(nextSub);
+    if (typeof window !== 'undefined') {
+      const catConfig = CATEGORY_TREE.find(c => c.id === catId);
+      const catName = catConfig ? catConfig.title : catId;
+      if (nextSub === 'all') {
+        window.history.pushState({}, '', `/products/?cat=${encodeURIComponent(catName)}`);
+      } else {
+        window.history.pushState({}, '', `/products/?cat=${encodeURIComponent(catName)}&sub=${encodeURIComponent(nextSub)}`);
+      }
+    }
     setCurrentPage(1);
   };
 
@@ -441,5 +499,13 @@ export default function ProductsDirectory() {
 
       </div>
     </div>
+  );
+}
+
+export default function ProductsDirectory() {
+  return (
+    <Suspense fallback={<div className="wrap" style={{ padding: '3rem 0', textAlign: 'center' }}>Loading products catalogue...</div>}>
+      <ProductsDirectoryContent />
+    </Suspense>
   );
 }
