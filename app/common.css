@@ -11242,9 +11242,16 @@ a.btn.btn--light {
 .rfq-input-icon {
   position: absolute;
   left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
   color: #94A3B8;
   pointer-events: none;
   transition: color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .rfq-input-wrap input,
@@ -11262,6 +11269,8 @@ a.btn.btn--light {
 .rfq-input-wrap select {
   padding-right: 2.5rem;
   appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 14px center;
@@ -11293,6 +11302,7 @@ a.btn.btn--light {
   box-shadow: 0 0 0 4px rgba(11, 92, 171, 0.12);
 }
 
+.rfq-input-wrap:focus-within .rfq-input-icon,
 .rfq-input-wrap input:focus ~ .rfq-input-icon,
 .rfq-input-wrap select:focus ~ .rfq-input-icon {
   color: var(--primary, #0B5CAB);
@@ -11458,6 +11468,11 @@ a.btn.btn--light {
 /* Error Text Message under Inputs */
 .err,
 p.err {
+  display: none !important;
+}
+
+.err:not(:empty),
+p.err:not(:empty) {
   display: flex !important;
   align-items: center;
   gap: 0.35rem;
@@ -11468,11 +11483,6 @@ p.err {
   margin-bottom: 0 !important;
   line-height: 1.4 !important;
   transition: all 0.2s ease;
-}
-
-.err:empty,
-p.err:empty {
-  display: none !important;
 }
 
 /* Inline Warning Icon for Error Text */
@@ -11522,6 +11532,8 @@ textarea[aria-invalid="true"]:focus {
 }
 
 /* Red Icon on Invalid Inputs */
+.rfq-input-wrap:has(input[aria-invalid="true"]) .rfq-input-icon,
+.rfq-input-wrap:has(select[aria-invalid="true"]) .rfq-input-icon,
 .rfq-input-wrap input[aria-invalid="true"] ~ .rfq-input-icon,
 .rfq-input-wrap select[aria-invalid="true"] ~ .rfq-input-icon {
   color: #ef4444 !important;

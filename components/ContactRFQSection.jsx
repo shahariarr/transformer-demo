@@ -143,7 +143,7 @@ export default function ContactRFQSection({ preselectedOfficeId }) {
                     onBlur={() => check('name')}
                   />
                 </div>
-                <p className="err" id="name-err">{errors.name || ''}</p>
+                <p className="err" id="name-err">{errors.name || null}</p>
               </div>
 
               <div className="field">
@@ -187,7 +187,7 @@ export default function ContactRFQSection({ preselectedOfficeId }) {
                     onBlur={() => check('email')}
                   />
                 </div>
-                <p className="err" id="email-err">{errors.email || ''}</p>
+                <p className="err" id="email-err">{errors.email || null}</p>
               </div>
 
               <div className="field">
@@ -206,6 +206,11 @@ export default function ContactRFQSection({ preselectedOfficeId }) {
                   Product or Service Line <Req />
                 </label>
                 <div className="rfq-input-wrap">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="rfq-input-icon" aria-hidden="true">
+                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                    <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                    <line x1="12" y1="22.08" x2="12" y2="12" />
+                  </svg>
                   <select
                     id="service"
                     name="service"
@@ -234,7 +239,7 @@ export default function ContactRFQSection({ preselectedOfficeId }) {
                     <option value="Emergency Maintenance & Field Service">Emergency Maintenance &amp; Field Service</option>
                   </select>
                 </div>
-                <p className="err" id="service-err">{errors.service || ''}</p>
+                <p className="err" id="service-err">{errors.service || null}</p>
               </div>
 
               <div className="field">
@@ -263,7 +268,7 @@ export default function ContactRFQSection({ preselectedOfficeId }) {
                   onBlur={() => check('message')}
                 />
               </div>
-              <p className="err" id="message-err">{errors.message || ''}</p>
+              <p className="err" id="message-err">{errors.message || null}</p>
             </div>
 
             {/* Expandable Technical Specifications Drawer */}

@@ -197,6 +197,9 @@ export default function LocationAutocomplete({
             style={{
               position: 'absolute',
               right: '12px',
+              top: '50%',
+              transform: 'translateY(-50%)',
+              zIndex: 2,
               display: 'flex',
               alignItems: 'center',
               color: '#0066CC'
@@ -226,6 +229,9 @@ export default function LocationAutocomplete({
             style={{
               position: 'absolute',
               right: '12px',
+              top: '50%',
+              transform: 'translateY(-50%)',
+              zIndex: 2,
               background: 'none',
               border: 'none',
               cursor: 'pointer',
