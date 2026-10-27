@@ -505,7 +505,7 @@ function HeaderContent() {
             aria-label={`${SITE.name || 'BPEL'} home`}
             onClick={() => handleNavClick(0)}
           >
-            <img src={SITE.logo || '/assets/images/logo.png'} alt={`${SITE.name || 'BPEL'} Logo`} className="brand__logo" />
+            <img src={SITE.logo || '/assets/images/logo.png'} alt={`${SITE.name || 'BPEL'} Logo`} className="brand__logo" fetchPriority="high" decoding="async" />
           </Link>
 
           <nav id="nav" className="nav" aria-label="Primary navigation">

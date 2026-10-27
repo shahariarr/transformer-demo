@@ -60,7 +60,7 @@ export default function Footer() {
           <div className="fgrid">
           {/* Brand */}
           <div className="fgrid__brand" data-reveal="" style={{ '--d': 1 }}>
-            <a href="/" className="flogo"><img src="/assets/images/logo-footer.png" alt="Basic Power Engineering Ltd. (BPEL)" width="1163" height="132" /></a>
+            <a href="/" className="flogo"><img src="/assets/images/logo-footer.png" alt="Basic Power Engineering Ltd. (BPEL)" width="1163" height="132" loading="lazy" decoding="async" /></a>
             <div className="fsocial" aria-label="Follow us">
               <a href="/" className="fsocial__link fsocial__link--fb" aria-label="Facebook" title="Facebook"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M14 8h3V4h-3a5 5 0 0 0-5 5v2H7v4h2v7h4v-7h3l1-4h-4V9a1 1 0 0 1 1-1z" /></svg></a>
               <a href="/" className="fsocial__link fsocial__link--li" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" /><rect x="2" y="9" width="4" height="12" /><circle cx="4" cy="4" r="2" /></svg></a>

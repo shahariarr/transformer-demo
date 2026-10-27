@@ -1,14 +1,17 @@
 import 'animate.css';
 import './common.css';
+import dynamic from 'next/dynamic';
 import UIProvider from '@/components/UIProvider';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import FloatingActions from '@/components/FloatingActions';
-import Chatbot from '@/components/Chatbot';
-import Dialog from '@/components/Dialog';
-import Search from '@/components/Search';
 import Motion from '@/components/Motion';
 import LinkInterceptor from '@/components/LinkInterceptor';
+
+// Dynamically load non-critical overlay components to split chunks and speed up initial page load
+const Chatbot = dynamic(() => import('@/components/Chatbot'));
+const Dialog = dynamic(() => import('@/components/Dialog'));
+const Search = dynamic(() => import('@/components/Search'));
 
 export const metadata = {
   title: {
@@ -31,8 +34,10 @@ export default function RootLayout({ children }) {
       <head>
         {/* Reveal animations hide content until scripts run; without JS everything stays visible */}
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         {/* eslint-disable-next-line @next/next/no-page-custom-font */}
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
       </head>

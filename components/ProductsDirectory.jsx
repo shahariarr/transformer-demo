@@ -420,7 +420,8 @@ function ProductsDirectoryContent() {
                       <img
                         src={p.image}
                         alt={p.name}
-                        loading="lazy"
+                        loading={idx < 3 ? 'eager' : 'lazy'}
+                        fetchPriority={idx < 3 ? 'high' : 'auto'}
                         decoding="async"
                       />
                       <div className={styles.cardArrowBtn} aria-hidden="true">
