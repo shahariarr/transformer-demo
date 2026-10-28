@@ -8,6 +8,7 @@ import { DATA } from '@/lib/data';
 import { NAV_ICONS, NAV_FOOTERS } from '@/lib/nav';
 import { useUI } from './UIProvider';
 import RawSvg from './RawSvg';
+import LanguageSelector from './LanguageSelector';
 
 const normStr = (str) =>
   (str || '')
@@ -540,7 +541,9 @@ function HeaderContent() {
               <QuoteArrow />
             </Link>
 
-              <button className="nav-toggle" aria-expanded={open} aria-controls="nav" aria-label={open ? 'Close menu' : 'Open menu'} onClick={() => setDrawer(!open)}>
+            <LanguageSelector />
+
+            <button className="nav-toggle" aria-expanded={open} aria-controls="nav" aria-label={open ? 'Close menu' : 'Open menu'} onClick={() => setDrawer(!open)}>
               <span></span>
             </button>
           </div>
