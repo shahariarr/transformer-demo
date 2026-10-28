@@ -5,6 +5,8 @@ import { DATA, waLink, mailLink } from '@/lib/data';
 import { OFFICES } from '@/lib/offices';
 import { useUI } from './UIProvider';
 import SectionHead from './SectionHead';
+import IntlPhoneInput from './IntlPhoneInput';
+import LocationAutocomplete from './LocationAutocomplete';
 
 const Req = () => <span className="req" aria-hidden="true">*</span>;
 
@@ -141,7 +143,7 @@ export default function ContactRFQSection({ preselectedOfficeId }) {
                     onBlur={() => check('name')}
                   />
                 </div>
-                <p className="err" id="name-err">{errors.name || ''}</p>
+                <p className="err" id="name-err">{errors.name || null}</p>
               </div>
 
               <div className="field">
@@ -185,22 +187,16 @@ export default function ContactRFQSection({ preselectedOfficeId }) {
                     onBlur={() => check('email')}
                   />
                 </div>
-                <p className="err" id="email-err">{errors.email || ''}</p>
+                <p className="err" id="email-err">{errors.email || null}</p>
               </div>
 
               <div className="field">
                 <label htmlFor="phone">Phone / Mobile Number</label>
-                <div className="rfq-input-wrap">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="rfq-input-icon" aria-hidden="true">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                  </svg>
-                  <input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    autoComplete="tel"
-                  />
-                </div>
+                <IntlPhoneInput
+                  id="phone"
+                  name="phone"
+                  defaultCountry="BD"
+                />
               </div>
             </div>
 
@@ -210,6 +206,11 @@ export default function ContactRFQSection({ preselectedOfficeId }) {
                   Product or Service Line <Req />
                 </label>
                 <div className="rfq-input-wrap">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="rfq-input-icon" aria-hidden="true">
+                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                    <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                    <line x1="12" y1="22.08" x2="12" y2="12" />
+                  </svg>
                   <select
                     id="service"
                     name="service"
@@ -217,7 +218,10 @@ export default function ContactRFQSection({ preselectedOfficeId }) {
                     aria-required="true"
                     aria-describedby="service-err"
                     value={service}
-                    onChange={e => setService(e.target.value)}
+                    onChange={e => {
+                      setService(e.target.value);
+                      if (errors.service) check('service');
+                    }}
                     onBlur={() => check('service')}
                     {...invalid('service')}
                   >
@@ -235,22 +239,16 @@ export default function ContactRFQSection({ preselectedOfficeId }) {
                     <option value="Emergency Maintenance & Field Service">Emergency Maintenance &amp; Field Service</option>
                   </select>
                 </div>
-                <p className="err" id="service-err">{errors.service || ''}</p>
+                <p className="err" id="service-err">{errors.service || null}</p>
               </div>
 
               <div className="field">
                 <label htmlFor="location">Project Location</label>
-                <div className="rfq-input-wrap">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="rfq-input-icon" aria-hidden="true">
-                    <path d="M12 21s7-6 7-11a7 7 0 0 0-14 0c0 5 7 11 7 11z" />
-                    <circle cx="12" cy="10" r="2.5" />
-                  </svg>
-                  <input
-                    id="location"
-                    name="location"
-                    type="text"
-                  />
-                </div>
+                <LocationAutocomplete
+                  id="location"
+                  name="location"
+                  defaultValue="Bangladesh"
+                />
               </div>
             </div>
 
@@ -270,7 +268,7 @@ export default function ContactRFQSection({ preselectedOfficeId }) {
                   onBlur={() => check('message')}
                 />
               </div>
-              <p className="err" id="message-err">{errors.message || ''}</p>
+              <p className="err" id="message-err">{errors.message || null}</p>
             </div>
 
             {/* Expandable Technical Specifications Drawer */}

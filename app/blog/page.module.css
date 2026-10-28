@@ -284,7 +284,7 @@
 
 .catPill {
   padding: 0.5rem 1.15rem;
-  border-radius: 9999px;
+  border-radius: 6px;
   border: 1px solid #E2E8F0;
   background: #FFFFFF;
   color: #64748B;
@@ -309,56 +309,64 @@
   box-shadow: 0 4px 12px rgba(11, 92, 171, 0.25);
 }
 
-.searchWrap {
-  position: relative;
-  min-width: 260px;
+/* SEARCH  */
+.searchForm {
+  display: flex;
+  align-items: center;
+  max-width: 380px;
+  width: 100%;
 }
 
 .searchInput {
-  width: 100%;
-  padding: 0.55rem 2.25rem 0.55rem 2.4rem;
-  border-radius: 9999px;
-  border: 1px solid #E2E8F0;
-  background: #FFFFFF;
-  font-size: 0.84rem;
-  color: #0F172A;
+  flex: 1;
+  height: 42px;
+  padding: 0 14px;
+  border: 1px solid var(--bs-theme-color, #006db8);
+  border-right: none;
+  border-radius: 8px 0 0 8px;
+  font-size: 0.85rem;
+  color: #1e293b;
+  background: #ffffff;
   outline: none;
-  transition: all 0.2s ease;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .searchInput:focus {
-  border-color: #0B5CAB;
-  box-shadow: 0 0 0 3px rgba(11, 92, 171, 0.12);
+  border-color: var(--bs-theme-color, #006db8);
+  box-shadow: 0 0 0 3px rgba(0, 109, 184, 0.15);
 }
 
-.searchIcon {
-  position: absolute;
-  left: 0.85rem;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #94A3B8;
-  pointer-events: none;
+.searchInput::placeholder {
+  color: #94a3b8;
+  text-transform: uppercase;
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+}
+
+.searchBtn {
+  height: 42px;
+  padding: 0 16px;
+  background-color: var(--bs-theme-color, #006db8);
+  border: 1px solid var(--bs-theme-color, #006db8);
+  border-radius: 0 8px 8px 0;
+  color: #ffffff;
+  cursor: pointer;
   display: flex;
   align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+  flex-shrink: 0;
 }
 
-.searchClear {
-  position: absolute;
-  right: 0.75rem;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  color: #94A3B8;
-  font-size: 1.1rem;
-  cursor: pointer;
-  padding: 0 4px;
-  line-height: 1;
+.searchBtn:hover {
+  background-color: #005a99;
 }
 
-.searchClear:hover {
-  color: #0F172A;
+.searchBtn svg {
+  width: 16px;
+  height: 16px;
 }
+
 
 .filterStatus {
   display: flex;

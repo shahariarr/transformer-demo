@@ -1,0 +1,5963 @@
+[
+  {
+    "id": 1,
+    "name": "Single Phase Overhead Transformer",
+    "slug": "single-phase-overhead-transformer-product",
+    "category": "Transformer",
+    "subCategory": "Distribution Transformers",
+    "division": "Transformers",
+    "image": "/assets/images/products/catalog/single-phase-overhead-transformer-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/single-phase-overhead-transformer-1_thumbW600.jpg",
+    "desc": "Discover high-quality single phase overhead transformers for efficient power distribution. Reliable, durable, and designed for optimal performance",
+    "specs": [
+      "Rated Capacity(kVA): Primary rating(V)",
+      "No load: Loss Load Loss",
+      "3: 34500/19920 33000/17321 30000/17320 20000/11547 13800/7967 13200/7620 11000/6350 or others",
+      "5: 25",
+      "10: 50"
+    ],
+    "specRows": [
+      {
+        "key": "Rated Capacity(kVA)",
+        "val": "Primary rating(V)"
+      },
+      {
+        "key": "No load",
+        "val": "Loss Load Loss"
+      },
+      {
+        "key": "3",
+        "val": "34500/19920 33000/17321 30000/17320 20000/11547 13800/7967 13200/7620 11000/6350 or others"
+      },
+      {
+        "key": "5",
+        "val": "25"
+      },
+      {
+        "key": "10",
+        "val": "50"
+      },
+      {
+        "key": "15",
+        "val": "65"
+      },
+      {
+        "key": "25",
+        "val": "105"
+      },
+      {
+        "key": "37.5",
+        "val": "140"
+      },
+      {
+        "key": "50",
+        "val": "180"
+      },
+      {
+        "key": "75",
+        "val": "250"
+      },
+      {
+        "key": "100",
+        "val": "275"
+      },
+      {
+        "key": "167",
+        "val": "455"
+      },
+      {
+        "key": "250",
+        "val": "650"
+      },
+      {
+        "key": "333",
+        "val": "845"
+      },
+      {
+        "key": "Rated Capacity(kVA)",
+        "val": "Overall size(mm)"
+      },
+      {
+        "key": "A",
+        "val": "B"
+      },
+      {
+        "key": "3",
+        "val": "760"
+      },
+      {
+        "key": "5",
+        "val": "780"
+      },
+      {
+        "key": "10",
+        "val": "830"
+      },
+      {
+        "key": "15",
+        "val": "850"
+      },
+      {
+        "key": "25",
+        "val": "880"
+      },
+      {
+        "key": "37.5",
+        "val": "930"
+      },
+      {
+        "key": "50",
+        "val": "980"
+      },
+      {
+        "key": "75",
+        "val": "980"
+      },
+      {
+        "key": "100",
+        "val": "1020"
+      },
+      {
+        "key": "167",
+        "val": "1050"
+      },
+      {
+        "key": "250",
+        "val": "1100"
+      },
+      {
+        "key": "333",
+        "val": "1050"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Transformer",
+      "Distribution Transformers",
+      "single",
+      "phase",
+      "overhead",
+      "transformer"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "6-10kv Series Oil Immersed Distribution Transformer",
+    "slug": "6-10kv-series-oil-immersed-distribution-transformer-product",
+    "category": "Transformer",
+    "subCategory": "Distribution Transformers",
+    "division": "Transformers",
+    "image": "/assets/images/products/catalog/6-10kv-series-oil-immersed-distribution-transformer-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-09/6-10kv-series-oil-immersed-distribution-transformer_thumbW600.jpg",
+    "desc": "Discover high-quality 6-10kV series oil-immersed distribution transformers designed for efficiency and reliability. Ideal for your power distribution needs",
+    "specs": [
+      "Rated Capacity KW.A: Voltage combination and tap range",
+      "HV kV: Tapping range of tigth verttage%",
+      "30: 11 10.5 10 6.3 6",
+      "50: 130",
+      "63: 150"
+    ],
+    "specRows": [
+      {
+        "key": "Rated Capacity KW.A",
+        "val": "Voltage combination and tap range"
+      },
+      {
+        "key": "HV kV",
+        "val": "Tapping range of tigth verttage%"
+      },
+      {
+        "key": "30",
+        "val": "11 10.5 10 6.3 6"
+      },
+      {
+        "key": "50",
+        "val": "130"
+      },
+      {
+        "key": "63",
+        "val": "150"
+      },
+      {
+        "key": "80",
+        "val": "180"
+      },
+      {
+        "key": "100",
+        "val": "200"
+      },
+      {
+        "key": "125",
+        "val": "240"
+      },
+      {
+        "key": "160",
+        "val": "280"
+      },
+      {
+        "key": "200",
+        "val": "340"
+      },
+      {
+        "key": "250",
+        "val": "400"
+      },
+      {
+        "key": "315",
+        "val": "480"
+      },
+      {
+        "key": "400",
+        "val": "570"
+      },
+      {
+        "key": "500",
+        "val": "680"
+      },
+      {
+        "key": "630",
+        "val": "Dyn11 Yyn0"
+      },
+      {
+        "key": "800",
+        "val": "980"
+      },
+      {
+        "key": "1000",
+        "val": "1150"
+      },
+      {
+        "key": "1250",
+        "val": "1360"
+      },
+      {
+        "key": "1600",
+        "val": "1640"
+      },
+      {
+        "key": "2000",
+        "val": "1940"
+      },
+      {
+        "key": "2500",
+        "val": "2290"
+      },
+      {
+        "key": "Rated capacity KV.A",
+        "val": "Voltage combination kV"
+      },
+      {
+        "key": "HV",
+        "val": "LV"
+      },
+      {
+        "key": "200",
+        "val": "10.5 10 6.3 6"
+      },
+      {
+        "key": "250",
+        "val": "400"
+      },
+      {
+        "key": "315",
+        "val": "480"
+      },
+      {
+        "key": "400",
+        "val": "570"
+      },
+      {
+        "key": "500 630",
+        "val": "680"
+      },
+      {
+        "key": "820",
+        "val": "6920"
+      },
+      {
+        "key": "800",
+        "val": "1000"
+      },
+      {
+        "key": "1000",
+        "val": "1180"
+      },
+      {
+        "key": "1250",
+        "val": "1400"
+      },
+      {
+        "key": "1600",
+        "val": "1680"
+      },
+      {
+        "key": "2000",
+        "val": "2010"
+      },
+      {
+        "key": "2500",
+        "val": "2370"
+      },
+      {
+        "key": "3150",
+        "val": "2800"
+      },
+      {
+        "key": "4000",
+        "val": "3450"
+      },
+      {
+        "key": "5000",
+        "val": "10.5 10"
+      },
+      {
+        "key": "6300",
+        "val": "4890"
+      },
+      {
+        "key": "8000",
+        "val": "6520"
+      },
+      {
+        "key": "10000",
+        "val": "7700"
+      },
+      {
+        "key": "Rated capacity KV.A",
+        "val": "Voltage combination kV"
+      },
+      {
+        "key": "HV kV",
+        "val": "Tapping range of highuoltage%"
+      },
+      {
+        "key": "30",
+        "val": "11 10.5 10 6.3 6"
+      },
+      {
+        "key": "50",
+        "val": "100"
+      },
+      {
+        "key": "63",
+        "val": "110"
+      },
+      {
+        "key": "80",
+        "val": "130"
+      },
+      {
+        "key": "100",
+        "val": "150"
+      },
+      {
+        "key": "125",
+        "val": "170"
+      },
+      {
+        "key": "160",
+        "val": "200"
+      },
+      {
+        "key": "200",
+        "val": "240"
+      },
+      {
+        "key": "250",
+        "val": "290"
+      },
+      {
+        "key": "315",
+        "val": "340"
+      },
+      {
+        "key": "400",
+        "val": "410"
+      },
+      {
+        "key": "500",
+        "val": "480"
+      },
+      {
+        "key": "630",
+        "val": "Dyn11 Yyn0"
+      },
+      {
+        "key": "800",
+        "val": "700"
+      },
+      {
+        "key": "1000",
+        "val": "830"
+      },
+      {
+        "key": "1250",
+        "val": "970"
+      },
+      {
+        "key": "1600",
+        "val": "1170"
+      },
+      {
+        "key": "2000",
+        "val": "1360"
+      },
+      {
+        "key": "2500",
+        "val": "1600"
+      },
+      {
+        "key": "Rated Capacty KW.A",
+        "val": "Voltage combination and tap range"
+      },
+      {
+        "key": "HV kV",
+        "val": "Tapping range of highud1300%"
+      },
+      {
+        "key": "30",
+        "val": "11 10.5 10 6.3 6"
+      },
+      {
+        "key": "50",
+        "val": "90"
+      },
+      {
+        "key": "63",
+        "val": "100"
+      },
+      {
+        "key": "80",
+        "val": "115"
+      },
+      {
+        "key": "100",
+        "val": "135"
+      },
+      {
+        "key": "125",
+        "val": "150"
+      },
+      {
+        "key": "160",
+        "val": "180"
+      },
+      {
+        "key": "200",
+        "val": "215"
+      },
+      {
+        "key": "250",
+        "val": "260"
+      },
+      {
+        "key": "315",
+        "val": "305"
+      },
+      {
+        "key": "400",
+        "val": "370"
+      },
+      {
+        "key": "500",
+        "val": "430"
+      },
+      {
+        "key": "630",
+        "val": "510"
+      },
+      {
+        "key": "800",
+        "val": "Dyn11 Yyn0"
+      },
+      {
+        "key": "1000",
+        "val": "745"
+      },
+      {
+        "key": "1250",
+        "val": "870"
+      },
+      {
+        "key": "1600",
+        "val": "1050"
+      },
+      {
+        "key": "2000",
+        "val": "1225"
+      },
+      {
+        "key": "2500",
+        "val": "1440"
+      },
+      {
+        "key": "Rated Capacity W.A",
+        "val": "Voltage combination and tap range"
+      },
+      {
+        "key": "HV kv",
+        "val": "Tapping range of highvokge%"
+      },
+      {
+        "key": "30",
+        "val": "11 10.5 10 6.3 6"
+      },
+      {
+        "key": "50",
+        "val": "80"
+      },
+      {
+        "key": "63",
+        "val": "90"
+      },
+      {
+        "key": "80",
+        "val": "105"
+      },
+      {
+        "key": "100",
+        "val": "120"
+      },
+      {
+        "key": "125",
+        "val": "135"
+      },
+      {
+        "key": "160",
+        "val": "160"
+      },
+      {
+        "key": "200",
+        "val": "190"
+      },
+      {
+        "key": "250",
+        "val": "230"
+      },
+      {
+        "key": "315",
+        "val": "270"
+      },
+      {
+        "key": "400",
+        "val": "330"
+      },
+      {
+        "key": "500",
+        "val": "385"
+      },
+      {
+        "key": "630",
+        "val": "Dyn11 Yyn0"
+      },
+      {
+        "key": "800",
+        "val": "560"
+      },
+      {
+        "key": "1000",
+        "val": "665"
+      },
+      {
+        "key": "1250",
+        "val": "780"
+      },
+      {
+        "key": "1600",
+        "val": "940"
+      },
+      {
+        "key": "2000",
+        "val": "1085"
+      },
+      {
+        "key": "2500",
+        "val": "1280"
+      },
+      {
+        "key": "Rated Capacty KW.A",
+        "val": "Voltage combination and tap range"
+      },
+      {
+        "key": "HV kV",
+        "val": "apping range of high volage9"
+      },
+      {
+        "key": "200 250 315 400 500 630",
+        "val": "6 6.3 10 10.5"
+      },
+      {
+        "key": "350",
+        "val": "3420"
+      },
+      {
+        "key": "420",
+        "val": "4100"
+      },
+      {
+        "key": "510",
+        "val": "4950"
+      },
+      {
+        "key": "600",
+        "val": "5890"
+      },
+      {
+        "key": "770",
+        "val": "7260"
+      },
+      {
+        "key": "800 1000 1250",
+        "val": "900"
+      },
+      {
+        "key": "1000",
+        "val": "10400"
+      },
+      {
+        "key": "1250",
+        "val": "12300"
+      },
+      {
+        "key": "1600 2000 2500",
+        "val": "1540"
+      },
+      {
+        "key": "1820",
+        "val": "18600"
+      },
+      {
+        "key": "2100",
+        "val": "21600"
+      },
+      {
+        "key": "Rated capacinyf kV.A",
+        "val": "Voltage combination and tap range"
+      },
+      {
+        "key": "HV kV",
+        "val": "fapping range of high voltage %"
+      },
+      {
+        "key": "30",
+        "val": "20"
+      },
+      {
+        "key": "50",
+        "val": "130"
+      },
+      {
+        "key": "63",
+        "val": "150"
+      },
+      {
+        "key": "80",
+        "val": "180"
+      },
+      {
+        "key": "100",
+        "val": "200"
+      },
+      {
+        "key": "125",
+        "val": "240"
+      },
+      {
+        "key": "160",
+        "val": "290"
+      },
+      {
+        "key": "200",
+        "val": "340"
+      },
+      {
+        "key": "250",
+        "val": "400"
+      },
+      {
+        "key": "315",
+        "val": "480"
+      },
+      {
+        "key": "400",
+        "val": "570"
+      },
+      {
+        "key": "500",
+        "val": "680"
+      },
+      {
+        "key": "630",
+        "val": "810"
+      },
+      {
+        "key": "800",
+        "val": "980"
+      },
+      {
+        "key": "1000",
+        "val": "1150"
+      },
+      {
+        "key": "1250",
+        "val": "1380"
+      },
+      {
+        "key": "1600",
+        "val": "1660"
+      },
+      {
+        "key": "2000",
+        "val": "1950"
+      },
+      {
+        "key": "2500",
+        "val": "2340"
+      },
+      {
+        "key": "Rated capacty",
+        "val": "Voltage combination and tap range"
+      },
+      {
+        "key": "HV kV",
+        "val": "Tapping range high voltage %"
+      },
+      {
+        "key": "30",
+        "val": "20"
+      },
+      {
+        "key": "50",
+        "val": "120"
+      },
+      {
+        "key": "63",
+        "val": "140"
+      },
+      {
+        "key": "80",
+        "val": "160"
+      },
+      {
+        "key": "100",
+        "val": "180"
+      },
+      {
+        "key": "125",
+        "val": "220"
+      },
+      {
+        "key": "160",
+        "val": "260"
+      },
+      {
+        "key": "200",
+        "val": "310"
+      },
+      {
+        "key": "250",
+        "val": "360"
+      },
+      {
+        "key": "315",
+        "val": "430"
+      },
+      {
+        "key": "400",
+        "val": "510"
+      },
+      {
+        "key": "500",
+        "val": "610"
+      },
+      {
+        "key": "630",
+        "val": "730"
+      },
+      {
+        "key": "800",
+        "val": "880"
+      },
+      {
+        "key": "1000",
+        "val": "1030"
+      },
+      {
+        "key": "1250",
+        "val": "1240"
+      },
+      {
+        "key": "1600",
+        "val": "1490"
+      },
+      {
+        "key": "2000",
+        "val": "1750"
+      },
+      {
+        "key": "2500",
+        "val": "2100"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Transformer",
+      "Distribution Transformers",
+      "10kv",
+      "series",
+      "oil",
+      "immersed",
+      "distribution",
+      "transformer"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "6~10kV SCB Series Dry-Type Transformer",
+    "slug": "6-10kv-scb-series-dry-type-transformer-product",
+    "category": "Transformer",
+    "subCategory": "Distribution Transformers",
+    "division": "Transformers",
+    "image": "/assets/images/products/catalog/6-10kv-scb-series-dry-type-transformer-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/6-10kv-scb-series-resin-insulated-dry-type-transformer_thumbW600.jpg",
+    "desc": "Discover our 6~10kV SCB Series Dry-Type Transformers, featuring efficient performance and durability for reliable power solutions. Inquire now!",
+    "specs": [
+      "Rated capacity kV.A: Voltage combination and tap range",
+      "HV kV: High votage tapping range %",
+      "30: 66.3 6.6 10 10.5 11",
+      "50: 240",
+      "80: 330"
+    ],
+    "specRows": [
+      {
+        "key": "Rated capacity kV.A",
+        "val": "Voltage combination and tap range"
+      },
+      {
+        "key": "HV kV",
+        "val": "High votage tapping range %"
+      },
+      {
+        "key": "30",
+        "val": "66.3 6.6 10 10.5 11"
+      },
+      {
+        "key": "50",
+        "val": "240"
+      },
+      {
+        "key": "80",
+        "val": "330"
+      },
+      {
+        "key": "100",
+        "val": "360"
+      },
+      {
+        "key": "125",
+        "val": "420"
+      },
+      {
+        "key": "160",
+        "val": "480"
+      },
+      {
+        "key": "200",
+        "val": "550"
+      },
+      {
+        "key": "250",
+        "val": "640"
+      },
+      {
+        "key": "315",
+        "val": "790"
+      },
+      {
+        "key": "400",
+        "val": "880"
+      },
+      {
+        "key": "500",
+        "val": "1040"
+      },
+      {
+        "key": "630",
+        "val": "1200"
+      },
+      {
+        "key": "630",
+        "val": "1170"
+      },
+      {
+        "key": "800",
+        "val": "1360"
+      },
+      {
+        "key": "1000",
+        "val": "1590"
+      },
+      {
+        "key": "1250",
+        "val": "1880"
+      },
+      {
+        "key": "1600",
+        "val": "2200"
+      },
+      {
+        "key": "2000",
+        "val": "2740"
+      },
+      {
+        "key": "2500",
+        "val": "3240"
+      },
+      {
+        "key": "1600",
+        "val": "2200"
+      },
+      {
+        "key": "2000",
+        "val": "2740"
+      },
+      {
+        "key": "2500",
+        "val": "3240"
+      },
+      {
+        "key": "Rated capacity KV.A",
+        "val": "Voltage combination and tap range"
+      },
+      {
+        "key": "HV kV",
+        "val": "High voltage tapping range %"
+      },
+      {
+        "key": "30",
+        "val": "6 6.3 6.6 10 10.5 11"
+      },
+      {
+        "key": "50",
+        "val": "195"
+      },
+      {
+        "key": "80",
+        "val": "265"
+      },
+      {
+        "key": "100",
+        "val": "290"
+      },
+      {
+        "key": "125",
+        "val": "340"
+      },
+      {
+        "key": "160",
+        "val": "385"
+      },
+      {
+        "key": "200",
+        "val": "445"
+      },
+      {
+        "key": "250",
+        "val": "515"
+      },
+      {
+        "key": "315",
+        "val": "635"
+      },
+      {
+        "key": "400",
+        "val": "705"
+      },
+      {
+        "key": "500",
+        "val": "835"
+      },
+      {
+        "key": "630",
+        "val": "965"
+      },
+      {
+        "key": "630",
+        "val": "935"
+      },
+      {
+        "key": "800",
+        "val": "1090"
+      },
+      {
+        "key": "1000",
+        "val": "1270"
+      },
+      {
+        "key": "1250",
+        "val": "1500"
+      },
+      {
+        "key": "1600",
+        "val": "1760"
+      },
+      {
+        "key": "2000",
+        "val": "2190"
+      },
+      {
+        "key": "2500",
+        "val": "2590"
+      },
+      {
+        "key": "1600",
+        "val": "1760"
+      },
+      {
+        "key": "2000",
+        "val": "2190"
+      },
+      {
+        "key": "2500",
+        "val": "2590"
+      },
+      {
+        "key": "Rated capacity kV.A",
+        "val": "Voltage combination and tap range"
+      },
+      {
+        "key": "HV kV",
+        "val": "Higth voliage tapping range %"
+      },
+      {
+        "key": "30",
+        "val": "6 6.3 6.6 10 10.5 11"
+      },
+      {
+        "key": "50",
+        "val": "215"
+      },
+      {
+        "key": "80",
+        "val": "295"
+      },
+      {
+        "key": "100",
+        "val": "320"
+      },
+      {
+        "key": "125",
+        "val": "375"
+      },
+      {
+        "key": "160",
+        "val": "430"
+      },
+      {
+        "key": "200",
+        "val": "495"
+      },
+      {
+        "key": "250",
+        "val": "575"
+      },
+      {
+        "key": "315",
+        "val": "705"
+      },
+      {
+        "key": "400",
+        "val": "785"
+      },
+      {
+        "key": "500",
+        "val": "930"
+      },
+      {
+        "key": "630",
+        "val": "1070"
+      },
+      {
+        "key": "630",
+        "val": "1040"
+      },
+      {
+        "key": "800",
+        "val": "1215"
+      },
+      {
+        "key": "1000",
+        "val": "1415"
+      },
+      {
+        "key": "1250",
+        "val": "1670"
+      },
+      {
+        "key": "1600",
+        "val": "1960"
+      },
+      {
+        "key": "2000",
+        "val": "2440"
+      },
+      {
+        "key": "2500",
+        "val": "2880"
+      },
+      {
+        "key": "Rated capacty kV.A",
+        "val": "Voltage combination and tap range"
+      },
+      {
+        "key": "HV kV",
+        "val": "High votage tapping range %"
+      },
+      {
+        "key": "30",
+        "val": "6 6.3 6.6 10 10.5 11"
+      },
+      {
+        "key": "50",
+        "val": "185"
+      },
+      {
+        "key": "80",
+        "val": "250"
+      },
+      {
+        "key": "100",
+        "val": "270"
+      },
+      {
+        "key": "125",
+        "val": "320"
+      },
+      {
+        "key": "160",
+        "val": "365"
+      },
+      {
+        "key": "200",
+        "val": "420"
+      },
+      {
+        "key": "250",
+        "val": "490"
+      },
+      {
+        "key": "315",
+        "val": "600"
+      },
+      {
+        "key": "400",
+        "val": "665"
+      },
+      {
+        "key": "500",
+        "val": "790"
+      },
+      {
+        "key": "630",
+        "val": "910"
+      },
+      {
+        "key": "630",
+        "val": "885"
+      },
+      {
+        "key": "800",
+        "val": "1035"
+      },
+      {
+        "key": "1000",
+        "val": "1205"
+      },
+      {
+        "key": "1250",
+        "val": "1420"
+      },
+      {
+        "key": "1600",
+        "val": "1660"
+      },
+      {
+        "key": "2000",
+        "val": "2075"
+      },
+      {
+        "key": "2500",
+        "val": "2450"
+      },
+      {
+        "key": "Rated capacity kV.A",
+        "val": "Voltage combination and tap range"
+      },
+      {
+        "key": "HV kV",
+        "val": "High volage tapping range %"
+      },
+      {
+        "key": "30",
+        "val": "6 6.3 6.6 10 10.5 11"
+      },
+      {
+        "key": "50",
+        "val": "155"
+      },
+      {
+        "key": "80",
+        "val": "210"
+      },
+      {
+        "key": "100",
+        "val": "230"
+      },
+      {
+        "key": "125",
+        "val": "270"
+      },
+      {
+        "key": "160",
+        "val": "310"
+      },
+      {
+        "key": "200",
+        "val": "360"
+      },
+      {
+        "key": "250",
+        "val": "415"
+      },
+      {
+        "key": "315",
+        "val": "510"
+      },
+      {
+        "key": "400",
+        "val": "570"
+      },
+      {
+        "key": "500",
+        "val": "670"
+      },
+      {
+        "key": "630",
+        "val": "775"
+      },
+      {
+        "key": "630",
+        "val": "750"
+      },
+      {
+        "key": "800",
+        "val": "875"
+      },
+      {
+        "key": "1000",
+        "val": "1020"
+      },
+      {
+        "key": "1250",
+        "val": "1205"
+      },
+      {
+        "key": "1600",
+        "val": "1415"
+      },
+      {
+        "key": "2000",
+        "val": "1760"
+      },
+      {
+        "key": "2500",
+        "val": "2080"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Transformer",
+      "Distribution Transformers",
+      "6~10kv",
+      "scb",
+      "series",
+      "dry",
+      "type",
+      "transformer"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "S9-35kv Series Transformer",
+    "slug": "s9-35kv-series-transformers-product",
+    "category": "Transformer",
+    "subCategory": "Distribution Transformers",
+    "division": "Transformers",
+    "image": "/assets/images/products/catalog/s9-35kv-series-transformers-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/s9-35_thumbW600.jpg",
+    "desc": "Explore our S9-35kV series transformers for efficient power solutions. Durable, reliable, and designed for high performance. Ideal for your energy needs!",
+    "specs": [
+      "Rated capacity (KVA): Voltage combination(kV)",
+      "High voltage (KV): Tapping (%)",
+      "Body: Oil",
+      "50: 35",
+      "100: 305"
+    ],
+    "specRows": [
+      {
+        "key": "Rated capacity (KVA)",
+        "val": "Voltage combination(kV)"
+      },
+      {
+        "key": "High voltage (KV)",
+        "val": "Tapping (%)"
+      },
+      {
+        "key": "Body",
+        "val": "Oil"
+      },
+      {
+        "key": "50",
+        "val": "35"
+      },
+      {
+        "key": "100",
+        "val": "305"
+      },
+      {
+        "key": "125",
+        "val": "340"
+      },
+      {
+        "key": "160",
+        "val": "360"
+      },
+      {
+        "key": "200",
+        "val": "430"
+      },
+      {
+        "key": "250",
+        "val": "510"
+      },
+      {
+        "key": "315",
+        "val": "610"
+      },
+      {
+        "key": "400",
+        "val": "735"
+      },
+      {
+        "key": "500",
+        "val": "870"
+      },
+      {
+        "key": "630",
+        "val": "1040"
+      },
+      {
+        "key": "800",
+        "val": "1250"
+      },
+      {
+        "key": "1000",
+        "val": "1480"
+      },
+      {
+        "key": "1250",
+        "val": "1760"
+      },
+      {
+        "key": "1600",
+        "val": "2130"
+      },
+      {
+        "key": "2000",
+        "val": "2500"
+      },
+      {
+        "key": "2500",
+        "val": "2975"
+      },
+      {
+        "key": "Rated capacity (kVA)",
+        "val": "Voltage combination(kV)"
+      },
+      {
+        "key": "High voltage (KV)",
+        "val": "Tapping (%)"
+      },
+      {
+        "key": "Body",
+        "val": "Oil"
+      },
+      {
+        "key": "800",
+        "val": "35"
+      },
+      {
+        "key": "1000",
+        "val": "1480"
+      },
+      {
+        "key": "1250",
+        "val": "1760"
+      },
+      {
+        "key": "1600",
+        "val": "2130"
+      },
+      {
+        "key": "2000",
+        "val": "2600"
+      },
+      {
+        "key": "2500",
+        "val": "3150"
+      },
+      {
+        "key": "3150",
+        "val": "35 38.5"
+      },
+      {
+        "key": "4000",
+        "val": "4630"
+      },
+      {
+        "key": "5000",
+        "val": "5480"
+      },
+      {
+        "key": "6300",
+        "val": "6570"
+      },
+      {
+        "key": "8000",
+        "val": "±2x2.5"
+      },
+      {
+        "key": "10000",
+        "val": "10600"
+      },
+      {
+        "key": "12500",
+        "val": "12600"
+      },
+      {
+        "key": "16000",
+        "val": "15300"
+      },
+      {
+        "key": "20000",
+        "val": "18090"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Transformer",
+      "Distribution Transformers",
+      "35kv",
+      "series",
+      "transformer"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Triangular Three-Dimensional Coilediron Core Transformer",
+    "slug": "triangular-three-dimensional-coilediron-core-transformer",
+    "category": "Transformer",
+    "subCategory": "Distribution Transformers",
+    "division": "Transformers",
+    "image": "/assets/images/products/catalog/triangular-three-dimensional-coilediron-core-transformer.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2026-04/21fe4367ad276d59e0109c53f282b89f_thumbW600.jpg",
+    "desc": "Triangular core oil‑immersed transformers adopt a gap‑free symmetrical magnetic circuit with equal, shortest flux paths. Lower losses, quiet operation, minimal material waste, aligned with energy‑savi",
+    "specs": [
+      "Rated Capacity(kVA): Body lifting weight kg",
+      "L: B",
+      "30: 150",
+      "50: 210",
+      "63: 260"
+    ],
+    "specRows": [
+      {
+        "key": "Rated Capacity(kVA)",
+        "val": "Body lifting weight kg"
+      },
+      {
+        "key": "L",
+        "val": "B"
+      },
+      {
+        "key": "30",
+        "val": "150"
+      },
+      {
+        "key": "50",
+        "val": "210"
+      },
+      {
+        "key": "63",
+        "val": "260"
+      },
+      {
+        "key": "80",
+        "val": "285"
+      },
+      {
+        "key": "100",
+        "val": "305"
+      },
+      {
+        "key": "125",
+        "val": "375"
+      },
+      {
+        "key": "160",
+        "val": "440"
+      },
+      {
+        "key": "200",
+        "val": "540"
+      },
+      {
+        "key": "250",
+        "val": "605"
+      },
+      {
+        "key": "315",
+        "val": "835"
+      },
+      {
+        "key": "400",
+        "val": "835"
+      },
+      {
+        "key": "500",
+        "val": "1030"
+      },
+      {
+        "key": "630",
+        "val": "1225"
+      },
+      {
+        "key": "800",
+        "val": "1390"
+      },
+      {
+        "key": "1000",
+        "val": "1495"
+      },
+      {
+        "key": "1250",
+        "val": "1880"
+      },
+      {
+        "key": "1600",
+        "val": "2235"
+      },
+      {
+        "key": "2000",
+        "val": "2630"
+      },
+      {
+        "key": "2500",
+        "val": "3175"
+      },
+      {
+        "key": "Rated Capacity(kVA)",
+        "val": "Rated voltage and tap range"
+      },
+      {
+        "key": "HV",
+        "val": "Tap range"
+      },
+      {
+        "key": "30",
+        "val": "3538.5"
+      },
+      {
+        "key": "50",
+        "val": "160"
+      },
+      {
+        "key": "80",
+        "val": "220"
+      },
+      {
+        "key": "100",
+        "val": "230"
+      },
+      {
+        "key": "125",
+        "val": "270"
+      },
+      {
+        "key": "160",
+        "val": "280"
+      },
+      {
+        "key": "200",
+        "val": "340"
+      },
+      {
+        "key": "250",
+        "val": "400"
+      },
+      {
+        "key": "315",
+        "val": "480"
+      },
+      {
+        "key": "400",
+        "val": "580"
+      },
+      {
+        "key": "500",
+        "val": "680"
+      },
+      {
+        "key": "630",
+        "val": "830"
+      },
+      {
+        "key": "800",
+        "val": "980"
+      },
+      {
+        "key": "1000",
+        "val": "1150"
+      },
+      {
+        "key": "1250",
+        "val": "1400"
+      },
+      {
+        "key": "1600",
+        "val": "1690"
+      },
+      {
+        "key": "2000",
+        "val": "1990"
+      },
+      {
+        "key": "2500",
+        "val": "2360"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Transformer",
+      "Distribution Transformers",
+      "triangular",
+      "three",
+      "dimensional",
+      "coilediron",
+      "core",
+      "transformer"
+    ]
+  },
+  {
+    "id": 6,
+    "name": "ZW32-12 Type Outdoor Vacuum Circuit Breaker",
+    "slug": "zw32-12-type-outdoor-vacuum-circuit-breaker-product",
+    "category": "Medium and High Voltage",
+    "subCategory": "Vacuum Circuit Breakers",
+    "division": "Medium Voltage",
+    "image": "/assets/images/products/catalog/zw32-12-type-outdoor-vacuum-circuit-breaker-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/1-zw32-12-1_thumbW600.jpg",
+    "desc": "Discover the ZW32-12 Type Outdoor High Voltage Vacuum Circuit Breaker, ideal for reliable, efficient protection in outdoor electrical systems. Explore its features now!",
+    "specs": [
+      "No.: ltem",
+      "1: Rated voltage",
+      "2: Rated frequency",
+      "3: Rated current",
+      "4: Rated short-circuit breaking current"
+    ],
+    "specRows": [
+      {
+        "key": "No.",
+        "val": "ltem"
+      },
+      {
+        "key": "1",
+        "val": "Rated voltage"
+      },
+      {
+        "key": "2",
+        "val": "Rated frequency"
+      },
+      {
+        "key": "3",
+        "val": "Rated current"
+      },
+      {
+        "key": "4",
+        "val": "Rated short-circuit breaking current"
+      },
+      {
+        "key": "5",
+        "val": "Rated peak withstand current"
+      },
+      {
+        "key": "6",
+        "val": "Rated short-time withstand current (4 s)"
+      },
+      {
+        "key": "7",
+        "val": "Rated short circuit close current (peak)"
+      },
+      {
+        "key": "8",
+        "val": "Mechanical life"
+      },
+      {
+        "key": "9",
+        "val": "Rated short open circuit current switching frequency"
+      },
+      {
+        "key": "10",
+        "val": "1 min power frequency withstand voltage (wet) (dry) alternate with,on/fracture"
+      },
+      {
+        "key": "11",
+        "val": "Lightning impulse withstand voltage (peak) relative to ground/fracture"
+      },
+      {
+        "key": "12",
+        "val": "Secondary loop 1 min power frequency withstand voltage"
+      },
+      {
+        "key": "2.interrupter",
+        "val": "3.insulation tube"
+      },
+      {
+        "key": "4.next outlet",
+        "val": "5.conductive clip"
+      },
+      {
+        "key": "6.soft link",
+        "val": "7.insulation rod"
+      },
+      {
+        "key": "8.contact pressure spring",
+        "val": "9.tripping spring"
+      },
+      {
+        "key": "10.driver board",
+        "val": "11.body output shaft"
+      },
+      {
+        "key": "12.actuator",
+        "val": "13.body box"
+      },
+      {
+        "key": "14.CT",
+        "val": "1.Operating handle"
+      },
+      {
+        "key": "2.Isolation spindle",
+        "val": "3.manual cut-off circuit breaker handle"
+      },
+      {
+        "key": "4.story energy circuit breaker handle",
+        "val": "5.cut-off instructions"
+      },
+      {
+        "key": "6.wring plug",
+        "val": "7.CT"
+      },
+      {
+        "key": "8.insulators",
+        "val": "9.insolation rack"
+      },
+      {
+        "key": "10.insulation rod",
+        "val": "11.wring board(inlet side)"
+      },
+      {
+        "key": "12.isolated blade",
+        "val": "13.wring board(outlet side)"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Medium and High Voltage",
+      "Vacuum Circuit Breakers",
+      "zw32",
+      "type",
+      "outdoor",
+      "vacuum",
+      "circuit",
+      "breaker"
+    ]
+  },
+  {
+    "id": 7,
+    "name": "ZW7-40.5 Outdoor Vacuum Circuit Breaker",
+    "slug": "zw7-405-outdoor-vacuum-circuit-breaker-product",
+    "category": "Medium and High Voltage",
+    "subCategory": "Vacuum Circuit Breakers",
+    "division": "Medium Voltage",
+    "image": "/assets/images/products/catalog/zw7-405-outdoor-vacuum-circuit-breaker-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/1-zw7-40-5-1_thumbW600.jpg",
+    "desc": "Discover the ZW7-40.5 Outdoor Vacuum Circuit Breaker: reliable performance, superior safety, and excellent durability for your power needs",
+    "specs": [
+      "No.: ltem",
+      "1: Rated voltage",
+      "2: Rated current",
+      "3: Rated frequency",
+      "4: Rated short-circuit breaking current(valid)"
+    ],
+    "specRows": [
+      {
+        "key": "No.",
+        "val": "ltem"
+      },
+      {
+        "key": "1",
+        "val": "Rated voltage"
+      },
+      {
+        "key": "2",
+        "val": "Rated current"
+      },
+      {
+        "key": "3",
+        "val": "Rated frequency"
+      },
+      {
+        "key": "4",
+        "val": "Rated short-circuit breaking current(valid)"
+      },
+      {
+        "key": "5",
+        "val": "Rated short-circuit making current(peak)"
+      },
+      {
+        "key": "6",
+        "val": "Rated peak withstand current"
+      },
+      {
+        "key": "7",
+        "val": "4S Rated short time tolerance current"
+      },
+      {
+        "key": "8",
+        "val": "1 min power frequency withstand voltage(valid)"
+      },
+      {
+        "key": "9",
+        "val": "Lightning shock pressure(peak)"
+      },
+      {
+        "key": "10",
+        "val": "Rated operating sequence"
+      },
+      {
+        "key": "11",
+        "val": "Rated short open circuit current switch frequency"
+      },
+      {
+        "key": "12",
+        "val": "Operating mechanism rated switching voltage"
+      },
+      {
+        "key": "13",
+        "val": "weight"
+      },
+      {
+        "key": "No.",
+        "val": "ltem"
+      },
+      {
+        "key": "1",
+        "val": "Arcing chamber contact clearance"
+      },
+      {
+        "key": "2",
+        "val": "Arcing chamber Super stroke"
+      },
+      {
+        "key": "3",
+        "val": "Phases center distance"
+      },
+      {
+        "key": "4",
+        "val": "Arcing chamber Contact switching bounce time"
+      },
+      {
+        "key": "5",
+        "val": "Three phase points, closing not synchronism"
+      },
+      {
+        "key": "6",
+        "val": "Average closing speed"
+      },
+      {
+        "key": "7",
+        "val": "Average opening speed"
+      },
+      {
+        "key": "8",
+        "val": "Closing time"
+      },
+      {
+        "key": "9",
+        "val": "Opening time"
+      },
+      {
+        "key": "10",
+        "val": "Each phase main loop resistance(without CT)"
+      },
+      {
+        "key": "11",
+        "val": "Action contact allowed to wear accumulative thickness"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Medium and High Voltage",
+      "Vacuum Circuit Breakers",
+      "zw7",
+      "40.5",
+      "outdoor",
+      "vacuum",
+      "circuit",
+      "breaker"
+    ]
+  },
+  {
+    "id": 8,
+    "name": "ZW8-12 Vacuum Circuit Breaker",
+    "slug": "zw8-12-vacuum-circuit-breaker-product",
+    "category": "Medium and High Voltage",
+    "subCategory": "Vacuum Circuit Breakers",
+    "division": "Medium Voltage",
+    "image": "/assets/images/products/catalog/zw8-12-vacuum-circuit-breaker-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/1-zw8-12-1_thumbW600.jpg",
+    "desc": "Discover the ZW8-12 Vacuum Circuit Breaker for reliable performance and safety in power systems. Enhance your electrical solutions today!",
+    "specs": [
+      "No.: ltem",
+      "6.3kA: 12.5kA",
+      "1: Rated voltage",
+      "2: Maximum working voltage",
+      "3: Rated current"
+    ],
+    "specRows": [
+      {
+        "key": "No.",
+        "val": "ltem"
+      },
+      {
+        "key": "6.3kA",
+        "val": "12.5kA"
+      },
+      {
+        "key": "1",
+        "val": "Rated voltage"
+      },
+      {
+        "key": "2",
+        "val": "Maximum working voltage"
+      },
+      {
+        "key": "3",
+        "val": "Rated current"
+      },
+      {
+        "key": "4",
+        "val": "Rated short circuit load dropout current"
+      },
+      {
+        "key": "5",
+        "val": "Rated short-circuit making current"
+      },
+      {
+        "key": "6",
+        "val": "Rated peak withstand current"
+      },
+      {
+        "key": "7",
+        "val": "Rated short time 1 min tolerance current"
+      },
+      {
+        "key": "8",
+        "val": "Rated insulation level"
+      },
+      {
+        "key": "Lightning shock pressure",
+        "val": "75"
+      },
+      {
+        "key": "9",
+        "val": "Rated operating sequence"
+      },
+      {
+        "key": "10",
+        "val": "Institutions life"
+      },
+      {
+        "key": "11",
+        "val": "Rated short open circuit current switch frequency"
+      },
+      {
+        "key": "12",
+        "val": "Operating mechanism rated switching voltage"
+      },
+      {
+        "key": "13",
+        "val": "Operating mechanism rated points brake current"
+      },
+      {
+        "key": "14",
+        "val": "Contact clearance"
+      },
+      {
+        "key": "15",
+        "val": "Super stroke (contact spring compression length)"
+      },
+      {
+        "key": "16",
+        "val": "Three phase points, closing not synchronism"
+      },
+      {
+        "key": "17",
+        "val": "Contact switching bounce time"
+      },
+      {
+        "key": "18",
+        "val": "Average opening speed"
+      },
+      {
+        "key": "19",
+        "val": "Average closing speed"
+      },
+      {
+        "key": "20",
+        "val": "Opening time"
+      },
+      {
+        "key": "The minimum operating voltage",
+        "val": "0.03-0.06"
+      },
+      {
+        "key": "21",
+        "val": "Closing time"
+      },
+      {
+        "key": "22",
+        "val": "Each phase main loop resistance"
+      },
+      {
+        "key": "23",
+        "val": "Action contact allowed to wear accumulative thickness"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Medium and High Voltage",
+      "Vacuum Circuit Breakers",
+      "zw8",
+      "vacuum",
+      "circuit",
+      "breaker"
+    ]
+  },
+  {
+    "id": 9,
+    "name": "ZN28-12 Vacuum Circuit Breaker",
+    "slug": "zn28-12-vacuum-circuit-breaker-product",
+    "category": "Medium and High Voltage",
+    "subCategory": "Vacuum Circuit Breakers",
+    "division": "Medium Voltage",
+    "image": "/assets/images/products/catalog/zn28-12-vacuum-circuit-breaker-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/1-zn28-a-12-1_thumbW600.jpg",
+    "desc": "Discover the ZN28-12 Series Vacuum Circuit Breaker for reliable protection and efficient performance in electrical systems. Perfect for your safety needs!",
+    "specs": [
+      "Item: Unit",
+      "Rated voltage: kV",
+      "Rated current: A",
+      "Rated short-circuit breaking current: KA",
+      "Rated peak withstand current(peak): kA"
+    ],
+    "specRows": [
+      {
+        "key": "Item",
+        "val": "Unit"
+      },
+      {
+        "key": "Rated voltage",
+        "val": "kV"
+      },
+      {
+        "key": "Rated current",
+        "val": "A"
+      },
+      {
+        "key": "Rated short-circuit breaking current",
+        "val": "KA"
+      },
+      {
+        "key": "Rated peak withstand current(peak)",
+        "val": "kA"
+      },
+      {
+        "key": "Rated thermo stability current(valid)",
+        "val": "kA"
+      },
+      {
+        "key": "Rated thermo stability time",
+        "val": "s"
+      },
+      {
+        "key": "Breaking time CD10 magnetic control mechanism",
+        "val": "ms"
+      },
+      {
+        "key": "Power frequency withstand voltage (1 min)",
+        "val": "kV"
+      },
+      {
+        "key": "Impulse withstand voltage",
+        "val": "kV"
+      },
+      {
+        "key": "Mechanical life",
+        "val": "times"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Medium and High Voltage",
+      "Vacuum Circuit Breakers",
+      "zn28",
+      "vacuum",
+      "circuit",
+      "breaker"
+    ]
+  },
+  {
+    "id": 10,
+    "name": "ZN63(VS1)-12 Vacuum Circuit Breaker",
+    "slug": "zn63-vs1-12-vacuum-circuit-breaker-product",
+    "category": "Medium and High Voltage",
+    "subCategory": "Vacuum Circuit Breakers",
+    "division": "Medium Voltage",
+    "image": "/assets/images/products/catalog/zn63-vs1-12-vacuum-circuit-breaker-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/1-zn63-vs1-12-1_thumbW600.jpg",
+    "desc": "Discover the ZN63(VS1)-12 Vacuum Circuit Breaker for reliable performance and safety in power distribution. Ideal for modern electrical systems",
+    "specs": [
+      "No.: ltem",
+      "1: Rated voltage",
+      "2: High test operating voltage",
+      "3: Rated current",
+      "4: Rated short-circuit breaking current"
+    ],
+    "specRows": [
+      {
+        "key": "No.",
+        "val": "ltem"
+      },
+      {
+        "key": "1",
+        "val": "Rated voltage"
+      },
+      {
+        "key": "2",
+        "val": "High test operating voltage"
+      },
+      {
+        "key": "3",
+        "val": "Rated current"
+      },
+      {
+        "key": "4",
+        "val": "Rated short-circuit breaking current"
+      },
+      {
+        "key": "5",
+        "val": "Rated short-circuit closing current"
+      },
+      {
+        "key": "6",
+        "val": "Rated peak withstand current"
+      },
+      {
+        "key": "7",
+        "val": "4Srated short time withstand current"
+      },
+      {
+        "key": "8",
+        "val": "Rated insulation level"
+      },
+      {
+        "key": "9",
+        "val": "Rated operating order"
+      },
+      {
+        "key": "10",
+        "val": "Mechanical life"
+      },
+      {
+        "key": "11",
+        "val": "Rated short-circult breaking current breaking times"
+      },
+      {
+        "key": "12",
+        "val": "Actuator Rated closing voltage(DC)"
+      },
+      {
+        "key": "13",
+        "val": "Actuator Rated opening voltage(DC)"
+      },
+      {
+        "key": "14",
+        "val": "Clearance between opencontacts"
+      },
+      {
+        "key": "15",
+        "val": "Supper Travel(Compressed length of contact springs)"
+      },
+      {
+        "key": "16",
+        "val": "Non corresponding time period between tri-phase opening and closing"
+      },
+      {
+        "key": "17",
+        "val": "Bounce time of closing contacts"
+      },
+      {
+        "key": "18",
+        "val": "Average time of opening"
+      },
+      {
+        "key": "19",
+        "val": "Average time of closing"
+      },
+      {
+        "key": "20",
+        "val": "Opening time"
+      },
+      {
+        "key": "21",
+        "val": "Closing time"
+      },
+      {
+        "key": "22",
+        "val": "Main loop resistance of each phase"
+      },
+      {
+        "key": "23",
+        "val": "Allowed acumination thickness between moving contact and static contact"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Medium and High Voltage",
+      "Vacuum Circuit Breakers",
+      "zn63(vs1)",
+      "vacuum",
+      "circuit",
+      "breaker"
+    ]
+  },
+  {
+    "id": 11,
+    "name": "ZN85-40.5 Indoor Vacuum Circuit Breaker",
+    "slug": "zn85-405-indoor-vacuum-circuit-breaker-product",
+    "category": "Medium and High Voltage",
+    "subCategory": "Vacuum Circuit Breakers",
+    "division": "Medium Voltage",
+    "image": "/assets/images/products/catalog/zn85-405-indoor-vacuum-circuit-breaker-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/1-zn85-40-5g-3av3-1_thumbW600.jpg",
+    "desc": "Discover the ZN85-40.5 Indoor Vacuum Circuit Breaker for reliable performance and safety in high-voltage applications. Buy now for superior protection!",
+    "specs": [
+      "Item: Unit",
+      "Rated voltage: kV",
+      "Lighting impulse withstand voltage (peak): kV",
+      "Rated frequency: Hz",
+      "Rated current: A"
+    ],
+    "specRows": [
+      {
+        "key": "Item",
+        "val": "Unit"
+      },
+      {
+        "key": "Rated voltage",
+        "val": "kV"
+      },
+      {
+        "key": "Lighting impulse withstand voltage (peak)",
+        "val": "kV"
+      },
+      {
+        "key": "Rated frequency",
+        "val": "Hz"
+      },
+      {
+        "key": "Rated current",
+        "val": "A"
+      },
+      {
+        "key": "Rated short-time withstand current",
+        "val": "kV"
+      },
+      {
+        "key": "Rated peak withstand current",
+        "val": "kV"
+      },
+      {
+        "key": "Rated short circuit duration",
+        "val": "S"
+      },
+      {
+        "key": "Rated short-circuit breaking current",
+        "val": "kA"
+      },
+      {
+        "key": "Rated short-circuit making current",
+        "val": "kA"
+      },
+      {
+        "key": "Break time",
+        "val": "ms"
+      },
+      {
+        "key": "Rated short-circuit breaking current times",
+        "val": "times"
+      },
+      {
+        "key": "Rated breaking current of capacitor bank",
+        "val": "A"
+      },
+      {
+        "key": "Rated back-back capacitor bank drop-out current",
+        "val": "A"
+      },
+      {
+        "key": "Rated operating voltage",
+        "val": "V"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Medium and High Voltage",
+      "Vacuum Circuit Breakers",
+      "zn85",
+      "40.5",
+      "indoor",
+      "vacuum",
+      "circuit",
+      "breaker"
+    ]
+  },
+  {
+    "id": 12,
+    "name": "FKN12-12(R)Air High Voltage Load Break Switch With Fuse",
+    "slug": "fkn12-12-r-air-high-voltage-load-break-switch-with-fuse-product",
+    "category": "Medium and High Voltage",
+    "subCategory": "Load Switches",
+    "division": "Medium Voltage",
+    "image": "/assets/images/products/catalog/fkn12-12-r-air-high-voltage-load-break-switch-with-fuse-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/1-fkn12-12-r-1_thumbW600.jpg",
+    "desc": "Discover the FKN12-12(R) Air High Voltage Load Break Switch with Fuse—reliable performance, enhanced safety, and ideal for efficient power management solutions",
+    "specs": [
+      "No.: ltem",
+      "1: Rated voltage",
+      "2: Rated frenquence",
+      "3: Rated amper",
+      "4: Thunder voltage"
+    ],
+    "specRows": [
+      {
+        "key": "No.",
+        "val": "ltem"
+      },
+      {
+        "key": "1",
+        "val": "Rated voltage"
+      },
+      {
+        "key": "2",
+        "val": "Rated frenquence"
+      },
+      {
+        "key": "3",
+        "val": "Rated amper"
+      },
+      {
+        "key": "4",
+        "val": "Thunder voltage"
+      },
+      {
+        "key": "5",
+        "val": "1min Voltage"
+      },
+      {
+        "key": "6",
+        "val": "Amper"
+      },
+      {
+        "key": "7",
+        "val": "Stable current"
+      },
+      {
+        "key": "8",
+        "val": "Current"
+      },
+      {
+        "key": "9",
+        "val": "Breaking current"
+      },
+      {
+        "key": "10",
+        "val": "Moving current"
+      },
+      {
+        "key": "11",
+        "val": "Breaking amper"
+      },
+      {
+        "key": "12",
+        "val": "Transformer capacity"
+      },
+      {
+        "key": "13",
+        "val": "Power charge current"
+      },
+      {
+        "key": "14",
+        "val": "Breaking times"
+      },
+      {
+        "key": "15",
+        "val": "Breaking time"
+      },
+      {
+        "key": "16",
+        "val": "Current"
+      },
+      {
+        "key": "17",
+        "val": "Earthing switch voltage"
+      },
+      {
+        "key": "18",
+        "val": "Motor voltage"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Medium and High Voltage",
+      "Load Switches",
+      "fkn12",
+      "12(r)air",
+      "high",
+      "voltage",
+      "load",
+      "break",
+      "switch",
+      "with",
+      "fuse"
+    ]
+  },
+  {
+    "id": 13,
+    "name": "FZ(R)N25-12 Indoor AC High Voltage Vacuum Load Switch",
+    "slug": "fz-r-n25-12-indoor-ac-high-voltage-vacuum-load-switch-product",
+    "category": "Medium and High Voltage",
+    "subCategory": "Vacuum Circuit Breakers",
+    "division": "Medium Voltage",
+    "image": "/assets/images/products/catalog/fz-r-n25-12-indoor-ac-high-voltage-vacuum-load-switch-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/1-fz-r-n25-12-1_thumbW600.jpg",
+    "desc": "Discover the FZ(R)N25-12 Indoor AC High Voltage Vacuum Load Switch for reliable performance and safety in your electrical systems. Ideal for modern setups!",
+    "specs": [
+      "No.: ltem",
+      "FZN25-12D/T630-20: FZN25-12D/T125-31.5",
+      "1: Rated voltage",
+      "2: Rated frequency",
+      "3: Rated current"
+    ],
+    "specRows": [
+      {
+        "key": "No.",
+        "val": "ltem"
+      },
+      {
+        "key": "FZN25-12D/T630-20",
+        "val": "FZN25-12D/T125-31.5"
+      },
+      {
+        "key": "1",
+        "val": "Rated voltage"
+      },
+      {
+        "key": "2",
+        "val": "Rated frequency"
+      },
+      {
+        "key": "3",
+        "val": "Rated current"
+      },
+      {
+        "key": "4",
+        "val": "Rated insulation level"
+      },
+      {
+        "key": "Earth, phase 42, insulating fracture 48",
+        "val": "Lightning impulse withstand voltage (peak)"
+      },
+      {
+        "key": "5",
+        "val": "Rated dynamic current (peak)"
+      },
+      {
+        "key": "6",
+        "val": "4S thermal current"
+      },
+      {
+        "key": "7",
+        "val": "Rated power load breaking current"
+      },
+      {
+        "key": "8",
+        "val": "Rated closed-loop breaking current"
+      },
+      {
+        "key": "9",
+        "val": "Rated cable charge breaking current"
+      },
+      {
+        "key": "10",
+        "val": "Rated breaking no-load transformer capacity"
+      },
+      {
+        "key": "11",
+        "val": "Rated open circuit breaking current"
+      },
+      {
+        "key": "12",
+        "val": "Rated transfer current"
+      },
+      {
+        "key": "13",
+        "val": "Fuse model"
+      },
+      {
+        "key": "14",
+        "val": "Striker output energy"
+      },
+      {
+        "key": "15",
+        "val": "Rated short-circuit closed current"
+      },
+      {
+        "key": "16",
+        "val": "Earth switch rated dynamic current"
+      },
+      {
+        "key": "17",
+        "val": "Earth switch 2s thermal current"
+      },
+      {
+        "key": "18",
+        "val": "Auxiliary circuit rated voltage"
+      },
+      {
+        "key": "19",
+        "val": "Mechanical life"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Medium and High Voltage",
+      "Vacuum Circuit Breakers",
+      "fz(r)n25",
+      "indoor",
+      "high",
+      "voltage",
+      "vacuum",
+      "load",
+      "switch"
+    ]
+  },
+  {
+    "id": 14,
+    "name": "GN19-12 SeriesIndoor High Voltage Disconnecting Switch",
+    "slug": "gn19-12-seriesindoor-high-voltage-disconnecting-switch-product",
+    "category": "Medium and High Voltage",
+    "subCategory": "Isolation Switches",
+    "division": "Medium Voltage",
+    "image": "/assets/images/products/catalog/gn19-12-seriesindoor-high-voltage-disconnecting-switch-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/gn19-12-seriesindoor-high-voltage-disconnecting-switch-1_thumbW600.jpg",
+    "desc": "Discover the GN19-12 Series Indoor High Voltage Disconnecting Switch for reliable performance and safety. Ideal for efficient power management in various applications",
+    "specs": [
+      "Model: Rated Voltage (kV)",
+      "GN19-12/400-12.5: 12",
+      "GN19-12/630-20: 12",
+      "GN19-12/1000-31.5: 12",
+      "GN19-12/1250-40: 12"
+    ],
+    "specRows": [
+      {
+        "key": "Model",
+        "val": "Rated Voltage (kV)"
+      },
+      {
+        "key": "GN19-12/400-12.5",
+        "val": "12"
+      },
+      {
+        "key": "GN19-12/630-20",
+        "val": "12"
+      },
+      {
+        "key": "GN19-12/1000-31.5",
+        "val": "12"
+      },
+      {
+        "key": "GN19-12/1250-40",
+        "val": "12"
+      },
+      {
+        "key": "GN19-12C/400-12.5",
+        "val": "12"
+      },
+      {
+        "key": "GN19-12C/630-20",
+        "val": "12"
+      },
+      {
+        "key": "GN19-12C/1000-31.5",
+        "val": "12"
+      },
+      {
+        "key": "GN19-12C/1250-40",
+        "val": "12"
+      },
+      {
+        "key": "Model",
+        "val": "A"
+      },
+      {
+        "key": "GN19-12/400",
+        "val": "450"
+      },
+      {
+        "key": "GN19-12/630",
+        "val": "490"
+      },
+      {
+        "key": "GN19-12/1000",
+        "val": "510"
+      },
+      {
+        "key": "GN19-12/1250",
+        "val": "510"
+      },
+      {
+        "key": "GN19-12C/400-12.5",
+        "val": "420"
+      },
+      {
+        "key": "GN19-12C/630-20",
+        "val": "460"
+      },
+      {
+        "key": "GN19-12C/1000-31.5",
+        "val": "505"
+      },
+      {
+        "key": "GN19-12C/1250-40",
+        "val": "505"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Medium and High Voltage",
+      "Isolation Switches",
+      "gn19",
+      "seriesindoor",
+      "high",
+      "voltage",
+      "disconnecting",
+      "switch"
+    ]
+  },
+  {
+    "id": 15,
+    "name": "GN30-12 Series Indoor Rotary High Voltage Disconnecting Switch",
+    "slug": "gn30-12-series-indoor-rotary-high-voltage-disconnecting-switch-product",
+    "category": "Medium and High Voltage",
+    "subCategory": "Isolation Switches",
+    "division": "Medium Voltage",
+    "image": "/assets/images/products/catalog/gn30-12-series-indoor-rotary-high-voltage-disconnecting-switch-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/gn30-12-seriesindoor-rotary-high-voltage-disconnecting-switch_thumbW600.jpg",
+    "desc": "Discover the GN30-12 Series Indoor Rotary High Voltage Disconnecting Switch for reliable, efficient switching in high voltage applications. Ensure safety and performance today!",
+    "specs": [
+      "Serial Number: Switch Model",
+      "1: GN30-12(D)/630-20",
+      "2: GN30-12(D)/1000-31.5",
+      "3: GN30-12(D)/1250-40",
+      "4: GN30-12(D)/2000-40"
+    ],
+    "specRows": [
+      {
+        "key": "Serial Number",
+        "val": "Switch Model"
+      },
+      {
+        "key": "1",
+        "val": "GN30-12(D)/630-20"
+      },
+      {
+        "key": "2",
+        "val": "GN30-12(D)/1000-31.5"
+      },
+      {
+        "key": "3",
+        "val": "GN30-12(D)/1250-40"
+      },
+      {
+        "key": "4",
+        "val": "GN30-12(D)/2000-40"
+      },
+      {
+        "key": "5",
+        "val": "GN30-12(D)/2500-40"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Medium and High Voltage",
+      "Isolation Switches",
+      "gn30",
+      "series",
+      "indoor",
+      "rotary",
+      "high",
+      "voltage",
+      "disconnecting",
+      "switch"
+    ]
+  },
+  {
+    "id": 16,
+    "name": "GW4-40.5KV Outdoor High Voltage Disconnecting Switch",
+    "slug": "gw4-405kv-outdoor-high-voltage-disconnecting-switch-product",
+    "category": "Medium and High Voltage",
+    "subCategory": "Isolation Switches",
+    "division": "Medium Voltage",
+    "image": "/assets/images/products/catalog/gw4-405kv-outdoor-high-voltage-disconnecting-switch-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/gw4_thumbW600.jpg",
+    "desc": "Discover the GW4-40.5KV Outdoor High Voltage Disconnecting Switch, designed for reliability and safety in high voltage applications. Ideal for your power needs!",
+    "specs": [
+      "1min power frequency withstand voltage: To ground",
+      "(Effective value KV): Across isolating distance",
+      "Lightning impulse voltage: To ground",
+      "(Peak value KV): Across isolating distance"
+    ],
+    "specRows": [
+      {
+        "key": "1min power frequency withstand voltage",
+        "val": "To ground"
+      },
+      {
+        "key": "(Effective value KV)",
+        "val": "Across isolating distance"
+      },
+      {
+        "key": "Lightning impulse voltage",
+        "val": "To ground"
+      },
+      {
+        "key": "(Peak value KV)",
+        "val": "Across isolating distance"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Medium and High Voltage",
+      "Isolation Switches",
+      "gw4",
+      "40.5kv",
+      "outdoor",
+      "high",
+      "voltage",
+      "disconnecting",
+      "switch"
+    ]
+  },
+  {
+    "id": 17,
+    "name": "GW9-12 Outdoor High Voltage Disconnecting Switch",
+    "slug": "gw9-12-outdoor-high-voltage-disconnecting-switch-product",
+    "category": "Medium and High Voltage",
+    "subCategory": "Isolation Switches",
+    "division": "Medium Voltage",
+    "image": "/assets/images/products/catalog/gw9-12-outdoor-high-voltage-disconnecting-switch-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/gw9_thumbW600.jpg",
+    "desc": "Discover the GW9-12 Series outdoor high voltage disconnecting switch—reliable, durable, and efficient for safe electrical isolation in power systems",
+    "specs": [
+      "Rated Voltage (kV): Rated Current (A)",
+      "Lightning Impulse Withstand (kV): Power Frequency Withstand (kV)",
+      "Pole-to-Earth: Break Distance",
+      "10(12): 400",
+      "10(12): 630"
+    ],
+    "specRows": [
+      {
+        "key": "Rated Voltage (kV)",
+        "val": "Rated Current (A)"
+      },
+      {
+        "key": "Lightning Impulse Withstand (kV)",
+        "val": "Power Frequency Withstand (kV)"
+      },
+      {
+        "key": "Pole-to-Earth",
+        "val": "Break Distance"
+      },
+      {
+        "key": "10(12)",
+        "val": "400"
+      },
+      {
+        "key": "10(12)",
+        "val": "630"
+      },
+      {
+        "key": "10(12)",
+        "val": "1000"
+      },
+      {
+        "key": "10(12)",
+        "val": "1250"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Medium and High Voltage",
+      "Isolation Switches",
+      "gw9",
+      "outdoor",
+      "high",
+      "voltage",
+      "disconnecting",
+      "switch"
+    ]
+  },
+  {
+    "id": 18,
+    "name": "LZZBJ9-10 Type Current Transformer",
+    "slug": "lzzbj9-10-type-current-transformer-product",
+    "category": "Medium and High Voltage",
+    "subCategory": "Current Transformers",
+    "division": "Medium Voltage",
+    "image": "/assets/images/products/catalog/lzzbj9-10-type-current-transformer-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/lzzbj9-10-type-current-transformer_thumbW600.jpg",
+    "desc": "Discover the LZZBJ9-10 Type Current Transformer for accurate measurement and reliable performance. Perfect for optimizing your electrical systems",
+    "specs": [
+      "Rated Primary Current: 5-600/5",
+      "Dimension Code: a",
+      "Type: LZZBJ9-10A1G",
+      "Type: Rated transformation ratio(A)",
+      "0.2S: 0.2"
+    ],
+    "specRows": [
+      {
+        "key": "Rated Primary Current",
+        "val": "5-600/5"
+      },
+      {
+        "key": "Dimension Code",
+        "val": "a"
+      },
+      {
+        "key": "Type",
+        "val": "LZZBJ9-10A1G"
+      },
+      {
+        "key": "Type",
+        "val": "Rated transformation ratio(A)"
+      },
+      {
+        "key": "0.2S",
+        "val": "0.2"
+      },
+      {
+        "key": "LZZBJ9-10A1GLZZBJ9-10BLZZBJ9-10C",
+        "val": "5月5日"
+      },
+      {
+        "key": "10月5日",
+        "val": "0.2S/0.25"
+      },
+      {
+        "key": "5月15日",
+        "val": "0.2S/10P15"
+      },
+      {
+        "key": "5月20日",
+        "val": "0.2/10P15"
+      },
+      {
+        "key": "5月30日",
+        "val": "0.5/10P15"
+      },
+      {
+        "key": "May-40",
+        "val": "0.2/0.5/10P15"
+      },
+      {
+        "key": "May-50",
+        "val": "0.2S/0.5/10P15"
+      },
+      {
+        "key": "May-75",
+        "val": "0.2S/10P20"
+      },
+      {
+        "key": "100/5",
+        "val": "0.2/10P20"
+      },
+      {
+        "key": "150-200/5",
+        "val": "0.5/10P20"
+      },
+      {
+        "key": "300-600/5",
+        "val": "0.2S/10P30"
+      },
+      {
+        "key": "800-2000/5",
+        "val": "0.5/10P30"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Medium and High Voltage",
+      "Current Transformers",
+      "lzzbj9",
+      "type",
+      "current",
+      "transformer"
+    ]
+  },
+  {
+    "id": 19,
+    "name": "LZZBJ9-12 Type Current Transformer",
+    "slug": "lzzbj9-12-type-current-transformer-product",
+    "category": "Medium and High Voltage",
+    "subCategory": "Current Transformers",
+    "division": "Medium Voltage",
+    "image": "/assets/images/products/catalog/lzzbj9-12-type-current-transformer-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/lzzbj9-10-type-current-transformer_thumbW600.jpg",
+    "desc": "Discover the LZZBJ9-12 Type Current Transformer for precise electrical measurement. Ideal for power monitoring and protection in various applications",
+    "specs": [
+      "Type: Rated transformation ratio(A)",
+      "0.2S: 0.2",
+      "10/5: 1.5",
+      "15/5: 2.3",
+      "20/5: 3"
+    ],
+    "specRows": [
+      {
+        "key": "Type",
+        "val": "Rated transformation ratio(A)"
+      },
+      {
+        "key": "0.2S",
+        "val": "0.2"
+      },
+      {
+        "key": "10/5",
+        "val": "1.5"
+      },
+      {
+        "key": "15/5",
+        "val": "2.3"
+      },
+      {
+        "key": "20/5",
+        "val": "3"
+      },
+      {
+        "key": "30/5",
+        "val": "4.5"
+      },
+      {
+        "key": "40/5",
+        "val": "6"
+      },
+      {
+        "key": "50/5",
+        "val": "7.5"
+      },
+      {
+        "key": "75/5",
+        "val": "11.5"
+      },
+      {
+        "key": "100/5",
+        "val": "15"
+      },
+      {
+        "key": "150-200/5",
+        "val": "22.5"
+      },
+      {
+        "key": "300-600/5",
+        "val": "45"
+      },
+      {
+        "key": "800-2500/5",
+        "val": "63"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Medium and High Voltage",
+      "Current Transformers",
+      "lzzbj9",
+      "type",
+      "current",
+      "transformer"
+    ]
+  },
+  {
+    "id": 20,
+    "name": "LZZBJ71-12 Type Outdoor Current Transformer",
+    "slug": "lzzbj71-12-type-outdoor-current-transformer-product",
+    "category": "Medium and High Voltage",
+    "subCategory": "Current Transformers",
+    "division": "Medium Voltage",
+    "image": "/assets/images/products/catalog/lzzbj71-12-type-outdoor-current-transformer-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/lzzbj71-12-27-5-35-type-outdoor-current-transformer_thumbW600.jpg",
+    "desc": "Discover the LZZBJ71-12 Type Outdoor Current Transformer—ideal for reliable power measurement and monitoring in outdoor applications",
+    "specs": [
+      "Type: Rated transformation ratio(A)",
+      "0.2S: 0.2",
+      "LZZBJ71-12: 5-100/5",
+      "150-300/5: 150I In",
+      "400/5: 45"
+    ],
+    "specRows": [
+      {
+        "key": "Type",
+        "val": "Rated transformation ratio(A)"
+      },
+      {
+        "key": "0.2S",
+        "val": "0.2"
+      },
+      {
+        "key": "LZZBJ71-12",
+        "val": "5-100/5"
+      },
+      {
+        "key": "150-300/5",
+        "val": "150I In"
+      },
+      {
+        "key": "400/5",
+        "val": "45"
+      },
+      {
+        "key": "500/5",
+        "val": "600/5"
+      },
+      {
+        "key": "800/5",
+        "val": "1000/5"
+      },
+      {
+        "key": "1500/5",
+        "val": "LZZBJ71-27.5LZZBJ71-35"
+      },
+      {
+        "key": "150/5",
+        "val": "22.5"
+      },
+      {
+        "key": "200/5",
+        "val": "27.5"
+      },
+      {
+        "key": "300/5",
+        "val": "45"
+      },
+      {
+        "key": "400/5",
+        "val": "500/5"
+      },
+      {
+        "key": "600/5",
+        "val": "800/5"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Medium and High Voltage",
+      "Current Transformers",
+      "lzzbj71",
+      "type",
+      "outdoor",
+      "current",
+      "transformer"
+    ]
+  },
+  {
+    "id": 21,
+    "name": "JDZ-610 Type Voltage Transformer",
+    "slug": "jdz-jdzj-6-10-type-voltage-transformer-product",
+    "category": "Medium and High Voltage",
+    "subCategory": "Voltage Transformers",
+    "division": "Medium Voltage",
+    "image": "/assets/images/products/catalog/jdz-jdzj-6-10-type-voltage-transformer-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/jdz-jdzj-6-10-type-voltage-transformer_thumbW600.jpg",
+    "desc": "Discover high-quality JDZ-6/10 Type Voltage Transformer for reliable power solutions. Ensure efficiency and precision in your electrical systems today!",
+    "specs": [
+      "Type: H",
+      "JDZ-10Q: 165",
+      "JDZ-3、6Q: 160",
+      "Type: H",
+      "JDZJ-10Q: 180"
+    ],
+    "specRows": [
+      {
+        "key": "Type",
+        "val": "H"
+      },
+      {
+        "key": "JDZ-10Q",
+        "val": "165"
+      },
+      {
+        "key": "JDZ-3、6Q",
+        "val": "160"
+      },
+      {
+        "key": "Type",
+        "val": "H"
+      },
+      {
+        "key": "JDZJ-10Q",
+        "val": "180"
+      },
+      {
+        "key": "JDZJ-3、6Q",
+        "val": "160"
+      },
+      {
+        "key": "Type",
+        "val": "Rated transformation ratio(A)"
+      },
+      {
+        "key": "0.2",
+        "val": "0.5"
+      },
+      {
+        "key": "JDZ-6(Q)",
+        "val": "3000/100"
+      },
+      {
+        "key": "6000/100",
+        "val": "20"
+      },
+      {
+        "key": "JDZ-10(Q)",
+        "val": "10000/100"
+      },
+      {
+        "key": "10000/200",
+        "val": "11000/100"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Medium and High Voltage",
+      "Voltage Transformers",
+      "jdz",
+      "610",
+      "type",
+      "voltage",
+      "transformer"
+    ]
+  },
+  {
+    "id": 22,
+    "name": "JDZ10-10 Type Voltage Transformer",
+    "slug": "jdz10-10-type-voltage-transformer-product",
+    "category": "Medium and High Voltage",
+    "subCategory": "Voltage Transformers",
+    "division": "Medium Voltage",
+    "image": "/assets/images/products/catalog/jdz10-10-type-voltage-transformer-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/jdz10-10-type-voltage-transformer-same-rzl-10_thumbW600.jpg",
+    "desc": "Discover the JDZ10-10 Type Voltage Transformer for efficient voltage regulation. Perfect for enhanced performance in your electrical systems",
+    "specs": [
+      "Type: Rated transformation ratio(A)",
+      "0.2: 0.5",
+      "JDZ10-10: 6000/100",
+      "10000/10: 15"
+    ],
+    "specRows": [
+      {
+        "key": "Type",
+        "val": "Rated transformation ratio(A)"
+      },
+      {
+        "key": "0.2",
+        "val": "0.5"
+      },
+      {
+        "key": "JDZ10-10",
+        "val": "6000/100"
+      },
+      {
+        "key": "10000/10",
+        "val": "15"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Medium and High Voltage",
+      "Voltage Transformers",
+      "jdz10",
+      "type",
+      "voltage",
+      "transformer"
+    ]
+  },
+  {
+    "id": 23,
+    "name": "JDZX9-610 Type Voltage Transformer",
+    "slug": "jdzx9-6-10-type-voltage-transformer-product",
+    "category": "Medium and High Voltage",
+    "subCategory": "Voltage Transformers",
+    "division": "Medium Voltage",
+    "image": "/assets/images/products/catalog/jdzx9-6-10-type-voltage-transformer-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/jdzx9-6-10-type-voltage-transformer_thumbW600.jpg",
+    "desc": "Discover the JDZX9-6/10 Type Voltage Transformer: reliable performance, enhanced efficiency, and optimal voltage regulation for your industrial needs",
+    "specs": [
+      "Type: Rated transformation ratio(A)",
+      "0.2: 0.5"
+    ],
+    "specRows": [
+      {
+        "key": "Type",
+        "val": "Rated transformation ratio(A)"
+      },
+      {
+        "key": "0.2",
+        "val": "0.5"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Medium and High Voltage",
+      "Voltage Transformers",
+      "jdzx9",
+      "610",
+      "type",
+      "voltage",
+      "transformer"
+    ]
+  },
+  {
+    "id": 24,
+    "name": "JDZX9-35 Type Voltage Transformer",
+    "slug": "jdzx9-35-type-voltage-transformer-product",
+    "category": "Medium and High Voltage",
+    "subCategory": "Voltage Transformers",
+    "division": "Medium Voltage",
+    "image": "/assets/images/products/catalog/jdzx9-35-type-voltage-transformer-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/jdzx9-35-type-voltage-transformer_thumbW600.jpg",
+    "desc": "Discover the JDZX9-35 Type Voltage Transformer, designed for efficiency and reliability in voltage regulation. Perfect for enhancing your electrical systems",
+    "specs": [
+      "Type: Rated transformation ratio(A)",
+      "0.2: 0.5"
+    ],
+    "specRows": [
+      {
+        "key": "Type",
+        "val": "Rated transformation ratio(A)"
+      },
+      {
+        "key": "0.2",
+        "val": "0.5"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Medium and High Voltage",
+      "Voltage Transformers",
+      "jdzx9",
+      "type",
+      "voltage",
+      "transformer"
+    ]
+  },
+  {
+    "id": 25,
+    "name": "JDZX10-10 Type Voltage Transformer",
+    "slug": "jdzx10-10-type-voltage-transformer-product",
+    "category": "Medium and High Voltage",
+    "subCategory": "Voltage Transformers",
+    "division": "Medium Voltage",
+    "image": "/assets/images/products/catalog/jdzx10-10-type-voltage-transformer-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/5-jdzx10-10-type-voltage-transformer-same-rel-10_thumbW600.jpg",
+    "desc": "Discover the JDZX10-10 Type Voltage Transformer, equivalent to REL-10. Ensure precise voltage regulation and reliability for your electrical systems",
+    "specs": [
+      "Type: Rated transformation ratio(A)",
+      "0.2: 0.5"
+    ],
+    "specRows": [
+      {
+        "key": "Type",
+        "val": "Rated transformation ratio(A)"
+      },
+      {
+        "key": "0.2",
+        "val": "0.5"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Medium and High Voltage",
+      "Voltage Transformers",
+      "jdzx10",
+      "type",
+      "voltage",
+      "transformer"
+    ]
+  },
+  {
+    "id": 26,
+    "name": "JDZ9-610 Type Voltage Transformer",
+    "slug": "jdz9-6-10-type-voltage-transformer-product",
+    "category": "Medium and High Voltage",
+    "subCategory": "Voltage Transformers",
+    "division": "Medium Voltage",
+    "image": "/assets/images/products/catalog/jdz9-6-10-type-voltage-transformer-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/jdz9-6-10-4_thumbW600.jpg",
+    "desc": "Discover the JDZ9-6/10 Type Voltage Transformer for reliable voltage regulation and efficiency. Perfect for various industrial applications. Buy now!",
+    "specs": [
+      "Type: Rated transformation ratio(V)",
+      "0.2: 0.5",
+      "JDZ9-6: 6000/100",
+      "JDZ9-10: 10000/100"
+    ],
+    "specRows": [
+      {
+        "key": "Type",
+        "val": "Rated transformation ratio(V)"
+      },
+      {
+        "key": "0.2",
+        "val": "0.5"
+      },
+      {
+        "key": "JDZ9-6",
+        "val": "6000/100"
+      },
+      {
+        "key": "JDZ9-10",
+        "val": "10000/100"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Medium and High Voltage",
+      "Voltage Transformers",
+      "jdz9",
+      "610",
+      "type",
+      "voltage",
+      "transformer"
+    ]
+  },
+  {
+    "id": 27,
+    "name": "JN15-1231.5 Series Indoor High Voltage Ground Switch",
+    "slug": "jn15-12-315-series-indoor-high-voltage-ground-switch-product",
+    "category": "Medium and High Voltage",
+    "subCategory": "Grounding Switches",
+    "division": "Medium Voltage",
+    "image": "/assets/images/products/catalog/jn15-12-315-series-indoor-high-voltage-ground-switch-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/jn15-12-31-5-series-indoor-high-voltage-ground-switch_thumbW600.jpg",
+    "desc": "Discover the JN15-12/31.5 Series Indoor High Voltage Ground Switch for reliable performance and safety in electrical systems. Perfect for industrial applications",
+    "specs": [
+      "NO.: Item",
+      "1: Rated voltage",
+      "2: Rated short-time withstand current",
+      "3: Rated duration of short circuit",
+      "4: Rated short circuit making current"
+    ],
+    "specRows": [
+      {
+        "key": "NO.",
+        "val": "Item"
+      },
+      {
+        "key": "1",
+        "val": "Rated voltage"
+      },
+      {
+        "key": "2",
+        "val": "Rated short-time withstand current"
+      },
+      {
+        "key": "3",
+        "val": "Rated duration of short circuit"
+      },
+      {
+        "key": "4",
+        "val": "Rated short circuit making current"
+      },
+      {
+        "key": "5",
+        "val": "Rated peak withstand current"
+      },
+      {
+        "key": "6",
+        "val": "Interphase center distance"
+      },
+      {
+        "key": "7",
+        "val": "Rated insulation level"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Medium and High Voltage",
+      "Grounding Switches",
+      "jn15",
+      "1231.5",
+      "series",
+      "indoor",
+      "high",
+      "voltage",
+      "ground",
+      "switch"
+    ]
+  },
+  {
+    "id": 28,
+    "name": "JN15-2431.5 Series Indoor High Voltage Earth Switch",
+    "slug": "jn15-24-315-series-indoor-high-voltage-earth-switch-product",
+    "category": "Medium and High Voltage",
+    "subCategory": "Grounding Switches",
+    "division": "Medium Voltage",
+    "image": "/assets/images/products/catalog/jn15-24-315-series-indoor-high-voltage-earth-switch-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/jn15-24-31-5-series-indoor-high-voltage-earth-switch_thumbW600.jpg",
+    "desc": "Explore the JN15-24/31.5 Series Indoor High Voltage Earth Switch for reliable performance and safety in electrical systems. Perfect for your high voltage needs!",
+    "specs": [
+      "NO.: Item",
+      "1: Rated voltage",
+      "2: Rated short-time withstand current",
+      "3: Rated duration of short circuit",
+      "4: Rated short circuit making current"
+    ],
+    "specRows": [
+      {
+        "key": "NO.",
+        "val": "Item"
+      },
+      {
+        "key": "1",
+        "val": "Rated voltage"
+      },
+      {
+        "key": "2",
+        "val": "Rated short-time withstand current"
+      },
+      {
+        "key": "3",
+        "val": "Rated duration of short circuit"
+      },
+      {
+        "key": "4",
+        "val": "Rated short circuit making current"
+      },
+      {
+        "key": "5",
+        "val": "Rated peak withstand current"
+      },
+      {
+        "key": "6",
+        "val": "Rated insulation level"
+      },
+      {
+        "key": "Rated lightning impulse withstand voltage",
+        "val": "125"
+      },
+      {
+        "key": "7",
+        "val": "Mechanical life"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Medium and High Voltage",
+      "Grounding Switches",
+      "jn15",
+      "2431.5",
+      "series",
+      "indoor",
+      "high",
+      "voltage",
+      "earth",
+      "switch"
+    ]
+  },
+  {
+    "id": 29,
+    "name": "H.R.C Fuse Core",
+    "slug": "h-r-c-fuse-core-product",
+    "category": "Medium and High Voltage",
+    "subCategory": "Fuses",
+    "division": "Medium Voltage",
+    "image": "/assets/images/products/catalog/h-r-c-fuse-core-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/h-r-c-fuse-core_thumbW600.jpg",
+    "desc": "Discover high-quality H.R.C fuse cores for optimal circuit protection. Ensure safety and reliability in your electrical systems with our premium selection",
+    "specs": [
+      "gG: aR",
+      "RO14: RS14",
+      "RO14A: RS14A",
+      "RO15: RS15",
+      "RO16: RS16"
+    ],
+    "specRows": [
+      {
+        "key": "gG",
+        "val": "aR"
+      },
+      {
+        "key": "RO14",
+        "val": "RS14"
+      },
+      {
+        "key": "RO14A",
+        "val": "RS14A"
+      },
+      {
+        "key": "RO15",
+        "val": "RS15"
+      },
+      {
+        "key": "RO16",
+        "val": "RS16"
+      },
+      {
+        "key": "RO17",
+        "val": "RS17"
+      },
+      {
+        "key": "RO21",
+        "val": "RS21"
+      },
+      {
+        "key": "RO22",
+        "val": "RS22"
+      },
+      {
+        "key": "RO26",
+        "val": "RS26"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Medium and High Voltage",
+      "Fuses",
+      "h.r.c",
+      "fuse",
+      "core"
+    ]
+  },
+  {
+    "id": 30,
+    "name": "Low Voltage Active Power Filter",
+    "slug": "low-voltage-active-power-filter-product",
+    "category": "Medium and High Voltage",
+    "subCategory": "Power Quality Management",
+    "division": "Medium Voltage",
+    "image": "/assets/images/products/catalog/low-voltage-active-power-filter-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/low-voltage-active-power-filter-4_thumbW600.jpg",
+    "desc": "Enhance power quality with our Low Voltage Active Power Filter. Reduce energy costs, improve efficiency, and ensure reliable operation for your systems",
+    "specs": [
+      "Moudule Model: Model",
+      "ADL APF-0.4-30A/4L-R: 30",
+      "ADL APF-0.4-50A/4L-R: 50",
+      "ADL APF-0.4-75A/4L-R: 75",
+      "ADL APF-0.4-100A/4L-R: 100"
+    ],
+    "specRows": [
+      {
+        "key": "Moudule Model",
+        "val": "Model"
+      },
+      {
+        "key": "ADL APF-0.4-30A/4L-R",
+        "val": "30"
+      },
+      {
+        "key": "ADL APF-0.4-50A/4L-R",
+        "val": "50"
+      },
+      {
+        "key": "ADL APF-0.4-75A/4L-R",
+        "val": "75"
+      },
+      {
+        "key": "ADL APF-0.4-100A/4L-R",
+        "val": "100"
+      },
+      {
+        "key": "ADL APF-0.4-150A/4L-R",
+        "val": "150"
+      },
+      {
+        "key": "ADL APF-0.4-200A/4L-R",
+        "val": "200"
+      },
+      {
+        "key": "ADL APF-0.69-100A/4L-R",
+        "val": "100"
+      },
+      {
+        "key": "ADL APF-0.8-100A/4L-R",
+        "val": "100"
+      },
+      {
+        "key": "ADL APF-0.4-200A/4L-C",
+        "val": "200"
+      },
+      {
+        "key": "ADL APF-0.4-250A/4L-C",
+        "val": "250"
+      },
+      {
+        "key": "ADL APF-0.4-300A/4L-C",
+        "val": "300"
+      },
+      {
+        "key": "ADL APF-0.4-400A/4L-C",
+        "val": "400"
+      },
+      {
+        "key": "ADL APF-0.4-500A/4L-C",
+        "val": "500"
+      },
+      {
+        "key": "ADL APF-0.4-600A/4L-C",
+        "val": "600"
+      },
+      {
+        "key": "ADL APF-0.69-200A/4L-C",
+        "val": "200"
+      },
+      {
+        "key": "ADL APF-0.69-300A/4L-C",
+        "val": "300"
+      },
+      {
+        "key": "ADL APF-0.69-400A/4L-C",
+        "val": "400"
+      },
+      {
+        "key": "ADL APF-0.8-200A/4L-C",
+        "val": "200"
+      },
+      {
+        "key": "ADL APF-0.8-300A/4L-C",
+        "val": "300"
+      },
+      {
+        "key": "ADL APF-0.8-400A/4L-C",
+        "val": "400"
+      },
+      {
+        "key": "Altitude",
+        "val": "&lt; 2000m, Usage should be derated according to the international standard IEC 3859-2for altitudes above 2000 meters."
+      },
+      {
+        "key": "Ambient Temperature",
+        "val": "-10-+50℃(derated above 40℃)"
+      },
+      {
+        "key": "Relative Humidity",
+        "val": "≤ 90%, monthly minimum temperature 25℃, no condensation on the surface"
+      },
+      {
+        "key": "Pollution Level",
+        "val": "Below Level III"
+      },
+      {
+        "key": "Operating Voltage",
+        "val": "AC400V(-20%-+20%)"
+      },
+      {
+        "key": "Operating Frequency",
+        "val": "50Hz"
+      },
+      {
+        "key": "Rated Compensation Capacity",
+        "val": "30A,50A,75A, 100A,150A,200A"
+      },
+      {
+        "key": "Power Grid Structure",
+        "val": "Three-phase three-wire,Three-phase four-wire"
+      },
+      {
+        "key": "Numbers in Parallel",
+        "val": "Unlimited"
+      },
+      {
+        "key": "System Efficiency",
+        "val": "≥97%"
+      },
+      {
+        "key": "Switching Frequency",
+        "val": "16kHz"
+      },
+      {
+        "key": "Function Selection",
+        "val": "Harmonics,Harmonics+Unbalanced"
+      },
+      {
+        "key": "Compensation Scope",
+        "val": "2-50 times, with adjustable compensation rate per time"
+      },
+      {
+        "key": "Harmonic Compensation Rate",
+        "val": "&gt;92%"
+      },
+      {
+        "key": "Full Response Time",
+        "val": "&lt;40ms"
+      },
+      {
+        "key": "Noise",
+        "val": "&lt;65dB"
+      },
+      {
+        "key": "Communication",
+        "val": "Rs485 Communication port"
+      },
+      {
+        "key": "Installation",
+        "val": "Rack-Mounted, Wall-Mounted"
+      },
+      {
+        "key": "Entry Line Method",
+        "val": "Rear Inlet(rack-mounted)Top Inlet (wall-mounted)"
+      },
+      {
+        "key": "Protection Level",
+        "val": "Ip20"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Medium and High Voltage",
+      "Power Quality Management",
+      "low",
+      "voltage",
+      "active",
+      "power",
+      "filter"
+    ]
+  },
+  {
+    "id": 31,
+    "name": "Low Voltage Static Var Generator Specification",
+    "slug": "low-voltage-static-var-generator-specification-product",
+    "category": "Medium and High Voltage",
+    "subCategory": "Power Quality Management",
+    "division": "Medium Voltage",
+    "image": "/assets/images/products/catalog/low-voltage-static-var-generator-specification-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2026-03/svg-1_thumbW600.png",
+    "desc": "Discover essential specifications for low voltage static var generators. Ensure optimal performance and energy efficiency for your power needs",
+    "specs": [
+      "Moudule Model: Model",
+      "ADL SVG-0.4-20k/4L-R: 20",
+      "ADL SVG-0.4-30k/4L-R: 30",
+      "ADL SVG-0.4-50k/4L-R: 50",
+      "ADL SVG-0.4-75k/4L-R: 75"
+    ],
+    "specRows": [
+      {
+        "key": "Moudule Model",
+        "val": "Model"
+      },
+      {
+        "key": "ADL SVG-0.4-20k/4L-R",
+        "val": "20"
+      },
+      {
+        "key": "ADL SVG-0.4-30k/4L-R",
+        "val": "30"
+      },
+      {
+        "key": "ADL SVG-0.4-50k/4L-R",
+        "val": "50"
+      },
+      {
+        "key": "ADL SVG-0.4-75k/4L-R",
+        "val": "75"
+      },
+      {
+        "key": "ADL SVG-0.4-100k/4L-R",
+        "val": "100"
+      },
+      {
+        "key": "ADL SVG-0.4-150k/4L-R",
+        "val": "150"
+      },
+      {
+        "key": "ADL SVG-0.69-120k/4L-R",
+        "val": "120"
+      },
+      {
+        "key": "ADL SVG-0.8-140k/4L-R",
+        "val": "140"
+      },
+      {
+        "key": "ADL SVG-0.4-200k/4L-C",
+        "val": "200"
+      },
+      {
+        "key": "ADL SVG-0.4-250k/4L-C",
+        "val": "250"
+      },
+      {
+        "key": "ADL SVG-0.4-300k/4L-C",
+        "val": "300"
+      },
+      {
+        "key": "ADL SVG-0.4-400k/4L-C",
+        "val": "400"
+      },
+      {
+        "key": "ADL SVG-0.69-240k/4L-C",
+        "val": "240"
+      },
+      {
+        "key": "ADL SVG-0.69-360k/4L-C",
+        "val": "360"
+      },
+      {
+        "key": "ADL SVG-0.69-480k/4L-C",
+        "val": "480"
+      },
+      {
+        "key": "ADL SVG-0.8-280k/4L-C",
+        "val": "280"
+      },
+      {
+        "key": "ADL SVG-0.8-420k/4L-C",
+        "val": "420"
+      },
+      {
+        "key": "ADL SVG-0.8-560k/4L-C",
+        "val": "560"
+      },
+      {
+        "key": "Altitude",
+        "val": "&lt; 2000m, Usage should be derated according to the international standard IEC 3859-2 for altitudes above 2000 meters."
+      },
+      {
+        "key": "Ambient Temperature",
+        "val": "-10---+50℃(derated above 40℃)"
+      },
+      {
+        "key": "Relative Humidity",
+        "val": "≤ 90%, monthly minimum temperature 25℃, no condensation on the surface"
+      },
+      {
+        "key": "Pollution Level",
+        "val": "Below Level III"
+      },
+      {
+        "key": "Operating Voltage",
+        "val": "AC400V(-20%-+20%)"
+      },
+      {
+        "key": "Operating Frequency",
+        "val": "50Hz"
+      },
+      {
+        "key": "Rated Compensation Capacity",
+        "val": "30kvar,50kvar,75kvar,100kvar,150kvar,"
+      },
+      {
+        "key": "Power Grid Structure",
+        "val": "Three-phase three-wire,Three-phase four-wire"
+      },
+      {
+        "key": "Numbers in Parallel",
+        "val": "Unlimited"
+      },
+      {
+        "key": "System Efficiency",
+        "val": "≥97%"
+      },
+      {
+        "key": "Switching Frequency",
+        "val": "16kHz"
+      },
+      {
+        "key": "Function Selection",
+        "val": "Reactive Power, Reactive Power + Unbalanced"
+      },
+      {
+        "key": "Full Response Time",
+        "val": "&lt;10ms"
+      },
+      {
+        "key": "Noise",
+        "val": "&lt;65dB"
+      },
+      {
+        "key": "Communication",
+        "val": "Rs485 Communication port"
+      },
+      {
+        "key": "Installation",
+        "val": "Rack-Mounted, Wall-Mounted"
+      },
+      {
+        "key": "Entry Line Method",
+        "val": "Rear Inlet"
+      },
+      {
+        "key": "Protection Level",
+        "val": "Ip20"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Medium and High Voltage",
+      "Power Quality Management",
+      "low",
+      "voltage",
+      "static",
+      "var",
+      "generator",
+      "specification"
+    ]
+  },
+  {
+    "id": 32,
+    "name": "YBW Pre-Assembled Substations",
+    "slug": "ybw-pre-assembled-substations-product",
+    "category": "Switchgear Assemblies",
+    "subCategory": "Transformer Substations",
+    "division": "Switchgear",
+    "image": "/assets/images/products/catalog/ybw-pre-assembled-substations-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/1-ybw-hvlv-pre-assembled-substations-1_thumbW600.jpg",
+    "desc": "Customize YBW-12/0.4 prefabricated substation according to your power needs. Equipped with a backup power generator plug-in and a universal design that is easy to maintain. Your ideal choice",
+    "specs": [
+      "Name: Unit",
+      "12kV Ring network cabinet: High-voltage side wiring method",
+      "Rated voltage: kV",
+      "Rated frequency: Hz",
+      "Rated current: A"
+    ],
+    "specRows": [
+      {
+        "key": "Name",
+        "val": "Unit"
+      },
+      {
+        "key": "12kV Ring network cabinet",
+        "val": "High-voltage side wiring method"
+      },
+      {
+        "key": "Rated voltage",
+        "val": "kV"
+      },
+      {
+        "key": "Rated frequency",
+        "val": "Hz"
+      },
+      {
+        "key": "Rated current",
+        "val": "A"
+      },
+      {
+        "key": "Temperature rise test current",
+        "val": "A"
+      },
+      {
+        "key": "Rated short-circuit breaking current",
+        "val": "kA"
+      },
+      {
+        "key": "Rated short-circuit closing current",
+        "val": "kA"
+      },
+      {
+        "key": "Rated short-time withstand current and duration",
+        "val": "kA/s"
+      },
+      {
+        "key": "Rated peak withstand current",
+        "val": "kA"
+      },
+      {
+        "key": "Power supply",
+        "val": "Control loop"
+      },
+      {
+        "key": "Auxiliary circuit",
+        "val": "V"
+      },
+      {
+        "key": "Annual gas leakage rate",
+        "val": "V/V"
+      },
+      {
+        "key": "Transformers",
+        "val": "Rated capacity"
+      },
+      {
+        "key": "Rated voltage of high voltage winding",
+        "val": "kV"
+      },
+      {
+        "key": "Rated voltage of low voltage winding",
+        "val": "kV"
+      },
+      {
+        "key": "Frame Circuit Breakers (0.4kV)",
+        "val": "Rated current"
+      },
+      {
+        "key": "Rated Working Voltage",
+        "val": "V"
+      },
+      {
+        "key": "Rated insulation voltage",
+        "val": "V"
+      },
+      {
+        "key": "Rated operating short-circuit breaking capacity",
+        "val": "kA"
+      },
+      {
+        "key": "Rated peak withstand current",
+        "val": "kA"
+      },
+      {
+        "key": "Molded Case Circuit Breakers(0.4kV)",
+        "val": "Rated current"
+      },
+      {
+        "key": "Rated Working Voltage",
+        "val": "V"
+      },
+      {
+        "key": "Rated insulation voltage",
+        "val": "V"
+      },
+      {
+        "key": "Rated operating short-circuit breaking capacity",
+        "val": "kA"
+      },
+      {
+        "key": "Case Requirements",
+        "val": "Overall dimensions (LxWxH)"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Switchgear Assemblies",
+      "Transformer Substations",
+      "ybw",
+      "pre",
+      "assembled",
+      "substations"
+    ]
+  },
+  {
+    "id": 33,
+    "name": "AYB Box-Type Substation(10kV Euro-Variable)",
+    "slug": "ayb-box-type-substation-10kv-euro-variable-product",
+    "category": "Switchgear Assemblies",
+    "subCategory": "Transformer Substations",
+    "division": "Switchgear",
+    "image": "/assets/images/products/catalog/ayb-box-type-substation-10kv-euro-variable-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/1-ayb-box-type-substation-10kv-euro-variable-1_thumbW600.jpg",
+    "desc": "Need reliable, compact power? The AYB-12 all-in-one substation reduces footprint &amp; cost. Its robust design &amp; quick setup ensure flexible, safe operation for SMEs &amp; urban grids",
+    "specs": [
+      "Name: Unit",
+      "Rated voltage Ue: kV",
+      "Rated capacity Se: kVA",
+      "Rated currentle: A",
+      "Rated Breaking Current: kA"
+    ],
+    "specRows": [
+      {
+        "key": "Name",
+        "val": "Unit"
+      },
+      {
+        "key": "Rated voltage Ue",
+        "val": "kV"
+      },
+      {
+        "key": "Rated capacity Se",
+        "val": "kVA"
+      },
+      {
+        "key": "Rated currentle",
+        "val": "A"
+      },
+      {
+        "key": "Rated Breaking Current",
+        "val": "kA"
+      },
+      {
+        "key": "Combination of appliances depending on the fuse",
+        "val": "Rated short-time withstand current (s)"
+      },
+      {
+        "key": "31.5.50",
+        "val": "400kVA"
+      },
+      {
+        "key": "Rated peak withstand current",
+        "val": "kA"
+      },
+      {
+        "key": "400kVA",
+        "val": "63"
+      },
+      {
+        "key": "Rated closing current",
+        "val": "kA"
+      },
+      {
+        "key": "Frequency withstand voltage 1min",
+        "val": "kV"
+      },
+      {
+        "key": "Disconnection034/48",
+        "val": "Dry type: 28/5min"
+      },
+      {
+        "key": "Lightning strike",
+        "val": "kV"
+      },
+      {
+        "key": "Disconnect075/85",
+        "val": "75"
+      },
+      {
+        "key": "Noise level",
+        "val": "dB"
+      },
+      {
+        "key": "OveraⅡ dimensions",
+        "val": "Depending on the program and the selected high and low voltage switchgear and transformers, different external dimensions are selected."
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Switchgear Assemblies",
+      "Transformer Substations",
+      "ayb",
+      "box",
+      "type",
+      "substation(10kv",
+      "euro",
+      "variable)"
+    ]
+  },
+  {
+    "id": 34,
+    "name": "ZGS Series Box-Type Substation(10kV U.S.)",
+    "slug": "zgs-series-box-type-substation-10kv-us-product",
+    "category": "Switchgear Assemblies",
+    "subCategory": "Transformer Substations",
+    "division": "Switchgear",
+    "image": "/assets/images/products/catalog/zgs-series-box-type-substation-10kv-us-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/1-zgs13-h-10-1_thumbW600.jpg",
+    "desc": "Discover the ZGS Series Box-Type Substation (10kV U.S.)—compact, efficient, and reliable power solutions for your energy needs. Explore our offerings today!",
+    "specs": [
+      "Name: Unit",
+      "Pre-assembled substations: Rated voltage",
+      "Low voltage side: kV",
+      "Transformer rated capacity: kVA",
+      "Rated insulation level: Lightning impulse withstand voltage (full wave, peak)"
+    ],
+    "specRows": [
+      {
+        "key": "Name",
+        "val": "Unit"
+      },
+      {
+        "key": "Pre-assembled substations",
+        "val": "Rated voltage"
+      },
+      {
+        "key": "Low voltage side",
+        "val": "kV"
+      },
+      {
+        "key": "Transformer rated capacity",
+        "val": "kVA"
+      },
+      {
+        "key": "Rated insulation level",
+        "val": "Lightning impulse withstand voltage (full wave, peak)"
+      },
+      {
+        "key": "Industrial frequency withstand voltage 1min",
+        "val": "kV"
+      },
+      {
+        "key": "Control and metering circuits",
+        "val": "kV"
+      },
+      {
+        "key": "Noise level",
+        "val": "dB"
+      },
+      {
+        "key": "Load switch",
+        "val": "Four-station"
+      },
+      {
+        "key": "Isolation Interrup Ground-to-ground,interphase",
+        "val": "kV"
+      },
+      {
+        "key": "1min frequency withstand voltage",
+        "val": "Ground-to-ground, interphase"
+      },
+      {
+        "key": "Isolation InterrupGround-to-ground, interphase",
+        "val": "kV"
+      },
+      {
+        "key": "Rated current",
+        "val": "A"
+      },
+      {
+        "key": "Rated short-circuit closing current (peak)",
+        "val": "kA"
+      },
+      {
+        "key": "Rated short-time withstand current",
+        "val": "kA"
+      },
+      {
+        "key": "Rated short circuit duration",
+        "val": "s"
+      },
+      {
+        "key": "Rated peak withstand current",
+        "val": "kA"
+      },
+      {
+        "key": "Mechanical life",
+        "val": "次"
+      },
+      {
+        "key": "Capacity(kVA)",
+        "val": "Backup protection fuse rated current (A)/opening k (A)"
+      },
+      {
+        "key": "100",
+        "val": "40/40"
+      },
+      {
+        "key": "125",
+        "val": "50/40"
+      },
+      {
+        "key": "160",
+        "val": "63/40"
+      },
+      {
+        "key": "200",
+        "val": "80/40"
+      },
+      {
+        "key": "250",
+        "val": "80/40"
+      },
+      {
+        "key": "315",
+        "val": "80/40"
+      },
+      {
+        "key": "400",
+        "val": "100/40"
+      },
+      {
+        "key": "500",
+        "val": "100/40"
+      },
+      {
+        "key": "630",
+        "val": "125/40"
+      },
+      {
+        "key": "800",
+        "val": "175/40"
+      },
+      {
+        "key": "1000",
+        "val": "200/40"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Switchgear Assemblies",
+      "Transformer Substations",
+      "zgs",
+      "series",
+      "box",
+      "type",
+      "substation(10kv",
+      "u.s.)"
+    ]
+  },
+  {
+    "id": 35,
+    "name": "AXHW-12 Ring Box",
+    "slug": "axhw-12-ring-box-product",
+    "category": "Switchgear Assemblies",
+    "subCategory": "Ring Main Units",
+    "division": "Switchgear",
+    "image": "/assets/images/products/catalog/axhw-12-ring-box-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/1-axhw-12-ring-box-1_thumbW600.jpg",
+    "desc": "Discover the AXHW-12 Ring Box: a sleek, elegant storage solution for your precious rings. Perfect for gifts or personal use. Shop now and protect your treasures!",
+    "specs": [
+      "Name: Load switch",
+      "Rated voltage: 12kV",
+      "Rated frequency: 50Hz",
+      "Rated current: 630A",
+      "Rated frequency withstand voltage: Interphase,Relative"
+    ],
+    "specRows": [
+      {
+        "key": "Name",
+        "val": "Load switch"
+      },
+      {
+        "key": "Rated voltage",
+        "val": "12kV"
+      },
+      {
+        "key": "Rated frequency",
+        "val": "50Hz"
+      },
+      {
+        "key": "Rated current",
+        "val": "630A"
+      },
+      {
+        "key": "Rated frequency withstand voltage",
+        "val": "Interphase,Relative"
+      },
+      {
+        "key": "Isolated Break",
+        "val": "48kV"
+      },
+      {
+        "key": "Rated lightning impulse withstand voltage",
+        "val": "Interphase,Relative"
+      },
+      {
+        "key": "Isolated Break",
+        "val": "85kV"
+      },
+      {
+        "key": "Rated short-time withstand current",
+        "val": "20kA/4s"
+      },
+      {
+        "key": "Rated peak withstand current",
+        "val": "50kA"
+      },
+      {
+        "key": "Rated short-circuit breaking current",
+        "val": "-"
+      },
+      {
+        "key": "Rated short-circuit closing current",
+        "val": "50kA"
+      },
+      {
+        "key": "Rated transfer current",
+        "val": "-"
+      },
+      {
+        "key": "Rated active load breaking current",
+        "val": "630A"
+      },
+      {
+        "key": "Rated cable charging and breaking current",
+        "val": "10A"
+      },
+      {
+        "key": "Enclosure protection grade",
+        "val": "IP44 W"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Switchgear Assemblies",
+      "Ring Main Units",
+      "axhw",
+      "ring",
+      "box"
+    ]
+  },
+  {
+    "id": 36,
+    "name": "AGN Solid State Cabinet",
+    "slug": "agn-solid-state-cabinet-product",
+    "category": "Switchgear Assemblies",
+    "subCategory": "Ring Main Units",
+    "division": "Switchgear",
+    "image": "/assets/images/products/catalog/agn-solid-state-cabinet-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/1-agn-solid-state-cabinet-1_thumbW600.jpg",
+    "desc": "Discover the AGN Solid State Cabinet for efficient cooling and reliable performance. Perfect for protecting your equipment while enhancing energy savings",
+    "specs": [
+      "Name: Unit",
+      "Rated voltage: kV",
+      "Rated frequency: Hz",
+      "Rated current: A",
+      "Rated insulation level: Frequency withstand voltage (phase-to-phase and phase-to-ground)"
+    ],
+    "specRows": [
+      {
+        "key": "Name",
+        "val": "Unit"
+      },
+      {
+        "key": "Rated voltage",
+        "val": "kV"
+      },
+      {
+        "key": "Rated frequency",
+        "val": "Hz"
+      },
+      {
+        "key": "Rated current",
+        "val": "A"
+      },
+      {
+        "key": "Rated insulation level",
+        "val": "Frequency withstand voltage (phase-to-phase and phase-to-ground)"
+      },
+      {
+        "key": "Frequency Withstand Voltage (isolation)",
+        "val": "kV"
+      },
+      {
+        "key": "Rated short-time withstand current",
+        "val": "kA"
+      },
+      {
+        "key": "Rated peak withstand current",
+        "val": "kA"
+      },
+      {
+        "key": "Rated short-circuit closing current",
+        "val": "kA"
+      },
+      {
+        "key": "Rated short-circuit breaking current",
+        "val": "kA"
+      },
+      {
+        "key": "Rated transfer current",
+        "val": "A"
+      },
+      {
+        "key": "Rated active load breaking current",
+        "val": "A"
+      },
+      {
+        "key": "Rated closed loop breaking current",
+        "val": "A"
+      },
+      {
+        "key": "Mechanical life",
+        "val": "Load switches/circuit breakers"
+      },
+      {
+        "key": "Disconnect/Earth Switch",
+        "val": "time"
+      },
+      {
+        "key": "Main circuit resistance",
+        "val": "μQ"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Switchgear Assemblies",
+      "Ring Main Units",
+      "agn",
+      "solid",
+      "state",
+      "cabinet"
+    ]
+  },
+  {
+    "id": 37,
+    "name": "AHN-12 Medium Voltage Ring Network Switchgear",
+    "slug": "ahn-12-medium-voltage-ring-network-switchgear-product",
+    "category": "Switchgear Assemblies",
+    "subCategory": "Ring Main Units",
+    "division": "Switchgear",
+    "image": "/assets/images/products/catalog/ahn-12-medium-voltage-ring-network-switchgear-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/1-ahn-12-1_thumbW600.jpg",
+    "desc": "Discover the AHN-12 environmentally friendly medium voltage ring network switchgear, designed for optimal performance and sustainability in power distribution",
+    "specs": [
+      "Name: Unit",
+      "Ring Network Cabinet Technical Parameters: Rated Voltage",
+      "Rated current: A",
+      "Rated Frequency: Hz",
+      "Rated short-circuit breaking current: KA"
+    ],
+    "specRows": [
+      {
+        "key": "Name",
+        "val": "Unit"
+      },
+      {
+        "key": "Ring Network Cabinet Technical Parameters",
+        "val": "Rated Voltage"
+      },
+      {
+        "key": "Rated current",
+        "val": "A"
+      },
+      {
+        "key": "Rated Frequency",
+        "val": "Hz"
+      },
+      {
+        "key": "Rated short-circuit breaking current",
+        "val": "KA"
+      },
+      {
+        "key": "Rated closing current (peak)",
+        "val": "KA"
+      },
+      {
+        "key": "Rated short-time withstand current/duration",
+        "val": "KA/S"
+      },
+      {
+        "key": "Rated peak withstand current",
+        "val": "KA"
+      },
+      {
+        "key": "Rated cable charging breaking current(CC2)",
+        "val": "A"
+      },
+      {
+        "key": "5% rated active load current",
+        "val": "A"
+      },
+      {
+        "key": "Main circuit resistance",
+        "val": "μQ"
+      },
+      {
+        "key": "Annual air leakage rate",
+        "val": "%/year"
+      },
+      {
+        "key": "Rated filling pressure(abs20℃)",
+        "val": "Mpa"
+      },
+      {
+        "key": "Dimension(WxDxH)",
+        "val": "mm"
+      },
+      {
+        "key": "Switching Mechanical Characteristics",
+        "val": "Rated Current"
+      },
+      {
+        "key": "Rated short-circuit breaking current",
+        "val": "KA"
+      },
+      {
+        "key": "Contact opening distance",
+        "val": "mm"
+      },
+      {
+        "key": "Contact overtravel",
+        "val": "mm"
+      },
+      {
+        "key": "Rated contact pressure",
+        "val": "N"
+      },
+      {
+        "key": "Contact closing bounce time",
+        "val": "ms"
+      },
+      {
+        "key": "Closing and breaking non-simultaneity",
+        "val": "ms"
+      },
+      {
+        "key": "Average opening speed",
+        "val": "m/s"
+      },
+      {
+        "key": "Average closing speed",
+        "val": "m/s"
+      },
+      {
+        "key": "Closing time",
+        "val": "ms"
+      },
+      {
+        "key": "Breaking time",
+        "val": "ms"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Switchgear Assemblies",
+      "Ring Main Units",
+      "ahn",
+      "medium",
+      "voltage",
+      "ring",
+      "network",
+      "switchgear"
+    ]
+  },
+  {
+    "id": 38,
+    "name": "AQGN Inflatable Cabinet",
+    "slug": "aqgn-inflatable-cabinet-product",
+    "category": "Switchgear Assemblies",
+    "subCategory": "Ring Main Units",
+    "division": "Switchgear",
+    "image": "/assets/images/products/catalog/aqgn-inflatable-cabinet-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/1-aqgn-12-1_thumbW600.jpg",
+    "desc": "Discover the AQGN Inflatable Cabinet: a versatile, space-saving solution for your storage needs. Perfect for home, office, or outdoor use. Shop now!",
+    "specs": [
+      "Name: Unit",
+      "Rated voltage: kV",
+      "Rated frequency: HZ",
+      "Rated current: A",
+      "1min frequency withstand voltage: Interphase,Relatively"
+    ],
+    "specRows": [
+      {
+        "key": "Name",
+        "val": "Unit"
+      },
+      {
+        "key": "Rated voltage",
+        "val": "kV"
+      },
+      {
+        "key": "Rated frequency",
+        "val": "HZ"
+      },
+      {
+        "key": "Rated current",
+        "val": "A"
+      },
+      {
+        "key": "1min frequency withstand voltage",
+        "val": "Interphase,Relatively"
+      },
+      {
+        "key": "Isolated breaks",
+        "val": "kV"
+      },
+      {
+        "key": "Lightning impact withstand voltage",
+        "val": "Interphase, Relatively"
+      },
+      {
+        "key": "Isolated breaks",
+        "val": "kV"
+      },
+      {
+        "key": "Rated short-time withstand current",
+        "val": "kA"
+      },
+      {
+        "key": "Rated short circuit duration",
+        "val": "s"
+      },
+      {
+        "key": "Rated peak withstand current",
+        "val": "kA"
+      },
+      {
+        "key": "Rated short-circuit breaking current",
+        "val": "kA"
+      },
+      {
+        "key": "Rated short-circuit closing current",
+        "val": "kA"
+      },
+      {
+        "key": "Rated transfer current",
+        "val": "A"
+      },
+      {
+        "key": "Rated active load breaking current",
+        "val": "A"
+      },
+      {
+        "key": "Rated closed loop breaking current",
+        "val": "A"
+      },
+      {
+        "key": "Rated cable charging and breaking current",
+        "val": "A"
+      },
+      {
+        "key": "Mechanical life",
+        "val": "Load switches/Circuit breakers"
+      },
+      {
+        "key": "Disconnectors/Earth switches",
+        "val": "次"
+      },
+      {
+        "key": "Circuit resistance",
+        "val": "vΩ"
+      },
+      {
+        "key": "Rated inflation pressure",
+        "val": "bar"
+      },
+      {
+        "key": "Annual SF6 gas leakage rate",
+        "val": "%/年"
+      },
+      {
+        "key": "Protection class",
+        "val": "Gas tank IP67, Cabinet IP4X"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Switchgear Assemblies",
+      "Ring Main Units",
+      "aqgn",
+      "inflatable",
+      "cabinet"
+    ]
+  },
+  {
+    "id": 39,
+    "name": "HXGN-12 10kV Fixed Ring High Voltage Switchgear",
+    "slug": "hxgn-12-10kv-fixed-ring-high-voltage-switchgear-product",
+    "category": "Switchgear Assemblies",
+    "subCategory": "Ring Main Units",
+    "division": "Switchgear",
+    "image": "/assets/images/products/catalog/hxgn-12-10kv-fixed-ring-high-voltage-switchgear-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/1-hxgn-12-10kv-1_thumbW600.jpg",
+    "desc": "Discover the HXGN-12 10kV Fixed Ring High Voltage Switchgear—efficient, reliable, and ideal for robust power distribution solutions. Enhance your operations today!",
+    "specs": [
+      "Name: Unit",
+      "Rated Voltage/Maximum Operating Voltage: KV",
+      "Rated current: A",
+      "Main busbar current: Inlet Cabinet",
+      "Outlet cabinet: A"
+    ],
+    "specRows": [
+      {
+        "key": "Name",
+        "val": "Unit"
+      },
+      {
+        "key": "Rated Voltage/Maximum Operating Voltage",
+        "val": "KV"
+      },
+      {
+        "key": "Rated current",
+        "val": "A"
+      },
+      {
+        "key": "Main busbar current",
+        "val": "Inlet Cabinet"
+      },
+      {
+        "key": "Outlet cabinet",
+        "val": "A"
+      },
+      {
+        "key": "Rated short-time withstand current",
+        "val": "KA"
+      },
+      {
+        "key": "Rated short circuit duration",
+        "val": "S"
+      },
+      {
+        "key": "Rated peak withstand current",
+        "val": "KA"
+      },
+      {
+        "key": "Rated short-circuit closing current",
+        "val": "KA"
+      },
+      {
+        "key": "Rated active load breaking current",
+        "val": "A"
+      },
+      {
+        "key": "Closed non-breaking current",
+        "val": "A"
+      },
+      {
+        "key": "Rated cable charging current",
+        "val": "KA"
+      },
+      {
+        "key": "Ground switch rated short circuit duration",
+        "val": "S"
+      },
+      {
+        "key": "Ground switch rated peak withstand current",
+        "val": "KA"
+      },
+      {
+        "key": "1min rated frequency withstand voltage",
+        "val": "Between phases.Phase to ground. Vacuum load switch opening distance"
+      },
+      {
+        "key": "Disconnecting switch opening distance",
+        "val": "KV"
+      },
+      {
+        "key": "Rated lightning impulse withstand voltage",
+        "val": "Between phases,Phase to ground. Vacuum load switch opening distance"
+      },
+      {
+        "key": "Disconnecting switch opening distance",
+        "val": "KV"
+      },
+      {
+        "key": "Mechanical life",
+        "val": "Vacuum load switch"
+      },
+      {
+        "key": "Crossover current",
+        "val": "A"
+      },
+      {
+        "key": "Overall dimensions",
+        "val": "800(700)*900*2000"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Switchgear Assemblies",
+      "Ring Main Units",
+      "hxgn",
+      "10kv",
+      "fixed",
+      "ring",
+      "high",
+      "voltage",
+      "switchgear"
+    ]
+  },
+  {
+    "id": 40,
+    "name": "XGN15-12 10kV High Voltage Ring Network Switchgear",
+    "slug": "xgn15-12-10kv-high-voltage-ring-network-switchgear-product",
+    "category": "Switchgear Assemblies",
+    "subCategory": "Ring Main Units",
+    "division": "Switchgear",
+    "image": "/assets/images/products/catalog/xgn15-12-10kv-high-voltage-ring-network-switchgear-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/1-xgn15-12-10kv-1_thumbW600.jpg",
+    "desc": "Discover the XGN15-12 10kV High Voltage Ring Network Switchgear for reliable performance, safety, and efficiency in power distribution. Ideal for modern utilities",
+    "specs": [
+      "Name: Unit",
+      "rated voltage: KV",
+      "Rated frequency: Hz",
+      "rated current: A",
+      "Fuse rated current: A"
+    ],
+    "specRows": [
+      {
+        "key": "Name",
+        "val": "Unit"
+      },
+      {
+        "key": "rated voltage",
+        "val": "KV"
+      },
+      {
+        "key": "Rated frequency",
+        "val": "Hz"
+      },
+      {
+        "key": "rated current",
+        "val": "A"
+      },
+      {
+        "key": "Fuse rated current",
+        "val": "A"
+      },
+      {
+        "key": "Rated short-time withstand current",
+        "val": "KA"
+      },
+      {
+        "key": "Rated short circuit duration",
+        "val": "S"
+      },
+      {
+        "key": "Rated short-circuit closing current",
+        "val": "KA"
+      },
+      {
+        "key": "Rated peak withstand current",
+        "val": "KA"
+      },
+      {
+        "key": "Rated load breaking current",
+        "val": "A"
+      },
+      {
+        "key": "Rated transfer opening current (with 125A fuse)",
+        "val": "A"
+      },
+      {
+        "key": "Rated breaking current of fuse (RMS)",
+        "val": "KA"
+      },
+      {
+        "key": "Rated insulation level",
+        "val": "1min frequency withstand voltage(RMS)"
+      },
+      {
+        "key": "Opening distance",
+        "val": "KV"
+      },
+      {
+        "key": "Lightning impulse withstand voltage (Peak)",
+        "val": "Between phases,Phase to ground"
+      },
+      {
+        "key": "Opening distance",
+        "val": "KV"
+      },
+      {
+        "key": "Three-phase center distance",
+        "val": "mm"
+      },
+      {
+        "key": "Overall dimensions",
+        "val": "load switch cabinet"
+      },
+      {
+        "key": "cabinet depth",
+        "val": "mm"
+      },
+      {
+        "key": "cabinet height",
+        "val": "mm"
+      },
+      {
+        "key": "low voltage room",
+        "val": "heights"
+      },
+      {
+        "key": "Load switch mechanical life",
+        "val": "Closing/Opening"
+      },
+      {
+        "key": "Breakout/Earthing",
+        "val": "time"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Switchgear Assemblies",
+      "Ring Main Units",
+      "xgn15",
+      "10kv",
+      "high",
+      "voltage",
+      "ring",
+      "network",
+      "switchgear"
+    ]
+  },
+  {
+    "id": 41,
+    "name": "XGN66-12 Enclosed Fixed Ring High Voltage Switchgear",
+    "slug": "xgn66-12-enclosed-fixed-ring-high-voltage-switchgear-product",
+    "category": "Switchgear Assemblies",
+    "subCategory": "Ring Main Units",
+    "division": "Switchgear",
+    "image": "/assets/images/products/catalog/xgn66-12-enclosed-fixed-ring-high-voltage-switchgear-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/1-xgn66-12-1_thumbW600.jpg",
+    "desc": "Discover the XGN66-12 Enclosed Fixed Ring High Voltage Switchgear, designed for reliability and safety in electrical distribution. Ideal for your power solutions",
+    "specs": [
+      "Name: Unit",
+      "Switchgear: Rated Voltage",
+      "Rated frequency withstand voltage: kV",
+      "Rated lightning impulse withstand voltage: kV",
+      "Rated frequency: Hz"
+    ],
+    "specRows": [
+      {
+        "key": "Name",
+        "val": "Unit"
+      },
+      {
+        "key": "Switchgear",
+        "val": "Rated Voltage"
+      },
+      {
+        "key": "Rated frequency withstand voltage",
+        "val": "kV"
+      },
+      {
+        "key": "Rated lightning impulse withstand voltage",
+        "val": "kV"
+      },
+      {
+        "key": "Rated frequency",
+        "val": "Hz"
+      },
+      {
+        "key": "Rated current",
+        "val": "A"
+      },
+      {
+        "key": "Rated short-circuit breaking current (peak)",
+        "val": "kA"
+      },
+      {
+        "key": "Rated short-circuit closing current (peak)",
+        "val": "kA"
+      },
+      {
+        "key": "Rated dynamic stabilizing current (peak)",
+        "val": "kA"
+      },
+      {
+        "key": "Lightning thermal stabilizing current 4S(RMS)",
+        "val": "kA"
+      },
+      {
+        "key": "Dimension(WXDXH)",
+        "val": "mm"
+      },
+      {
+        "key": "Weight(WxDxH)",
+        "val": "kg"
+      },
+      {
+        "key": "Vs1-12 type vacuum circuit breaker",
+        "val": "Rated Voltage"
+      },
+      {
+        "key": "Rated current",
+        "val": "A"
+      },
+      {
+        "key": "Rated short-circuit breaking current",
+        "val": "kA"
+      },
+      {
+        "key": "Rated short-circuit closing current",
+        "val": "kA"
+      },
+      {
+        "key": "Rated short-time withstand current(4S RMS)",
+        "val": "kA"
+      },
+      {
+        "key": "Rated peak withstand current (peak)",
+        "val": "kA"
+      },
+      {
+        "key": "Mechanical life",
+        "val": "time"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Switchgear Assemblies",
+      "Ring Main Units",
+      "xgn66",
+      "enclosed",
+      "fixed",
+      "ring",
+      "high",
+      "voltage",
+      "switchgear"
+    ]
+  },
+  {
+    "id": 42,
+    "name": "KYN28A-12(Z)(GZS1) Type Indoor Armored Withdrawable AC Metal-Enclosed Switchgear",
+    "slug": "kyn28a-12-switchgear-product",
+    "category": "Switchgear Assemblies",
+    "subCategory": "Metalclad AC Enclosed Switchgear",
+    "division": "Switchgear",
+    "image": "/assets/images/products/catalog/kyn28a-12-switchgear-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/1-kyn28a-12-10kv-1_thumbW600.jpg",
+    "desc": "Discover the KYN28A-12 10kV Removable High Voltage Switchgear for reliable electrical distribution. Enhance safety and efficiency in your power systems today!",
+    "specs": [
+      "Name: Unit",
+      "Switchgear technical parameters: Rated insulation level",
+      "1min frequency withstand voltage: kV",
+      "Lightning impulse withstand voltage (full wave): kV",
+      "Rated frequency: Hz"
+    ],
+    "specRows": [
+      {
+        "key": "Name",
+        "val": "Unit"
+      },
+      {
+        "key": "Switchgear technical parameters",
+        "val": "Rated insulation level"
+      },
+      {
+        "key": "1min frequency withstand voltage",
+        "val": "kV"
+      },
+      {
+        "key": "Lightning impulse withstand voltage (full wave)",
+        "val": "kV"
+      },
+      {
+        "key": "Rated frequency",
+        "val": "Hz"
+      },
+      {
+        "key": "Rated current",
+        "val": "A"
+      },
+      {
+        "key": "4s short-time withstand current",
+        "val": "kA"
+      },
+      {
+        "key": "Rated peak withstand current",
+        "val": "kV"
+      },
+      {
+        "key": "1min frequency withstand voltage",
+        "val": "kV"
+      },
+      {
+        "key": "Lightning impulse withstand voltage (full wave)",
+        "val": "kV"
+      },
+      {
+        "key": "Rated frequency",
+        "val": "Hz"
+      },
+      {
+        "key": "Rated current",
+        "val": "A"
+      },
+      {
+        "key": "Rated short-circuit breaking current",
+        "val": "kA"
+      },
+      {
+        "key": "4s short-time withstand current",
+        "val": "kV"
+      },
+      {
+        "key": "Rated peak withstand current",
+        "val": "kA"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Switchgear Assemblies",
+      "Metalclad AC Enclosed Switchgear",
+      "kyn28a",
+      "12(z)(gzs1)",
+      "type",
+      "indoor",
+      "armored",
+      "withdrawable",
+      "metal",
+      "enclosed",
+      "switchgear"
+    ]
+  },
+  {
+    "id": 43,
+    "name": "KYN61-40.5 Switchgear",
+    "slug": "kyn61-405-switchgear-product",
+    "category": "Switchgear Assemblies",
+    "subCategory": "Metalclad AC Enclosed Switchgear",
+    "division": "Switchgear",
+    "image": "/assets/images/products/catalog/kyn61-405-switchgear-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/1-kyn61-40-5-35kv-1_thumbW600.jpg",
+    "desc": "Discover the KYN61-40.5 35kV Removable High Voltage Switchgear—reliable, efficient, and perfect for your electrical distribution needs. Explore the benefits now!",
+    "specs": [
+      "Name: Unit",
+      "KYN61-40.5 type switchgear rated parameters: Rated Voltage",
+      "Rated current: A",
+      "Rated short-circuit breaking current: kA",
+      "Rated short-time closing current: kA"
+    ],
+    "specRows": [
+      {
+        "key": "Name",
+        "val": "Unit"
+      },
+      {
+        "key": "KYN61-40.5 type switchgear rated parameters",
+        "val": "Rated Voltage"
+      },
+      {
+        "key": "Rated current",
+        "val": "A"
+      },
+      {
+        "key": "Rated short-circuit breaking current",
+        "val": "kA"
+      },
+      {
+        "key": "Rated short-time closing current",
+        "val": "kA"
+      },
+      {
+        "key": "Dynamic stabilizing current(peak)",
+        "val": "kA"
+      },
+      {
+        "key": "4s thermal stabilizing current (rms)",
+        "val": "kA"
+      },
+      {
+        "key": "Rated insulation level",
+        "val": "Lightning Impact Withstand Voltage"
+      },
+      {
+        "key": "Main circuit 1min frequency withstand voltage",
+        "val": "kV"
+      },
+      {
+        "key": "Protection level",
+        "val": "Housing/Interior"
+      },
+      {
+        "key": "ZN85-40.5 vacuum circuit breaker rated parameters",
+        "val": "Rated Voltage"
+      },
+      {
+        "key": "Rated current",
+        "val": "A"
+      },
+      {
+        "key": "Rated short-circuit breaking current",
+        "val": "kA"
+      },
+      {
+        "key": "Rated short-time closing current",
+        "val": "kA"
+      },
+      {
+        "key": "Dynamic stabilizing current (peak)",
+        "val": "kA"
+      },
+      {
+        "key": "4s thermal stabilizing current(rms)",
+        "val": "kA"
+      },
+      {
+        "key": "Rated insulation level",
+        "val": "Lightning Impact Withstand Voltage"
+      },
+      {
+        "key": "Main circuit 1min frequency withstand voltage",
+        "val": "kV"
+      },
+      {
+        "key": "Rated frequency",
+        "val": "Hz"
+      },
+      {
+        "key": "Mechanical life",
+        "val": "time"
+      },
+      {
+        "key": "Closing time",
+        "val": "ms"
+      },
+      {
+        "key": "Split time",
+        "val": "ms"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Switchgear Assemblies",
+      "Metalclad AC Enclosed Switchgear",
+      "kyn61",
+      "40.5",
+      "switchgear"
+    ]
+  },
+  {
+    "id": 44,
+    "name": "AGCK Type Low Voltage Withdrawable Switchgear",
+    "slug": "agck-type-low-voltage-withdrawable-switchgear-product",
+    "category": "Switchgear Assemblies",
+    "subCategory": "Low Voltage Switchgear",
+    "division": "Switchgear",
+    "image": "/assets/images/products/catalog/agck-type-low-voltage-withdrawable-switchgear-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/1-agck-type-low-voltage-withdrawable-switchgear-1_thumbW600.jpg",
+    "desc": "Discover the AGCK Type Low Voltage Withdrawable Switchgear for reliable performance, safety, and efficiency in your electrical system. Explore our solutions today!",
+    "specs": [
+      "Name: Parameters",
+      "Rated insulation voltage: AC690V",
+      "Rated working voltage: AC380V(AC400V)",
+      "Horizontal busbar rated current: 1250A,1600A,2000A,3200A,4000A",
+      "Vertical busbar rated current: 1000A"
+    ],
+    "specRows": [
+      {
+        "key": "Name",
+        "val": "Parameters"
+      },
+      {
+        "key": "Rated insulation voltage",
+        "val": "AC690V"
+      },
+      {
+        "key": "Rated working voltage",
+        "val": "AC380V(AC400V)"
+      },
+      {
+        "key": "Horizontal busbar rated current",
+        "val": "1250A,1600A,2000A,3200A,4000A"
+      },
+      {
+        "key": "Vertical busbar rated current",
+        "val": "1000A"
+      },
+      {
+        "key": "Maximum current of feeder circuit",
+        "val": "2500A"
+      },
+      {
+        "key": "Maximum current of drawer circuit",
+        "val": "630A"
+      },
+      {
+        "key": "Maximum capacity of control motor",
+        "val": "320kW"
+      },
+      {
+        "key": "Rated frequency",
+        "val": "50Hz"
+      },
+      {
+        "key": "Horizontal busbar peak withstand current",
+        "val": "105kA, 176kA"
+      },
+      {
+        "key": "Vertical busbar peak withstand current",
+        "val": "63kA, 105kA"
+      },
+      {
+        "key": "Vertical busbar short-time withstand current(1s)",
+        "val": "30kA, 50kA"
+      },
+      {
+        "key": "Rated frequency withstand voltage(1min)",
+        "val": "2500V"
+      },
+      {
+        "key": "Secondary frequency withstand voltage(1min)",
+        "val": "2500V"
+      },
+      {
+        "key": "SheⅡ protection grade",
+        "val": "IP40"
+      },
+      {
+        "key": "SheⅡ size(mm)",
+        "val": "W600(800, 1000)xD800(1000)xH2200"
+      },
+      {
+        "key": "Effective height of functional unit(mm)",
+        "val": "1800"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Switchgear Assemblies",
+      "Low Voltage Switchgear",
+      "agck",
+      "type",
+      "low",
+      "voltage",
+      "withdrawable",
+      "switchgear"
+    ]
+  },
+  {
+    "id": 45,
+    "name": "AGCS Type Low Voltage Withdrawable Switchgear",
+    "slug": "agcs-type-low-voltage-withdrawable-switchgear-product",
+    "category": "Switchgear Assemblies",
+    "subCategory": "Low Voltage Switchgear",
+    "division": "Switchgear",
+    "image": "/assets/images/products/catalog/agcs-type-low-voltage-withdrawable-switchgear-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/1-agcs-type-low-voltage-withdrawable-switchgear-1_thumbW600.jpg",
+    "desc": "Discover AGCS Type Low Voltage Withdrawable Switchgear for reliable performance and safety. Perfect for efficient electrical distribution in various applications",
+    "specs": [
+      "Name: Parameters",
+      "Rated insulation voltage: AC660",
+      "Rated working voltage: AC380V(AC400)",
+      "Horizontal busbar rated current: ≤4000A",
+      "Vertical busbar rated current: 1000A"
+    ],
+    "specRows": [
+      {
+        "key": "Name",
+        "val": "Parameters"
+      },
+      {
+        "key": "Rated insulation voltage",
+        "val": "AC660"
+      },
+      {
+        "key": "Rated working voltage",
+        "val": "AC380V(AC400)"
+      },
+      {
+        "key": "Horizontal busbar rated current",
+        "val": "≤4000A"
+      },
+      {
+        "key": "Vertical busbar rated current",
+        "val": "1000A"
+      },
+      {
+        "key": "Maximum current of drawer circuit",
+        "val": "400A"
+      },
+      {
+        "key": "Rated frequency",
+        "val": "50(60)"
+      },
+      {
+        "key": "Horizontal busbar peak withstand current",
+        "val": "105,176"
+      },
+      {
+        "key": "Vertical busbar peak withstand current",
+        "val": "105"
+      },
+      {
+        "key": "Rated frequency withstand voltage(1min)",
+        "val": "2500"
+      },
+      {
+        "key": "Secondary frequency withstand voltage(1min)",
+        "val": "2500"
+      },
+      {
+        "key": "Shell protection grade",
+        "val": "IP40"
+      },
+      {
+        "key": "Shell size(mm)",
+        "val": "W600(800,1000)xD800(1000)xH2200"
+      },
+      {
+        "key": "Effective height of functional unit(mm)",
+        "val": "1760"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Switchgear Assemblies",
+      "Low Voltage Switchgear",
+      "agcs",
+      "type",
+      "low",
+      "voltage",
+      "withdrawable",
+      "switchgear"
+    ]
+  },
+  {
+    "id": 46,
+    "name": "AGGD Type AC Low Voltage Distribution Cabinet",
+    "slug": "aggd-type-ac-low-voltage-distribution-cabinet-product",
+    "category": "Switchgear Assemblies",
+    "subCategory": "Low Voltage Switchgear",
+    "division": "Switchgear",
+    "image": "/assets/images/products/catalog/aggd-type-ac-low-voltage-distribution-cabinet-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/1-aggd-type-ac-low-voltage-distribution-cabinet_thumbW600.jpg",
+    "desc": "Discover the AGGD Type AC Low Voltage Distribution Cabinet for reliable power distribution. Perfect for various applications, ensuring safety and efficiency",
+    "specs": [
+      "Model: Rated voltage(V)",
+      "A: B",
+      "GGD1: 380",
+      "GGD2: 380",
+      "GGD3: 380"
+    ],
+    "specRows": [
+      {
+        "key": "Model",
+        "val": "Rated voltage(V)"
+      },
+      {
+        "key": "A",
+        "val": "B"
+      },
+      {
+        "key": "GGD1",
+        "val": "380"
+      },
+      {
+        "key": "GGD2",
+        "val": "380"
+      },
+      {
+        "key": "GGD3",
+        "val": "380"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Switchgear Assemblies",
+      "Low Voltage Switchgear",
+      "aggd",
+      "type",
+      "low",
+      "voltage",
+      "distribution",
+      "cabinet"
+    ]
+  },
+  {
+    "id": 47,
+    "name": "AMNS Type Low Voltage Withdrawable Switch Cabinet",
+    "slug": "amns-type-low-voltage-withdrawable-switch-cabinet-product",
+    "category": "Switchgear Assemblies",
+    "subCategory": "Low Voltage Switchgear",
+    "division": "Switchgear",
+    "image": "/assets/images/products/catalog/amns-type-low-voltage-withdrawable-switch-cabinet-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/1-amns-type-low-voltage-withdrawable-switch-cabinet-1_thumbW600.jpg",
+    "desc": "Discover the AMNS Type Low Voltage Withdrawable Switch Cabinet for reliable power distribution. Efficient, safe, and easy to maintain – perfect for your needs",
+    "specs": [
+      "Name: Parameters",
+      "Rated insulation voltage: AC690V",
+      "Rated working voltage: AC380V(AC400V)",
+      "Horizontal busbar rated current: 1250A,1600A,2000A,3200A,4000A",
+      "Vertical busbar rated current: 1000A"
+    ],
+    "specRows": [
+      {
+        "key": "Name",
+        "val": "Parameters"
+      },
+      {
+        "key": "Rated insulation voltage",
+        "val": "AC690V"
+      },
+      {
+        "key": "Rated working voltage",
+        "val": "AC380V(AC400V)"
+      },
+      {
+        "key": "Horizontal busbar rated current",
+        "val": "1250A,1600A,2000A,3200A,4000A"
+      },
+      {
+        "key": "Vertical busbar rated current",
+        "val": "1000A"
+      },
+      {
+        "key": "Maximum current of feeder circuit",
+        "val": "2500A"
+      },
+      {
+        "key": "Maximum current of drawer circuit",
+        "val": "630A"
+      },
+      {
+        "key": "Maximum capacity of control motor",
+        "val": "320kW"
+      },
+      {
+        "key": "Rated frequency",
+        "val": "50Hz"
+      },
+      {
+        "key": "Horizontal busbar peak withstand current",
+        "val": "105kA,176kA"
+      },
+      {
+        "key": "Vertical busbar peak withstand current",
+        "val": "63kA,105kA"
+      },
+      {
+        "key": "Vertical busbar short-time withstand current(1s)",
+        "val": "30kA,50kA"
+      },
+      {
+        "key": "Rated frequency withstand voltage(1min)",
+        "val": "2500V"
+      },
+      {
+        "key": "Secondary frequency withstand voltage(1min)",
+        "val": "2500V"
+      },
+      {
+        "key": "SheⅡ protection grade",
+        "val": "IP40"
+      },
+      {
+        "key": "SheⅡ size(mm)",
+        "val": "W600(800,1000)xD800(1000)xH2200"
+      },
+      {
+        "key": "Effective height of functional unit(mm)",
+        "val": "1800"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Switchgear Assemblies",
+      "Low Voltage Switchgear",
+      "amns",
+      "type",
+      "low",
+      "voltage",
+      "withdrawable",
+      "switch",
+      "cabinet"
+    ]
+  },
+  {
+    "id": 48,
+    "name": "AXL Power Cabinet",
+    "slug": "axl-power-cabinet-product",
+    "category": "Switchgear Assemblies",
+    "subCategory": "Ring Main Units",
+    "division": "Switchgear",
+    "image": "/assets/images/products/catalog/axl-power-cabinet-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/1-axl-power-cabinet-1_thumbW600.jpg",
+    "desc": "Discover the AXL Power Cabinet: an advanced solution for efficient energy management and reliable power distribution. Enhance your setup today!",
+    "specs": [
+      "Name: Parameters",
+      "Rated Working Voltage: AC380V(AC400V)",
+      "Rated insulation voltage: AC690V",
+      "Rated frequency: 50HZ",
+      "Rated current of main busbar: 400A~ 1000A"
+    ],
+    "specRows": [
+      {
+        "key": "Name",
+        "val": "Parameters"
+      },
+      {
+        "key": "Rated Working Voltage",
+        "val": "AC380V(AC400V)"
+      },
+      {
+        "key": "Rated insulation voltage",
+        "val": "AC690V"
+      },
+      {
+        "key": "Rated frequency",
+        "val": "50HZ"
+      },
+      {
+        "key": "Rated current of main busbar",
+        "val": "400A~ 1000A"
+      },
+      {
+        "key": "Rated withstand current of main busbar",
+        "val": "30kA"
+      },
+      {
+        "key": "Outer box material",
+        "val": "Cold rolled steel plate, stainless steel plate"
+      },
+      {
+        "key": "Indoor/outdoor type",
+        "val": "Indoor"
+      },
+      {
+        "key": "Enclosure protection class",
+        "val": "IP55、IP34D"
+      },
+      {
+        "key": "Overall dimensions",
+        "val": "Mounting Dimensions"
+      },
+      {
+        "key": "H",
+        "val": "W"
+      },
+      {
+        "key": "1600",
+        "val": "600"
+      },
+      {
+        "key": "1700",
+        "val": "600"
+      },
+      {
+        "key": "1700",
+        "val": "700"
+      },
+      {
+        "key": "1800",
+        "val": "800"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Switchgear Assemblies",
+      "Ring Main Units",
+      "axl",
+      "power",
+      "cabinet"
+    ]
+  },
+  {
+    "id": 49,
+    "name": "JXF Series Distribution Box",
+    "slug": "jxf-series-distribution-box-product",
+    "category": "Switchgear Assemblies",
+    "subCategory": "Low Voltage Switchgear",
+    "division": "Switchgear",
+    "image": "/assets/images/products/catalog/jxf-series-distribution-box-product.jpg",
+    "remoteImage": "https://ecdn6.globalso.com/upload/p/4586/image_other/2025-10/1-jxf-series-distribution-box-1_thumbW600.jpg",
+    "desc": "Discover the JXF Series Distribution Box for efficient power distribution. Durable design, easy installation, and reliable performance for all your electrical needs",
+    "specs": [
+      "Name: Parameters",
+      "Rated Working Voltage: AC380V(AC400V)",
+      "Rated insulation voltage: AC690V",
+      "Rated frequency: 50HZ",
+      "Rated current of main busbar: 100A~630A"
+    ],
+    "specRows": [
+      {
+        "key": "Name",
+        "val": "Parameters"
+      },
+      {
+        "key": "Rated Working Voltage",
+        "val": "AC380V(AC400V)"
+      },
+      {
+        "key": "Rated insulation voltage",
+        "val": "AC690V"
+      },
+      {
+        "key": "Rated frequency",
+        "val": "50HZ"
+      },
+      {
+        "key": "Rated current of main busbar",
+        "val": "100A~630A"
+      },
+      {
+        "key": "Rated withstand current of main busbar",
+        "val": "20kA"
+      },
+      {
+        "key": "Outer box material",
+        "val": "Cold rolled steel plate, stainless steel plate"
+      },
+      {
+        "key": "Indoor/outdoor type",
+        "val": "Indoor, Outdoor"
+      },
+      {
+        "key": "Enclosure protection class",
+        "val": "IP55"
+      }
+    ],
+    "badges": [
+      "ISO 9001",
+      "IEC Standard"
+    ],
+    "tags": [
+      "Switchgear Assemblies",
+      "Low Voltage Switchgear",
+      "jxf",
+      "series",
+      "distribution",
+      "box"
+    ]
+  }
+]

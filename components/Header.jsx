@@ -1,14 +1,32 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, Suspense } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import { SITE } from '@/lib/site';
 import { DATA } from '@/lib/data';
 import { NAV_ICONS, NAV_FOOTERS } from '@/lib/nav';
 import { useUI } from './UIProvider';
 import RawSvg from './RawSvg';
 import LanguageSelector from './LanguageSelector';
+
+const normStr = (str) =>
+  (str || '')
+    .toString()
+    .toLowerCase()
+    .replace(/[\u2013\u2014–—]/g, '-')
+    .replace(/[≤]/g, '<=')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+const checkChildActive = (chHref, pathname, currentCat) => {
+  if (chHref.includes('cat=')) {
+    const targetCat = decodeURIComponent(chHref.split('cat=')[1].split('&')[0]);
+    return currentCat ? normStr(currentCat) === normStr(targetCat) : false;
+  }
+  const cleanHref = chHref.endsWith('/') ? chHref : chHref + '/';
+  return pathname === cleanHref || (chHref !== '/' && chHref !== '/contact/' && pathname === cleanHref);
+};
 
 const Chevron = ({ className, size }) => (
   <svg className={className} viewBox="0 0 16 16" width={size} height={size} fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -29,7 +47,7 @@ const QuoteArrow = () => (
   </span>
 );
 
-export default function Header() {
+function HeaderContent() {
   const { openSearch } = useUI();
   const [open, setOpen] = useState(false);
   const [subOpen, setSubOpen] = useState(null);
@@ -39,6 +57,9 @@ export default function Header() {
   const [dropdownsSuppressed, setDropdownsSuppressed] = useState(false);
   const rawPath = usePathname() || '/';
   const pathname = rawPath.endsWith('/') ? rawPath : rawPath + '/';
+  const searchParams = useSearchParams();
+  const searchStr = searchParams ? searchParams.toString() : '';
+  const currentCat = searchParams ? (searchParams.get('cat') || searchParams.get('category')) : null;
   const navList = SITE.nav || [];
 
   // Active top-level item index calculation:
@@ -85,12 +106,14 @@ export default function Header() {
     document.documentElement.classList.toggle('menu-open', open);
   }, [open]);
 
-  // Auto-hide the drawer after navigating to any page (page load)
+  // Auto-hide the drawer and unsuppress dropdown locks after navigating or changing query params
   useEffect(() => {
     drawerRef.current(false);
     setActiveOverride(null);
+    setDropdownsSuppressed(false);
+    setClosedDropdownKey(null);
     document.documentElement.classList.remove('menu-open');
-  }, [pathname]);
+  }, [pathname, searchStr]);
 
   // Reset dropdown suppression as soon as user moves cursor outside the header
   useEffect(() => {
@@ -126,8 +149,14 @@ export default function Header() {
 
   const handleNavClick = (idx, key) => {
     setActiveOverride(idx);
-    setDropdownsSuppressed(true);
-    if (key) setClosedDropdownKey(key);
+    if (key) {
+      setClosedDropdownKey(key);
+      // Auto-unlock after brief transition
+      setTimeout(() => {
+        setClosedDropdownKey(null);
+        setDropdownsSuppressed(false);
+      }, 350);
+    }
     if (typeof document !== 'undefined' && document.activeElement) {
       document.activeElement.blur();
     }
@@ -257,7 +286,7 @@ export default function Header() {
                       </div>
                       <div className="dropdown-mega__col-items">
                         {n.sections[0].items.map(ch => {
-                          const isChildActive = pathname === ch.href || (ch.href !== '/' && ch.href !== '/contact/' && pathname.startsWith(ch.href));
+                          const isChildActive = checkChildActive(ch.href, pathname, currentCat);
                           return (
                             <Link
                               href={ch.href}
@@ -302,7 +331,7 @@ export default function Header() {
                       </div>
                       <div className="dropdown-mega__col-items">
                         {n.sections[1].items.map(ch => {
-                          const isChildActive = pathname === ch.href || (ch.href !== '/' && ch.href !== '/contact/' && pathname.startsWith(ch.href));
+                          const isChildActive = checkChildActive(ch.href, pathname, currentCat);
                           return (
                             <Link
                               href={ch.href}
@@ -344,7 +373,7 @@ export default function Header() {
                       </div>
                       <div className="dropdown-mega__col-items">
                         {n.sections[2].items.map(ch => {
-                          const isChildActive = pathname === ch.href || (ch.href !== '/' && ch.href !== '/contact/' && pathname.startsWith(ch.href));
+                          const isChildActive = checkChildActive(ch.href, pathname, currentCat);
                           return (
                             <Link
                               href={ch.href}
@@ -389,7 +418,7 @@ export default function Header() {
                     </div>
                     <div className="dropdown-mega__col-items">
                       {sec.items.map(ch => {
-                        const isChildActive = pathname === ch.href || (ch.href !== '/' && ch.href !== '/contact/' && pathname.startsWith(ch.href));
+                        const isChildActive = checkChildActive(ch.href, pathname, currentCat);
                         return (
                           <Link
                             href={ch.href}
@@ -417,7 +446,7 @@ export default function Header() {
           ) : (
             <div className={`dropdown-menu__grid ${isTwoCol ? 'dropdown-menu__grid--2col' : ''}`}>
               {n.children.map(ch => {
-                const isChildActive = ch.href === n.href ? pathname === ch.href : (pathname === ch.href || (ch.href !== '/' && ch.href !== '/contact/' && pathname.startsWith(ch.href)));
+                const isChildActive = checkChildActive(ch.href, pathname, currentCat);
                 return (
                   <Link
                     href={ch.href}
@@ -477,7 +506,7 @@ export default function Header() {
             aria-label={`${SITE.name || 'BPEL'} home`}
             onClick={() => handleNavClick(0)}
           >
-            <img src={SITE.logo || '/assets/images/logo.png'} alt={`${SITE.name || 'BPEL'} Logo`} className="brand__logo" />
+            <img src={SITE.logo || '/assets/images/logo.png'} alt={`${SITE.name || 'BPEL'} Logo`} className="brand__logo" fetchPriority="high" decoding="async" />
           </Link>
 
           <nav id="nav" className="nav" aria-label="Primary navigation">
@@ -521,5 +550,13 @@ export default function Header() {
         </div>
       </div>
     </header>
+  );
+}
+
+export default function Header() {
+  return (
+    <Suspense fallback={<header id="site-header" className="header" />}>
+      <HeaderContent />
+    </Suspense>
   );
 }
