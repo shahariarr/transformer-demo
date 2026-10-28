@@ -12938,10 +12938,14 @@ a.btn.btn--light {
 }
 
 .rfq-input-wrap input,
-.rfq-input-wrap select {
+.rfq-input-wrap select,
+.field .rfq-input-wrap input,
+.field .rfq-input-wrap select,
+.rfq-form .field .rfq-input-wrap input,
+.rfq-form .field .rfq-input-wrap select {
   width: 100%;
-  padding: 0.82rem 1rem 0.82rem 2.65rem;
-  background: #ffffff;
+  padding: 0.82rem 1rem 0.82rem 2.75rem !important;
+  background-color: #ffffff;
   border: 1.5px solid #CBD5E1;
   border-radius: 10px;
   font-size: 0.93rem;
@@ -12949,8 +12953,11 @@ a.btn.btn--light {
   transition: all 0.2s ease;
 }
 
-.rfq-input-wrap select {
-  padding-right: 2.5rem;
+.rfq-input-wrap select,
+.field .rfq-input-wrap select,
+.rfq-form .field .rfq-input-wrap select {
+  padding-left: 2.75rem !important;
+  padding-right: 2.5rem !important;
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -12958,6 +12965,7 @@ a.btn.btn--light {
   background-repeat: no-repeat;
   background-position: right 14px center;
   background-size: 16px;
+  cursor: pointer;
 }
 
 .rfq-textarea-wrap {
