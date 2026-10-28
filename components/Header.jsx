@@ -8,6 +8,7 @@ import { DATA } from '@/lib/data';
 import { NAV_ICONS, NAV_FOOTERS } from '@/lib/nav';
 import { useUI } from './UIProvider';
 import RawSvg from './RawSvg';
+import LanguageSelector from './LanguageSelector';
 
 const Chevron = ({ className, size }) => (
   <svg className={className} viewBox="0 0 16 16" width={size} height={size} fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -510,6 +511,8 @@ export default function Header() {
               <span className="header-quote-btn__text">GET A QUOTE</span>
               <QuoteArrow />
             </Link>
+
+            <LanguageSelector />
 
             <button className="nav-toggle" aria-expanded={open} aria-controls="nav" aria-label={open ? 'Close menu' : 'Open menu'} onClick={() => setDrawer(!open)}>
               <span></span>
