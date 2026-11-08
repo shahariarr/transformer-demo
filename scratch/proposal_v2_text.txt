@@ -1,0 +1,1011 @@
+=== PAGE 1 ===
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Version: 1.0 
+Date: 24 September 2026 
+ 
+ 
+ 
+Technical & Financial Proposal 
+Website Design & Development for  
+BPEL. 
+ 
+ 
+ 
+ 
+ 
+Prepared for:  
+Basic Power Engineering Ltd. 
+Spring Rahmat E Tuba Complex, House#132,  
+Road# 02, Block#A, Section#12, Mirpur, Dhaka-1216. 
+Proposed by:  
+Dcastalia Limited 
+House 91, Road 04, Block B Banani  
+Dhaka 1213. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DCASTALIA LIMITED 
+INFODCASTALIA.COM  • DCASTALIA.COM 
+ 
+ 
+PAGE 1 
+ 
+
+
+=== PAGE 2 ===
+Website design & development proposal for BPEL 
+24 Sep 2026  • Version 1.0 
+1. About Dcastalia Limited 3 
+2. Executive Summary 5 
+3. Project Understanding 5 
+4. Scope of Work SOW 5 
+4.1. Website Design & Development 5 
+4.2. Website Structure & Core Modules Development 6 
+4.3. Admin Panel CMS 11 
+4.4. Content Integration & Data Presentation 12 
+5. Technical Specifications 12 
+6. Project Timeline 14 
+7. Work Process 14 
+8. Project Team 15 
+9. Warranty & Deliverables 15 
+9.1. Post-Launch Warranty Support 1Month) 15 
+9.2. Final Deliverables 15 
+10. Investment & Commercials 16 
+11. Optional Services 17 
+12. Terms of Service 18 
+12.1. Contents & Copyright 18 
+12.2. Payment Terms & Phases 18 
+12.3. Definition of New Requirement CR 19 
+12.4. Deadline, Milestones, Project Duration & After-Sales Service 19 
+12.5. Third-Party Services & Hosting 19 
+12.6. Other Terms of Service 19 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+DCASTALIA LIMITED 
+INFODCASTALIA.COM  • DCASTALIA.COM 
+ 
+ 
+ PAGE 2 OF 19 
+ 
+
+=== PAGE 3 ===
+Website design & development proposal for BPEL 
+24 Sep 2026  • Version 1.0 
+1. About Dcastalia Limited 
+Experience, delivery capability and client trust. 
+Since 2009, Dcastalia Limited has provided web development, software development, digital marketing and 
+technical support solutions, combining strategy, design and engineering to solve complex business needs. 
+17 
+Years of Experience 
+1650 
+Clients Worldwide 
+2000 
+Completed Projects 
+ 
+Throughout our journey, we've delivered unique, effective solutions that drive customer success worldwide. 
+Our entire organization works diligently to ensure your business thrives. 
+ 
+ 
+Industry & Global Reach 
+Dcastalia serves diverse sectors including Business & Corporate, Real Estate, Telecommunications, 
+Healthcare, Architecture, Government & NGO, Garments and Education. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Trusted by Clients Worldwide 
+Our work is recognized and appreciated by clients and industry platforms around the world. 
+ 
+ 
+ 
+ 
+ 
+DCASTALIA LIMITED 
+INFODCASTALIA.COM  • DCASTALIA.COM 
+ 
+ 
+ PAGE 3 OF 19 
+ 
+
+
+=== PAGE 4 ===
+Website design & development proposal for BPEL 
+24 Sep 2026  • Version 1.0 
+Recognized for Excellence 
+Our commitment to quality, innovation and client success has been recognized by leading industry 
+platforms. 
+ 
+ 
+ 
+A Glance of Featured Partners 
+ 
+ 
+ 
+ 
+ 
+DCASTALIA LIMITED 
+INFODCASTALIA.COM  • DCASTALIA.COM 
+ 
+ 
+ PAGE 4 OF 19 
+ 
+
+
+=== PAGE 5 ===
+Website design & development proposal for BPEL 
+24 Sep 2026  • Version 1.0 
+2. Executive Summary 
+A modern, scalable and conversion-focused digital platform for BPEL. 
+Dcastalia Limited proposes to design and develop a modern, responsive, SEO-friendly digital platform for 
+Basic Power Engineering Ltd. BPEL, focused on presenting its power engineering products, electrical 
+solutions, projects, services, and technical capabilities. The new website will enhance user experience, 
+simplify product and service discovery, strengthen corporate credibility, improve inquiry generation, and 
+provide a scalable CMS for future content management. 
+ 
+ 
+3. Project Understanding 
+Basic Power Engineering Ltd. BPEL is a power engineering and electrical solutions company offering 
+products and services including transformers, switchgear, electrical panels, busbar trunking, automation, 
+complete substation solutions, servicing, upgrading, and related technical services. The website serves as 
+BPELʼs primary digital platform for presenting its products, projects, engineering capabilities, corporate 
+information, and client-facing services. 
+The primary objectives of the website are: 
+● Improve overall user experience 
+● Modernize the website design 
+● Simplify property exploration 
+● Increase inquiry conversion 
+● Improve SEO visibility 
+● Enhance CMS usability 
+● Build a scalable platform 
+ 
+ 
+4. Scope of Work SOW 
+The scope of this project covers the complete design, development, and deployment of the website, 
+focusing on functionality, aesthetics, and digital performance. 
+4.1. Website Design & Development 
+a. Discovery & Planning 
+● Conduct project briefing and requirement analysis. 
+● Research industry trends, competitors, and user expectations. 
+● Define website goals, target audience, and user journey. 
+● Create site map and information architecture IA. 
+● Finalize key features, technologies, and CMS platform. 
+ 
+b. Design & User Experience UI/UX 
+● Develop wireframes for key pages (homepage, inner pages, contact, etc.). 
+● Design high-fidelity mockups based on brand guidelines. 
+● Ensure mobile-first, responsive, and accessible design. 
+● 2 rounds of client feedback and revisions included. 
+ 
+ 
+ 
+DCASTALIA LIMITED 
+INFODCASTALIA.COM  • DCASTALIA.COM 
+ 
+ 
+ PAGE 5 OF 19 
+ 
+
+=== PAGE 6 ===
+Website design & development proposal for BPEL 
+24 Sep 2026  • Version 1.0 
+c. Front-End & Back-End Development 
+● Convert approved designs into a functional website using modern technologies 
+● Implement dynamic features such as sliders, forms, and animations. 
+● Integrate CMS for easy content management and future scalability. 
+● Ensure full responsiveness across devices and browsers. 
+ 
+d. SEO Optimization 
+● Apply on-page SEO best practices (meta tags, header structure, alt texts). 
+● Optimize site speed, image compression, and caching setup. 
+● Set up Google Analytics, Search Console, and sitemap submission. 
+● Ensure SSL security and mobile performance compliance. 
+ 
+  e. Performance Optimization 
+● Test all pages for cross-browser and device compatibility. 
+● Verify forms, links, and navigation flow. 
+● Conduct UX and load testing to ensure performance stability. 
+● Fix bugs and finalize the site for launch. 
+ 
+  f. Launch & Handover 
+● Deploy the website to the live server. 
+● Verify DNS, SSL, and backup setup. 
+● Provide CMS training for the client team. 
+● Deliver final files, credentials, and documentation. 
+ 
+ 
+4.2. Website Structure & Core Modules Development 
+The website will be developed with the following core pages, sections, modules, and functionalities. The 
+final content structure and visual presentation will be based on the approved UI/UX design and information 
+provided by the client. 
+# Module / Page Sections / Components Key Features & Details 
+01 Global 
+Components 
+Header & Navigation • BPEL logo 
+• Primary navigation menu 
+• Request a Quote / Inquiry CTA 
+• Responsive/mobile navigation 
+Footer • Quick links, Contact info, Social links/icons 
+• Copyright information 
+• View Company Profile button 
+• Download Company Profile PDF option 
+Sticky CTA Button • Contact / Inquiry 
+• Call /  WhatsApp 
+Company Profile Access • No separate Company Profile page 
+• Footer button opens PDF viewer / new tab 
+• View & Download option 
+ 
+ 
+DCASTALIA LIMITED 
+INFODCASTALIA.COM  • DCASTALIA.COM 
+ 
+ 
+ PAGE 6 OF 19 
+ 
+
+=== PAGE 7 ===
+Website design & development proposal for BPEL 
+24 Sep 2026  • Version 1.0 
+02 Homepage Hero Banner / Slider • Image/video-based hero section 
+• Auto-transition & loop 
+• Video duration: up to 20 seconds 
+Company Overview • Short company introduction 
+• Key business highlights 
+• CTA linking to About/Company details 
+Featured Products • Selected products  
+• Product image, name 
+• View Product CTA 
+Our Services • Complete Substation 
+• Distribution Panels 
+• Transformer Supply / Rental 
+• BBT 
+• Servicing & Upgrading 
+• Automation / Calibration 
+Featured Projects • Selected projects 
+• Project image, name 
+• View Details CTA 
+Why BPEL • Engineering capability 
+• Manufacturing facility 
+• Testing capability 
+• Quality / reliability 
+• Experienced technical team 
+Clients / Trusted By • Selected client logos 
+Certifications / Partners • Selected certifications 
+• Authorizations / technical partner logos 
+Gallery Preview • Company/team images slider. 
+Insights Preview • Latest Blog / News / Updates 
+Final Contact CTA • Request a Quote / Contact Us 
+03 About Us Company Overview • Company introduction 
+• BPEL history / background 
+Our Journey • Company history / timeline 
+• Establishment 
+• Workshop / manufacturing development 
+• Factory expansion 
+• Business growth milestones 
+Vision, Mission & Values • Vision statement 
+• Mission statement 
+• Core organizational values 
+Leadership • Chairman message 
+• Managing Director message 
+• CEO profile 
+ 
+ 
+DCASTALIA LIMITED 
+INFODCASTALIA.COM  • DCASTALIA.COM 
+ 
+ 
+ PAGE 7 OF 19 
+ 
+
+=== PAGE 8 ===
+Website design & development proposal for BPEL 
+24 Sep 2026  • Version 1.0 
+• Profile image & designation 
+Our Team / Employees • Key workforce information 
+• Engineering & technical team highlights 
+• Employee statistics where approved 
+Manufacturing & Facility 
+Overview 
+• Factory overview 
+• Production capability 
+• Fabrication / assembly capability 
+• Testing facility summary 
+Testing & Quality • Testing capability 
+• Transformer testing 
+• Switchgear testing 
+• Calibration / inspection capability 
+• Quality commitment 
+Certifications & 
+Accreditations 
+• ISO / CPRI / relevant certifications 
+• Licenses / authorizations 
+• Partner / accreditation logos 
+• Certificate visuals where applicable 
+04 Our 
+Organogram 
+Organizational Structure • Current BPEL organizational structure 
+• Department-wise hierarchy 
+• Management structure 
+Organogram Viewer • Organogram image / graphic 
+Download / View • Organogram PDF / image download where applicable 
+• Full-screen viewer 
+05 Our Gallery Gallery Listing • Company / factory gallery 
+• Product gallery 
+• Project gallery 
+• Event / activity gallery 
+Gallery Categories • Factory & Manufacturing 
+• Products 
+• Projects 
+• Team / Corporate 
+• Events / Training 
+Image Viewer / Lightbox • Full-screen image view 
+• Image navigation 
+• Responsive gallery 
+06 Our Projects A. Projects Listing Page • All projects displayed in structured cards/grid 
+• Project featured image, name, locations 
+• Project Browsing / Filter 
+B. Project Details Page • Project Overview / At a Glance 
+• Client / project name 
+• Location 
+• Scope of work 
+• Products / services involved 
+• Project images 
+• Project Inquiry CTA 
+ 
+ 
+DCASTALIA LIMITED 
+INFODCASTALIA.COM  • DCASTALIA.COM 
+ 
+ 
+ PAGE 8 OF 19 
+ 
+
+=== PAGE 9 ===
+Website design & development proposal for BPEL 
+24 Sep 2026  • Version 1.0 
+07 Our Services Services Overview • Short introduction to BPEL services 
+• Engineering and power solution positioning 
+Complete Substation • 11kV / 33kV complete substation solution 
+• Transformer 
+• HT Switchgear 
+• LT Panel 
+• PFI / associated equipment 
+Transformer Supply & 
+Rental 
+• Transformer supply 
+• Transformer rental service 
+• Capacity / application information where approved 
+Panel & Switchgear 
+Services 
+• MV distribution panels 
+• MDB / SDB / MCC 
+• HT / LT panels 
+Busbar Trunking System • Import / supply 
+• Installation 
+• Repairing 
+• Maintenance 
+Servicing & System 
+Upgrading 
+• Servicing 
+• Existing system upgrading 
+• Maintenance-related support 
+Automation & Calibration • Automation 
+• Instrument calibration 
+• ELB / load procedure support 
+Service Inquiry CTA • Service Request 
+• Technical Inquiry 
+• Contact CTA 
+08 Our Products A. Product Listing Page • Product card/grid structure 
+• Product name, image 
+• View Details CTA 
+• Product Categories 
+B. Product Detail Page • Product Name 
+• Product images 
+• product description 
+- Application 
+- Standards 
+- Parameters 
+- Features 
+• Product Inquiry CTA 
+09 Our Institute / 
+BPTI 
+Institute Overview • Introduction to BPEL institute / training initiative 
+ 
+ 
+DCASTALIA LIMITED 
+INFODCASTALIA.COM  • DCASTALIA.COM 
+ 
+ 
+ PAGE 9 OF 19 
+ 
+
+=== PAGE 10 ===
+Website design & development proposal for BPEL 
+24 Sep 2026  • Version 1.0 
+Training Programs • Switchgear operation & maintenance 
+• Automation 
+• Mechanical fabrication 
+• Estimation & design 
+• Other approved training programs 
+Training Facilities • Training environment 
+• Technical facilities 
+• Practical learning support 
+Upcoming / Ongoing 
+Training 
+• Training title 
+• Schedule 
+• Duration 
+• Eligibility where applicable 
+Registration / Inquiry • Registration form / inquiry CTA 
+• Contact details 
+10 Insights / Blog A. Insights Listing Page • Grid / card layout 
+• Featured image, title, Short excerpt, date 
+• Read More CTA 
+• Categories 
+- News, Updates, Events / Activities 
+  B. Individual Insight 
+Page 
+• Featured image 
+• Title & full description/content 
+• Publication date/category 
+• Social sharing buttons 
+11 Career Culture & HR Philosophy • Company culture overview 
+• HR philosophy 
+Job Openings • Current vacancies 
+• Job title 
+• Department/location where applicable 
+• Employment details 
+• Job description 
+Job Details • Responsibilities 
+• Requirements/qualifications 
+• Other relevant job information 
+• Apply Now CTA 
+Application Form • Applicant information 
+• Position selection 
+• CV/resume upload 
+• Application submission 
+12 Contact Us Contact Information • Business/contact information 
+Location / Map • Office location 
+• Embedded Google Map 
+ 
+ 
+DCASTALIA LIMITED 
+INFODCASTALIA.COM  • DCASTALIA.COM 
+ 
+ 
+ PAGE 10 OF 19 
+ 
+
+=== PAGE 11 ===
+Website design & development proposal for BPEL 
+24 Sep 2026  • Version 1.0 
+Contact Form • Inquiry/contact form 
+• Form submission to CMS/admin panel 
+13 Privacy Policy Policy Sections • Standard text-based privacy policy sections 
+• Structured policy content 
+14 Terms & 
+Conditions 
+Terms Sections • Standard text-based terms & conditions sections 
+• Structured legal/policy content 
+ 
+ 
+ 
+4.3. Admin Panel CMS 
+The CMS will provide centralized management without direct code-level content changes. 
+# CMS Module Key Management Features 
+01 Dashboard • Overview of website data 
+• Quick access to key modules 
+02 User & Role Management • Manage admin users 
+• Role & permission control 
+03 Page & Content Management • Manage page content & sections 
+• Update content without code changes 
+04 Product Management • Manage products & categories 
+• Product description, images, application, standards, 
+parameters & features 
+05 Service Management • Manage services & categories 
+• Service content & images 
+06 Project Management • Manage projects, categories & locations 
+• Project details, images & publishing status 
+07 Gallery Management • Manage gallery categories 
+• Upload & organize images 
+08 Organogram Management • Manage organogram image/PDF 
+• View, download & QR access 
+09 Concern & Institute 
+Management 
+• Manage concern/sister company content 
+• Manage BPTI/training information 
+10 Insights / Blog Management • Create, edit & publish posts 
+• Manage categories & featured media 
+ 
+ 
+DCASTALIA LIMITED 
+INFODCASTALIA.COM  • DCASTALIA.COM 
+ 
+ 
+ PAGE 11 OF 19 
+ 
+
+=== PAGE 12 ===
+Website design & development proposal for BPEL 
+24 Sep 2026  • Version 1.0 
+11 Form & Inquiry Management • Manage contact, product, service, project & quote inquiries 
+• View & export submissions 
+12 Career Management • Manage job openings 
+• Manage applications & CVs 
+13 Media & Document Library • Manage images, videos & PDFs 
+• Company Profile / Organogram document management 
+14 Website & SEO Settings • Manage contact, social links & global settings 
+• Basic SEO fields, titles, meta descriptions & alt text 
+ 
+ 
+ 
+4.4. Content Integration & Data Presentation 
+Item Description 
+Initial Content 
+Integration 
+• Up to 5 standard pages based on client-provided content 
+• Up to 10 project/news/blog detail entries 
+• Up to 20 resized images for the media gallery using client-provided content and 
+images. 
+Additional 
+Content Entry 
+For each extra page (up to 1,500 words), an additional charge of BDT 3,000 will apply. 
+ 
+ 
+ 
+5. Technical Specifications 
+The following technology stack is proposed to deliver a scalable, secure, high-performance website aligned 
+with the project requirements. 
+ Category Area Specification 
+01 Development 
+Platform 
+User Experience Design • UI/UX Design & Interactive Prototyping – Figma 
+• User Journey & Information Architecture 
+Technology Stack • Frontend: React.js, Next.js, TypeScript, Tailwind 
+CSS 
+• Backend: PHP 8.4, Yii2 
+• Database: MySQL 8.0 
+• Animations: GSAP 
+ 
+ 
+DCASTALIA LIMITED 
+INFODCASTALIA.COM  • DCASTALIA.COM 
+ 
+ 
+ PAGE 12 OF 19 
+ 
+
+=== PAGE 13 ===
+Website design & development proposal for BPEL 
+24 Sep 2026  • Version 1.0 
+Development 
+Environment 
+• Node.js Runtime 
+• Deployment optimized for Next.js-based 
+application 
+• Compatible with managed cloud/server 
+environments 
+02 Server 
+Requirements 
+Core System 
+Requirements 
+ 
+• Node.js 22 
+• PHP 8.4 
+• MySQL / MariaDB 
+• Minimum 4 GB RAM 
+• HTTPS/SSL enabled 
+• Required server access for deployment & 
+configuration 
+03 Performance & 
+Security 
+ 
+Browser Compatibility • Responsive and mobile-ready 
+• Compatible with modern versions of Chrome, 
+Firefox, Safari, Edge and Opera 
+Web Security • OWASP-aligned security practices 
+• Form input validation & secure data handling 
+• HTTPS/SSL implementation 
+Performance 
+Optimization 
+• Optimized images, content and code 
+• Reduced unnecessary requests and load time 
+• Google PageSpeed / Lighthouse optimization 
+• Basic on-page SEO optimization 
+Server Security & Data 
+Backup 
+• Secure server configuration 
+• Automated backup, subject to active 
+server/hosting support 
+04 Analytics & 
+Reporting 
+Analytics & Reporting • Google Analytics integration 
+• Basic website performance monitoring 
+• Basic security/performance reporting where 
+applicable 
+05 Quality 
+Assurance 
+QA Testing • UI & Visual Testing 
+• Usability & Functionality Testing 
+• Responsive & Cross-Browser Testing 
+UAT & Deployment • User Acceptance Testing UAT 
+• Bug Fixing & Final Validation 
+• Production Deployment 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DCASTALIA LIMITED 
+INFODCASTALIA.COM  • DCASTALIA.COM 
+ 
+ 
+ PAGE 13 OF 19 
+ 
+
+=== PAGE 14 ===
+Website design & development proposal for BPEL 
+24 Sep 2026  • Version 1.0 
+6. Project Timeline 
+Milestone Phase Key Output Duration 
+01 Discovery & 
+Planning 
+Requirement analysis, sitemap & information 
+architecture, planning 
+2 Working Days 
+02 UX/UI Design & 
+Prototyping 
+Wireframes, high-fidelity UI designs and 
+interactive prototype 
+7 Working Days 
+03 Development & 
+CMS Integration 
+Front-end, back-end, CMS, core modules 
+and required integrations 
+15 Working Days 
+04 Content Integration 
+& QA 
+Content presentation, responsive testing, 
+functional QA, optimization and bug fixing 
+4 Working Days 
+05 UAT, Deployment & 
+Handover 
+UAT, final refinements, production launch, 
+CMS handover and documentation 
+2 Working Days 
+ 
+Total estimated duration: 30 working days from the Work Order and the advance payment receipt. 
+ 
+ 
+ 
+7. Work Process 
+A simple, accountable path from discovery to launch. 
+ 
+ 
+ 
+Each stage is reviewed at the appropriate approval point before the team proceeds to the next major phase. 
+This keeps scope, quality and delivery expectations aligned throughout the project. 
+ 
+ 
+ 
+ 
+DCASTALIA LIMITED 
+INFODCASTALIA.COM  • DCASTALIA.COM 
+ 
+ 
+ PAGE 14 OF 19 
+ 
+
+
+=== PAGE 15 ===
+Website design & development proposal for BPEL 
+24 Sep 2026  • Version 1.0 
+8. Project Team 
+The project will be managed by a cross-functional team covering project management, design, 
+development, QA, deployment and support, ensuring efficient collaboration and clear accountability 
+throughout the project. 
+Role Primary Responsibility Experience 
+Project Manager Project coordination, stakeholder communication, schedule 
+and risk management 
+5 Years 
+Creative Director UX/UI direction, information architecture and design quality 7 Years 
+Frontend Developer Responsive frontend implementation, interactions and 
+performance 
+5 Years 
+Full-Stack Developer Backend, CMS, APIs and database integration 7 Years 
+DevOps / QA Deployment, server configuration, testing and quality 
+assurance 
+9 Years 
+Support Engineer Analytics, monitoring, bug tracking and post-launch support 5 Years 
+Content & Data 
+Support 
+Website content entry, formatting & data presentation 2 Years 
+Account Manager Client communication, coordination & commercial support 3 Years 
+ 
+ 
+ 
+9. Warranty & Deliverables 
+Clear ownership of what is delivered at project completion. 
+ 
+9.1. Post-Launch Warranty Support 1Month) 
+● Bug fixing related to the delivered scope 
+● Resolution of implementation issues identified after launch 
+● Basic uptime/error monitoring setup 
+● Initial post-launch technical assistance 
+Ongoing maintenance, content support and recurring optimization are available under the optional 
+Maintenance Service. 
+ 
+ 
+9.2. Final Deliverables 
+● Fully functional responsive website 
+● Custom CMS with approved management modules 
+● Approved UX/UI designs and interactive prototype 
+● Website source code / project files 
+● CMS training and documentation 
+● Production deployment and configuration 
+● Basic SEO and analytics setup 
+● 1-month post-launch warranty support 
+ 
+ 
+DCASTALIA LIMITED 
+INFODCASTALIA.COM  • DCASTALIA.COM 
+ 
+ 
+ PAGE 15 OF 19 
+ 
+
+=== PAGE 16 ===
+Website design & development proposal for BPEL 
+24 Sep 2026  • Version 1.0 
+10. Investment & Commercials 
+Transparent investment aligned with the approved scope. 
+ 
+          Scope / Deliverable Investment BDT 
+  
+1 UX/UI Design & Prototyping 90,000 
+2 Website Development & Core Modules 150,000 
+3 CMS Development & Integration 55,000 
+4 Content Integration & QA 30,000 
+5 Server Setup & Deployment 15,000 
+6 Post-Deployment Support - 1 Month Free N/A 
+ 
+          Total Project Investment 340,000 
+All prices are exclusive of VAT. A 5% VAT will be added to the total amount at invoicing, as applicable. 
+  
+ 
+ 
+ 
+DCASTALIA LIMITED 
+INFODCASTALIA.COM  • DCASTALIA.COM 
+ 
+ 
+ PAGE 16 OF 19 
+ 
+
+=== PAGE 17 ===
+Website design & development proposal for BPEL 
+24 Sep 2026  • Version 1.0 
+11. Optional Services 
+Available separately when required. 
+Feature Description Cost in BDT 
+Maintenance 
+Service 
+Standard) 
+Security & Monitoring 
+- Monthly security checks and vulnerability monitoring 
+- Codebase & database backups 
+- Website health monitoring for broken links, forms, and key 
+functions 
+ 
+Optimization & Reporting 
+- Monthly page-speed optimization 
+- Google Analytics monitoring & reporting 
+ 
+Technical Support 
+- Bug fixing & technical consultation: up to 5 requests or 8 
+hours/month 
+- Data presentation/content support: up to 5 hours/month 
+- Issue handling within 72 hours 
+ 
+Value: Keeps the website secure, stable, optimized, and 
+well-maintained after launch.  
+8,000/Month 
+Hosting 
+Service 
+Managed Cloud Hosting 
+- 5 GB hosting space 
+- 16 GB shared RAM & 8-core vProcessor 
+- Up to 100 GB monthly bandwidth 
+- Automated backup 
+- Managed hosting with Plesk 
+- 99.99% uptime 
+ 
+Value: Provides a reliable and managed hosting environment for 
+stable website performance and availability.  
+35,000/Year 
+Copywriting Professional Website Content 
+- Up to 5,000 words of website content 
+- Content aligned with brand positioning, services & target 
+audience 
+- Project discovery session: 3 days / 6 hours 
+- 2 rounds of revisions 
+- Content optimized for clarity, engagement & brand 
+communication 
+- Additional: BDT 10,000 per 2,000 words 
+ 
+Value: Communicates the brand and its offerings clearly while 
+improving credibility, engagement, and conversion potential.  
+65,000 
+ 
+ 
+DCASTALIA LIMITED 
+INFODCASTALIA.COM  • DCASTALIA.COM 
+ 
+ 
+ PAGE 17 OF 19 
+ 
+
+=== PAGE 18 ===
+Website design & development proposal for BPEL 
+24 Sep 2026  • Version 1.0 
+Graphic 
+Content 
+Support 
+Premium Stock Images 
+- Up to 20 premium stock images 
+- Selection based on website sections and content 
+- Professional adaptation & web optimization 
+ 
+Image Touch-up 
+- Basic enhancement, retouching, color, lighting & cropping 
+ 
+Custom Icons 
+- Up to 10 custom icons, if required 
+- Designed to match the websiteʼs content and visual style 
+ 
+Value: Ensures visually consistent, relevant, and professionally 
+optimized graphics across the website. 
+40,000 
+ 
+ 
+ 
+12. Terms of Service 
+Commercial, scope and delivery conditions. 
+ 
+12.1. Contents & Copyright 
+a. Stakeholders provide content and information. 
+b. Content writing and photo-shooting are not included. 
+c. Stakeholder retains content copyright; responsible for copyright violations. 
+ 
+12.2. Payment Terms & Phases 
+a. Milestone-based commercial structure. 
+Milestone Payment Phase Amount Key Milestone 
+1 Project Initiation 30% of Total  • Agreed Scope / Agreement Sign. 
+2 UI/UX Approval 30% of Total  • Finalise WBS / Project Document. 
+•  UI/UX Design Completed. 
+3 Development 
+Completion 
+30% of Total •  Complete Frontend Development. 
+•  Completion of backend & API integration. 
+•  CMS Ready for data presentation. 
+4 UAT & Launch 10% of Total 
+ 
+• Data presentation as per scope of work. 
+• Quality Assurance & Fine-tuning 
+•  UAT Signoff 
+•  Deploy the website on the client's server 
+Beta or Live). 
+ 
+b. VAT - 5% VAT is applicable as per the current National Board of Revenue NBR regulations. 
+ 
+ 
+DCASTALIA LIMITED 
+INFODCASTALIA.COM  • DCASTALIA.COM 
+ 
+ 
+ PAGE 18 OF 19 
+ 
+
+=== PAGE 19 ===
+Website design & development proposal for BPEL 
+24 Sep 2026  • Version 1.0 
+c. TAX - Income TAX is exempted for IT/ITES services as per the prevailing Finance Act/NBR 
+guidelines of the Government of Bangladesh 
+d. Handover of the final codebase and other documentation upon full payment receipt. 
+ 
+12.3. Definition of New Requirement CR 
+a. Approved design/structure changes are treated as "New requirements". 
+b. Feedback beyond the working document scope is also considered a "New requirement". 
+c. Dcastalia develops "New requirements" only after the budget and requirement list approval by the 
+client's project manager. 
+d. Additional charge for Change Requests CR BDT 10,000 per man-day. 
+ 
+12.4. Deadline, Milestones, Project Duration & After-Sales Service 
+a. Changes to the approved design may impact development time and milestones. 
+b. Late provision of content or feedback may affect milestones and deadlines. 
+c. Inactivity for over 10 days results in the project pausing for up to 10 workdays. 
+d. The maximum project development timeline is 6 months; exceeding it incurs a 30% cost increase. 
+e. One 1 month of complimentary post-launch warranty support for bug fixes related to the delivered 
+scope. Additional maintenance and changes are excluded unless separately agreed. 
+ 
+12.5. Third-Party Services & Hosting 
+a. Proposal cost excludes third-party service charges (plugins, integrations, etc.). 
+b. Client will provide and configure the required server/disk space for hosting the website. 
+c. Malware protection requires hosting on a specified server with an active maintenance contract. 
+ 
+12.6. Other Terms of Service 
+a. Terms modification requires mutual agreement. 
+b. Proposal valid for 60 days from submission. 
+c. A discreet footer credit acknowledging Dcastalia Limited as the website development partner may 
+be included on the live website, unless otherwise agreed in writing. 
+d. Final deployment to the client's production server will be completed upon UAT approval and project 
+completion confirmation. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DCASTALIA LIMITED 
+INFODCASTALIA.COM  • DCASTALIA.COM 
+ 
+ 
+ PAGE 19 OF 19 
+ 
+

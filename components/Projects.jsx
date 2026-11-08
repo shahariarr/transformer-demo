@@ -4,9 +4,11 @@
    instant search, active filter feedback, and pagination controls. */
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { DATA } from '@/lib/data';
 import SectionHead from './SectionHead';
 import ViewAll from './ViewAll';
+import ProjectLocationMap from './ProjectLocationMap';
 
 const PROJECTS_PER_PAGE = 6;
 const AUTOPLAY_MS = 5000;
@@ -560,21 +562,29 @@ export default function Projects({ viewAll = true, isGrid = false }) {
         </div>
       )}
 
+      {/* Interactive Project Location Map across Bangladesh */}
+      {isGrid && (
+        <div className="wrap">
+          <ProjectLocationMap />
+        </div>
+      )}
+
       <div className="wrap">
-        {/* Bottom Consultation Callout Banner */}
+        {/* Bottom Consultation Callout Banner - Following the exact card from the screenshot */}
         <div className="proj-bottom-banner fade-in-up" data-delay="150">
           <div className="proj-bottom-copy">
-            <span className="proj-bottom-tag">Engineering Collaboration & Tenders</span>
-            <h4>Planning a New Power Grid or Substation Project?</h4>
-            <p>Our senior project engineering team provides load flow calculations, layout drawings, equipment delivery coordination, and full on-site commissioning support.</p>
+            <h4>Need Custom Engineering Specifications?</h4>
+            <p>Our engineering team prepares custom transformer tender drawings, loss evaluations, and single-line diagrams within 24 business hours. Connect directly with our high-voltage technical desk.</p>
           </div>
-          <a href="/contact/" className="btn btn--primary proj-bottom-btn">
-            <span>Discuss Your Project With Us</span>
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </a>
+          <div className="proj-bottom-actions">
+            <Link href="/contact/" className="proj-bottom-btn-primary">
+              <span>Request Custom RFQ</span>
+              <span>&rarr;</span>
+            </Link>
+            <Link href="/calculators/sizing-advisor/" className="proj-bottom-btn-outline">
+              <span>Use Sizing Advisor</span>
+            </Link>
+          </div>
         </div>
       </div>
     </>
