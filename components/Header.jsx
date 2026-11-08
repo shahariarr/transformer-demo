@@ -493,9 +493,7 @@ function HeaderContent() {
           <ul className="topbar__info">
             <li><TopIcon><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" /></TopIcon><a href={`tel:${c.whatsapp || ''}`}>{c.phoneDisplay || ''}</a></li>
             <li><TopIcon><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></TopIcon><a href={`mailto:${c.email || ''}`}>{c.email || ''}</a></li>
-            <li className="topbar__hours"><TopIcon><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></TopIcon><span>Mon – Fri: 08:00 – 18:00</span></li>
           </ul>
-          <p className="topbar__meta">ISO 9001:2015 Certified Manufacturer</p>
         </div>
       </div>
       <div className="header-shell">
@@ -528,7 +526,6 @@ function HeaderContent() {
                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
               </svg>
               <span className="search-btn__text">Search</span>
-              <kbd className="search-btn__kbd">Ctrl K</kbd>
             </button>
 
             <Link
