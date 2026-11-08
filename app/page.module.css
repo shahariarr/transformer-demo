@@ -309,7 +309,9 @@
   position: relative;
   width: 100%;
   aspect-ratio: 16/9;
-  mix-blend-mode: multiply
+  mix-blend-mode: multiply;
+  -webkit-mask-image: linear-gradient(to bottom, #000 78%, rgba(0, 0, 0, 0.6) 88%, transparent 98%);
+  mask-image: linear-gradient(to bottom, #000 78%, rgba(0, 0, 0, 0.6) 88%, transparent 98%);
 }
 
 :global(.tv__video) {
@@ -1024,8 +1026,13 @@
 }
 
 @keyframes pcardSpin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 :global(.pcard__more-badge) {
@@ -3424,15 +3431,15 @@
 }
 
 :global(.faq-help__btn--wa) {
-    border-color: var(--wa);
-    color: #ffffff;
-    background: var(--wa);
+  border-color: var(--wa);
+  color: #ffffff;
+  background: var(--wa);
 }
 
 :global(.faq-help__btn--wa:hover) {
-    color: var(--wa);
-    background: #ffffff;
-    border-color: #08a754;
+  color: var(--wa);
+  background: #ffffff;
+  border-color: #08a754;
 }
 
 @media (max-width: 860px) {
@@ -3718,6 +3725,7 @@
    Breakpoint: <= 960px (Tablets / Mobile Landscape)
    --------------------------------------------------------------------- */
 @media (max-width: 960px) {
+
   /* Section Padding */
   :global(.sec) {
     padding: clamp(3.25rem, 6vw, 4.75rem) 0;
@@ -3941,6 +3949,7 @@
    Breakpoint: <= 640px (Mobile Phones)
    --------------------------------------------------------------------- */
 @media (max-width: 640px) {
+
   :global(.wrap),
   :global(.wrap--narrow) {
     width: min(100% - 2rem, 1200px);
@@ -4260,6 +4269,7 @@
    Breakpoint: <= 400px (Extra Compact Phones: iPhone SE, older models)
    --------------------------------------------------------------------- */
 @media (max-width: 400px) {
+
   :global(.wrap),
   :global(.wrap--narrow) {
     width: min(100% - 1.5rem, 1200px);
@@ -4299,7 +4309,8 @@
   --bs-theme-color: #006db8;
   --bs-sec-theme-color: #001e34;
   position: relative;
-  padding-top: 55px; /* room for the -50px hover shift */
+  padding-top: 55px;
+  /* room for the -50px hover shift */
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
@@ -4473,6 +4484,7 @@
   :global(.product-item .item-info) {
     padding: 14px 6% 18px;
   }
+
   :global(.product-item .item-info .item-title) {
     font-size: 22px;
     min-height: 55px;
@@ -4484,13 +4496,16 @@
     font-size: 20px;
     min-height: 50px;
   }
+
   :global(.product-item .item-info .item-desc) {
     flex: 0 0 100%;
     margin-bottom: 6px;
   }
+
   :global(.product-item .item-info .item-box) {
     flex-wrap: wrap;
   }
+
   :global(.produ-more) {
     font-size: 14px;
     margin: 0 20px;
@@ -4502,12 +4517,15 @@
     font-size: 20px;
     line-height: 28px;
   }
+
   :global(.product-item) {
     min-height: 380px;
   }
+
   :global(.product-item .item-img) {
     height: 220px;
   }
+
   :global(.product-item .item-img img) {
     height: 210px;
   }
@@ -4574,5 +4592,3 @@
 :global(.outer-swiper-wrap .produ-more:hover) {
   color: var(--bs-sec-theme-color, #001e34);
 }
-
-
