@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 
-// 19 Languages exactly as displayed in the design reference
+// 20 Languages
 const LANGUAGES = [
   // Column 1 (in 3-col row flow: index 0, 3, 6, 9, 12, 15, 18)
   { code: 'en', name: 'English' },
@@ -23,7 +23,8 @@ const LANGUAGES = [
   { code: 'ms', name: 'Malay' },
   { code: 'fa', name: 'Persian' },
   { code: 'th', name: 'Thai' },
-  { code: 'vi', name: 'Vietnamese' }
+  { code: 'vi', name: 'Vietnamese' },
+  { code: 'bn', name: 'Bengali' }
 ];
 
 // High-fidelity, self-contained SVG flags for the 19 languages
@@ -230,6 +231,14 @@ function FlagIcon({ code, className = 'lang-flag' }) {
         <svg {...commonProps} viewBox="0 0 3 2">
           <rect width="3" height="2" fill="#DA251D" />
           <polygon points="1.5,0.4 1.62,0.78 2.02,0.78 1.7,1.01 1.82,1.39 1.5,1.15 1.18,1.39 1.3,1.01 0.98,0.78 1.38,0.78" fill="#FFFF00" />
+        </svg>
+      );
+
+    case 'bn': // Bangladesh
+      return (
+        <svg {...commonProps} viewBox="0 0 6 4">
+          <rect width="6" height="4" fill="#006A4E" />
+          <circle cx="2.7" cy="2" r="1.2" fill="#F42A41" />
         </svg>
       );
 
