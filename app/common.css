@@ -292,7 +292,7 @@ button {
 }
 
 .wrap {
-  width: min(1200px, 100% - 3rem);
+  width: min(1400px, 100% - 3rem);
   margin-inline: auto
 }
 
@@ -3812,7 +3812,7 @@ body {
   display: grid;
   grid-template-columns: 1.5fr 1fr 1.2fr 1.4fr;
   gap: 2.5rem clamp(2rem, 4vw, 3.5rem);
-  padding-block: clamp(3.5rem, 6vw, 4.75rem)
+  padding-block: clamp(2.5rem, 6vw, 2.5rem)
 }
 
 .fgrid__brand {
