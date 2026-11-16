@@ -367,7 +367,6 @@ export default function Products({ viewAll = true, isGrid = false }) {
             desc="Oil-immersed power and distribution transformers, pad-mounted substations, and medium-voltage switchgear engineered to IEC, IEEE, and UL international standards."
           />
           <div className="proj-nav" data-animate="slideInRight">
-            <span className="proj-counter">{productCountLabel(PRODUCTS.length)}</span>
             {viewAll ? <ViewAll href="/products/">View all products</ViewAll> : null}
           </div>
         </div>
@@ -494,33 +493,7 @@ export default function Products({ viewAll = true, isGrid = false }) {
             </div>
           </div>
 
-          <div className="swiper-control">
-            <button
-              type="button"
-              className="swiper-button swiper-button-prev"
-              aria-label="Previous slide"
-              onClick={handlePrev}
-            >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M19 12H5M12 19l-7-7 7-7" />
-              </svg>
-            </button>
-
-            <a href="/products/" aria-label="View all products" className="produ-more">
-              view all products
-            </a>
-
-            <button
-              type="button"
-              className="swiper-button swiper-button-next"
-              aria-label="Next slide"
-              onClick={handleNext}
-            >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </button>
-          </div>
+        
         </div>
       )}
     </>

@@ -27,10 +27,10 @@ function CertCard({ cert, index, onOpen }) {
       <div className="qa-frame-mat">
         <img src={cert.src} alt={cert.alt} loading="lazy" decoding="async" />
       </div>
-      <div className="qa-frame-info">
+      {/* <div className="qa-frame-info">
         <span className="qa-frame-badge">{cert.badge}</span>
         <h4 className="qa-frame-title">{cert.title}</h4>
-      </div>
+      </div> */}
     </article>
   );
 }
@@ -56,7 +56,7 @@ function CertsRow({ rowRef, hidden, onOpen }) {
 }
 
 export default function Quality({ showWhy = true, showCerts = true, viewAll = true }) {
-  const { openCert } = useUI();
+  const { openCert, dialog } = useUI();
   const innerRef = useRef(null);
   const rowRef = useRef(null);
   const stateRef = useRef({
@@ -68,7 +68,25 @@ export default function Quality({ showWhy = true, showCerts = true, viewAll = tr
     touchStartX: 0,
     startX: 0,
     isDragging: false,
+    isCertOpen: false,
   });
+
+  // Pause carousel auto-rotation when certificate modal dialog is open
+  useEffect(() => {
+    const isModalOpen = Boolean(dialog && dialog.isCert);
+    stateRef.current.isCertOpen = isModalOpen;
+    if (isModalOpen) {
+      stateRef.current.paused = true;
+    } else {
+      stateRef.current.paused = false;
+    }
+  }, [dialog]);
+
+  const handleOpenCert = (index) => {
+    stateRef.current.isCertOpen = true;
+    stateRef.current.paused = true;
+    openCert(index);
+  };
 
   // Calculate row width & step dynamically on mount/resize
   useEffect(() => {
@@ -108,7 +126,7 @@ export default function Quality({ showWhy = true, showCerts = true, viewAll = tr
           s.x += (s.targetX - s.x) * 0.14;
         } else {
           s.x = s.targetX;
-          if (!s.paused && !s.isDragging) {
+          if (!s.paused && !s.isDragging && !s.isCertOpen) {
             s.x -= speed;
             s.targetX -= speed;
           }
@@ -132,7 +150,11 @@ export default function Quality({ showWhy = true, showCerts = true, viewAll = tr
     raf = requestAnimationFrame(tick);
 
     const onEnter = () => { stateRef.current.paused = true; };
-    const onLeave = () => { stateRef.current.paused = false; };
+    const onLeave = () => {
+      if (!stateRef.current.isCertOpen) {
+        stateRef.current.paused = false;
+      }
+    };
 
     inner.addEventListener('mouseenter', onEnter);
     inner.addEventListener('mouseleave', onLeave);
@@ -261,8 +283,8 @@ export default function Quality({ showWhy = true, showCerts = true, viewAll = tr
              onTouchEnd={onTouchEnd}
              onTouchCancel={onTouchEnd}>
           <div className="qa-certs-inner" ref={innerRef}>
-            <CertsRow rowRef={rowRef} onOpen={openCert} />
-            <CertsRow hidden onOpen={openCert} />
+            <CertsRow rowRef={rowRef} onOpen={handleOpenCert} />
+            <CertsRow hidden onOpen={handleOpenCert} />
           </div>
         </div>
       </div> : null}

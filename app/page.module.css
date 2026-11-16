@@ -164,13 +164,14 @@
    into the white hero so only the line drawing shows */
 :global(.hero__media) {
   position: relative;
-  mix-blend-mode: multiply
+  display: flex;
+  flex-direction: column;
 }
 
 :global(.hero .tv),
 :global(.hero .tv__video),
 :global(.hero .tv__fallback) {
-  mix-blend-mode: normal;
+  mix-blend-mode: multiply;
   background: transparent
 }
 
@@ -181,18 +182,21 @@
 :global(.hero-bottom) {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--line);
+  justify-content: end;
+  gap: clamp(0.75rem, 1.5vw, 1.5rem);
+  margin-top: 0.85rem;
+  padding-top: 1rem;
   position: relative;
-  z-index: 5
+  z-index: 5;
+  mix-blend-mode: normal;
+  width: 100%;
 }
 
 :global(.hero-indicators) {
   display: flex;
-  gap: clamp(1rem, 2.5vw, 2.25rem);
-  flex: 1
+  gap: clamp(0.5rem, 1.25vw, 1.25rem);
+  flex: 1;
+  min-width: 0;
 }
 
 :global(.hero-indicator) {
@@ -279,29 +283,33 @@
 :global(.hero-nav-actions) {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
-  flex: none
+  flex: none;
+}
+
+:global(.hero-nav-btns) {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
 }
 
 :global(.hero-counter) {
   display: inline-flex;
   align-items: baseline;
+  justify-content: center;
   gap: .3rem;
   font-size: .875rem;
   font-weight: 600;
   color: var(--ink-3);
-  font-variant-numeric: tabular-nums
+  font-variant-numeric: tabular-nums;
+  padding: 0 0.35rem;
+  min-width: 52px;
+  text-align: center;
 }
 
 :global(.hero-counter__curr) {
   font-size: 1.15rem;
   font-weight: 800;
-  color: var(--navy)
-}
-
-:global(.hero-nav-btns) {
-  display: flex;
-  gap: .5rem
+  color: var(--navy);
 }
 
 /* transformer video: multiply so the clip's white background takes the hero colour */
@@ -310,8 +318,7 @@
   width: 100%;
   aspect-ratio: 16/9;
   mix-blend-mode: multiply;
-  -webkit-mask-image: linear-gradient(to bottom, #000 78%, rgba(0, 0, 0, 0.6) 88%, transparent 98%);
-  mask-image: linear-gradient(to bottom, #000 78%, rgba(0, 0, 0, 0.6) 88%, transparent 98%);
+
 }
 
 :global(.tv__video) {
@@ -3772,26 +3779,21 @@
   }
 
   :global(.hero-bottom) {
-    flex-direction: column-reverse;
-    align-items: stretch;
-    gap: 1.25rem;
-  }
-
-  :global(.hero-indicators) {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 0.5rem;
-    scrollbar-width: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
     gap: 1rem;
   }
 
-  :global(.hero-indicators::-webkit-scrollbar) {
-    display: none;
+  :global(.hero-indicators) {
+    flex: 1;
+    min-width: 0;
   }
 
   :global(.hero-indicator) {
-    flex: 0 0 auto;
-    min-width: 140px;
+    flex: 1;
+    min-width: 0;
+    max-width: 220px;
   }
 
   :global(.hero-nav-actions) {
