@@ -1,33 +1,10 @@
-import { PageHero } from '@/components/PageParts';
-import { DATA } from '@/lib/data';
-import { SERVICES } from '@/lib/services';
-import styles from './page.module.css';
+import SitemapDirectory from '@/components/SitemapDirectory';
 
-export const metadata = { title: 'Sitemap' };
-
-const GROUPS = [
-  ['Company', [['/', 'Home'], ['/about/', 'About Us'], ['/engineering/', 'Engineering & Manufacturing'], ['/certifications/', 'Certifications'], ['/careers/', 'Careers'], ['/contact/', 'Contact']]],
-  ['Products', [['/products/', 'All Products'], ...DATA.products.map(p => [`/products/${p.slug}/`, p.name])]],
-  ['Services', [['/services/', 'All Services'], ...SERVICES.map(s => [`/services/${s.slug}/`, s.title])]],
-  ['Industries', [['/industries/', 'All Industries'], ...DATA.industries.map(i => [`/industries/${i.slug}/`, i.name])]],
-  ['Projects', [['/projects/', 'All Projects'], ...DATA.projects.map(p => [`/projects/${p.slug}/`, p.title])]],
-  ['Resources', [['/resources/', 'Resources'], ['/blog/', 'Engineering Blog & Insights'], ['/resources/sizing-guide/', 'Sizing Guide'], ['/resources/faq/', 'FAQ'], ['/resources/glossary/', 'Glossary'], ['/resources/standards/', 'Standards'], ['/privacy/', 'Privacy Policy'], ['/terms/', 'Terms of Use']]]
-];
+export const metadata = {
+  title: 'Comprehensive Directory & Sitemap | BPEL Electrical Engineering',
+  description: 'Complete directory of BPEL power engineering solutions: 70+ transformer and switchgear specifications, 15 online calculation tools, turnkey EPC services, industry applications, and technical documentation.'
+};
 
 export default function SitemapPage() {
-  return (
-    <>
-      <PageHero crumbs={[{ label: 'Sitemap' }]} label="SITEMAP" title="All Pages" />
-      <section className="sec" aria-label="Sitemap">
-        <div className="wrap sitemap-cols">
-          {GROUPS.map(([h, links]) => (
-            <div key={h}>
-              <h2>{h}</h2>
-              <ul>{links.map(([href, label]) => <li key={href}><a href={href}>{label}</a></li>)}</ul>
-            </div>
-          ))}
-        </div>
-      </section>
-    </>
-  );
+  return <SitemapDirectory />;
 }

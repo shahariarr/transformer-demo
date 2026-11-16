@@ -224,6 +224,7 @@ export default function ContactRFQSection({ preselectedOfficeId }) {
                     }}
                     onBlur={() => check('service')}
                     {...invalid('service')}
+                    style={{ paddingLeft: '2.75rem', paddingRight: '2.5rem' }}
                   >
                     <option value="">Select Equipment or Service</option>
                     {DATA.products.map(p => (

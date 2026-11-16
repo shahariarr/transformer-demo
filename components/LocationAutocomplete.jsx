@@ -188,7 +188,7 @@ export default function LocationAutocomplete({
           aria-expanded={isOpen}
           aria-invalid={isInvalid ? 'true' : 'false'}
           autoComplete="off"
-          style={{ paddingRight: value ? '2.5rem' : '1rem' }}
+          style={{ paddingLeft: '2.75rem', paddingRight: value ? '2.5rem' : '1rem' }}
         />
 
         {/* Clear or Spinner Indicator */}

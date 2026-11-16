@@ -1,35 +1,189 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { WHY_BPEL_CARDS, QA_CERTS } from '@/lib/quality';
 import { useUI } from './UIProvider';
 import RawSvg from './RawSvg';
 import ViewAll from './ViewAll';
 
+/* Certificate Card Frame */
+function CertCard({ cert, index, onOpen }) {
+  return (
+    <article
+      className="qa-cert-frame"
+      data-cert={index}
+      role="button"
+      tabIndex={0}
+      aria-label={`View official ${cert.title}`}
+      title={`Click to inspect: ${cert.title}`}
+      onClick={() => onOpen(index)}
+      onKeyDown={e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          onOpen(index);
+        }
+      }}
+    >
+      <div className="qa-frame-mat">
+        <img src={cert.src} alt={cert.alt} loading="lazy" decoding="async" />
+      </div>
+      <div className="qa-frame-info">
+        <span className="qa-frame-badge">{cert.badge}</span>
+        <h4 className="qa-frame-title">{cert.title}</h4>
+      </div>
+    </article>
+  );
+}
+
+/* Infinite Marquee Row (rendered twice for seamless looping, identical to Partners) */
+function CertsRow({ rowRef, hidden, onOpen }) {
+  return (
+    <div
+      className="qa-certs-row"
+      ref={rowRef}
+      {...(hidden ? { 'aria-hidden': 'true' } : {})}
+    >
+      {QA_CERTS.map((c, i) => (
+        <CertCard
+          key={hidden ? `hidden-${c.certNo}-${i}` : `${c.certNo}-${i}`}
+          cert={c}
+          index={i}
+          onOpen={onOpen}
+        />
+      ))}
+    </div>
+  );
+}
+
 export default function Quality({ showWhy = true, showCerts = true, viewAll = true }) {
   const { openCert } = useUI();
-  const trackRef = useRef(null);
+  const innerRef = useRef(null);
+  const rowRef = useRef(null);
+  const stateRef = useRef({
+    x: 0,
+    targetX: 0,
+    paused: false,
+    rowWidth: 0,
+    step: 244,
+    touchStartX: 0,
+    startX: 0,
+    isDragging: false,
+  });
 
-  const step = () => {
-    const track = trackRef.current;
-    if (!track) return 220;
-    const card = track.firstElementChild;
-    if (!card) return 220;
-    return card.offsetWidth + (parseFloat(getComputedStyle(track).gap) || 24);
-  };
+  // Calculate row width & step dynamically on mount/resize
+  useEffect(() => {
+    if (!showCerts) return;
+    const updateDimensions = () => {
+      const row = rowRef.current;
+      if (!row) return;
+      stateRef.current.rowWidth = row.offsetWidth;
+      const firstCard = row.querySelector('.qa-cert-frame');
+      if (firstCard) {
+        const gap = parseFloat(getComputedStyle(row).gap) || 20;
+        stateRef.current.step = firstCard.offsetWidth + gap;
+      }
+    };
+    updateDimensions();
+    window.addEventListener('resize', updateDimensions);
+    return () => window.removeEventListener('resize', updateDimensions);
+  }, [showCerts]);
+
+  // Infinite auto-sliding marquee loop (identical to Our Partners section)
+  useEffect(() => {
+    if (!showCerts) return;
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const inner = innerRef.current;
+    if (!inner) return;
+
+    let raf;
+    const speed = 0.6; // Smooth 60fps marquee velocity
+
+    const tick = () => {
+      const s = stateRef.current;
+      const rowW = s.rowWidth || (rowRef.current ? rowRef.current.offsetWidth : 0);
+
+      if (rowW > 0) {
+        if (Math.abs(s.targetX - s.x) > 0.4) {
+          s.x += (s.targetX - s.x) * 0.14;
+        } else {
+          s.x = s.targetX;
+          if (!s.paused && !s.isDragging) {
+            s.x -= speed;
+            s.targetX -= speed;
+          }
+        }
+
+        while (s.x <= -rowW) {
+          s.x += rowW;
+          s.targetX += rowW;
+        }
+        while (s.x > 0) {
+          s.x -= rowW;
+          s.targetX -= rowW;
+        }
+
+        inner.style.transform = `translate3d(${s.x}px, 0, 0)`;
+      }
+
+      raf = requestAnimationFrame(tick);
+    };
+
+    raf = requestAnimationFrame(tick);
+
+    const onEnter = () => { stateRef.current.paused = true; };
+    const onLeave = () => { stateRef.current.paused = false; };
+
+    inner.addEventListener('mouseenter', onEnter);
+    inner.addEventListener('mouseleave', onLeave);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      inner.removeEventListener('mouseenter', onEnter);
+      inner.removeEventListener('mouseleave', onLeave);
+    };
+  }, [showCerts]);
 
   const next = () => {
-    const track = trackRef.current;
-    if (!track) return;
-    if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 10) track.scrollTo({ left: 0, behavior: 'smooth' });
-    else track.scrollBy({ left: step(), behavior: 'smooth' });
+    const s = stateRef.current;
+    const step = s.step || 244;
+    s.targetX -= step;
   };
 
   const prev = () => {
-    const track = trackRef.current;
-    if (!track) return;
-    if (track.scrollLeft <= 10) track.scrollTo({ left: track.scrollWidth, behavior: 'smooth' });
-    else track.scrollBy({ left: -step(), behavior: 'smooth' });
+    const s = stateRef.current;
+    const step = s.step || 244;
+    s.targetX += step;
+  };
+
+  const onTouchStart = e => {
+    const s = stateRef.current;
+    s.isDragging = true;
+    s.paused = true;
+    s.touchStartX = e.touches[0].clientX;
+    s.startX = s.x;
+  };
+
+  const onTouchMove = e => {
+    const s = stateRef.current;
+    if (!s.isDragging) return;
+    const diff = e.touches[0].clientX - s.touchStartX;
+    const rowW = s.rowWidth || (rowRef.current ? rowRef.current.offsetWidth : 0);
+    s.targetX = s.startX + diff;
+    s.x = s.targetX;
+    if (rowW > 0) {
+      while (s.x <= -rowW) { s.x += rowW; s.startX += rowW; s.targetX += rowW; }
+      while (s.x > 0) { s.x -= rowW; s.startX -= rowW; s.targetX -= rowW; }
+    }
+    if (innerRef.current) {
+      innerRef.current.style.transform = `translate3d(${s.x}px, 0, 0)`;
+    }
+  };
+
+  const onTouchEnd = () => {
+    const s = stateRef.current;
+    s.isDragging = false;
+    s.paused = false;
   };
 
   return (
@@ -84,7 +238,7 @@ export default function Quality({ showWhy = true, showCerts = true, viewAll = tr
         </div>
       </div> : null}
 
-      {/* Bottom Section: Framed Certificates Gallery */}
+      {/* Bottom Section: Framed Certificates Gallery with Auto-Sliding Marquee */}
       {showCerts ? <div className="qa-certs-wrap" data-animate="slideInUp">
         <div className="qa-certs-header">
           <div className="qa-certs-titles">
@@ -101,22 +255,14 @@ export default function Quality({ showWhy = true, showCerts = true, viewAll = tr
             </button>
           </div>
         </div>
-        <div className="qa-certs-slider">
-          <div className="qa-certs-track" id="qa-certs-track" ref={trackRef}>
-            {QA_CERTS.map((c, i) => (
-              <article className="qa-cert-frame fade-in-up" data-delay={(i % 5) * 70} data-cert={i} role="button" tabIndex="0" key={c.certNo}
-                       aria-label={`View official ${c.title}`} title={`Click to inspect: ${c.title}`}
-                       onClick={() => openCert(i)}
-                       onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openCert(i); } }}>
-                <div className="qa-frame-mat">
-                  <img src={c.src} alt={c.alt} loading="lazy" decoding="async" />
-                </div>
-                <div className="qa-frame-info">
-                  <span className="qa-frame-badge">{c.badge}</span>
-                  <h4 className="qa-frame-title">{c.title}</h4>
-                </div>
-              </article>
-            ))}
+        <div className="qa-certs-slider"
+             onTouchStart={onTouchStart}
+             onTouchMove={onTouchMove}
+             onTouchEnd={onTouchEnd}
+             onTouchCancel={onTouchEnd}>
+          <div className="qa-certs-inner" ref={innerRef}>
+            <CertsRow rowRef={rowRef} onOpen={openCert} />
+            <CertsRow hidden onOpen={openCert} />
           </div>
         </div>
       </div> : null}

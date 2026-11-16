@@ -981,6 +981,7 @@ export default function ProductSingleView({
                             }}
                             onBlur={() => checkRfq('service')}
                             {...invalidRfq('service')}
+                            style={{ paddingLeft: '2.75rem', paddingRight: '2.5rem' }}
                           >
                             <option value="">Select Equipment or Service</option>
                             {productName && (

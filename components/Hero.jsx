@@ -162,9 +162,9 @@ export default function Hero() {
         </div>
         <div className="hero-nav-actions">
           <div className="hero-counter" aria-live="polite">
-            <span className="hero-counter__curr" id="hero-curr-num">{'0' + (current + 1)}</span>
+            <span className="hero-counter__curr" id="hero-curr-num">{String(current + 1).padStart(2, '0')}</span>
             <span className="hero-counter__sep">/</span>
-            <span className="hero-counter__total">04</span>
+            <span className="hero-counter__total">{String(total).padStart(2, '0')}</span>
           </div>
           <div className="hero-nav-btns">
             <button type="button" className="hero-arrow-btn" id="hero-prev" aria-label="Previous slide" title="Previous slide" onClick={prev}>
