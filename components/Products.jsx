@@ -374,37 +374,52 @@ export default function Products({ viewAll = true, isGrid = false }) {
 
       {isGrid ? (
         <div className="wrap proj-grid-wrap" data-animate="slideInUp">
-          <div className="proj-grid">
-            {DATA.products.map((p, i) => (
-              <article
-                key={p.slug || i}
-                className="pcar__card is-active proj-grid__card"
-                role="article"
-                aria-label={`${i + 1} of ${DATA.products.length}: ${p.name}`}
-                style={{ '--i': i }}
-                onClick={() => router.push(`/products/${p.slug}/`)}
-              >
-                <img className="pcar__img" src={p.image} alt={p.name} loading="lazy" decoding="async" draggable="false" />
-                <span className="pcar__shade" aria-hidden="true"></span>
-                <div className="pcar__top">
-                  <span className="pcar__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
-                  <span className="pcar__cat">{p.cat || 'Transformer'}</span>
-                </div>
-                <div className="pcar__panel">
-                  <h3 className="pcar__title">{p.name}</h3>
-                  <div className="pcar__more">
-                    <p className="pcar__desc">{p.desc}</p>
-                    <a className="pcar__cta" href={`/products/${p.slug}/`} onClick={e => e.stopPropagation()}>
-                      <span>Explore Product Details</span>
-                      <span className="pcar__cta-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M7 17 17 7M8 7h9v9" />
-                        </svg>
-                      </span>
-                    </a>
+          <div className="pgrid">
+            {PRODUCTS.map((item, idx) => (
+              <div key={idx} className="swiper-slide product-item" style={{ width: '100%', padding: 0 }}>
+                <Link
+                  href={item.href}
+                  className="item-inner"
+                  aria-label={item.title}
+                >
+                  <div className="item-top-bar">
+                    <span className="item-badge">{item.desc}</span>
+                    <span className="item-spec-tag">
+                      <span className="item-spec-dot"></span>
+                      IEC / ANSI
+                    </span>
                   </div>
-                </div>
-              </article>
+                  <div className="item-img" itemScope itemType="http://schema.org/ImageObject">
+                    <img
+                      src={item.img}
+                      alt={item.title}
+                      loading="lazy"
+                      width={item.width}
+                      height={item.height}
+                      style={{ aspectRatio: item.aspectRatio }}
+                      draggable="false"
+                    />
+                  </div>
+                  <div className="item-info">
+                    <h3 className="item-title">
+                      {item.title}
+                    </h3>
+                    <div className="item-box d-flex">
+                      <div className="item-desc">
+                        Utility-Grade Engineered
+                      </div>
+                      <div className="item-more">
+                        <span>{item.more}</span>
+                        <span className="item-more-icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              </div>
             ))}
           </div>
         </div>
