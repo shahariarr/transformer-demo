@@ -292,7 +292,7 @@ button {
 }
 
 .wrap {
-  width: min(1200px, 100% - 3rem);
+  width: min(1400px, 100% - 3rem);
   margin-inline: auto
 }
 
@@ -3812,7 +3812,7 @@ body {
   display: grid;
   grid-template-columns: 1.5fr 1fr 1.2fr 1.4fr;
   gap: 2.5rem clamp(2rem, 4vw, 3.5rem);
-  padding-block: clamp(3.5rem, 6vw, 4.75rem)
+  padding-block: clamp(2.5rem, 6vw, 2.5rem)
 }
 
 .fgrid__brand {
@@ -4572,27 +4572,20 @@ a.ccard:hover,
   }
 
   .hero-bottom {
-    flex-direction: column-reverse;
-    align-items: stretch;
-    gap: 1rem
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
   }
 
   .hero-indicators {
-    overflow-x: auto;
-    padding-bottom: .35rem;
-    scrollbar-width: none
-  }
-
-  .hero-indicators::-webkit-scrollbar {
-    display: none
+    flex: 1;
+    min-width: 0;
   }
 
   .hero-indicator {
-    min-width: 130px
-  }
-
-  .hero-nav-actions {
-    justify-content: space-between
+    min-width: 0;
+    max-width: 220px;
   }
 
   .about__grid,
@@ -4823,7 +4816,7 @@ a.ccard:hover,
   }
 
   .hero-counter {
-    display: none
+    display: inline-flex;
   }
 
   .floating-actions {

@@ -11,12 +11,11 @@ const Ico = ({ children }) => (
 const Wa = ({ size = 17 }) => <svg viewBox="0 0 24 24" width={size} height={size} fill="currentColor" aria-hidden="true"><path d={WA_PATH} /></svg>;
 
 const QUICK_LINKS = [
-  ['/', 'Home'], ['/about/', 'About Us'], ['/products/', 'Products'],
-  ['/projects/', 'Projects'], ['/blog/', 'Engineering Blog'], ['/certifications/', 'Quality & Testing'], ['/resources/faq/', 'FAQ'], ['/contact/', 'Contact Us']
+  ['/', 'Home'], ['/about/', 'About Us'], ['/products/', 'Products'], ['/blog/', 'Blog'], ['/contact/', 'Contact Us']
 ];
 const PRODUCTS = [
   'Oil-Immersed Transformer', 'Dry Type Transformer', 'Pad Mounted Transformer',
-  'Pole Mounted Transformer', 'Compact Substation', 'Hermetically Sealed Transformer'
+  'Pole Mounted Transformer'
 ];
 
 const DblArrow = () => (
@@ -88,9 +87,9 @@ export default function Footer() {
               <li><Ico><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></Ico><a href={`tel:${c.whatsapp}`}>{c.phoneDisplay}</a></li>
               <li><Ico><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></Ico><a href={mailLink()}>{c.email}</a></li>
               <li><Ico><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></Ico><span>{c.address}</span></li>
-              <li><Ico><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></Ico><span>Mon – Fri: 08:00 – 18:00</span></li>
+
             </ul>
-            <a href="/contact/" className="finquiry"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4z" /><path d="M22 2 11 13" /></svg><span>Send Inquiry</span></a>
+         
           </div>
         </div>
       </div>
