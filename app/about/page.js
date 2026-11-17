@@ -54,14 +54,13 @@ export default function AboutPage() {
         image="/assets/images/about-campus.jpg"
       />
 
+      <section id="stats" className="stats-bar" aria-label="Key Performance Indicators">
+        <Stats />
+      </section>
+
       {/* Mission & Vision Section */}
       <section id="mission-vision" className="sec sec--tight sec--alt" aria-label="Mission & Vision">
         <MissionVision />
-      </section>
-
-
-      <section id="stats" className="stats-bar" aria-label="Key Performance Indicators">
-        <Stats />
       </section>
 
       <section className="sec sec--alt" aria-label="Why work with BPEL">
