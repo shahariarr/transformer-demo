@@ -11,7 +11,7 @@ const Ico = ({ children }) => (
 const Wa = ({ size = 17 }) => <svg viewBox="0 0 24 24" width={size} height={size} fill="currentColor" aria-hidden="true"><path d={WA_PATH} /></svg>;
 
 const QUICK_LINKS = [
-  ['/', 'Home'], ['/about/', 'About Us'], ['/products/', 'Products'], ['/blog/', 'Blog'], ['/contact/', 'Contact Us']
+  ['/', 'Home'], ['/about/', 'About Us'], ['/products/', 'Products'], ['/contact/', 'Contact Us']
 ];
 const PRODUCTS = [
   'Oil-Immersed Transformer', 'Dry Type Transformer', 'Pad Mounted Transformer',
