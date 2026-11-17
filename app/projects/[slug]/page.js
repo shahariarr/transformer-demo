@@ -312,34 +312,6 @@ export default async function ProjectPage({ params }) {
         </div>
       </section>
 
-      {/* =========================================================
-          6. SIGNATURE BOTTOM CONSULTATION BANNER
-          ========================================================= */}
-      <section className="sec sec--tight sec--alt" aria-label="Technical Consultation & EPC Discussion">
-        <div className="wrap">
-          <div className="standards-consult-box fade-in-up" style={{ marginTop: 0 }}>
-            <div className="standards-consult-copy">
-              <span className="standards-consult-tag">TURNKEY EPC CONSULTATION</span>
-              <h3>Planning a Substation Installation or Transformer Modernization?</h3>
-              <p>
-                Our senior electrical engineering team reviews project single-line diagrams (SLD), calculates transformer load flows, evaluates grid clearances, and provides type-tested technical submittals.
-              </p>
-            </div>
-            <div className="standards-consult-actions">
-              <Link className="btn btn--primary" href={`/contact/?service=${encodeURIComponent(p.title)}`}>
-                <span>Request Project Discussion</span>
-                <ArrowRight />
-              </Link>
-              <a className="btn btn--wa" href={waLink()} target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
-                  <path d={WA_PATH} />
-                </svg>
-                <span>WhatsApp Us</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
     </>
   );
 }
