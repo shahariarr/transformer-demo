@@ -4,6 +4,7 @@ import About from '@/components/About';
 import Products from '@/components/Products';
 import Quality from '@/components/Quality';
 import Partners from '@/components/Partners';
+import Faq from '@/components/Faq';
 import styles from './page.module.css';
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <section id="certificates" className="sec sec--alt" aria-label="Certificates & Test Reports"><Quality showWhy={false} viewAll={true} /></section>
       <section id="products" className="sec" aria-label="Products"><Products /></section>
       <section id="partners" className="sec sec--alt sec--tight" aria-label="Our Partners"><Partners /></section>
+      <section id="faq" className="sec" aria-label="Frequently Asked Questions"><Faq /></section>
     </>
   );
 }
