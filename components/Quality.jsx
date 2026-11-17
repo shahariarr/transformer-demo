@@ -27,10 +27,10 @@ function CertCard({ cert, index, onOpen }) {
       <div className="qa-frame-mat">
         <img src={cert.src} alt={cert.alt} loading="lazy" decoding="async" />
       </div>
-      {/* <div className="qa-frame-info">
+      <div className="qa-frame-info">
         <span className="qa-frame-badge">{cert.badge}</span>
         <h4 className="qa-frame-title">{cert.title}</h4>
-      </div> */}
+      </div>
     </article>
   );
 }
