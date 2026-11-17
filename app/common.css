@@ -10140,303 +10140,272 @@ a.btn.btn--light {
 }
 
 /* =====================================================================
-   VACANCIES CARD GRID (MATCHING HOME PAGE .PGRID & .PCARD ARCHITECTURE)
+   VACANCIES CARD LIST (CORPORATE JOB BOARD HORIZONTAL STYLE)
    ===================================================================== */
 .vacancies-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.75rem;
-  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   margin-top: 1.75rem;
 }
 
 .vacancy-pcard {
   display: flex;
-  flex-direction: column;
-  height: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
   background: #ffffff;
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 4px 20px -6px rgba(10, 30, 60, 0.05);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+  border: 1px solid var(--line, #e2e8f0);
+  border-radius: 16px;
+  padding: 22px 28px;
+  box-shadow: 0 2px 10px -2px rgba(10, 30, 60, 0.04);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.2s ease;
   position: relative;
-  opacity: 1 !important;
-  animation: cardFadeIn 0.25s ease-out both;
+  overflow: hidden;
 }
 
-@keyframes cardFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Corporate Left Accent Bar on Hover */
+.vacancy-pcard::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, #006db8, #00a3ff);
+  opacity: 0;
+  transition: opacity 0.25s ease;
 }
 
 .vacancy-pcard:hover {
-  transform: translateY(-5px);
-  border-color: rgba(11, 92, 171, 0.4);
-  box-shadow: 0 18px 36px -8px rgba(11, 92, 171, 0.14), 0 6px 16px -4px rgba(0, 0, 0, 0.04);
+  transform: translateY(-2px);
+  border-color: rgba(0, 109, 184, 0.35);
+  box-shadow: 0 14px 30px -6px rgba(0, 109, 184, 0.12), 0 4px 12px -2px rgba(10, 30, 60, 0.04);
 }
 
-/* 1. Card Media Header */
-.vacancy-pcard__media {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9.5;
-  overflow: hidden;
-  background: #0B192C;
+.vacancy-pcard:hover::before {
+  opacity: 1;
 }
 
-.vacancy-pcard__img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+/* Main Content Area */
+.vacancy-pcard__main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
-.vacancy-pcard:hover .vacancy-pcard__img {
-  transform: scale(1.06);
-}
-
-.vacancy-pcard__media-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(11, 25, 44, 0.15) 0%, rgba(11, 25, 44, 0.55) 100%);
-  pointer-events: none;
+/* Top Meta Row */
+.vacancy-pcard__top {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 2px;
 }
 
 .vacancy-pcard__dept-badge {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  padding: 4px 10px;
-  border-radius: 999px;
-  background: rgba(11, 25, 44, 0.85);
-  backdrop-filter: blur(8px);
-  color: #ffffff;
-  font-size: 0.68rem;
-  font-weight: 750;
-  letter-spacing: 0.06em;
+  font-family: "Poppins", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
   text-transform: uppercase;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.vacancy-pcard__status-badge {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 2.5px 8px;
-  border-radius: 4px;
-  background: var(--primary-50);
-  backdrop-filter: blur(6px);
-  color: var(--primary);
-  font-size: 0.7rem;
-  font-weight: 750;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  border: 1px solid rgba(11, 92, 171, 0.15);
-}
-
-.vacancy-pcard__status-badge .badge-live-dot {
-  display: none;
+  letter-spacing: 0.6px;
+  color: #006db8;
+  background: #eff6ff;
+  border: 1px solid rgba(0, 109, 184, 0.16);
+  border-radius: 6px;
+  padding: 3px 9px;
+  white-space: nowrap;
 }
 
 .vacancy-pcard__type-badge {
-  position: absolute;
-  top: 12px;
-  right: 12px;
+  font-family: "Poppins", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: #475569;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 3px 9px;
+  white-space: nowrap;
+}
+
+.vacancy-pcard__status-badge {
   display: inline-flex;
   align-items: center;
-  padding: 2.5px 8px;
-  border-radius: 4px;
-  background: var(--primary-50);
-  backdrop-filter: blur(6px);
-  color: var(--primary);
-  font-size: 0.7rem;
-  font-weight: 750;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  border: 1px solid rgba(11, 92, 171, 0.15);
-}
-
-/* 2. Card Body */
-.vacancy-pcard__body {
-  padding: 1.35rem 1.45rem 1.45rem;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.vacancy-pcard__meta-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  margin-bottom: 0.75rem;
-  font-size: 0.78rem;
-}
-
-.vacancy-pcard__loc-item {
-  display: flex;
-  align-items: center;
   gap: 5px;
-  font-weight: 650;
-  color: #64748B;
+  font-family: "Poppins", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #059669;
+  background: #ecfdf5;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: 6px;
+  padding: 3px 9px;
+  white-space: nowrap;
 }
 
-.vacancy-pcard__loc-item svg {
-  color: var(--primary);
-  flex-shrink: 0;
+.vacancy-pcard__status-badge .badge-live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+  display: inline-block;
 }
 
-.vacancy-pcard__timing {
-  font-size: 0.7rem;
-  font-weight: 750;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--primary);
-  background: var(--primary-50);
-  padding: 2.5px 8px;
-  border-radius: 4px;
-}
-
+/* Title */
 .vacancy-pcard__title {
-  font-size: 1.18rem;
-  font-weight: 800;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.24rem;
+  font-weight: 750;
   line-height: 1.35;
-  color: var(--navy-900, #0B192C);
-  margin: 0 0 0.55rem;
+  color: #0a1e3c;
+  margin: 4px 0 0;
 }
 
 .vacancy-pcard__title a {
   color: inherit;
   text-decoration: none;
-  transition: color 0.18s ease;
+  transition: color 0.2s ease;
 }
 
 .vacancy-pcard__title a:hover {
-  color: var(--primary);
+  color: #006db8;
 }
 
+/* Description */
 .vacancy-pcard__desc {
-  font-size: 0.85rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.88rem;
   line-height: 1.55;
-  color: var(--ink-2);
-  margin: 0 0 1.15rem;
+  color: #64748b;
+  margin: 0;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
-/* 3. Specs Box (matching Home Page .pcard__specs-box) */
-.vacancy-pcard__specs-box {
-  margin: 0 0 1.25rem;
-  padding: 0.85rem 1rem;
-  background: #F8FAFC;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 0.45rem;
-}
-
-/* 4. Actions Row */
-.vacancy-pcard__actions {
-  margin-top: auto;
+/* Corporate Specs / Tags Row */
+.vacancy-pcard__specs-row {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 8px;
+  padding-top: 10px;
+  border-top: 1px dashed #e2e8f0;
+}
+
+.vacancy-spec-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: "Poppins", sans-serif;
+  font-size: 12.5px;
+  font-weight: 550;
+  color: #475569;
+}
+
+.vacancy-spec-item svg {
+  color: #006db8;
+  flex-shrink: 0;
+}
+
+.vacancy-spec-item--deadline {
+  color: #b45309;
+}
+
+.vacancy-spec-item--deadline svg {
+  color: #d97706;
+}
+
+/* Actions Column */
+.vacancy-pcard__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 10px;
+  flex-shrink: 0;
+  min-width: 160px;
 }
 
 .vacancy-pcard__btn-apply {
-  flex: 1.3;
+  width: 100%;
   justify-content: center;
-  gap: 0.45rem;
-  padding: 0.65rem 1rem !important;
-  font-size: 0.85rem !important;
+  padding: 10px 22px !important;
+  font-size: 13.5px !important;
+  font-weight: 700 !important;
+  border-radius: 8px !important;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 109, 184, 0.2);
+  transition: all 0.25s ease;
+}
+
+.vacancy-pcard__btn-apply:hover {
+  box-shadow: 0 6px 18px rgba(0, 109, 184, 0.32);
+  transform: translateY(-1px);
 }
 
 .vacancy-pcard__btn-details {
-  flex: 1;
-  justify-content: center;
-  padding: 0.65rem 0.85rem !important;
-  font-size: 0.82rem !important;
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #006db8;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
-/* Expandable Details Drawer */
-.vacancy-pcard__drawer {
-  margin-top: 1.15rem;
-  padding-top: 1.15rem;
-  border-top: 1px dashed #E2E8F0;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  animation: drawerOpen 0.22s ease-out;
+.vacancy-pcard__btn-details:hover {
+  color: #0a1e3c;
+  transform: translateX(2px);
 }
 
-@keyframes drawerOpen {
-  from {
-    opacity: 0;
-    transform: translateY(-6px);
+/* Responsive */
+@media screen and (max-width: 900px) {
+  .vacancy-pcard {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 22px;
+    gap: 16px;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  .vacancy-pcard__actions {
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 14px;
+    border-top: 1px solid #f1f5f9;
+  }
+
+  .vacancy-pcard__btn-apply {
+    width: auto;
   }
 }
 
-.vacancy-pcard__drawer-sec {
-  display: flex;
-  flex-direction: column;
-  gap: 0.45rem;
-}
-
-.vacancy-drawer-title {
-  font-size: 0.72rem;
-  font-weight: 850;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--primary, #0B5CAB);
-  margin: 0 0 0.35rem;
-}
-
-.vacancy-drawer-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.45rem;
-}
-
-.vacancy-drawer-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 7px;
-  font-size: 0.78rem;
-  line-height: 1.5;
-  color: #334155;
-}
-
-.vacancy-drawer-list li svg {
-  color: #10B981;
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-.vacancy-pcard__drawer-footer {
-  padding-top: 0.75rem;
-  border-top: 1px solid #F1F5F9;
-  display: flex;
-  justify-content: flex-end;
+@media screen and (max-width: 520px) {
+  .vacancy-pcard__actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .vacancy-pcard__btn-apply {
+    width: 100%;
+  }
+  .vacancy-pcard__btn-details {
+    justify-content: center;
+  }
 }
 
 /* Filter Summary Meta Updates */
@@ -10579,8 +10548,7 @@ a.btn.btn--light {
 
 @media (max-width: 1024px) {
   .vacancies-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.35rem;
+    gap: 14px;
   }
   .vacancy-open-banner {
     flex-direction: column;
@@ -10597,7 +10565,7 @@ a.btn.btn--light {
 
 @media (max-width: 680px) {
   .vacancies-grid {
-    grid-template-columns: 1fr;
+    gap: 12px;
   }
   .vacancies-filter-controls {
     flex-direction: column;

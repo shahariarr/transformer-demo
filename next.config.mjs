@@ -16,6 +16,7 @@ const nextConfig = {
   // Tree-shake and optimize heavy package imports
   experimental: {
     optimizePackageImports: ['animejs', 'animate.css'],
+    agentUpgrade: 'security',
   },
 
   // High-performance caching headers for static assets

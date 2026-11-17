@@ -1,24 +1,7 @@
 'use client';
 
-import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { VACANCIES } from '@/lib/careers';
-
-const DEPARTMENTS = [
-  { id: 'all', label: 'All Roles' },
-  { id: 'Engineering & Design', label: 'Engineering & Design' },
-  { id: 'Manufacturing & Plant', label: 'Manufacturing & Plant' },
-  { id: 'Testing & Quality Lab', label: 'Testing & Quality Lab' },
-  { id: 'Field Operations & Service', label: 'Field Operations' },
-  { id: 'Sales & Commercial', label: 'Sales & Commercial' }
-];
-
-const LOCATIONS = [
-  { id: 'all', label: 'All Facilities' },
-  { id: 'dhaka', label: 'Dhaka Headquarters' },
-  { id: 'gazipur', label: 'Gazipur Heavy Plant' },
-  { id: 'chittagong', label: 'Chattogram Hub' }
-];
 
 const Arrow = () => (
   <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -33,259 +16,116 @@ const PinIcon = () => (
   </svg>
 );
 
+const BriefcaseIcon = () => (
+  <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+  </svg>
+);
+
+const GradIcon = () => (
+  <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+    <path d="M6 12v5c3 3 9 3 12 0v-5" />
+  </svg>
+);
+
+const SalaryIcon = () => (
+  <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <circle cx="12" cy="12" r="10" />
+    <path d="M12 6v12M15 9.5a2.5 2.5 0 0 0-5 0c0 3 5 2 5 5a2.5 2.5 0 0 1-5 0" />
+  </svg>
+);
+
+const CalendarIcon = () => (
+  <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+    <line x1="16" y1="2" x2="16" y2="6" />
+    <line x1="8" y1="2" x2="8" y2="6" />
+    <line x1="3" y1="10" x2="21" y2="10" />
+  </svg>
+);
+
 export default function CareersVacancyDirectory({ showOpenBanner = false }) {
-  const [activeDept, setActiveDept] = useState('all');
-  const [locationFilter, setLocationFilter] = useState('all');
-  const [searchQuery, setSearchQuery] = useState('');
-  const [expandedJobSlug, setExpandedJobSlug] = useState(null);
-
-  const filteredVacancies = useMemo(() => {
-    const q = searchQuery.trim().toLowerCase();
-    return VACANCIES.filter((v) => {
-      const matchDept = activeDept === 'all' || v.dept.toLowerCase() === activeDept.toLowerCase();
-      const matchLoc = locationFilter === 'all' || v.locationCode.toLowerCase() === locationFilter.toLowerCase();
-      const matchSearch = !q || (
-        v.title.toLowerCase().includes(q) ||
-        v.summary.toLowerCase().includes(q) ||
-        v.dept.toLowerCase().includes(q) ||
-        v.location.toLowerCase().includes(q) ||
-        v.responsibilities.some(r => r.toLowerCase().includes(q)) ||
-        v.requirements.some(req => req.toLowerCase().includes(q))
-      );
-      return matchDept && matchLoc && matchSearch;
-    });
-  }, [activeDept, locationFilter, searchQuery]);
-
-  const toggleExpand = (slug) => {
-    setExpandedJobSlug(prev => prev === slug ? null : slug);
-  };
-
-  const handleDeptClick = (deptId) => {
-    setActiveDept(deptId);
-  };
-
-  const handleLocationChange = (locId) => {
-    setLocationFilter(locId);
-  };
-
-  const isFiltered = activeDept !== 'all' || locationFilter !== 'all' || searchQuery.trim().length > 0;
-
-  const resetFilters = () => {
-    setActiveDept('all');
-    setLocationFilter('all');
-    setSearchQuery('');
-  };
-
   return (
     <div className="vacancies-section">
-      {/* 1. Filter Toolbar (Matching Home Page Search & Pill Pattern) */}
-      <div className="vacancies-filter-panel fade-in-up">
-        {/* Top Controls Row: Search Input & Location Dropdown */}
-        <div className="vacancies-filter-controls">
-          <div className="vacancies-search-wrap">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="search-icon" aria-hidden="true">
-              <circle cx="11" cy="11" r="8" />
-              <line x1="21" y1="21" x2="16.65" y2="16.65" />
-            </svg>
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search roles by title, skills (e.g. Design, AutoCAD, Testing, Winding)..."
-              className="vacancies-search-input"
-              aria-label="Search vacancies by keywords"
-            />
-            {searchQuery ? (
-              <button
-                type="button"
-                className="search-clear-btn"
-                onClick={() => setSearchQuery('')}
-                aria-label="Clear search"
-              >
-                ✕
-              </button>
-            ) : null}
-          </div>
-
-          <div className="vacancies-loc-filter">
-            <div className="vacancy-select-wrap">
-              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="loc-icon" aria-hidden="true">
-                <path d="M12 21s7-6 7-11a7 7 0 0 0-14 0c0 5 7 11 7 11z" />
-                <circle cx="12" cy="10" r="2.5" />
-              </svg>
-              <select
-                id="loc-select"
-                value={locationFilter}
-                onChange={(e) => handleLocationChange(e.target.value)}
-                className="vacancy-loc-select"
-                aria-label="Filter vacancies by facility location"
-              >
-                {LOCATIONS.map((loc) => (
-                  <option key={loc.id} value={loc.id}>
-                    {loc.label}
-                  </option>
-                ))}
-              </select>
-              <span className="vacancy-select-arrow" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9" /></svg>
-              </span>
-            </div>
-          </div>
-        </div>
-
-        {/* Department Tab Pills */}
-        <div className="vacancies-dept-tabs" role="tablist" aria-label="Filter by department">
-          {DEPARTMENTS.map((dept) => {
-            const isActive = activeDept === dept.id;
-            const count = dept.id === 'all'
-              ? VACANCIES.length
-              : VACANCIES.filter(v => v.dept === dept.id).length;
-
-            return (
-              <button
-                key={dept.id}
-                type="button"
-                role="tab"
-                aria-selected={isActive}
-                className={`vacancy-pill-btn ${isActive ? 'is-active' : ''}`}
-                onClick={() => handleDeptClick(dept.id)}
-              >
-                <span>{dept.label}</span>
-                <span className="vacancy-pill-count">{count}</span>
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Filter Summary Row */}
-        <div className="vacancies-filter-meta">
-          <div className="vacancies-meta-count">
-            <span className="vacancies-pulse-dot" aria-hidden="true" />
-            <span>Showing <strong>{filteredVacancies.length}</strong> of {VACANCIES.length} open positions</span>
-          </div>
-          {isFiltered ? (
-            <button
-              type="button"
-              className="vacancies-reset-btn"
-              onClick={resetFilters}
-            >
-              Reset All Filters
-            </button>
-          ) : null}
-        </div>
-      </div>
-
-      {/* 2. Structured Card Grid (Following Home Page .pgrid & .pcard Layout) */}
+      {/* Structured Horizontal Job Board Cards */}
       <div className="vacancies-grid">
-        {filteredVacancies.length === 0 ? (
-          <div className="vacancies-empty-state">
-            <div className="empty-icon-wrap" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#64748B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="11" cy="11" r="8" />
-                <line x1="21" y1="21" x2="16.65" y2="16.65" />
-              </svg>
+        {VACANCIES.map((job) => (
+          <article
+            key={job.slug}
+            className="vacancy-pcard"
+          >
+            {/* Main Content Area */}
+            <div className="vacancy-pcard__main">
+              {/* Top Meta Row */}
+              <div className="vacancy-pcard__top">
+                <span className="vacancy-pcard__dept-badge">{job.dept}</span>
+                <span className="vacancy-pcard__type-badge">{job.type.split(',')[0]}</span>
+                {job.badge ? (
+                  <span className="vacancy-pcard__status-badge">
+                    <span className="badge-live-dot" aria-hidden="true" />
+                    <span>{job.badge}</span>
+                  </span>
+                ) : null}
+              </div>
+
+              {/* Title */}
+              <h3 className="vacancy-pcard__title">
+                <Link href={`/careers/apply?job=${job.slug}`}>{job.title}</Link>
+              </h3>
+
+              {/* Summary */}
+              <p className="vacancy-pcard__desc">{job.summary}</p>
+
+              {/* Corporate Specs Row */}
+              <div className="vacancy-pcard__specs-row">
+                <div className="vacancy-spec-item" title="Facility Location">
+                  <PinIcon />
+                  <span>{job.location}</span>
+                </div>
+                <div className="vacancy-spec-item" title="Required Experience">
+                  <BriefcaseIcon />
+                  <span>{job.experience}</span>
+                </div>
+                <div className="vacancy-spec-item" title="Minimum Qualification">
+                  <GradIcon />
+                  <span>{job.education.split('(')[0].trim()}</span>
+                </div>
+                <div className="vacancy-spec-item" title="Compensation Package">
+                  <SalaryIcon />
+                  <span>{job.salary.split('(')[0].trim()}</span>
+                </div>
+                <div className="vacancy-spec-item vacancy-spec-item--deadline" title="Application Deadline">
+                  <CalendarIcon />
+                  <span>Deadline: {job.deadline}</span>
+                </div>
+              </div>
             </div>
-            <h4>No matching positions found</h4>
-            <p>Try clearing your search query or selecting &quot;All Roles&quot; and &quot;All Facilities&quot;.</p>
-            <button
-              type="button"
-              className="btn btn--primary btn--sm"
-              onClick={resetFilters}
-            >
-              Reset Filters
-            </button>
-          </div>
-        ) : (
-          filteredVacancies.map((job, idx) => {
-            return (
-              <article
-                key={job.slug}
-                className="vacancy-pcard fade-in-up"
-                data-delay={(idx % 3) * 90}
+
+            {/* Right Action Column */}
+            <div className="vacancy-pcard__actions">
+              <Link
+                href={`/careers/apply?job=${job.slug}`}
+                className="btn btn--primary btn--sm vacancy-pcard__btn-apply"
               >
-                {/* 1. Card Media Header - matching .pcard & .services-showcase-card */}
-                <div className="vacancy-pcard__media">
-                  <img
-                    src={job.image || '/assets/images/lifecycle/02-engineering-design.jpg'}
-                    alt={job.title}
-                    className="vacancy-pcard__img"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <div className="vacancy-pcard__media-overlay" aria-hidden="true" />
-                  <span className="vacancy-pcard__dept-badge">{job.dept}</span>
-                  {job.badge ? (
-                    <span className="vacancy-pcard__status-badge">
-                      <span className="badge-live-dot" aria-hidden="true" />
-                      <span>{job.badge}</span>
-                    </span>
-                  ) : (
-                    <span className="vacancy-pcard__type-badge">{job.type.split(',')[0]}</span>
-                  )}
-                </div>
-
-                {/* 2. Card Body */}
-                <div className="vacancy-pcard__body">
-                  <div className="vacancy-pcard__meta-bar">
-                    <div className="vacancy-pcard__loc-item">
-                      <PinIcon />
-                      <span>{job.location}</span>
-                    </div>
-                    <span className="vacancy-pcard__timing">{job.type.split(',')[0]}</span>
-                  </div>
-
-                  <h3 className="vacancy-pcard__title">
-                    <Link href={`/careers/apply?job=${job.slug}`}>{job.title}</Link>
-                  </h3>
-
-                  <p className="vacancy-pcard__desc">{job.summary}</p>
-
-                  {/* 3. Specs Box: Identical to Home Page .pcard__specs-box */}
-                  <dl className="pcard__specs-box vacancy-pcard__specs-box">
-                    <div className="pcard__spec-row">
-                      <dt className="pcard__spec-key">Experience</dt>
-                      <dd className="pcard__spec-val">{job.experience}</dd>
-                    </div>
-                    <div className="pcard__spec-row">
-                      <dt className="pcard__spec-key">Education</dt>
-                      <dd className="pcard__spec-val">{job.education.split('(')[0].trim()}</dd>
-                    </div>
-                    <div className="pcard__spec-row">
-                      <dt className="pcard__spec-key">Compensation</dt>
-                      <dd className="pcard__spec-val">{job.salary.split('(')[0].trim()}</dd>
-                    </div>
-                    <div className="pcard__spec-row">
-                      <dt className="pcard__spec-key">Deadline</dt>
-                      <dd className="pcard__spec-val">{job.deadline}</dd>
-                    </div>
-                  </dl>
-
-                  {/* 4. Action Buttons Row: Matching Home Page .pcard__actions */}
-                  <div className="vacancy-pcard__actions">
-                    <Link
-                      href={`/careers/apply?job=${job.slug}`}
-                      className="btn btn--primary btn--sm vacancy-pcard__btn-apply"
-                    >
-                      <span>Apply Now</span>
-                      <Arrow />
-                    </Link>
-                    <Link
-                      href={`/careers/apply?job=${job.slug}`}
-                      className="btn btn--ghost btn--sm vacancy-pcard__btn-details"
-                    >
-                      <span>View Scope</span>
-                    </Link>
-                  </div>
-                </div>
-              </article>
-            );
-          })
-        )}
+                <span>Apply Now</span>
+                <Arrow />
+              </Link>
+              <Link
+                href={`/careers/apply?job=${job.slug}`}
+                className="vacancy-pcard__btn-details"
+              >
+                <span>View Scope & Requirements &rarr;</span>
+              </Link>
+            </div>
+          </article>
+        ))}
       </div>
 
-      {/* 3. Bottom Speculative Pool Banner (matching Home Page Card Style) */}
+      {/* Speculative Pool Banner */}
       {showOpenBanner && (
-        <div className="vacancy-open-banner fade-in-up">
+        <div className="vacancy-open-banner">
           <div className="vacancy-open-banner__copy">
             <span className="vacancy-open-tag">GENERAL POOL APPLICATION</span>
             <h3 className="vacancy-open-title">Don&apos;t See Your Specific Discipline Listed?</h3>
