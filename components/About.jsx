@@ -21,11 +21,18 @@ export default function About() {
       <div className="about__media" data-animate="slideInRight">
         <div className="about-collage">
           <div className="about-card about-card--main" data-animate="slideInRight" data-delay="100">
-            <img src="/assets/images/about-campus.jpg" alt="Voltline Power Manufacturing Campus" className="about-card__img" loading="lazy" decoding="async" />
-          </div>
-
-          <div className="about-card about-card--sub" data-animate="slideInUp" data-delay="200">
-            <img src="/assets/images/about-tower.jpg" alt="Voltline Power Corporate Headquarters" className="about-card__img" loading="lazy" decoding="async" />
+            <video
+              className="about-card__video"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              poster="/assets/images/about-campus.jpg"
+              aria-label="BPEL Corporate Video"
+            >
+              <source src="/assets/videos/about-corporate-video.mp4" type="video/mp4" />
+            </video>
           </div>
 
           <div className="about-badge" data-animate="slideInRight" data-delay="300" tabIndex="0" role="region" aria-label="Founded In 1985 Years">
