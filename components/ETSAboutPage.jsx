@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
 import { PageHero, ArrowRight } from '@/components/PageParts';
 import Stats from '@/components/Stats';
 import { waLink } from '@/lib/data';
@@ -267,35 +266,6 @@ export default function ETSAboutPage() {
                   ))}
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* =========================================================
-          5. SIGNATURE BOTTOM CONSULTATION BANNER
-          ========================================================= */}
-      <section className="sec sec--tight" aria-label="Technical Consultation & Quotation">
-        <div className="wrap">
-          <div className="standards-consult-box fade-in-up" style={{ marginTop: 0 }}>
-            <div className="standards-consult-copy">
-              <span className="standards-consult-tag">GLOBAL ENGINEERING &amp; PROCUREMENT</span>
-              <h3>Need an Engineered Transformer Specification or Tender Quotation?</h3>
-              <p>
-                Our engineering team reviews single-line diagrams (SLD), calculates transformer load flows, evaluates regional grid clearances, and provides type-tested technical submittals.
-              </p>
-            </div>
-            <div className="standards-consult-actions">
-              <Link className="btn btn--primary" href="/contact/">
-                <span>Request Quotation</span>
-                <ArrowRight />
-              </Link>
-              <a className="btn btn--wa" href={waLink()} target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
-                  <path d={WA_PATH} />
-                </svg>
-                <span>WhatsApp Us</span>
-              </a>
             </div>
           </div>
         </div>
