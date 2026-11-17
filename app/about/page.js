@@ -1,4 +1,3 @@
-import About from '@/components/About';
 import MissionVision from '@/components/MissionVision';
 import Stats from '@/components/Stats';
 import Quality from '@/components/Quality';
@@ -54,10 +53,6 @@ export default function AboutPage() {
         desc="One team designs, builds, tests and supports every transformer, from raw material to energisation."
         image="/assets/images/about-campus.jpg"
       />
-
-      <section id="about" className="sec about" aria-label="About Company">
-        <About />
-      </section>
 
       {/* Mission & Vision Section */}
       <section id="mission-vision" className="sec sec--tight sec--alt" aria-label="Mission & Vision">
