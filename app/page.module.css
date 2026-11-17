@@ -3124,17 +3124,71 @@
 }
 
 /* =====================================================================
-   FAQ
+   FAQ (2-Column Split Layout)
    ===================================================================== */
-:global(#faq .sec-head),
 :global(#partners .sec-head) {
   margin-inline: auto;
   text-align: center
 }
 
-:global(#faq .sec-head__desc),
 :global(#partners .sec-head__desc) {
   margin-inline: auto
+}
+
+:global(.faq-split) {
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr) minmax(0, 1.45fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: start;
+}
+
+:global(.faq-split__header) {
+  position: sticky;
+  top: 96px;
+}
+
+:global(#faq .sec-head) {
+  text-align: left;
+  margin-inline: 0;
+  margin-bottom: 0;
+}
+
+:global(#faq .sec-head .label) {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+:global(#faq .sec-head h2) {
+  margin: 0.25rem 0 1rem;
+  font-size: clamp(2rem, 3.2vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  color: var(--navy);
+}
+
+:global(#faq .sec-head__desc) {
+  text-align: left;
+  margin-inline: 0;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--ink-2);
+  max-width: 42ch;
+}
+
+@media (max-width: 960px) {
+  :global(.faq-split) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  :global(.faq-split__header) {
+    position: static;
+  }
+
+  :global(#faq .sec-head__desc) {
+    max-width: 100%;
+  }
 }
 
 :global(.faq) {
