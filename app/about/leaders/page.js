@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { LEADERS } from '@/lib/leaders';
 import { PageHero, ArrowRight } from '@/components/PageParts';
 import Stats from '@/components/Stats';
@@ -65,35 +64,6 @@ export default function LeadersPage() {
 
           {/* Leaders Grid */}
           <LeadersDirectory leaders={LEADERS} />
-        </div>
-      </section>
-
-      {/* =========================================================
-          4. SIGNATURE BOTTOM CONSULTATION BANNER
-          ========================================================= */}
-      <section className="sec sec--tight sec--alt" aria-label="Technical Discussion with Leadership">
-        <div className="wrap">
-          <div className="standards-consult-box fade-in-up" style={{ marginTop: 0 }}>
-            <div className="standards-consult-copy">
-              <span className="standards-consult-tag">EXECUTIVE CONSULTATION &amp; TENDERS</span>
-              <h3>Consult Directly With Our Chief Engineers &amp; Directorate</h3>
-              <p>
-                For high-capacity utility tenders, custom BIL insulation levels, specialized substation topologies, or factory audit requests, our directors and engineering heads are directly accessible to client teams.
-              </p>
-            </div>
-            <div className="standards-consult-actions">
-              <Link className="btn btn--primary" href="/contact/">
-                <span>Schedule Technical Discussion</span>
-                <ArrowRight />
-              </Link>
-              <a className="btn btn--wa" href={waLink()} target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
-                  <path d={WA_PATH} />
-                </svg>
-                <span>WhatsApp Us</span>
-              </a>
-            </div>
-          </div>
         </div>
       </section>
     </>
