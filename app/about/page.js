@@ -1,7 +1,6 @@
 import MissionVision from '@/components/MissionVision';
 import Stats from '@/components/Stats';
 import Quality from '@/components/Quality';
-import Partners from '@/components/Partners';
 import { PageHero, LinkCard, Icon } from '@/components/PageParts';
 import styles from './page.module.css';
 
@@ -63,12 +62,8 @@ export default function AboutPage() {
         <MissionVision />
       </section>
 
-      <section className="sec sec--alt" aria-label="Why work with BPEL">
+      <section className="sec" aria-label="Why work with BPEL">
         <Quality showCerts={false} />
-      </section>
-
-      <section id="partners" className="sec sec--tight" aria-label="Our Partners">
-        <Partners />
       </section>
 
       <section className="sec sec--alt" aria-label="More about BPEL">
