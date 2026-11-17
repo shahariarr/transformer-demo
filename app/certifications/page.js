@@ -1,7 +1,6 @@
 import { PageHero, ArrowRight } from '@/components/PageParts';
 import Stats from '@/components/Stats';
 import CertificatesGrid from '@/components/CertificatesGrid';
-import StandardsSection from '@/components/StandardsSection';
 import { waLink } from '@/lib/data';
 import { WA_PATH } from '@/lib/icons';
 import styles from './page.module.css';
@@ -54,13 +53,6 @@ export default function CertificationsPage() {
           ========================================================= */}
       <section id="certificates" className="sec sec--tight" aria-label="Official Certificates and Test Reports">
         <CertificatesGrid />
-      </section>
-
-      {/* =========================================================
-          4. INTERNATIONAL ENGINEERING STANDARDS MATRIX
-          ========================================================= */}
-      <section id="standards" className="sec sec--tight sec--alt" aria-label="International Engineering Standards">
-        <StandardsSection />
       </section>
     </>
   );
