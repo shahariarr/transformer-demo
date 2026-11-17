@@ -1,5 +1,4 @@
 import Lifecycle from '@/components/Lifecycle';
-import Quality from '@/components/Quality';
 import { PageHero, ArrowRight } from '@/components/PageParts';
 import { MANUFACTURING_STEPS } from '@/lib/resources';
 import { waLink } from '@/lib/data';
@@ -42,11 +41,6 @@ export default function EngineeringPage() {
       </section>
 
       <section id="lifecycle" className="sec sec--dark" aria-label="Project lifecycle"><Lifecycle /></section>
-
-      {/* Official Certificates & Test Reports Inspection Slider */}
-      <section className="sec sec--alt" aria-label="Certificates & Test Reports">
-        <Quality showWhy={false} viewAll={true} />
-      </section>
     </>
   );
 }
