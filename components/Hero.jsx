@@ -124,7 +124,6 @@ export default function Hero() {
                 <p className="lead hero__in" style={{ '--d': 2 }}>{s.lead}</p>
                 <div className="cta hero__in" style={{ '--d': 3 }}>
                   <a className="btn btn--primary" href={s.ctaPrimary.href}>{s.ctaPrimary.text}</a>
-                  <a className="btn btn--ghost" href={s.ctaSecondary.href}>{s.ctaSecondary.text}</a>
                 </div>
                 <ul className="caps hero__in" style={{ '--d': 4 }}>
                   {s.caps.map(c => <li key={c}>{c}</li>)}
@@ -139,42 +138,41 @@ export default function Hero() {
                   </video>
                   <p className="tv__fallback" role="status" hidden={!failed[i]}>The animation could not be loaded.</p>
                 </div>
+                <div className="hero-bottom"
+                     onMouseEnter={() => { state.current.hovered = true; clearInterval(timer.current); }}
+                     onMouseLeave={() => { state.current.hovered = false; resetTimer(); }}>
+                  <div className="hero-indicators" role="tablist" aria-label="Hero slider pagination">
+                    <button type="button" className="hero-indicator is-active" role="tab"
+                            aria-selected="true" aria-label={`Slide ${current + 1}: ${HERO_SLIDES[current].tabTitle}`}>
+                      <span className="hero-indicator__header">
+                        <span className="hero-indicator__num">{HERO_SLIDES[current].tabNum}</span>
+                        <span className="hero-indicator__title">{HERO_SLIDES[current].tabTitle}</span>
+                      </span>
+                      <span className="hero-indicator__track" key={current}>
+                        <span className="hero-indicator__fill"></span>
+                      </span>
+                    </button>
+                  </div>
+                  <div className="hero-nav-actions">
+                    <div className="hero-nav-btns">
+                      <button type="button" className="hero-arrow-btn" aria-label="Previous slide" title="Previous slide" onClick={prev}>
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
+                      </button>
+                      <div className="hero-counter" aria-live="polite">
+                        <span className="hero-counter__curr">{String(current + 1).padStart(2, '0')}</span>
+                        <span className="hero-counter__sep">/</span>
+                        <span className="hero-counter__total">{String(total).padStart(2, '0')}</span>
+                      </div>
+                      <button type="button" className="hero-arrow-btn" aria-label="Next slide" title="Next slide" onClick={next}>
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         ))}
-      </div>
-      <div className="wrap hero-bottom"
-           onMouseEnter={() => { state.current.hovered = true; clearInterval(timer.current); }}
-           onMouseLeave={() => { state.current.hovered = false; resetTimer(); }}>
-        <div className="hero-indicators" role="tablist" aria-label="Hero slider pagination">
-          {HERO_SLIDES.map((s, i) => (
-            <button type="button" className={`hero-indicator ${i === current ? 'is-active' : ''}`} data-hero-tab={i} role="tab" key={s.id}
-                    aria-selected={i === current ? 'true' : 'false'} aria-label={`Slide ${i + 1}: ${s.tabTitle}`}
-                    onClick={() => { if (i !== current) goTo(i); }}>
-              <span className="hero-indicator__header">
-                <span className="hero-indicator__num">{s.tabNum}</span>
-                <span className="hero-indicator__title">{s.tabTitle}</span>
-              </span>
-              <span className="hero-indicator__track"><span className="hero-indicator__fill"></span></span>
-            </button>
-          ))}
-        </div>
-        <div className="hero-nav-actions">
-          <div className="hero-counter" aria-live="polite">
-            <span className="hero-counter__curr" id="hero-curr-num">{String(current + 1).padStart(2, '0')}</span>
-            <span className="hero-counter__sep">/</span>
-            <span className="hero-counter__total">{String(total).padStart(2, '0')}</span>
-          </div>
-          <div className="hero-nav-btns">
-            <button type="button" className="hero-arrow-btn" id="hero-prev" aria-label="Previous slide" title="Previous slide" onClick={prev}>
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
-            </button>
-            <button type="button" className="hero-arrow-btn" id="hero-next" aria-label="Next slide" title="Next slide" onClick={next}>
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
-            </button>
-          </div>
-        </div>
       </div>
     </div>
   );

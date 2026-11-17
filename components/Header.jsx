@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { SITE } from '@/lib/site';
 import { DATA } from '@/lib/data';
-import { NAV_ICONS, NAV_FOOTERS } from '@/lib/nav';
+import { NAV_ICONS } from '@/lib/nav';
 import { useUI } from './UIProvider';
 import RawSvg from './RawSvg';
 import LanguageSelector from './LanguageSelector';
@@ -28,9 +28,15 @@ const checkChildActive = (chHref, pathname, currentCat) => {
   return pathname === cleanHref || (chHref !== '/' && chHref !== '/contact/' && pathname === cleanHref);
 };
 
-const Chevron = ({ className, size }) => (
+const Chevron = ({ className, size = 10 }) => (
   <svg className={className} viewBox="0 0 16 16" width={size} height={size} fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
     <polyline points="4 6 8 10 12 6"></polyline>
+  </svg>
+);
+
+const ChevronRight = ({ className, size = 10 }) => (
+  <svg className={className} viewBox="0 0 16 16" width={size} height={size} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <polyline points="6 3 11 8 6 13"></polyline>
   </svg>
 );
 
@@ -51,6 +57,7 @@ function HeaderContent() {
   const { openSearch } = useUI();
   const [open, setOpen] = useState(false);
   const [subOpen, setSubOpen] = useState(null);
+  const [nestedSubOpen, setNestedSubOpen] = useState(null);
   const [scrolled, setScrolled] = useState(false);
   const [activeOverride, setActiveOverride] = useState(null);
   const [closedDropdownKey, setClosedDropdownKey] = useState(null);
@@ -96,6 +103,7 @@ function HeaderContent() {
     setOpen(value);
     if (!value) {
       setSubOpen(null); // close all mobile accordion submenus with the drawer
+      setNestedSubOpen(null);
       document.documentElement.classList.remove('menu-open');
     }
   };
@@ -112,6 +120,7 @@ function HeaderContent() {
     setActiveOverride(null);
     setDropdownsSuppressed(false);
     setClosedDropdownKey(null);
+    setNestedSubOpen(null);
     document.documentElement.classList.remove('menu-open');
   }, [pathname, searchStr]);
 
@@ -141,10 +150,24 @@ function HeaderContent() {
     };
   }, []);
 
-  const toggleSub = key => setSubOpen(prev => (prev === key ? null : key));
+  const toggleSub = key => {
+    setSubOpen(prev => {
+      if (prev === key) {
+        setNestedSubOpen(null);
+        return null;
+      }
+      return key;
+    });
+  };
+
+  const toggleNestedSub = subKey => {
+    setNestedSubOpen(prev => (prev === subKey ? null : subKey));
+  };
+
   const close = () => {
     setDrawer(false);
     setClosedDropdownKey(null);
+    setNestedSubOpen(null);
   };
 
   const handleNavClick = (idx, key) => {
@@ -197,9 +220,6 @@ function HeaderContent() {
       );
     }
 
-    const footer = NAV_FOOTERS[key];
-    const isTwoCol = (n.children && n.children.length > 4) || (n.sections && n.sections.length === 2);
-    const isMega = n.label === 'Products' || (n.sections && n.sections.length >= 3);
     const isOpen = subOpen === key;
     const isDropdownClosed = closedDropdownKey === key;
 
@@ -221,7 +241,7 @@ function HeaderContent() {
             href={n.href}
             className={`nav-link nav-link--top nav-link--has-sub${isCurrentActive ? ' is-active' : ''}`}
             data-nav-link={key}
-            aria-expanded="false"
+            aria-expanded={isOpen}
             aria-haspopup="true"
             {...isCurrent}
             onClick={e => onParentClick(e, key, idx)}
@@ -241,247 +261,107 @@ function HeaderContent() {
           </button>
         </div>
 
-        <div
-          className={`dropdown-menu dropdown-menu--${key} ${
-            isMega ? 'dropdown-menu--mega' : n.sections ? 'dropdown-menu--sectioned' : isTwoCol ? 'dropdown-menu--wide' : ''
-          }`}
+        <ul
+          className="dropdown-menu dropdown-menu--list"
           role="menu"
           aria-label={`${n.label} submenu`}
         >
-          <div className="dropdown-menu__header">
-            <span className="dropdown-menu__tag">{n.label}</span>
-            <Link
-              href={n.href}
-              className={`dropdown-menu__all-link${pathname === n.href ? ' is-active' : ''}`}
-              onClick={() => handleNavClick(idx, key)}
-            >
-              <span>Overview</span>
-              <svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <line x1="3" y1="8" x2="13" y2="8"></line>
-                <polyline points="9 4 13 8 9 12"></polyline>
-              </svg>
-            </Link>
-          </div>
-
           {n.sections ? (
-            n.label === 'About' ? (
-              /* Balanced 2-Column Sectioned Layout for About BPEL & Resources + Blog */
-              <div className="dropdown-mega__grid dropdown-mega__grid--2col">
-                {/* Column 1: About BPEL */}
-                <div className="dropdown-mega__col">
-                  {n.sections[0] && (
-                    <>
-                      <div className="dropdown-mega__col-header">
-                        <Link
-                          href={n.sections[0].href}
-                          className={`dropdown-mega__col-title${pathname === n.sections[0].href ? ' is-active' : ''}`}
-                          onClick={() => handleNavClick(idx, key)}
-                        >
-                          <span>{n.sections[0].title}</span>
-                          <svg viewBox="0 0 16 16" width="10" height="10" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                            <line x1="3" y1="8" x2="13" y2="8"></line>
-                            <polyline points="9 4 13 8 9 12"></polyline>
-                          </svg>
-                        </Link>
-                      </div>
-                      <div className="dropdown-mega__col-items">
-                        {n.sections[0].items.map(ch => {
-                          const isChildActive = checkChildActive(ch.href, pathname, currentCat);
-                          return (
-                            <Link
-                              href={ch.href}
-                              className={`dropdown-item${isChildActive ? ' is-active' : ''}`}
-                              aria-current={isChildActive ? 'page' : undefined}
-                              role="menuitem"
-                              key={ch.title}
-                              onClick={() => handleNavClick(idx, key)}
-                            >
-                              <span className="dropdown-item__icon" aria-hidden="true">
-                                <RawSvg markup={NAV_ICONS[ch.icon] || NAV_ICONS.zap} />
-                              </span>
-                              <span className="dropdown-item__content">
-                                <span className="dropdown-item__title">{ch.title}</span>
-                                <span className="dropdown-item__desc">{ch.desc}</span>
-                              </span>
-                            </Link>
-                          );
-                        })}
-                      </div>
-                    </>
-                  )}
-                </div>
+            n.sections.map((sec, secIdx) => {
+              const secKey = `${key}-${secIdx}`;
+              const isSecOpen = nestedSubOpen === secKey;
+              const hasSubmenu = Array.isArray(sec.items) && sec.items.length > 0;
+              const isSecActive =
+                pathname === sec.href ||
+                (sec.href !== '/' && pathname.startsWith(sec.href)) ||
+                sec.items?.some(it => checkChildActive(it.href, pathname, currentCat));
 
-                {/* Column 2: Resources & Blog */}
-                <div className="dropdown-mega__col">
-                  {/* Resources */}
-                  {n.sections[1] && (
-                    <>
-                      <div className="dropdown-mega__col-header">
-                        <Link
-                          href={n.sections[1].href}
-                          className={`dropdown-mega__col-title${pathname === n.sections[1].href ? ' is-active' : ''}`}
-                          onClick={() => handleNavClick(idx, key)}
-                        >
-                          <span>{n.sections[1].title}</span>
-                          <svg viewBox="0 0 16 16" width="10" height="10" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                            <line x1="3" y1="8" x2="13" y2="8"></line>
-                            <polyline points="9 4 13 8 9 12"></polyline>
-                          </svg>
-                        </Link>
-                      </div>
-                      <div className="dropdown-mega__col-items">
-                        {n.sections[1].items.map(ch => {
-                          const isChildActive = checkChildActive(ch.href, pathname, currentCat);
-                          return (
-                            <Link
-                              href={ch.href}
-                              className={`dropdown-item${isChildActive ? ' is-active' : ''}`}
-                              aria-current={isChildActive ? 'page' : undefined}
-                              role="menuitem"
-                              key={ch.title}
-                              onClick={() => handleNavClick(idx, key)}
-                            >
-                              <span className="dropdown-item__icon" aria-hidden="true">
-                                <RawSvg markup={NAV_ICONS[ch.icon] || NAV_ICONS.zap} />
-                              </span>
-                              <span className="dropdown-item__content">
-                                <span className="dropdown-item__title">{ch.title}</span>
-                                <span className="dropdown-item__desc">{ch.desc}</span>
-                              </span>
-                            </Link>
-                          );
-                        })}
-                      </div>
-                    </>
-                  )}
-
-                  {/* Blog */}
-                  {n.sections[2] && (
-                    <>
-                      <div className="dropdown-mega__col-header" style={{ marginTop: '0.85rem' }}>
-                        <Link
-                          href={n.sections[2].href}
-                          className={`dropdown-mega__col-title${pathname === n.sections[2].href ? ' is-active' : ''}`}
-                          onClick={() => handleNavClick(idx, key)}
-                        >
-                          <span>{n.sections[2].title}</span>
-                          <svg viewBox="0 0 16 16" width="10" height="10" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                            <line x1="3" y1="8" x2="13" y2="8"></line>
-                            <polyline points="9 4 13 8 9 12"></polyline>
-                          </svg>
-                        </Link>
-                      </div>
-                      <div className="dropdown-mega__col-items">
-                        {n.sections[2].items.map(ch => {
-                          const isChildActive = checkChildActive(ch.href, pathname, currentCat);
-                          return (
-                            <Link
-                              href={ch.href}
-                              className={`dropdown-item${isChildActive ? ' is-active' : ''}`}
-                              aria-current={isChildActive ? 'page' : undefined}
-                              role="menuitem"
-                              key={ch.title}
-                              onClick={() => handleNavClick(idx, key)}
-                            >
-                              <span className="dropdown-item__icon" aria-hidden="true">
-                                <RawSvg markup={NAV_ICONS[ch.icon] || NAV_ICONS.zap} />
-                              </span>
-                              <span className="dropdown-item__content">
-                                <span className="dropdown-item__title">{ch.title}</span>
-                                <span className="dropdown-item__desc">{ch.desc}</span>
-                              </span>
-                            </Link>
-                          );
-                        })}
-                      </div>
-                    </>
-                  )}
-                </div>
-              </div>
-            ) : (
-              /* 3-Column Mega Menu for Products (Products, Services, Industries) */
-              <div className="dropdown-mega__grid dropdown-mega__grid--3col">
-                {n.sections.map(sec => (
-                  <div className="dropdown-mega__col" key={sec.title}>
-                    <div className="dropdown-mega__col-header">
-                      <Link
-                        href={sec.href}
-                        className={`dropdown-mega__col-title${pathname === sec.href ? ' is-active' : ''}`}
-                        onClick={() => handleNavClick(idx, key)}
+              return (
+                <li
+                  key={sec.title}
+                  className={`dropdown-list-item${hasSubmenu ? ' dropdown-list-item--has-sub' : ''}${isSecActive ? ' is-active' : ''}${isSecOpen ? ' is-sub-open' : ''}`}
+                >
+                  <div className="dropdown-list-item__head">
+                    <Link
+                      href={sec.href}
+                      className={`dropdown-list-link${isSecActive ? ' is-active' : ''}`}
+                      role="menuitem"
+                      aria-haspopup={hasSubmenu ? 'true' : undefined}
+                      aria-expanded={hasSubmenu ? (isSecOpen ? 'true' : 'false') : undefined}
+                      onClick={() => handleNavClick(idx, key)}
+                    >
+                      <span className="dropdown-list-link__text">{sec.title}</span>
+                      {hasSubmenu && <ChevronRight className="dropdown-list-arrow" size="10" />}
+                    </Link>
+                    {hasSubmenu && (
+                      <button
+                        type="button"
+                        className="nav-subdropdown-toggle"
+                        aria-label={`Toggle ${sec.title} submenu`}
+                        aria-expanded={isSecOpen}
+                        onClick={e => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          toggleNestedSub(secKey);
+                        }}
                       >
-                        <span>{sec.title}</span>
-                        <svg viewBox="0 0 16 16" width="10" height="10" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                          <line x1="3" y1="8" x2="13" y2="8"></line>
-                          <polyline points="9 4 13 8 9 12"></polyline>
-                        </svg>
-                      </Link>
-                    </div>
-                    <div className="dropdown-mega__col-items">
+                        <Chevron size="10" />
+                      </button>
+                    )}
+                  </div>
+
+                  {hasSubmenu && (
+                    <ul className={`dropdown-submenu${isSecOpen ? ' is-open' : ''}`} role="menu" aria-label={`${sec.title} submenu`}>
                       {sec.items.map(ch => {
                         const isChildActive = checkChildActive(ch.href, pathname, currentCat);
                         return (
-                          <Link
-                            href={ch.href}
-                            className={`dropdown-item${isChildActive ? ' is-active' : ''}`}
-                            aria-current={isChildActive ? 'page' : undefined}
-                            role="menuitem"
-                            key={ch.title}
-                            onClick={() => handleNavClick(idx, key)}
-                          >
-                            <span className="dropdown-item__icon" aria-hidden="true">
-                              <RawSvg markup={NAV_ICONS[ch.icon] || NAV_ICONS.zap} />
-                            </span>
-                            <span className="dropdown-item__content">
-                              <span className="dropdown-item__title">{ch.title}</span>
-                              <span className="dropdown-item__desc">{ch.desc}</span>
-                            </span>
-                          </Link>
+                          <li key={ch.title} className="dropdown-submenu-item">
+                            <Link
+                              href={ch.href}
+                              className={`dropdown-subitem${isChildActive ? ' is-active' : ''}`}
+                              role="menuitem"
+                              aria-current={isChildActive ? 'page' : undefined}
+                              onClick={() => handleNavClick(idx, key)}
+                            >
+                              {ch.icon && (
+                                <span className="dropdown-subitem__icon" aria-hidden="true">
+                                  <RawSvg markup={NAV_ICONS[ch.icon] || NAV_ICONS.zap} />
+                                </span>
+                              )}
+                              <span className="dropdown-subitem__text">{ch.title}</span>
+                            </Link>
+                          </li>
                         );
                       })}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )
+                    </ul>
+                  )}
+                </li>
+              );
+            })
           ) : (
-            <div className={`dropdown-menu__grid ${isTwoCol ? 'dropdown-menu__grid--2col' : ''}`}>
-              {n.children.map(ch => {
-                const isChildActive = checkChildActive(ch.href, pathname, currentCat);
-                return (
+            n.children?.map(ch => {
+              const isChildActive = checkChildActive(ch.href, pathname, currentCat);
+              return (
+                <li key={ch.title} className="dropdown-list-item">
                   <Link
                     href={ch.href}
-                    className={`dropdown-item${isChildActive ? ' is-active' : ''}`}
-                    aria-current={isChildActive ? 'page' : undefined}
+                    className={`dropdown-list-link${isChildActive ? ' is-active' : ''}`}
                     role="menuitem"
-                    key={ch.title}
+                    aria-current={isChildActive ? 'page' : undefined}
                     onClick={() => handleNavClick(idx, key)}
                   >
-                    <span className="dropdown-item__icon" aria-hidden="true">
-                      <RawSvg markup={NAV_ICONS[ch.icon] || NAV_ICONS.zap} />
-                    </span>
-                    <span className="dropdown-item__content">
-                      <span className="dropdown-item__title">{ch.title}</span>
-                      <span className="dropdown-item__desc">{ch.desc}</span>
-                    </span>
+                    {ch.icon && (
+                      <span className="dropdown-subitem__icon" aria-hidden="true">
+                        <RawSvg markup={NAV_ICONS[ch.icon] || NAV_ICONS.zap} />
+                      </span>
+                    )}
+                    <span className="dropdown-list-link__text">{ch.title}</span>
                   </Link>
-                );
-              })}
-            </div>
+                </li>
+              );
+            })
           )}
-
-          {footer ? (
-            <div className="dropdown-menu__footer">
-              <span className="dropdown-menu__footer-text">{footer.text}</span>
-              <Link
-                href={footer.href}
-                className="dropdown-menu__footer-link"
-                onClick={() => handleNavClick(idx, key)}
-              >
-                {footer.cta}
-              </Link>
-            </div>
-          ) : null}
-        </div>
+        </ul>
       </li>
     );
   });

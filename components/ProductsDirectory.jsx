@@ -416,6 +416,14 @@ function ProductsDirectoryContent() {
                     className={styles.productCard}
                     aria-label={`View ${p.name}`}
                   >
+                    <div className={styles.cardTopBar}>
+                      <span className={styles.cardBadge}>{p.category}</span>
+                      <span className={styles.cardSpecTag}>
+                        <span className={styles.cardSpecDot}></span>
+                        IEC / ANSI
+                      </span>
+                    </div>
+
                     <div className={styles.cardImgWrap}>
                       <img
                         src={p.image}
@@ -424,17 +432,22 @@ function ProductsDirectoryContent() {
                         fetchPriority={idx < 3 ? 'high' : 'auto'}
                         decoding="async"
                       />
-                      <div className={styles.cardArrowBtn} aria-hidden="true">
-                        <ArrowRightIcon />
-                      </div>
                     </div>
 
                     <div className={styles.cardInfo}>
-                      <span className={styles.orderBadge}>{orderNum}</span>
+                      <div className={styles.cardMetaLine}>
+                        <span className={styles.cardCatBadge}>
+                          {p.subCategory || p.category}
+                        </span>
+                        <span className={styles.orderBadge}>#{orderNum}</span>
+                      </div>
                       <h3 className={styles.cardTitle}>{p.name}</h3>
-                      <span className={styles.cardCatBadge}>
-                        {p.subCategory || p.category}
-                      </span>
+                      <div className={styles.cardActionRow}>
+                        <span className={styles.cardActionLabel}>Explore Specifications</span>
+                        <div className={styles.cardArrowBtn} aria-hidden="true">
+                          <ArrowRightIcon />
+                        </div>
+                      </div>
                     </div>
                   </Link>
                 );
