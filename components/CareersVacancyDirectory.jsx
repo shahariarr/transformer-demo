@@ -33,7 +33,7 @@ const PinIcon = () => (
   </svg>
 );
 
-export default function CareersVacancyDirectory() {
+export default function CareersVacancyDirectory({ showOpenBanner = false }) {
   const [activeDept, setActiveDept] = useState('all');
   const [locationFilter, setLocationFilter] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
@@ -284,21 +284,23 @@ export default function CareersVacancyDirectory() {
       </div>
 
       {/* 3. Bottom Speculative Pool Banner (matching Home Page Card Style) */}
-      <div className="vacancy-open-banner fade-in-up">
-        <div className="vacancy-open-banner__copy">
-          <span className="vacancy-open-tag">GENERAL POOL APPLICATION</span>
-          <h3 className="vacancy-open-title">Don&apos;t See Your Specific Discipline Listed?</h3>
-          <p className="vacancy-open-desc">
-            We are always looking for exceptional high-voltage power engineers, CAD draftsmen, quality control technicians, and factory fabricators. Submit an open talent application and our technical HR team will keep your credentials active for upcoming projects.
-          </p>
+      {showOpenBanner && (
+        <div className="vacancy-open-banner fade-in-up">
+          <div className="vacancy-open-banner__copy">
+            <span className="vacancy-open-tag">GENERAL POOL APPLICATION</span>
+            <h3 className="vacancy-open-title">Don&apos;t See Your Specific Discipline Listed?</h3>
+            <p className="vacancy-open-desc">
+              We are always looking for exceptional high-voltage power engineers, CAD draftsmen, quality control technicians, and factory fabricators. Submit an open talent application and our technical HR team will keep your credentials active for upcoming projects.
+            </p>
+          </div>
+          <div className="vacancy-open-banner__action">
+            <Link href="/careers/apply?job=open-application" className="btn btn--primary">
+              <span>Submit Open Application</span>
+              <Arrow />
+            </Link>
+          </div>
         </div>
-        <div className="vacancy-open-banner__action">
-          <Link href="/careers/apply?job=open-application" className="btn btn--primary">
-            <span>Submit Open Application</span>
-            <Arrow />
-          </Link>
-        </div>
-      </div>
+      )}
     </div>
   );
 }
