@@ -92,23 +92,6 @@ const FACILITIES = [
   }
 ];
 
-const CERTIFICATIONS = [
-  { code: 'ISO 9001:2015', name: 'Quality Management System', desc: 'Internationally recognised framework ensuring consistent quality across all manufacturing processes.' },
-  { code: 'ISO 14001:2015', name: 'Environmental Management System', desc: 'Systematic approach to minimising environmental footprint and energy consumption.' },
-  { code: 'ISO 50001:2018', name: 'Energy Management System', desc: 'Framework to continuously improve energy efficiency across manufacturing operations.' },
-  { code: 'ISO 45001:2018', name: 'Occupational Health & Safety', desc: 'Occupational health & safety management system for factory and site engineering excellence.' },
-  { code: 'ISO/IEC 17025:2017', name: 'Testing Laboratory Accreditation', desc: 'The international gold standard for testing and calibration laboratories worldwide.' },
-  { code: 'IEC 60076', name: 'International Power Transformer Standard', desc: 'The primary international standard for transformer design, routine, and type testing.' },
-  { code: 'IEC 60076-11', name: 'Dry-Type Transformer Standard', desc: 'Standard for cast resin dry-type and air-cooled transformer manufacturing and testing.' },
-  { code: 'UL 1562 Listed', name: 'Pad-Mounted Transformer Standard', desc: 'Underwriters Laboratories listing for pad-mounted units required for global utility networks.' },
-  { code: 'UL 1561 Listed', name: 'Dry-Type Distribution Standard', desc: 'UL listing for indoor and outdoor dry-type distribution transformer installations.' },
-  { code: 'ANSI / IEEE C57', name: 'North American Transformer Standard', desc: 'The definitive standard series for transformer design and withstand tolerance in the Americas.' },
-  { code: 'ISO 3834', name: 'Welding Quality Requirements', desc: 'Standard for fusion welding of metallic materials in transformer tank and radiator fabrication.' },
-  { code: 'EcoDesign 2019/1783', name: 'EU Tier 2 Loss Directive', desc: 'European Union mandate for ultra-low no-load core and copper loss performance.' }
-];
-
-const WITNESSES = ['CESI (IT)', 'ASTA (UK)', 'INTERTEK (Global)', 'KEMA (NL)', 'DEWA Approved', 'ADNOC Approved', 'ARAMCO Approved', 'TRANSCO Certified'];
-
 export default function ETSAboutPage() {
   const [activeFacility, setActiveFacility] = useState(FACILITIES[0]);
 
@@ -290,53 +273,7 @@ export default function ETSAboutPage() {
       </section>
 
       {/* =========================================================
-          5. CERTIFICATIONS & ACCREDITATIONS
-          ========================================================= */}
-      <section id="certifications" className="sec sec--tight" aria-label="Certifications & Accreditations">
-        <div className="wrap">
-          <header className="sec-head fade-in-up">
-            <p className="label">CERTIFICATIONS &amp; STANDARDS</p>
-            <h2>Globally Certified. Locally Trusted.</h2>
-            <p className="sec-head__desc">
-              Triple-standard compliance across IEC, ANSI/IEEE, and UL standards — verified by Lloyd&apos;s Register, UKAS, and accredited independent laboratories.
-            </p>
-          </header>
-
-          <div className="ets-certs-grid">
-            {CERTIFICATIONS.map((cert, idx) => (
-              <div key={idx} className="ets-cert-card">
-                <div className="ets-cert-card__top">
-                  <span className="ets-cert-card__num">{String(idx + 1).padStart(2, '0')}</span>
-                </div>
-                <div className="ets-cert-card__text">
-                  <h3 className="ets-cert-card__code">{cert.code}</h3>
-                  <div className="ets-cert-card__name">{cert.name}</div>
-                  <p className="ets-cert-card__desc">{cert.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Third-Party Laboratory Witnesses */}
-          <div className="ets-witnesses-bar">
-            <div className="ets-witnesses-bar__left">
-              <span className="label" style={{ marginBottom: '0.25rem' }}>TYPE APPROVALS &amp; WITNESSES</span>
-              <h3 className="ets-witnesses-title">Independent Test Laboratories</h3>
-              <p className="ets-witnesses-sub">
-                Type-test reports witnessed by accredited independent third-party laboratories — approved by utilities and regional grid operators.
-              </p>
-            </div>
-            <div className="ets-witnesses-pills">
-              {WITNESSES.map(w => (
-                <span key={w} className="ets-witness-pill">{w}</span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* =========================================================
-          6. SIGNATURE BOTTOM CONSULTATION BANNER
+          5. SIGNATURE BOTTOM CONSULTATION BANNER
           ========================================================= */}
       <section className="sec sec--tight" aria-label="Technical Consultation & Quotation">
         <div className="wrap">
