@@ -74,7 +74,7 @@ function getCategorySlug(cat) {
   return c;
 }
 
-export default function Projects({ viewAll = true, isGrid = false }) {
+export default function Projects({ viewAll = true, isGrid = false, showBanner = false }) {
   const router = useRouter();
   const [filter, setFilter] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
@@ -569,24 +569,26 @@ export default function Projects({ viewAll = true, isGrid = false }) {
         </div>
       )}
 
-      <div className="wrap">
-        {/* Bottom Consultation Callout Banner - Following the exact card from the screenshot */}
-        <div className="proj-bottom-banner fade-in-up" data-delay="150">
-          <div className="proj-bottom-copy">
-            <h4>Need Custom Engineering Specifications?</h4>
-            <p>Our engineering team prepares custom transformer tender drawings, loss evaluations, and single-line diagrams within 24 business hours. Connect directly with our high-voltage technical desk.</p>
-          </div>
-          <div className="proj-bottom-actions">
-            <Link href="/contact/" className="proj-bottom-btn-primary">
-              <span>Request Custom RFQ</span>
-              <span>&rarr;</span>
-            </Link>
-            <Link href="/calculators/sizing-advisor/" className="proj-bottom-btn-outline">
-              <span>Use Sizing Advisor</span>
-            </Link>
+      {showBanner && (
+        <div className="wrap">
+          {/* Bottom Consultation Callout Banner */}
+          <div className="proj-bottom-banner fade-in-up" data-delay="150">
+            <div className="proj-bottom-copy">
+              <h4>Need Custom Engineering Specifications?</h4>
+              <p>Our engineering team prepares custom transformer tender drawings, loss evaluations, and single-line diagrams within 24 business hours. Connect directly with our high-voltage technical desk.</p>
+            </div>
+            <div className="proj-bottom-actions">
+              <Link href="/contact/" className="proj-bottom-btn-primary">
+                <span>Request Custom RFQ</span>
+                <span>&rarr;</span>
+              </Link>
+              <Link href="/calculators/sizing-advisor/" className="proj-bottom-btn-outline">
+                <span>Use Sizing Advisor</span>
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </>
   );
 }
