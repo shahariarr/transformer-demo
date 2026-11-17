@@ -3146,9 +3146,29 @@
   margin-bottom: 0;
 }
 
+:global(#faq .label),
 :global(#faq .sec-head .label) {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 0 0 0.65rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+:global(#faq .label::before),
+:global(#faq .sec-head .label::before) {
+  content: "";
   display: inline-block;
-  margin-bottom: 0.5rem;
+  width: 28px !important;
+  height: 2.5px;
+  background: var(--primary);
+  border-radius: 2px;
+  flex: none;
+  transition: none !important;
 }
 
 :global(#faq .sec-head h2) {
