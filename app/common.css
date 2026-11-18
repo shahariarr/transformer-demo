@@ -1481,13 +1481,15 @@ body {
 
 .floating-btn--mail {
   background: #ffffff;
+  color: var(--primary, #0B5CAB);
   border: 1px solid var(--line);
 }
 
 .floating-btn--mail:hover {
   background: #ffffff;
-  border-color: rgba(234, 67, 53, .5);
-  box-shadow: 0 6px 20px rgba(234, 67, 53, .25);
+  color: #006db8;
+  border-color: rgba(11, 92, 171, .5);
+  box-shadow: 0 6px 20px rgba(11, 92, 171, .25);
 }
 
 .floating-btn--wa {
