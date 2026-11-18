@@ -419,6 +419,15 @@
   display: none !important
 }
 
+:global(.tv__shield) {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: transparent;
+  pointer-events: auto;
+  cursor: default;
+}
+
 :global(.tv__fallback) {
   position: absolute;
   inset: 0;
@@ -4527,63 +4536,47 @@
   box-sizing: border-box;
 }
 
-:global(.execute-swiper-slide) {
+/* =====================================================================
+   Products Marquee Auto-Scroll (Identical to Certificates Section)
+   ===================================================================== */
+:global(.products-marquee-slider) {
   position: relative;
   overflow: hidden;
   width: 100%;
-  padding-top: 12px;
-  padding-bottom: 20px;
-  touch-action: pan-y;
+  padding: 1.25rem 0 2rem;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 2.5%, #000 97.5%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 2.5%, #000 97.5%, transparent);
   cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
 }
 
-:global(.execute-swiper-slide:active) {
+:global(.products-marquee-slider:active) {
   cursor: grabbing;
 }
 
-:global(.swiper-wrapper.product-items) {
+:global(.products-marquee-inner) {
   display: flex;
-  margin: 0;
-  padding: 0;
-  list-style: none;
+  width: max-content;
   will-change: transform;
-  transform: translate3d(0, 0, 0);
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
 }
 
-/* Product Card Slide (3D Perspective Stage) */
-:global(.swiper-slide.product-item) {
-  flex-shrink: 0;
-  padding: 0 12px;
-  height: auto;
-  user-select: none;
+:global(.products-marquee-row) {
+  display: flex;
+  gap: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+:global(.products-marquee-row .product-item) {
+  flex: none;
+  width: 325px;
   box-sizing: border-box;
-  cursor: pointer;
-  perspective: 1200px;
-  perspective-origin: center;
 }
 
-:global(.execute-swiper-slide[data-dragging="true"]) {
-  cursor: grabbing !important;
-  user-select: none !important;
-}
-
-:global(.execute-swiper-slide[data-dragging="true"] *),
-:global(.execute-swiper-slide[data-animating="true"] *) {
-  user-select: none !important;
-  -webkit-user-drag: none !important;
-}
-
-:global(.execute-swiper-slide[data-dragging="true"] .product-item),
-:global(.execute-swiper-slide[data-animating="true"] .product-item) {
-  pointer-events: none !important;
-}
-
-:global(.execute-swiper-slide[data-dragging="true"] .product-item .item-inner),
-:global(.execute-swiper-slide[data-animating="true"] .product-item .item-inner) {
-  transform: none !important;
+@media (max-width: 768px) {
+  :global(.products-marquee-row .product-item) {
+    width: 285px;
+  }
 }
 
 /* 3D Borderless Unique Corporate Card */
