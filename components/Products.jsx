@@ -78,7 +78,7 @@ const PRODUCTS = [
   }
 ];
 
-function ProductCard({ item, index, onCardClick }) {
+function ProductCard({ item, onCardClick }) {
   return (
     <div className="product-item">
       <Link
@@ -88,17 +88,7 @@ function ProductCard({ item, index, onCardClick }) {
         draggable={false}
         onClick={onCardClick}
       >
-        <span className="item-ambient-glow" aria-hidden="true"></span>
-        <span className="item-watermark" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
-        <div className="item-top-bar">
-          <span className="item-badge">{item.desc}</span>
-          <span className="item-spec-tag">
-            <span className="item-spec-dot"></span>
-            IEC / ANSI
-          </span>
-        </div>
         <div className="item-img" itemScope itemType="http://schema.org/ImageObject">
-          <span className="item-img-stage" aria-hidden="true"></span>
           <img
             src={item.img}
             alt={item.title}
@@ -116,15 +106,10 @@ function ProductCard({ item, index, onCardClick }) {
           </h3>
           <div className="item-box d-flex">
             <div className="item-desc">
-              Utility-Grade Engineered
+              {item.desc}
             </div>
             <div className="item-more">
-              <span>{item.more}</span>
-              <span className="item-more-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </span>
+              {item.more}
             </div>
           </div>
         </div>
@@ -144,7 +129,6 @@ function ProductsRow({ rowRef, hidden, onCardClick }) {
         <ProductCard
           key={hidden ? `hidden-${item.href}-${i}` : `${item.href}-${i}`}
           item={item}
-          index={i}
           onCardClick={onCardClick}
         />
       ))}
@@ -342,7 +326,7 @@ export default function Products({ viewAll = true, isGrid = false }) {
         <div className="wrap proj-grid-wrap" data-animate="slideInUp">
           <div className="pgrid">
             {PRODUCTS.map((item, idx) => (
-              <ProductCard key={idx} item={item} index={idx} />
+              <ProductCard key={idx} item={item} />
             ))}
           </div>
         </div>
