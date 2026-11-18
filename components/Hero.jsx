@@ -154,18 +154,7 @@ export default function Hero() {
                   <div className="hero-bottom"
                        onMouseEnter={() => { state.current.hovered = true; clearInterval(timer.current); }}
                        onMouseLeave={() => { state.current.hovered = false; resetTimer(); }}>
-                    <div className="hero-indicators" role="tablist" aria-label="Hero slider pagination">
-                      <button type="button" className="hero-indicator is-active" role="tab"
-                              aria-selected="true" aria-label={`Slide ${current + 1}: ${HERO_SLIDES[current].tabTitle}`}>
-                        <span className="hero-indicator__header">
-                          <span className="hero-indicator__num">{HERO_SLIDES[current].tabNum}</span>
-                          <span className="hero-indicator__title">{HERO_SLIDES[current].tabTitle}</span>
-                        </span>
-                        <span className="hero-indicator__track" key={current}>
-                          <span className="hero-indicator__fill"></span>
-                        </span>
-                      </button>
-                    </div>
+                   
                     <div className="hero-nav-actions">
                       <div className="hero-counter" aria-live="polite">
                         <span className="hero-counter__curr">{String(current + 1).padStart(2, '0')}</span>
