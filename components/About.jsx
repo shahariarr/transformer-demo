@@ -1,7 +1,27 @@
+'use client';
+
+import { useEffect, useRef } from 'react';
 import { HIGHLIGHTS, ABOUT_BADGE_SVG } from '@/lib/about';
 import RawSvg from './RawSvg';
 
 export default function About() {
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    const play = () => {
+      try {
+        const p = v.play();
+        if (p && typeof p.catch === 'function') p.catch(() => {});
+      } catch {}
+    };
+    play();
+    const onPause = () => play();
+    v.addEventListener('pause', onPause);
+    return () => v.removeEventListener('pause', onPause);
+  }, []);
+
   return (
     <div className="wrap about__grid">
       <div className="about__copy" data-animate="slideInLeft">
@@ -22,17 +42,26 @@ export default function About() {
         <div className="about-collage">
           <div className="about-card about-card--main" data-animate="slideInRight" data-delay="100">
             <video
+              ref={videoRef}
               className="about-card__video"
               autoPlay
               muted
               loop
               playsInline
+              webkit-playsinline="true"
+              x5-playsinline="true"
+              disablePictureInPicture
+              disableRemotePlayback
+              controlsList="nodownload nofullscreen noremoteplayback"
+              tabIndex={-1}
               preload="auto"
               poster="/assets/images/about-campus.jpg"
               aria-label="BPEL Corporate Video"
             >
               <source src="/assets/videos/about-corporate-video.mp4" type="video/mp4" />
             </video>
+            {/* Transparent shield so user touches/clicks never interact with video and never show browser play/pause overlays */}
+            <div className="about-card__shield" aria-hidden="true" />
           </div>
 
           <div className="about-badge" data-animate="slideInRight" data-delay="300" tabIndex="0" role="region" aria-label="Founded In 1985 Years">

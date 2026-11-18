@@ -53,11 +53,19 @@ export default function Hero() {
       v.addEventListener('ratechange', onRate);
       v.addEventListener('error', fail);
       if (src) src.addEventListener('error', fail);
+      const onPause = () => {
+        const slide = tv.closest('.hero-slide');
+        if (slide && slide.classList.contains('is-active') && !reduce) {
+          safePlay(v);
+        }
+      };
+      v.addEventListener('pause', onPause);
       cleanups.push(() => {
         v.removeEventListener('loadedmetadata', onSpeed);
         v.removeEventListener('play', onSpeed);
         v.removeEventListener('ratechange', onRate);
         v.removeEventListener('error', fail);
+        v.removeEventListener('pause', onPause);
         if (src) src.removeEventListener('error', fail);
       });
 
@@ -145,10 +153,16 @@ export default function Hero() {
                 <div className="hero__media">
                   <div className="tv" data-tv="" id={`tv-hero-${i}`} style={{ '--poster': `url('${s.poster}')` }}>
                     <video className="tv__video" ref={el => { videos.current[i] = el; }} muted loop autoPlay={i === 0} playsInline
-                           disablePictureInPicture disableRemotePlayback preload={i === 0 ? 'auto' : 'metadata'}
+                           webkit-playsinline="true" x5-playsinline="true"
+                           disablePictureInPicture disableRemotePlayback
+                           controlsList="nodownload nofullscreen noremoteplayback"
+                           tabIndex={-1}
+                           preload={i === 0 ? 'auto' : 'metadata'}
                            poster={s.poster} aria-label={s.title} suppressHydrationWarning>
                       <source src={s.video} type="video/mp4" />
                     </video>
+                    {/* Transparent shield prevents any touch or click on the video from bringing up browser pause/play overlays */}
+                    <div className="tv__shield" aria-hidden="true" />
                     <p className="tv__fallback" role="status" hidden={!failed[i]}>The animation could not be loaded.</p>
                   </div>
                   <div className="hero-bottom"
