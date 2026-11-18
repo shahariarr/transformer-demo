@@ -4629,26 +4629,6 @@
   transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.4s ease;
 }
 
-/* Natural ground contact shadow beneath equipment base */
-:global(.product-item .item-img::after) {
-  content: "";
-  position: absolute;
-  bottom: 0px;
-  left: 50%;
-  width: 65%;
-  height: 14px;
-  transform: translateX(-50%);
-  background: radial-gradient(
-    ellipse at center,
-    rgba(0, 35, 75, 0.35) 0%,
-    rgba(0, 35, 75, 0.10) 50%,
-    transparent 75%
-  );
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 1;
-  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.4s ease;
-}
 
 :global(.product-item .item-img img) {
   position: relative;
