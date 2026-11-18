@@ -225,8 +225,11 @@
 }
 
 html {
+  scroll-padding-top: calc(var(--bar-h) + 8px);
+}
+
+html[data-scroll-behavior="smooth"] {
   scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--bar-h) + 8px)
 }
 
 body {
