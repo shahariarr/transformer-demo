@@ -416,9 +416,11 @@
 }
 
 /* =========================================================
-   Modern Card Design with Scooped Category & Dual-Image Wipe
-   Adapted to BPEL Corporate Theme:
-   Brand Blue (#006db8), Dark Navy (#0a1e3c), Slate (#556882)
+   Modern Editorial Product Card Design (Reference UI)
+   - Clean White Container with Generous 24px Radius
+   - Rounded Inner Image Container (18px Radius) with Subtle Dots
+   - Bottom Info: Title & Subtitle/Category on left, Up-Right Arrow on right
+   - No Price, Corporate Color Scheme: Dark Navy (#0a1e3c), Brand Blue (#006db8)
    ========================================================= */
 
 .productGrid {
@@ -428,135 +430,81 @@
 }
 
 .productCard {
-  --_accent: var(--product-card--accent, #006db8);
-  --_accent-contrast: #ffffff;
-  --_row-gap: 0.85rem;
-  --_padding: 18px;
-  --_radius: 15 px;
-  --_inner-radius: 15px;
-  --_category-radius: 15px;
-  --_duration: 380ms;
-
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto auto 1fr auto;
-  gap: var(--_row-gap);
-  padding: var(--_padding);
-  border-radius: 15px;
   background-color: #ffffff;
-  color: #0a1e3c;
-  border: 1px solid rgba(226, 232, 240, 0.95);
-  box-shadow: 0 10px 30px -10px rgba(10, 30, 60, 0.07), 0 3px 8px -2px rgba(10, 30, 60, 0.03);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 24px;
+  padding: 12px;
+  box-shadow: 0 10px 28px -10px rgba(10, 30, 60, 0.06), 0 2px 6px -1px rgba(10, 30, 60, 0.02);
   position: relative;
-  transition: transform var(--_duration) cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow var(--_duration) cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.35s ease;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.28s ease;
   box-sizing: border-box;
 }
 
-.productCard:hover,
-.productCard:has(:any-link:hover) {
-  transform: translateY(-8px);
-  border-color: rgba(0, 109, 184, 0.35);
-  box-shadow: 0 24px 44px -12px rgba(0, 109, 184, 0.20), 0 8px 18px -4px rgba(10, 30, 60, 0.06);
+.productCard:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0, 109, 184, 0.32);
+  box-shadow: 0 20px 40px -12px rgba(0, 109, 184, 0.18), 0 6px 14px -3px rgba(10, 30, 60, 0.05);
 }
 
-/* THUMBNAIL STACK & DUAL-IMAGE WIPE ON HOVER */
-.thumbnailStack {
-  grid-column: 1 / -1;
-  grid-row: 1 / 2;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
-  width: 100%;
-  height: 235px;
-  background: radial-gradient(circle at center, #ffffff 40%, #f4f8fb 100%);
-  border-radius: 15px;
-  overflow: hidden;
-  position: relative;
-  border: 1px solid rgba(11, 92, 171, 0.08);
-  box-shadow: inset 0 2px 6px rgba(10, 30, 60, 0.04);
+.cardLink {
+  display: flex;
+  flex-direction: column;
   text-decoration: none;
-  cursor: pointer;
+  color: inherit;
+  width: 100%;
 }
 
-.thumbnailStack img {
-  padding: 16px 20px;
-
-}
-
-
-
-.productCard:hover .thumbnailStack img:last-child,
-.productCard:has(:any-link:hover) .thumbnailStack img:last-child,
-.productCard:has(:focus-visible) .thumbnailStack img:last-child {
-  clip-path: inset(0 0 0 0 round 15px);
-}
-
-/* SCOOPED CATEGORY CORNER TAB (Blue Color with 15px Radius) */
-.cardCategory {
-  grid-column: 1 / -1;
-  grid-row: 1 / 2;
-  place-self: start;
-  z-index: 3;
-  position: relative;
-  align-content: center;
-  min-height: 30px;
-  padding: 6px 16px;
-  border-top-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-  background-color: var(--_accent, #006db8);
-  color: #ffffff;
-  filter: drop-shadow(0 4px 10px rgba(0, 109, 184, 0.30));
-  font-family: "Poppins", sans-serif;
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin: 0;
-  pointer-events: none;
-  max-width: calc(100% - 30px);
-  white-space: nowrap;
+/* TOP IMAGE CONTAINER (Full size image, Rounded Corners & Carousel Dots) */
+.imageContainer {
+  width: 100%;
+  height: 250px;
+  background: #f8fafc;
+  border-radius: 18px;
   overflow: hidden;
-  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.cardCategory::before,
-.cardCategory::after {
-  content: "";
-  position: absolute;
-  width: 15px;
-  height: 15px;
-  mask-image: radial-gradient(
-    circle at 100% 100%,
-    transparent 15px,
-    #000 16px
-  );
-  -webkit-mask-image: radial-gradient(
-    circle at 100% 100%,
-    transparent 15px,
-    #000 16px
-  );
-  background-color: inherit;
+.productImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.cardCategory::before {
-  top: 0;
-  left: 100%;
+.productCard:hover .productImage {
+  transform: scale(1.05);
 }
 
-.cardCategory::after {
-  top: 100%;
-  left: 0;
+/* BOTTOM CARD FOOTER (Directly on white card: Lower Font-Size Title on left, Solid Blue Circular Arrow on right) */
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 6px 4px 6px;
+  margin-top: 2px;
 }
 
-/* HEADING */
-.cardHeading {
-  grid-column: 1 / -1;
-  grid-row: 2 / 3;
+.cardInfo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.productTitle {
   font-family: "Poppins", sans-serif;
-  font-size: 1.08rem;
-  font-weight: 700;
+  font-size: 0.9rem;
+  font-weight: 600;
   color: #0a1e3c;
   line-height: 1.35;
   margin: 0;
@@ -564,102 +512,45 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  transition: color 0.3s ease;
+  transition: color 0.25s ease;
 }
 
-.cardHeading a {
-  color: inherit;
-  text-decoration: none;
+.productCard:hover .productTitle {
+  color: var(--bs-theme-color, #006db8);
 }
 
-.productCard:hover .cardHeading,
-.productCard:hover .cardHeading a {
-  color: var(--_accent, #006db8);
-}
-
-/* DESCRIPTION */
-.cardDesc {
-  grid-column: 1 / -1;
-  grid-row: 3 / 4;
-  font-family: "Poppins", sans-serif;
-  font-size: 0.86rem;
-  line-height: 1.55;
-  color: #556882;
-  margin: 0;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  align-self: start;
-}
-
-/* ACTION ROW (View Text + Circular Arrow Button) */
-.cardBottomRow {
-  grid-column: 1 / -1;
-  grid-row: 4 / 5;
-  padding-top: 14px;
-  border-top: 1px solid #f1f5f9;
-  width: 100%;
-  align-self: end;
-}
-
-.cardViewLink {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  text-decoration: none;
-  padding: 2px 0;
-}
-
-.viewText {
-  font-family: "Poppins", sans-serif;
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--_accent, #006db8);
-  letter-spacing: 0.04em;
-  transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.arrowCircle {
-  width: 36px;
-  height: 36px;
+/* CIRCULAR UP-RIGHT ARROW BUTTON (Full Blue by default) */
+.arrowBtn {
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
-  background-color: var(--_accent, #006db8);
+  background-color: var(--bs-theme-color, #006db8);
   color: #ffffff;
+  border: 1px solid var(--bs-theme-color, #006db8);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(0, 109, 184, 0.28);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              background-color 0.3s ease,
-              box-shadow 0.3s ease;
   flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 109, 184, 0.32);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.arrowCircle svg {
+.arrowBtn svg {
   display: block;
-  width: 16px;
-  height: 16px;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 18px;
+  height: 18px;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.productCard:hover .viewText,
-.cardViewLink:hover .viewText {
-  color: #0a1e3c;
-  transform: translateX(2px);
-}
-
-.productCard:hover .arrowCircle,
-.cardViewLink:hover .arrowCircle {
+.productCard:hover .arrowBtn {
   background-color: #0a1e3c;
-  transform: translateX(4px);
-  box-shadow: 0 6px 16px rgba(10, 30, 60, 0.28);
+  border-color: #0a1e3c;
+  color: #ffffff;
+  box-shadow: 0 6px 18px rgba(10, 30, 60, 0.35);
 }
 
-.productCard:hover .arrowCircle svg,
-.cardViewLink:hover .arrowCircle svg {
-  transform: translateX(2px);
+.productCard:hover .arrowBtn svg {
+  transform: translate(2px, -2px);
 }
 
 /* EMPTY STATE */
@@ -757,11 +648,20 @@
     gap: 1.25rem;
   }
   .productCard {
-    --_padding: 14px;
-    --_radius: 22px;
+    border-radius: 20px;
+    padding: 10px;
   }
-  .thumbnailStack {
-    height: 200px;
+  .imageContainer {
+    height: 220px;
+    border-radius: 16px;
+    padding: 14px;
+  }
+  .cardFooter {
+    padding: 12px 4px 4px 4px;
+  }
+  .arrowBtn {
+    width: 40px;
+    height: 40px;
   }
   .featuredList {
     grid-template-columns: 1fr;

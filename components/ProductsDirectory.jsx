@@ -35,9 +35,10 @@ const CloseIcon = () => (
   </svg>
 );
 
-const ArrowRightIcon = () => (
-  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-    <path d="M5 12h14M12 5l7 7-7 7" />
+const ArrowUpRightIcon = () => (
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <line x1="7" y1="17" x2="17" y2="7" />
+    <polyline points="7 7 17 7 17 17" />
   </svg>
 );
 
@@ -403,66 +404,43 @@ function ProductsDirectoryContent() {
             </div>
           )}
 
-          {/* Modern Product Grid (Clean Card with Scooped Category & View Action) */}
+          {/* Modern Product Grid matching Reference Layout (Rounded Card, Rounded Image Box with Dots, Title & Category, Up-Right Arrow Button) */}
           {paginatedProducts.length > 0 ? (
             <div className={styles.productGrid}>
-              {paginatedProducts.map((p, idx) => {
-                const isSwitchgear = p.division === 'Switchgear' || p.category?.toLowerCase().includes('switchgear');
-                const accentColor = isSwitchgear ? '#0a1e3c' : '#006db8';
-
-                return (
-                  <article
-                    key={p.slug}
-                    className={styles.productCard}
-                    style={{ '--product-card--accent': accentColor }}
+              {paginatedProducts.map((p, idx) => (
+                <article key={p.slug} className={styles.productCard}>
+                  <Link
+                    href={`/products/${p.slug}/`}
+                    className={styles.cardLink}
+                    aria-label={`View ${p.name}`}
                   >
-                    <Link
-                      href={`/products/${p.slug}/`}
-                      className={styles.thumbnailStack}
-                      aria-label={`View ${p.name}`}
-                    >
-                      <img
-                        src={p.image}
-                        alt=""
-                        width={400}
-                        height={235}
-                        loading={idx < 3 ? 'eager' : 'lazy'}
-                        fetchPriority={idx < 3 ? 'high' : 'auto'}
-                        decoding="async"
-                      />
+                    {/* Top Image Container (Full size) */}
+                    <div className={styles.imageContainer}>
                       <img
                         src={p.image}
                         alt={p.name}
                         width={400}
-                        height={235}
-                        loading={idx < 3 ? 'eager' : 'lazy'}
+                        height={260}
+                        className={styles.productImage}
+                        loading={idx < 6 ? 'eager' : 'lazy'}
                         fetchPriority={idx < 3 ? 'high' : 'auto'}
                         decoding="async"
                       />
-                    </Link>
-
-                    <p className={styles.cardCategory}>{p.category}</p>
-
-                    <h2 className={styles.cardHeading}>
-                      <Link href={`/products/${p.slug}/`}>
-                        {p.name}
-                      </Link>
-                    </h2>
-
-                    <p className={styles.cardDesc}>
-                      {p.desc || 'High-efficiency industrial unit engineered to IEC standards for utility, renewable, and critical power infrastructure.'}
-                    </p>
-
-                    <div className={styles.cardBottomRow}>
-                      <Link href={`/products/${p.slug}/`} className={styles.cardViewLink}>
-                        <span className={styles.arrowCircle} aria-hidden="true">
-                          <ArrowRightIcon />
-                        </span>
-                      </Link>
                     </div>
-                  </article>
-                );
-              })}
+
+                    {/* Bottom Info: Lower font-size Product Title on left, Blue Up-Right Arrow on right (Category removed) */}
+                    <div className={styles.cardFooter}>
+                      <div className={styles.cardInfo}>
+                        <h3 className={styles.productTitle}>{p.name}</h3>
+                      </div>
+
+                      <div className={styles.arrowBtn} aria-hidden="true">
+                        <ArrowUpRightIcon />
+                      </div>
+                    </div>
+                  </Link>
+                </article>
+              ))}
             </div>
           ) : (
             <div className={styles.emptyState}>

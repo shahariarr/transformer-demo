@@ -2,7 +2,6 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { SERVICES } from '@/lib/services';
 import { PageHero, LinkCard, ArrowRight } from '@/components/PageParts';
-import ServiceFaq from '@/components/ServiceFaq';
 import { waLink } from '@/lib/data';
 import { WA_PATH } from '@/lib/icons';
 import styles from './page.module.css';
@@ -752,23 +751,6 @@ export default async function ServicePage({ params }) {
         </section>
       )}
 
-
-      {/* 8. Service-Specific Frequently Asked Questions */}
-      {s.faqs && s.slug !== 'equipment-supply' && (
-        <section className="sec sec--alt" aria-label="Service technical inquiries">
-          <div className="wrap">
-            <header className="sec-head fade-in-up">
-              <p className="label">FREQUENTLY ASKED QUESTIONS</p>
-              <h2>Common Technical Inquiries About {s.title}</h2>
-              <p className="sec-head__desc">
-                Direct answers to questions regarding test witnessing, turnaround lead times, and site procedures.
-              </p>
-            </header>
-
-            <ServiceFaq faqs={s.faqs} />
-          </div>
-        </section>
-      )}
 
       {/* 9. More Services Navigation */}
       <section className="sec" aria-label="Other services">

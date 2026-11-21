@@ -503,21 +503,6 @@ export default function ContactRFQSection({ preselectedOfficeId }) {
                   </button>
                 </div>
               </div>
-
-              {/* Business Hours */}
-              <div className="rfq-direct-item">
-                <div className="rfq-direct-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="10" />
-                    <polyline points="12 6 12 12 16 14" />
-                  </svg>
-                </div>
-                <div className="rfq-direct-content">
-                  <span className="rfq-direct-label">Working Hours</span>
-                  <span className="rfq-direct-val">Sunday – Thursday, 08:30 – 18:00 (BST)</span>
-                  <span className="rfq-direct-sub">Response Time: Within 24 hours on business days</span>
-                </div>
-              </div>
             </div>
 
           </div>

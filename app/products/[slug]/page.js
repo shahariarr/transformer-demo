@@ -14,7 +14,6 @@ const find = slug => {
 export function generateStaticParams() {
   const base = DATA.products.map(p => ({ slug: p.slug }));
   base.push({ slug: 'pad-mounted' });
-  base.push({ slug: 'single-phase-overhead-transformer' });
   return base;
 }
 
@@ -22,12 +21,6 @@ export async function generateMetadata({ params }) {
   const resolved = await params;
   const p = find(resolved?.slug);
   if (!p) return {};
-  if (p.slug === 'single-phase-overhead-transformer-product' || resolved?.slug?.includes('single-phase-overhead-transformer')) {
-    return {
-      title: 'Single Phase Overhead Transformer | ANSI Certified Manufacturer | BPEL',
-      description: 'Discover high-quality single phase overhead transformers for efficient power distribution. Reliable, durable, and designed for optimal performance.'
-    };
-  }
   if (p.slug === 'pad-mounted-transformers' || resolved?.slug === 'pad-mounted') {
     return {
       title: 'Pad Mounted Transformers | UL 1562 Listed & ANSI/IEEE C57.12.34 Compliant',
@@ -51,19 +44,19 @@ export default async function ProductPage({ params }) {
   const phoneTel = `tel:${DATA.contact.phoneDisplay.replace(/[^\d+]/g, '')}`;
 
   const d = TRANSFORMER_DETAILS[p.slug] || {
-    ratingMva: (p.name.match(/([\d,]+)\s*kva/i) || [])[1] ? `${parseInt((p.name.match(/([\d,]+)\s*kva/i) || [])[1].replace(/,/g, '')) / 1000} MVA` : 'Overhead Pole-Mount Unit',
-    powerKva: (p.name.match(/([\d,]+)\s*kva/i) || [])[1] ? `${(p.name.match(/([\d,]+)\s*kva/i) || [])[1]} kVA` : '3 – 333 kVA',
-    voltagePrimary: '34.5 kV / 13.8 kV / 11 kV (Custom available)',
-    voltageSecondary: '120/240 V, 240/480 V',
+    ratingMva: (p.name.match(/([\d,]+)\s*kva/i) || [])[1] ? `${parseInt((p.name.match(/([\d,]+)\s*kva/i) || [])[1].replace(/,/g, '')) / 1000} MVA` : 'Industrial Transformer Unit',
+    powerKva: (p.name.match(/([\d,]+)\s*kva/i) || [])[1] ? `${(p.name.match(/([\d,]+)\s*kva/i) || [])[1]} kVA` : '50 – 5,000 kVA',
+    voltagePrimary: '33 kV / 11 kV / 6.3 kV',
+    voltageSecondary: '415 V / 240 V',
     frequency: '50 Hz / 60 Hz',
-    coolingType: 'ONAN Natural Convection',
-    efficiency: 'Over 60% loss reduction',
-    impedance: 'ANSI Standard',
-    vectorGroup: 'Single Phase II-0',
+    coolingType: 'ONAN / ONAF Convection',
+    efficiency: 'High efficiency low-loss core',
+    impedance: 'IEC Standard',
+    vectorGroup: 'Dyn11',
     tapChanger: 'Off-Circuit ±2×2.5%',
-    fluidType: 'NON-PCB Mineral Insulating Oil',
+    fluidType: 'Mineral Insulating Oil',
     soundLevel: '< 55 dB(A)',
-    tagline: 'Single Phase Overhead Pole Mounted Transformer for Rural and Municipal Grids',
+    tagline: 'High-Efficiency Oil-Immersed Distribution Transformer for Industrial & Utility Networks',
     overviewParagraph: p.desc
   };
 

@@ -8,12 +8,6 @@ import DetailGallery from '@/components/DetailGallery';
 import Stats from '@/components/Stats';
 import styles from './page.module.css';
 
-const BoltIcon = () => (
-  <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true">
-    <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" />
-  </svg>
-);
-
 const find = slug => DATA.industries.find(i => i.slug === slug);
 
 export function generateStaticParams() {
@@ -83,13 +77,72 @@ const DEFAULT_STATS = [
   { target: 45, suffix: '+', label: 'INTERNATIONAL EXPORT REACH', format: false }
 ];
 
+const INDUSTRY_SPECS_MAP = {
+  'power-utilities-and-grid-infrastructure': {
+    voltage: '11 kV – 132 kV Transmission',
+    capacity: 'Up to 100 MVA Substation',
+    profile: '24/7/365 Continuous Grid Feed',
+    focus: 'Dynamic Short-Circuit & Ultra-Low Loss'
+  },
+  'manufacturing-and-industrial-facilities': {
+    voltage: '11 kV – 33 kV Medium Voltage',
+    capacity: '1,000 kVA – 16,000 kVA',
+    profile: 'Continuous High-Load Factory Duty',
+    focus: 'VFD Harmonics & High-Torque Motor Starting'
+  },
+  'textile-and-garment-industries': {
+    voltage: '11 kV / 33 kV Dual Feed',
+    capacity: '500 kVA – 5,000 kVA Units',
+    profile: 'Continuous Spinning & Dyeing Lines',
+    focus: '50°C Tropical Ambient & Automatic PFI'
+  },
+  'commercial-buildings-and-real-estate': {
+    voltage: '11 kV – 33 kV Step-Down',
+    capacity: 'Up to 4,000 kVA Cast Resin',
+    profile: 'Indoor Basements & Tower Risers',
+    focus: 'F1 Fire-Safe, Zero Leakage & Whisper Quiet'
+  },
+  'hospitals-and-healthcare-facilities': {
+    voltage: '11 kV / 415 V Isolated Feed',
+    capacity: '500 kVA – 2,500 kVA Vaults',
+    profile: 'Mission-Critical Zero-Downtime',
+    focus: 'Sub-ms ATS Failover & Medical Galvanic Isolation'
+  },
+  'water-treatment-and-public-infrastructure': {
+    voltage: '11 kV – 33 kV Intake Feeds',
+    capacity: '750 kVA – 6,300 kVA Outdoor',
+    profile: 'Heavy Inductive Pump Operation',
+    focus: 'IP65 Weatherproof & C5 Marine Anti-Corrosion'
+  },
+  'transportation-and-metro-infrastructure': {
+    voltage: '33 kV Traction / 11 kV Station',
+    capacity: '1,500 kVA – 8,000 kVA Traction',
+    profile: 'Rapid Cyclic Transit Acceleration',
+    focus: 'NFPA 130 Fire Safety & Low-Smoke Halogen-Free'
+  },
+  'energy-and-renewable-power': {
+    voltage: '33 kV – 132 kV Grid Tie-In',
+    capacity: 'Multi-Megawatt Inverter Skids',
+    profile: 'Solar Inverter Multi-Winding Duty',
+    focus: '99.4% Peak Efficiency & DC Inverter Tolerance'
+  }
+};
+
+const DEFAULT_INDUSTRY_SPECS = {
+  voltage: 'Medium & High Voltage',
+  capacity: 'Engineered Turnkey Range',
+  profile: 'Continuous Heavy Duty',
+  focus: 'IEC 60076 & ISO Quality Standards'
+};
+
 export default async function IndustryPage({ params }) {
   const ind = find((await params).slug);
   if (!ind) notFound();
   const d = INDUSTRY_DETAILS[ind.slug] || { intro: ind.desc, needs: [], supply: [], standards: [], gallery: [] };
   const others = DATA.industries.filter(x => x.slug !== ind.slug).slice(0, 4);
   const stats = INDUSTRY_STATS_MAP[ind.slug] || DEFAULT_STATS;
-  const recommendedProducts = DATA.products.slice(0, 3);
+  const meta = INDUSTRY_SPECS_MAP[ind.slug] || DEFAULT_INDUSTRY_SPECS;
+  const recommendedProducts = DATA.products.slice(0, 4);
 
   return (
     <>
@@ -143,8 +196,47 @@ export default async function IndustryPage({ params }) {
               </div>
             </div>
 
+            {/* 2. Quick Sector Specifications / Meta Grid */}
+            <div className={`fade-in-up ${styles.industryMetaGrid}`} data-delay="80">
+              <div className={styles.metaItem}>
+                <span className={styles.metaLabel}>VOLTAGE CLASS</span>
+                <span className={styles.metaValue}>{meta.voltage}</span>
+              </div>
+              <div className={styles.metaItem}>
+                <span className={styles.metaLabel}>EQUIPMENT CAPACITY</span>
+                <span className={styles.metaValue}>{meta.capacity}</span>
+              </div>
+              <div className={styles.metaItem}>
+                <span className={styles.metaLabel}>OPERATING PROFILE</span>
+                <span className={styles.metaValue}>{meta.profile}</span>
+              </div>
+              <div className={styles.metaItem}>
+                <span className={styles.metaLabel}>ENGINEERING FOCUS</span>
+                <span className={styles.metaValue}>{meta.focus}</span>
+              </div>
+            </div>
 
-            {/* 3. CTAs */}
+            {/* 3. Testing Standards & Code Compliance Chips */}
+            {d.standards && d.standards.length > 0 && (
+              <div className={`fade-in-up ${styles.detailStandardsCard}`} data-delay="120">
+                <div className={styles.detailStandardsHeader}>
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  </svg>
+                  <span>TESTING STANDARDS &amp; CODE COMPLIANCE</span>
+                </div>
+                <div className={styles.detailStandardsChips}>
+                  {d.standards.map((std) => (
+                    <span key={std} className={styles.detailStdChip}>
+                      <span className={styles.detailStdDot} aria-hidden="true" />
+                      {std}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* 4. CTAs */}
             <div className={`${styles.detailActions} fade-in-up`}>
               <Link className="btn btn--primary" href="/products/">
                 View Products Range <ArrowRight />
@@ -244,46 +336,19 @@ export default async function IndustryPage({ params }) {
             </p>
           </header>
 
-          <div className="pgrid">
-            {recommendedProducts.map((prod, i) => {
-              const rawRating = (prod.name.match(/([\d,]+)\s*kva/i) || [])[1];
-              const numRating = rawRating ? parseInt(rawRating.replace(/,/g, ''), 10) : null;
-              const rating = numRating ? numRating.toLocaleString('en-US') : rawRating;
-
-              return (
-                <article className="pcard fade-in-up" data-delay={i * 80} key={prod.name}>
-                  <div className="pcard__img">
-                    <img src={prod.image} alt={prod.name} loading="lazy" decoding="async" />
-                    {rating ? (
-                      <span className="pcard__badge">
-                        <BoltIcon />
-                        <span>{rating} kVA</span>
-                      </span>
-                    ) : null}
-                    <span className="pcard__type-tag">{prod.cat || 'Transformers'}</span>
-                  </div>
-                  <div className="pcard__body">
-                    <div className="pcard__cat">
-                      <span className="pcard__dot" aria-hidden="true" />
-                      <span>{prod.cat || 'Transformers'}</span>
-                    </div>
-                    <h3 className="pcard__title">
-                      <Link href={`/products/${prod.slug}/`}>{prod.name}</Link>
-                    </h3>
-                    <p className="pcard__desc">{prod.desc}</p>
-                    <div className="pcard__actions">
-                      <Link href={`/products/${prod.slug}/`} className="pcard__btn pcard__btn--main">
-                        <span>Product Details</span>
-                        <ArrowRight />
-                      </Link>
-                      <Link href={`/contact/?service=${encodeURIComponent(prod.name)}`} className="pcard__btn pcard__btn--ghost">
-                        Inquiry
-                      </Link>
-                    </div>
-                  </div>
-                </article>
-              );
-            })}
+          <div className="lgrid">
+            {recommendedProducts.map((prod, i) => (
+              <LinkCard
+                key={prod.name}
+                href={`/products/${prod.slug}/`}
+                image={prod.image}
+                contain={true}
+                title={prod.name}
+                text={prod.desc}
+                more="Learn more"
+                delay={i * 80}
+              />
+            ))}
           </div>
         </div>
       </section>
