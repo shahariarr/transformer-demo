@@ -752,31 +752,9 @@ export default async function ServicePage({ params }) {
         </section>
       )}
 
-      {/* 7. Signature High-Impact Ready to Specify CTA Banner */}
-      <section className="sec" aria-label="Ready to specify CTA">
-        <div className="wrap">
-          <div className={`${styles.etsCtaCard} fade-in-up`}>
-            <div className={styles.etsCtaCardContent}>
-              <h2>{data.ctaTitle}</h2>
-              <p>{data.ctaDesc}</p>
-            </div>
-            <div className={styles.etsCtaCardActions}>
-              <a className="btn btn--primary" href={`/contact/?service=${encodeURIComponent(s.title)}`}>
-                Request a Quote <ArrowRight />
-              </a>
-              <a className="btn btn--wa facility-wa-btn" href={waLink()} target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
-                  <path d={WA_PATH} />
-                </svg>
-                <span>WhatsApp Us</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* 8. Service-Specific Frequently Asked Questions */}
-      {s.faqs && (
+      {s.faqs && s.slug !== 'equipment-supply' && (
         <section className="sec sec--alt" aria-label="Service technical inquiries">
           <div className="wrap">
             <header className="sec-head fade-in-up">

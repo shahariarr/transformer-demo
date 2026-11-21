@@ -172,26 +172,6 @@ export default async function ProjectPage({ params }) {
               </div>
             )}
 
-            {/* 4. Standards Verified */}
-            {d.standards && d.standards.length > 0 && (
-              <div className={`detail__standards-card ${styles.standardsCard} fade-in-up`} data-delay="240">
-                <div className={`detail__standards-header ${styles.standardsHeader}`}>
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                    <path d="m9 12 2 2 4-4" />
-                  </svg>
-                  <span>VERIFIED COMPLIANCE &amp; STANDARDS</span>
-                </div>
-                <div className={`detail__standards-chips ${styles.standardsChips}`}>
-                  {d.standards.map((std) => (
-                    <span key={std} className={`detail__std-chip ${styles.stdChip}`}>
-                      <span className={`detail__std-dot ${styles.stdDot}`} aria-hidden="true" />
-                      <span>{std}</span>
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
 
             {/* 5. CTAs */}
             <div className={`detail__actions ${styles.detailActions} fade-in-up`}>
