@@ -143,26 +143,6 @@ export default async function IndustryPage({ params }) {
               </div>
             </div>
 
-            {/* 2. Compliance & Standards Badges */}
-            {d.standards && d.standards.length > 0 && (
-              <div className={`${styles.detailStandardsCard} fade-in-up`} data-delay="100">
-                <div className={styles.detailStandardsHeader}>
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                    <path d="m9 12 2 2 4-4" />
-                  </svg>
-                  <span>VERIFIED COMPLIANCE &amp; CODES</span>
-                </div>
-                <div className={styles.detailStandardsChips}>
-                  {d.standards.map((std) => (
-                    <span key={std} className={styles.detailStdChip}>
-                      <span className={styles.detailStdDot} aria-hidden="true" />
-                      <span>{std}</span>
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
 
             {/* 3. CTAs */}
             <div className={`${styles.detailActions} fade-in-up`}>
@@ -335,34 +315,6 @@ export default async function IndustryPage({ params }) {
         </div>
       </section>
 
-      {/* =========================================================
-          6. SIGNATURE BOTTOM CONSULTATION BANNER
-          ========================================================= */}
-      <section className="sec sec--tight sec--alt" aria-label="Sector Technical Consultation">
-        <div className="wrap">
-          <div className="standards-consult-box fade-in-up" style={{ marginTop: 0 }}>
-            <div className="standards-consult-copy">
-              <span className="standards-consult-tag">TECHNICAL SIZING &amp; SLD CONSULTATION</span>
-              <h3>Need Substation Sizing or Grid Tender Compliance for {ind.name}?</h3>
-              <p>
-                Our senior electrical engineering team reviews project single-line diagrams (SLD), calculates duty-cycle loss profiles, and prepares utility-compliant submittals tailored for your project.
-              </p>
-            </div>
-            <div className="standards-consult-actions">
-              <Link className="btn btn--primary" href={`/contact/?service=${encodeURIComponent(ind.name)}`}>
-                <span>Request Sector Consultation</span>
-                <ArrowRight />
-              </Link>
-              <a className="btn btn--wa" href={waLink()} target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
-                  <path d={WA_PATH} />
-                </svg>
-                <span>WhatsApp Us</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
     </>
   );
 }

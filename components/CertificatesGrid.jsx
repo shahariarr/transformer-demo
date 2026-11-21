@@ -1,31 +1,10 @@
 'use client';
 
-import { useState, useMemo } from 'react';
 import { QA_CERTS } from '@/lib/quality';
 import { useUI } from './UIProvider';
 
-const CATEGORIES = [
-  { id: 'all', label: 'All Documents' },
-  { id: 'iso', label: 'ISO Management Systems' },
-  { id: 'type-test', label: 'Type Test Reports' },
-  { id: 'iec-special', label: 'IEC Dielectric & Special Tests' },
-  { id: 'conformity', label: 'CE & Conformity' }
-];
-
 export default function CertificatesGrid() {
   const { openCert } = useUI();
-  const [activeTab, setActiveTab] = useState('all');
-
-  const filteredCerts = useMemo(() => {
-    return QA_CERTS.map((cert, index) => ({ ...cert, originalIndex: index })).filter((c) => {
-      if (activeTab === 'all') return true;
-      if (activeTab === 'iso') return c.badge.includes('ISO');
-      if (activeTab === 'type-test') return c.badge.includes('Type Test') || c.badge.includes('IEC 60076-2') || c.badge.includes('IEC 60076-10');
-      if (activeTab === 'iec-special') return c.badge.includes('IEC 60076-5') || c.badge.includes('IEC 60076-3') || c.badge.includes('IEC 60296') || c.badge.includes('Routine');
-      if (activeTab === 'conformity') return c.badge.includes('CE');
-      return true;
-    });
-  }, [activeTab]);
 
   return (
     <div className="wrap">
@@ -38,41 +17,9 @@ export default function CertificatesGrid() {
         </p>
       </header>
 
-      {/* Filter Tabs */}
-      <div className="cert-filter-bar fade-in-up" role="tablist" aria-label="Filter Certificates by Category">
-        {CATEGORIES.map((cat) => {
-          const count = cat.id === 'all'
-            ? QA_CERTS.length
-            : QA_CERTS.filter((c) => {
-                if (cat.id === 'iso') return c.badge.includes('ISO');
-                if (cat.id === 'type-test') return c.badge.includes('Type Test') || c.badge.includes('IEC 60076-2') || c.badge.includes('IEC 60076-10');
-                if (cat.id === 'iec-special') return c.badge.includes('IEC 60076-5') || c.badge.includes('IEC 60076-3') || c.badge.includes('IEC 60296') || c.badge.includes('Routine');
-                if (cat.id === 'conformity') return c.badge.includes('CE');
-                return true;
-              }).length;
-
-          const isActive = activeTab === cat.id;
-
-          return (
-            <button
-              key={cat.id}
-              type="button"
-              role="tab"
-              aria-selected={isActive}
-              className={`cert-pill-btn ${isActive ? 'is-active' : ''}`}
-              onClick={() => setActiveTab(cat.id)}
-            >
-              <span>{cat.label}</span>
-              <span className="cert-pill-count">{count}</span>
-            </button>
-          );
-        })}
-      </div>
-
-
       {/* Grid of Certificate Cards */}
       <div className="cert-cards-grid">
-        {filteredCerts.map((c, i) => (
+        {QA_CERTS.map((c, i) => (
           <article
             key={c.certNo + i}
             className="cert-card fade-in-up"
@@ -80,11 +27,11 @@ export default function CertificatesGrid() {
             role="button"
             tabIndex="0"
             aria-label={`Inspect official document: ${c.title}`}
-            onClick={() => openCert(c.originalIndex)}
+            onClick={() => openCert(i)}
             onKeyDown={(e) => {
               if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
-                openCert(c.originalIndex);
+                openCert(i);
               }
             }}
           >
@@ -123,8 +70,6 @@ export default function CertificatesGrid() {
             <div className="cert-card__body">
               <span className="cert-card__cert-no">{c.certNo}</span>
               <h3 className="cert-card__title">{c.title}</h3>
-              {/* <p className="cert-card__sub">{c.sub}</p>
-              <p className="cert-card__desc">{c.desc}</p> */}
 
               <div className="cert-card__footer">
                 <button
