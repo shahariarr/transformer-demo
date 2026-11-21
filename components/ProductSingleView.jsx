@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import { DATA, mailLink } from '@/lib/data';
 import { CATEGORY_TREE, FEATURED_PRODUCTS, ALL_PRODUCTS, norm } from '@/lib/products-catalog';
@@ -42,9 +42,9 @@ export default function ProductSingleView({
 }) {
   // Gallery state
   const defaultImages = [
-    '/assets/images/products/showcase/single-phase-overhead-transformer-1.jpg',
-    '/assets/images/products/showcase/single-phase-overhead-transformer-2.jpg',
-    '/assets/images/products/showcase/single-phase-overhead-transformer-3.jpg'
+    product?.image || '/assets/images/products/catalog/6-10kv-series-oil-immersed-distribution-transformer-product.jpg',
+    '/assets/images/products/catalog/6-10kv-scb-series-dry-type-transformer-product.jpg',
+    '/assets/images/products/catalog/s9-35kv-series-transformer-product.jpg'
   ];
 
   const galleryImages = (product?.gallery && product.gallery.length > 0)
@@ -71,46 +71,25 @@ export default function ProductSingleView({
   // Related products carousel state
   const [relatedIndex, setRelatedIndex] = useState(0);
 
-  const relatedProducts = [
-    {
-      title: 'Triangular Three-Dimensional Coilediron Core Transformer',
-      slug: 'triangular-three-dimensional-coilediron-core-transformer',
-      image: '/assets/images/products/showcase/overhead-transformer-3.jpg',
-      order: '01'
-    },
-    {
-      title: '6~10kV SCB Series Dry-Type Transformer',
-      slug: '6-10kv-scb-series-dry-type-transformer',
-      image: '/assets/images/products/ets/dry-type-transformers.webp',
-      order: '02'
-    },
-    {
-      title: 'S9-35kv Series Transformer',
-      slug: 's9-35kv-series-transformers',
-      image: '/assets/images/products/ets/oil-immersed-transformers.webp',
-      order: '03'
-    },
-    {
-      title: '6-10kv Series Oil Immersed Distribution Transformer',
-      slug: '6-10kv-series-oil-immersed-distribution-transformer',
-      image: '/assets/images/products/ets/distribution-transformers.webp',
-      order: '04'
-    },
-    {
-      title: 'Pad Mounted Transformers',
-      slug: 'pad-mounted-transformers',
-      image: '/assets/images/products/ets/pad-mounted-transformers.webp',
-      order: '05'
-    },
-    {
-      title: 'Cast Resin Dry-Type Transformer',
-      slug: 'cast-resin-dry-type-transformer',
-      image: '/assets/images/products/ets/cast-resin-dry-type-transformers.webp',
-      order: '06'
-    }
-  ];
+  // Dynamically select related products from the catalog (same category/division first, excluding current product)
+  const relatedProducts = useMemo(() => {
+    const currentSlug = product?.slug;
+    const sameCat = ALL_PRODUCTS.filter(p => p.slug !== currentSlug && (p.category === product?.category || p.division === product?.division));
+    const others = ALL_PRODUCTS.filter(p => p.slug !== currentSlug && p.category !== product?.category && p.division !== product?.division);
+    const pool = [...sameCat, ...others];
 
-  const visibleRelatedCount = 4;
+    const selected = pool.length > 0 ? pool.slice(0, 12) : ALL_PRODUCTS.slice(0, 12);
+    return selected.map((p, idx) => ({
+      title: p.name,
+      slug: p.slug,
+      image: p.image || '/assets/images/products/catalog/6-10kv-series-oil-immersed-distribution-transformer-product.jpg',
+      category: p.category || 'Transformer',
+      desc: p.desc || 'High-efficiency industrial equipment engineered to IEC standards for utility, industrial, and power infrastructure.',
+      order: String(idx + 1).padStart(2, '0')
+    }));
+  }, [product?.slug, product?.category, product?.division]);
+
+  const visibleRelatedCount = 3;
   const maxRelatedIndex = Math.max(0, relatedProducts.length - visibleRelatedCount);
 
   const nextRelated = () => {
@@ -147,7 +126,7 @@ export default function ProductSingleView({
     };
   }, [isModalOpen]);
 
-  const productName = product?.name || 'Single Phase Overhead Transformer';
+  const productName = product?.name || '6-10kv Series Oil Immersed Distribution Transformer';
   const productDesc = product?.desc || 'BPEL power transformers adopt an efficient and energy-saving coil core structure design. Characteristics include compact footprint, reduced low-voltage power supply radius, and reduced distribution line loss. Built with a fully sealed structure, high overload endurance, continuous operation reliability, and low maintenance requirements.';
 
   // RFQ Technical Inquiry Form State (Cloned from Contact Page)
@@ -1203,22 +1182,31 @@ export default function ProductSingleView({
               <div>
                 <div className={styles.relatedCardsGrid}>
                   {relatedProducts.slice(relatedIndex, relatedIndex + visibleRelatedCount).map((rp, i) => (
-                    <div className={styles.relatedItem} key={i}>
-                      <Link href={`/products/${rp.slug}/`} className={styles.relatedInner}>
+                    <article className={styles.relatedItem} key={rp.slug || i}>
+                      <Link href={`/products/${rp.slug}/`} className={styles.relatedCard}>
                         <div className={styles.relatedImgBox}>
-                          <img src={rp.image} alt={rp.title} loading="lazy" />
-                          <div className={styles.itemArrowBtn}>
-                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.5">
+                          <img
+                            src={rp.image}
+                            alt={rp.title}
+                            loading="lazy"
+                            onError={(e) => {
+                              e.currentTarget.onerror = null;
+                              e.currentTarget.src = '/assets/images/products/catalog/6-10kv-series-oil-immersed-distribution-transformer-product.jpg';
+                            }}
+                          />
+                        </div>
+                        <div className={styles.relatedBody}>
+                          <h3 className={styles.relatedTitle}>{rp.title}</h3>
+                          <p className={styles.relatedDesc}>{rp.desc}</p>
+                          <span className={styles.relatedMore}>
+                            Learn more
+                            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                               <path d="M5 12h14M12 5l7 7-7 7" />
                             </svg>
-                          </div>
-                        </div>
-                        <div className={styles.relatedInfo}>
-                          <span className={styles.relatedOrder}>{rp.order}</span>
-                          <h3 className={styles.relatedItemTitle} title={rp.title}>{rp.title}</h3>
+                          </span>
                         </div>
                       </Link>
-                    </div>
+                    </article>
                   ))}
                 </div>
               </div>

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { LinkCard } from '@/components/PageParts';
 
 const BoltIcon = () => (
   <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true">
@@ -950,74 +951,17 @@ export default function PadMountedProductView({
           </header>
 
           <div className="pgrid">
-            {alternativeCapacities.map((p) => (
-              <article className="pcard" key={p.slug}>
-                {/* Image Header with Badges */}
-                <div className="pcard__img">
-                  <img
-                    src={p.image}
-                    alt={p.name}
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  {p.badge && (
-                    <span className="pcard__badge">
-                      <BoltIcon />
-                      <span>{p.badge}</span>
-                    </span>
-                  )}
-                  <span className="pcard__type-tag">{p.typeTag}</span>
-                </div>
-
-                {/* Body Details */}
-                <div className="pcard__body">
-                  <div className="pcard__cat">
-                    <span className="pcard__dot" aria-hidden="true" />
-                    <span>{p.cat}</span>
-                  </div>
-
-                  <h3 className="pcard__title">
-                    <Link href={`/products/${p.slug}/`}>{p.name}</Link>
-                  </h3>
-
-                  <p className="pcard__desc">{p.desc}</p>
-
-                  {/* Specs Box */}
-                  {p.specRows && p.specRows.length > 0 && (
-                    <dl className="pcard__specs-box">
-                      {p.specRows.map((spec) => (
-                        <div className="pcard__spec-row" key={spec.key}>
-                          <dt className="pcard__spec-key">{spec.key}</dt>
-                          <dd className="pcard__spec-val">{spec.val}</dd>
-                        </div>
-                      ))}
-                    </dl>
-                  )}
-
-                  {/* Tags */}
-                  {p.tags && p.tags.length > 0 && (
-                    <ul className="pcard__tags">
-                      {Array.from(new Set(p.tags)).map(t => (
-                        <li key={t}>{t}</li>
-                      ))}
-                    </ul>
-                  )}
-
-                  {/* Action Buttons */}
-                  <div className="pcard__actions">
-                    <Link href={`/products/${p.slug}/`} className="pcard__btn pcard__btn--main">
-                      <span>View Details</span>
-                      <Arrow />
-                    </Link>
-                    <a
-                      href={`/contact/?product=${encodeURIComponent(p.name)}`}
-                      className="pcard__btn pcard__btn--ghost"
-                    >
-                      Inquiry
-                    </a>
-                  </div>
-                </div>
-              </article>
+            {alternativeCapacities.map((p, i) => (
+              <LinkCard
+                key={p.slug}
+                href={`/products/${p.slug}/`}
+                image={p.image}
+                contain={true}
+                title={p.name}
+                text={p.desc}
+                more="Learn more"
+                delay={i * 80}
+              />
             ))}
           </div>
 

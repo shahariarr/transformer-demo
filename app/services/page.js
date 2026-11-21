@@ -66,51 +66,6 @@ const SERVICE_FACTS = [
   }
 ];
 
-const TURNKEY_PACKAGES = [
-  {
-    badge: 'FULL-SCOPE EPC',
-    title: 'BPEL Substation EPC (11kV – 132kV)',
-    target: 'Industrial Parks, Garment Mills, Commercial Towers & Utilities',
-    desc: 'Complete engineering, procurement, and execution from civil foundation layout and heavy transformer crane rigging to HT/LT switchgear integration, PFI coupling, and energized grid commissioning.',
-    highlights: [
-      'Custom power transformer manufacturing & precision placement',
-      'Integrated MV/LV switchgear, VCB, RMU & automatic PFI plants',
-      'Statutory utility inspection, BPDB/BREB/DESCO clearance & energization',
-      'Single-source accountability with zero interface conflict'
-    ],
-    actionText: 'Explore Substation EPC',
-    href: '/services/installation/'
-  },
-  {
-    badge: 'PREVENTIVE AMC',
-    title: 'Substation Asset Health & Diagnostic AMC',
-    target: 'Continuous Production Facilities, Spinning Mills & Data Centers',
-    desc: 'Proactive diagnostic testing and comprehensive annual maintenance designed to prevent unplanned downtime, identify incipient faults, and ensure continuous, uninterrupted facility power.',
-    highlights: [
-      'Scheduled oil sampling: DGA gas chromatography, BDV & moisture tests',
-      'Tan Delta dielectric loss, winding resistance & insulation resistance (Megger)',
-      'Infrared thermography scans to detect loose joints and thermal hotspots',
-      '24/7 priority emergency response team for critical power restoration'
-    ],
-    actionText: 'Explore Diagnostic AMC',
-    href: '/services/testing/'
-  },
-  {
-    badge: 'RETROFIT & OVERHAUL',
-    title: 'Transformer Overhaul & Substation Modernization',
-    target: 'Aging Substations, Facility Expansions & High-Load Grids',
-    desc: 'Extend asset operational life by 10–15 years without the massive capital cost of complete equipment replacement. Includes mobile high-vacuum oil dehydration, OLTC overhaul, and protection upgrades.',
-    highlights: [
-      'On-site mobile high-vacuum oil filtration & BDV voltage restoration',
-      'Complete gasket replacement, nitrogen leak testing & bushing overhaul',
-      'On-Load Tap Changer (OLTC) contact maintenance & timing calibration',
-      'Microprocessor protection relay retrofitting & digital SCADA integration'
-    ],
-    actionText: 'Explore Overhaul Services',
-    href: '/services/maintenance/'
-  }
-];
-
 export default function ServicesPage() {
   return (
     <>
@@ -185,52 +140,10 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Turnkey EPC & Integrated Solutions Section */}
-      <section className={`sec sec--alt ${styles.turnkeySolutionsSection}`} aria-label="Integrated BPEL packages">
+      {/* Engineering Support & Turnkey Consultation Banner */}
+      <section className="sec sec--alt" aria-label="Engineering support">
         <div className="wrap">
-          <header className="sec-head fade-in-up">
-            <p className="label">BPEL INTEGRATED SOLUTIONS</p>
-            <h2>Single-Source Substation &amp; Power Engineering Packages</h2>
-            <p className="sec-head__desc">
-              Eliminate vendor disputes and project handoff delays. We combine custom equipment manufacturing, on-site installation, and lifecycle diagnostics into unified BPEL contracts backed by single-source warranty accountability.
-            </p>
-          </header>
-
-          <div className={styles.turnkeyPackagesGrid}>
-            {TURNKEY_PACKAGES.map((pkg, idx) => (
-              <div key={idx} className={`${styles.turnkeyPkgCard} fade-in-up`} data-delay={idx * 100}>
-                <span className={styles.turnkeyPkgBadge}>{pkg.badge}</span>
-                <h3>{pkg.title}</h3>
-                <p className={styles.turnkeyPkgTarget}>
-                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="2" y1="12" x2="22" y2="12" />
-                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                  </svg>
-                  <span>{pkg.target}</span>
-                </p>
-                <p className={styles.turnkeyPkgDesc}>{pkg.desc}</p>
-                <ul className={styles.turnkeyPkgList}>
-                  {pkg.highlights.map((h, i) => (
-                    <li key={i}>
-                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                        <polyline points="20 6 9 17 4 12" />
-                      </svg>
-                      <span>{h}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className={styles.turnkeyPkgAction}>
-                  <a className="btn btn--ghost btn--sm" href={pkg.href}>
-                    {pkg.actionText || 'Explore Package'} <ArrowRight />
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Engineering Support & Turnkey Consultation Banner */}
-          <div className="faq__footer-help fade-in-up" data-delay="160" style={{ marginTop: '3.5rem' }}>
+          <div className="faq__footer-help fade-in-up" data-delay="160">
             <div className="faq-help__main">
               <span className="faq-help__eyebrow">
                 <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>

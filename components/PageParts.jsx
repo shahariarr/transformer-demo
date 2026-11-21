@@ -31,7 +31,16 @@ export function PageHero({ crumbs = [], label, title, desc, image, children }) {
 export function LinkCard({ href, image, contain, icon, kicker, title, text, more = 'Learn more', delay = 0 }) {
   return (
     <a className="lcard fade-in-up" href={href} data-delay={delay}>
-      {image ? <div className={`lcard__img${contain ? ' lcard__img--contain' : ''}`}><img src={image} alt="" loading="lazy" decoding="async" /></div> : null}
+      {image ? (
+        <div className={`lcard__img${contain ? ' lcard__img--contain' : ''}`}>
+          <img
+            src={image}
+            alt={title || ''}
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      ) : null}
       {icon ? <span className="lcard__icon" aria-hidden="true">{icon}</span> : null}
       <div className="lcard__body">
         {kicker ? <span className="lcard__kicker">{kicker}</span> : null}

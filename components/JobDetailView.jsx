@@ -227,24 +227,6 @@ export default function JobDetailView({ job, relatedJobs = [] }) {
               </section>
             )}
 
-            {/* Bottom Call-To-Action Banner */}
-            <div className={styles.bottomApplyCta}>
-              <div className={styles.bottomApplyCopy}>
-                <h3 className={styles.bottomApplyTitle}>Interested in this Opportunity?</h3>
-                <p className={styles.bottomApplyDesc}>
-                  Submit your formal application and CV directly to the BPEL technical recruitment team.
-                </p>
-              </div>
-              <Link
-                href={`/careers/apply?job=${job.slug}`}
-                className={styles.applyBtn}
-              >
-                <span>Apply for this Position</span>
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </Link>
-            </div>
           </div>
 
           {/* Right Column (Sidebar Cards) */}
