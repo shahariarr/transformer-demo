@@ -1,0 +1,726 @@
+/* =========================================================
+   Single Job Details Page Styles (CSS Module)
+   app/careers/[slug]/page.module.css
+   Matching User Reference Layout & Corporate Blue Palette
+   ========================================================= */
+
+.singleJobSection {
+  padding-top: calc(var(--header-h, 116px) + 2.5rem);
+  padding-bottom: 80px;
+  background: #f8fafc;
+  min-height: 100vh;
+}
+
+/* Breadcrumb nav */
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-bottom: 24px;
+}
+
+.breadcrumbs a {
+  color: #64748b;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.breadcrumbs a:hover {
+  color: #006db8;
+}
+
+.crumbSep {
+  color: #cbd5e1;
+}
+
+.crumbActive {
+  color: #0f172a;
+  font-weight: 600;
+}
+
+/* Top Hero Card */
+.heroCard {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 32px 36px;
+  box-shadow: 0 4px 20px -2px rgba(10, 30, 60, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 28px;
+  margin-bottom: 32px;
+}
+
+.heroLeft {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex: 1;
+  min-width: 0;
+}
+
+.heroLogo {
+  width: 72px;
+  height: 72px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-family: "Poppins", sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  user-select: none;
+}
+
+.heroInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.heroTitleRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.heroTitle {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #0a1e3c;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.verifiedCheck {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #10b981;
+  flex-shrink: 0;
+}
+
+.heroMetaRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 22px;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.88rem;
+  color: #64748b;
+  font-weight: 450;
+}
+
+.heroMetaItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.heroMetaItem svg {
+  color: #64748b;
+  flex-shrink: 0;
+}
+
+.heroTagsRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+.pillBlue {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 14px;
+  border-radius: 9999px;
+  background: #e0f2fe;
+  color: #0284c7;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 550;
+}
+
+.pillAmber {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 14px;
+  border-radius: 9999px;
+  background: #fef3c7;
+  color: #d97706;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 550;
+}
+
+/* Right Action Section of Top Hero */
+.heroRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.heroDeadline {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.86rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.deadlineHighlight {
+  color: #e11d48;
+  font-weight: 600;
+}
+
+.heroBtnGroup {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.applyBtn {
+  background: #006db8;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 13px 34px;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 650;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(0, 109, 184, 0.25);
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.applyBtn:hover {
+  background: #005a96;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(0, 109, 184, 0.35);
+}
+
+.applyBtn svg {
+  transition: transform 0.2s ease;
+}
+
+.applyBtn:hover svg {
+  transform: translateX(3px);
+}
+
+.bookmarkBtn {
+  width: 46px;
+  height: 46px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.bookmarkBtn:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #006db8;
+}
+
+.bookmarkBtnActive {
+  background: #eff6ff;
+  border-color: #006db8;
+  color: #006db8;
+}
+
+/* Main 2-Column Content Layout */
+.jobMainLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 350px;
+  gap: 32px;
+  align-items: start;
+}
+
+/* Left Column Content Cards */
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  min-width: 0;
+}
+
+.contentBlock {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 30px 34px;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.03);
+}
+
+.blockTitle {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.28rem;
+  font-weight: 700;
+  color: #0a1e3c;
+  margin: 0 0 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.descriptionText {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.94rem;
+  line-height: 1.7;
+  color: #475569;
+  margin: 0 0 14px;
+}
+
+.descriptionText:last-child {
+  margin-bottom: 0;
+}
+
+.bulletList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bulletItem {
+  position: relative;
+  padding-left: 20px;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: #475569;
+}
+
+.bulletItem::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #006db8;
+}
+
+/* Related Jobs List in Left Column */
+.relatedJobsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.relatedJobsTitle {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.28rem;
+  font-weight: 700;
+  color: #0a1e3c;
+  margin: 0;
+}
+
+.relatedCardsList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Bottom Call-To-Action Banner */
+.bottomApplyCta {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 28px 34px;
+  box-shadow: 0 4px 18px rgba(10, 30, 60, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.bottomApplyCopy {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 480px;
+}
+
+.bottomApplyTitle {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0a1e3c;
+  margin: 0;
+}
+
+.bottomApplyDesc {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem;
+  color: #64748b;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Right Column Sidebar */
+.rightSidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sidebarCard {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 26px 28px;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.03);
+}
+
+.sidebarTitle {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #0a1e3c;
+  margin: 0 0 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+/* Overview List */
+.overviewList {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.overviewItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.overviewIconBox {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #eff6ff;
+  color: #006db8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.overviewTexts {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.overviewLabel {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.78rem;
+  color: #64748b;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.overviewValue {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem;
+  color: #0f172a;
+  font-weight: 600;
+  word-break: break-word;
+}
+
+/* Direct Google Map Card (Click to expand in modal) */
+.mapCardInteractive {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+  background: #f1f5f9;
+  box-shadow: 0 2px 8px rgba(10, 30, 60, 0.04);
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.2s ease;
+}
+
+.mapCardInteractive:hover {
+  transform: translateY(-2px);
+  border-color: #006db8;
+  box-shadow: 0 8px 24px rgba(0, 109, 184, 0.18);
+}
+
+.mapClickOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 30, 60, 0.05);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 12px;
+  transition: background 0.2s ease;
+  pointer-events: none;
+}
+
+.mapCardInteractive:hover .mapClickOverlay {
+  background: rgba(10, 30, 60, 0.16);
+}
+
+.mapExpandPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(10, 30, 60, 0.88);
+  backdrop-filter: blur(4px);
+  color: #ffffff;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s ease;
+}
+
+.mapCardInteractive:hover .mapExpandPill {
+  background: #006db8;
+  transform: scale(1.04);
+  box-shadow: 0 4px 14px rgba(0, 109, 184, 0.4);
+}
+
+/* Map Modal Popup */
+.mapModalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 30, 60, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: fadeIn 0.2s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.mapModalContainer {
+  background: #ffffff;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 860px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.mapModalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px;
+  border-bottom: 1px solid #e2e8f0;
+  background: #f8fafc;
+}
+
+.mapModalTitleBox {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mapModalTitle {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0a1e3c;
+  margin: 0;
+}
+
+.mapModalSubtitle {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.84rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.modalCloseBtn {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modalCloseBtn:hover {
+  background: #fee2e2;
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+.mapModalBody {
+  height: 480px;
+  width: 100%;
+  background: #f1f5f9;
+}
+
+.mapModalFooter {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 14px 24px;
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+}
+
+.openInGoogleBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #006db8;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s ease;
+}
+
+.openInGoogleBtn:hover {
+  background: #006db8;
+  border-color: #006db8;
+  color: #ffffff;
+}
+
+/* Skills Cluster */
+.skillsCluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skillPill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #334155;
+  transition: all 0.2s ease;
+}
+
+.skillPill:hover {
+  background: #eff6ff;
+  border-color: #006db8;
+  color: #006db8;
+}
+
+/* Responsive Media Queries */
+@media screen and (max-width: 1024px) {
+  .jobMainLayout {
+    grid-template-columns: 1fr;
+  }
+  
+  .rightSidebar {
+    order: 2;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .heroCard {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+    gap: 20px;
+  }
+
+  .heroLeft {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .heroRight {
+    align-items: flex-start;
+    width: 100%;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 16px;
+  }
+
+  .applyBtn {
+    flex: 1;
+    width: 100%;
+  }
+
+  .heroBtnGroup {
+    width: 100%;
+  }
+
+  .contentBlock {
+    padding: 22px 20px;
+  }
+
+  .bottomApplyCta {
+    padding: 22px 20px;
+  }
+}

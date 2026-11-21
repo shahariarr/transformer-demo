@@ -6,11 +6,11 @@ import { useSearchParams } from 'next/navigation';
 import { VACANCIES } from '@/lib/careers';
 import { mailLink } from '@/lib/data';
 
-export default function JobApplicationForm() {
+export default function JobApplicationForm({ defaultJobSlug }) {
   const searchParams = useSearchParams();
   const jobParam = searchParams.get('job');
 
-  const [selectedSlug, setSelectedSlug] = useState(jobParam || VACANCIES[0].slug);
+  const [selectedSlug, setSelectedSlug] = useState(defaultJobSlug || jobParam || VACANCIES[0].slug);
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState(null);
   const [selectedFileName, setSelectedFileName] = useState('');
@@ -21,8 +21,10 @@ export default function JobApplicationForm() {
   useEffect(() => {
     if (jobParam) {
       setSelectedSlug(jobParam);
+    } else if (defaultJobSlug) {
+      setSelectedSlug(defaultJobSlug);
     }
-  }, [jobParam]);
+  }, [jobParam, defaultJobSlug]);
 
   const activeJob = VACANCIES.find(v => v.slug === selectedSlug) || null;
 
