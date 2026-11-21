@@ -403,53 +403,64 @@ function ProductsDirectoryContent() {
             </div>
           )}
 
-          {/* 3-Column Product Grid */}
+          {/* Modern Product Grid (Clean Card with Scooped Category & View Action) */}
           {paginatedProducts.length > 0 ? (
             <div className={styles.productGrid}>
               {paginatedProducts.map((p, idx) => {
-                const orderNum = String((currentPage - 1) * ITEMS_PER_PAGE + idx + 1).padStart(2, '0');
+                const isSwitchgear = p.division === 'Switchgear' || p.category?.toLowerCase().includes('switchgear');
+                const accentColor = isSwitchgear ? '#0a1e3c' : '#006db8';
 
                 return (
-                  <Link
+                  <article
                     key={p.slug}
-                    href={`/products/${p.slug}/`}
                     className={styles.productCard}
-                    aria-label={`View ${p.name}`}
+                    style={{ '--product-card--accent': accentColor }}
                   >
-                    <div className={styles.cardTopBar}>
-                      <span className={styles.cardBadge}>{p.category}</span>
-                      <span className={styles.cardSpecTag}>
-                        <span className={styles.cardSpecDot}></span>
-                        IEC / ANSI
-                      </span>
-                    </div>
-
-                    <div className={styles.cardImgWrap}>
+                    <Link
+                      href={`/products/${p.slug}/`}
+                      className={styles.thumbnailStack}
+                      aria-label={`View ${p.name}`}
+                    >
                       <img
                         src={p.image}
-                        alt={p.name}
+                        alt=""
+                        width={400}
+                        height={235}
                         loading={idx < 3 ? 'eager' : 'lazy'}
                         fetchPriority={idx < 3 ? 'high' : 'auto'}
                         decoding="async"
                       />
-                    </div>
+                      <img
+                        src={p.image}
+                        alt={p.name}
+                        width={400}
+                        height={235}
+                        loading={idx < 3 ? 'eager' : 'lazy'}
+                        fetchPriority={idx < 3 ? 'high' : 'auto'}
+                        decoding="async"
+                      />
+                    </Link>
 
-                    <div className={styles.cardInfo}>
-                      <div className={styles.cardMetaLine}>
-                        <span className={styles.cardCatBadge}>
-                          {p.subCategory || p.category}
-                        </span>
-                        <span className={styles.orderBadge}>#{orderNum}</span>
-                      </div>
-                      <h3 className={styles.cardTitle}>{p.name}</h3>
-                      <div className={styles.cardActionRow}>
-                        <span className={styles.cardActionLabel}>Explore Specifications</span>
-                        <div className={styles.cardArrowBtn} aria-hidden="true">
+                    <p className={styles.cardCategory}>{p.category}</p>
+
+                    <h2 className={styles.cardHeading}>
+                      <Link href={`/products/${p.slug}/`}>
+                        {p.name}
+                      </Link>
+                    </h2>
+
+                    <p className={styles.cardDesc}>
+                      {p.desc || 'High-efficiency industrial unit engineered to IEC standards for utility, renewable, and critical power infrastructure.'}
+                    </p>
+
+                    <div className={styles.cardBottomRow}>
+                      <Link href={`/products/${p.slug}/`} className={styles.cardViewLink}>
+                        <span className={styles.arrowCircle} aria-hidden="true">
                           <ArrowRightIcon />
-                        </div>
-                      </div>
+                        </span>
+                      </Link>
                     </div>
-                  </Link>
+                  </article>
                 );
               })}
             </div>
@@ -525,6 +536,16 @@ function ProductsDirectoryContent() {
         </main>
 
       </div>
+
+      {/* SVG Inset Shadow Filter for product thumbnails */}
+      <svg width="0" height="0" style={{ visibility: 'hidden', position: 'fixed' }} aria-hidden="true">
+        <filter id="svg-inset-shadow">
+          <feOffset in="SourceAlpha" dx="4" dy="6" />
+          <feGaussianBlur in="SourceAlpha" stdDeviation="6" />
+          <feComposite in="SourceAlpha" operator="out" />
+          <feBlend in2="SourceGraphic" mode="multiply" />
+        </filter>
+      </svg>
     </div>
   );
 }
