@@ -61,7 +61,7 @@ export default function Faq({ split = false }) {
           <div className="faq-split__header">
             <SectionHead
               label="COMMON INQUIRIES & TECHNICAL SPECIFICATIONS"
-              title="Frequently Asked Questions"
+              title={<>Frequently Asked <span className="text-accent">Questions</span></>}
               desc="Clear guidance on transformer engineering configurations, manufacturing lead times, testing protocols, and substation EPC integration."
             />
           </div>
@@ -78,7 +78,7 @@ export default function Faq({ split = false }) {
     <div className="wrap">
       <SectionHead
         label="COMMON INQUIRIES & TECHNICAL SPECIFICATIONS"
-        title="Frequently Asked Questions"
+        title={<>Frequently Asked <span className="text-accent">Questions</span></>}
         desc="Clear guidance on transformer engineering configurations, manufacturing lead times, testing protocols, and substation EPC integration."
       />
       {questionsList}

@@ -4,7 +4,8 @@ import { useEffect, useRef, useState, Suspense } from 'react';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { SITE } from '@/lib/site';
-import { DATA } from '@/lib/data';
+import { DATA, waLink } from '@/lib/data';
+import { WA_PATH } from '@/lib/icons';
 import { NAV_ICONS } from '@/lib/nav';
 import { useUI } from './UIProvider';
 import RawSvg from './RawSvg';
@@ -374,6 +375,20 @@ function HeaderContent() {
             <li><TopIcon><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" /></TopIcon><a href={`tel:${c.whatsapp || ''}`}>{c.phoneDisplay || ''}</a></li>
             <li><TopIcon><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></TopIcon><a href={`mailto:${c.email || ''}`}>{c.email || ''}</a></li>
           </ul>
+          <div className="topbar__social" aria-label="Social media">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="topbar__social-link topbar__social-link--fb" aria-label="Facebook" title="Facebook">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M14 8h3V4h-3a5 5 0 0 0-5 5v2H7v4h2v7h4v-7h3l1-4h-4V9a1 1 0 0 1 1-1z" /></svg>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="topbar__social-link topbar__social-link--li" aria-label="LinkedIn" title="LinkedIn">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" /><rect x="2" y="9" width="4" height="12" /><circle cx="4" cy="4" r="2" /></svg>
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="topbar__social-link topbar__social-link--yt" aria-label="YouTube" title="YouTube">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.6 15.5V8.5l6.2 3.5-6.2 3.5z" /></svg>
+            </a>
+            <a href={waLink()} target="_blank" rel="noopener noreferrer" className="topbar__social-link topbar__social-link--wa" aria-label="WhatsApp" title="WhatsApp">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d={WA_PATH} /></svg>
+            </a>
+          </div>
         </div>
       </div>
       <div className="header-shell">

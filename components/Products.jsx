@@ -7,24 +7,14 @@ import ViewAll from './ViewAll';
 
 const PRODUCTS = [
   {
-    title: 'Single Phase Overhead Transformer',
-    desc: 'Transformer',
-    more: 'LEARN MORE',
-    href: '/products/single-phase-overhead-transformer-product/',
-    img: '/assets/images/best-selling/single-phase-overhead-transformer.png',
-    width: 644,
-    height: 500,
-    aspectRatio: '644 / 500'
-  },
-  {
     title: '6-10kv Series Oil Immersed Distribution Transformer',
     desc: 'Transformer',
     more: 'LEARN MORE',
     href: '/products/6-10kv-series-oil-immersed-distribution-transformer-product/',
     img: '/assets/images/best-selling/scb-series-dry-type-transformer.png',
-    width: 724,
-    height: 562,
-    aspectRatio: '724 / 562'
+    width: 653,
+    height: 567,
+    aspectRatio: '653 / 567'
   },
   {
     title: '6~10kV SCB Series Dry-Type Transformer',
@@ -32,9 +22,9 @@ const PRODUCTS = [
     more: 'LEARN MORE',
     href: '/products/6-10kv-scb-series-dry-type-transformer-product/',
     img: '/assets/images/best-selling/aa-removebg-preview.png',
-    width: 500,
-    height: 500,
-    aspectRatio: '1 / 1'
+    width: 419,
+    height: 392,
+    aspectRatio: '419 / 392'
   },
   {
     title: 'AYB Box-Type Substation (10kV Euro-Variable)',
@@ -42,9 +32,9 @@ const PRODUCTS = [
     more: 'LEARN MORE',
     href: '/products/ayb-box-type-substation-10kv-euro-variable-product/',
     img: '/assets/images/best-selling/1-transformer-substation.png',
-    width: 600,
-    height: 467,
-    aspectRatio: '600 / 467'
+    width: 576,
+    height: 401,
+    aspectRatio: '576 / 401'
   },
   {
     title: 'AGCK Type Low Voltage Switchgear',
@@ -52,9 +42,9 @@ const PRODUCTS = [
     more: 'LEARN MORE',
     href: '/products/agck-type-low-voltage-withdrawable-switchgear-product/',
     img: '/assets/images/best-selling/4-low-voltage-switchgear.png',
-    width: 600,
-    height: 466,
-    aspectRatio: '600 / 466'
+    width: 524,
+    height: 453,
+    aspectRatio: '524 / 453'
   },
   {
     title: 'ZN63(VS1)-12 Vacuum Circuit Breaker',
@@ -62,9 +52,9 @@ const PRODUCTS = [
     more: 'LEARN MORE',
     href: '/products/zn63-vs1-12-vacuum-circuit-breaker-product/',
     img: '/assets/images/best-selling/aaa-removebg-preview.png',
-    width: 500,
-    height: 500,
-    aspectRatio: '1 / 1'
+    width: 379,
+    height: 402,
+    aspectRatio: '379 / 402'
   },
   {
     title: 'FKN12-12(R) Air High Voltage Load Break Switch',
@@ -72,9 +62,9 @@ const PRODUCTS = [
     more: 'LEARN MORE',
     href: '/products/fkn12-12-r-air-high-voltage-load-break-switch-with-fuse-product/',
     img: '/assets/images/best-selling/6-load-switch.png',
-    width: 600,
-    height: 466,
-    aspectRatio: '600 / 466'
+    width: 426,
+    height: 462,
+    aspectRatio: '426 / 462'
   }
 ];
 
@@ -141,31 +131,106 @@ function ProductsRow({ rowRef, hidden, onCardClick }) {
 export default function Products({ viewAll = true, isGrid = false }) {
   const innerRef = useRef(null);
   const rowRef = useRef(null);
+  const sliderRef = useRef(null);
   const stateRef = useRef({
     x: 0,
     targetX: 0,
     paused: false,
     rowWidth: 0,
-    step: 350,
+    step: 450,
     touchStartX: 0,
     startX: 0,
     isDragging: false,
     didDrag: false,
+    cards: [],
+    cardOffsets: [],
+    containerW: 0,
+    cardW: 420
   });
+
+  // Calculate exit & entry animation for cards and equipment:
+  // - As a product slides off screen (left edge exit), it moves DOWNWARDS.
+  // - As a new product slides onto screen (right edge entry), it starts lower and moves UPWARDS into view.
+  const updateParallax = (currentX) => {
+    const s = stateRef.current;
+    const cards = s.cards;
+    const offsets = s.cardOffsets;
+    if (!cards || !offsets || cards.length === 0) return;
+
+    const W = s.containerW || window.innerWidth;
+    const cardW = s.cardW || 420;
+
+    // Exit threshold (left edge):
+    const exitStart = Math.min(cardW * 0.75, W * 0.28);
+    const exitEnd = -cardW * 0.75;
+    const exitRange = exitStart - exitEnd;
+
+    // Entry threshold (right edge):
+    const enterStart = W - Math.min(cardW * 0.75, W * 0.28);
+    const enterEnd = W + cardW * 0.5;
+    const enterRange = enterEnd - enterStart;
+
+    const maxCardDrop = 72; // Both card and product animate downwards as they exit
+    const maxImgDrop = 26;  // Extra micro-parallax for the product equipment
+
+    for (let i = 0; i < cards.length; i++) {
+      const card = cards[i];
+      const x = currentX + offsets[i];
+
+      let t = 0;
+      if (x < exitStart) {
+        // Exiting the screen on the left: animate downwards
+        t = Math.max(0, Math.min(1, (exitStart - x) / exitRange));
+      } else if (x > enterStart) {
+        // Sliding onto the screen from the right: animate upwards into view
+        t = Math.max(0, Math.min(1, (x - enterStart) / enterRange));
+      }
+
+      // Smoothstep easing: 3t^2 - 2t^3
+      const ease = t * t * (3 - 2 * t);
+
+      if (Math.abs((card._lastEase ?? -1) - ease) > 0.0015) {
+        card._lastEase = ease;
+        const cardY = ease * maxCardDrop;
+        const imgY = ease * maxImgDrop;
+        const op = 1 - ease * 0.65;
+        const scale = 1 - ease * 0.05;
+
+        card.style.setProperty('--card-y', `${cardY.toFixed(1)}px`);
+        card.style.setProperty('--img-y', `${imgY.toFixed(1)}px`);
+        card.style.setProperty('--card-op', op.toFixed(2));
+        card.style.setProperty('--card-scale', scale.toFixed(3));
+      }
+    }
+  };
 
   // Calculate row width & step dynamically on mount/resize
   useEffect(() => {
     if (isGrid) return;
     const updateDimensions = () => {
       const row = rowRef.current;
-      if (!row) return;
+      const inner = innerRef.current;
+      const slider = sliderRef.current;
+      if (!row || !inner) return;
+
       stateRef.current.rowWidth = row.offsetWidth;
       const firstCard = row.querySelector('.product-item');
       if (firstCard) {
-        const gap = parseFloat(getComputedStyle(row).gap) || 24;
+        const gap = parseFloat(getComputedStyle(row).gap) || 32;
         stateRef.current.step = firstCard.offsetWidth + gap;
+        stateRef.current.cardW = firstCard.offsetWidth;
       }
+      stateRef.current.containerW = slider ? slider.offsetWidth : window.innerWidth;
+
+      const cards = Array.from(inner.querySelectorAll('.product-item'));
+      stateRef.current.cards = cards;
+
+      const innerLeft = inner.getBoundingClientRect().left - stateRef.current.x;
+      stateRef.current.cardOffsets = cards.map(c => c.getBoundingClientRect().left - innerLeft);
+
+      updateParallax(stateRef.current.x);
     };
+
     updateDimensions();
     window.addEventListener('resize', updateDimensions);
     return () => window.removeEventListener('resize', updateDimensions);
@@ -207,6 +272,7 @@ export default function Products({ viewAll = true, isGrid = false }) {
         }
 
         inner.style.transform = `translate3d(${s.x}px, 0, 0)`;
+        updateParallax(s.x);
       }
 
       raf = requestAnimationFrame(tick);
@@ -229,13 +295,13 @@ export default function Products({ viewAll = true, isGrid = false }) {
 
   const next = () => {
     const s = stateRef.current;
-    const step = s.step || 350;
+    const step = s.step || 450;
     s.targetX -= step;
   };
 
   const prev = () => {
     const s = stateRef.current;
-    const step = s.step || 350;
+    const step = s.step || 450;
     s.targetX += step;
   };
 
@@ -266,6 +332,7 @@ export default function Products({ viewAll = true, isGrid = false }) {
     }
     if (innerRef.current) {
       innerRef.current.style.transform = `translate3d(${s.x}px, 0, 0)`;
+      updateParallax(s.x);
     }
   };
 
@@ -291,7 +358,7 @@ export default function Products({ viewAll = true, isGrid = false }) {
         <div className="proj-head">
           <SectionHead
             label="OUR PRODUCTS"
-            title="Engineered Products for Critical Power Infrastructure"
+            title={<>Engineered Products for <span className="text-accent">Critical Power Infrastructure</span></>}
             desc="Oil-immersed power and distribution transformers, pad-mounted substations, and medium-voltage switchgear engineered to IEC, IEEE, and UL international standards."
           />
           <div className="proj-nav" data-animate="slideInRight">
@@ -335,6 +402,7 @@ export default function Products({ viewAll = true, isGrid = false }) {
       ) : (
         <div
           className="products-marquee-slider"
+          ref={sliderRef}
           onTouchStart={handlePointerDown}
           onTouchMove={handlePointerMove}
           onTouchEnd={handlePointerUp}

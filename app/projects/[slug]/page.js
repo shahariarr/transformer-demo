@@ -102,26 +102,6 @@ export default async function ProjectPage({ params }) {
           />
 
           <div className={`detail__content ${styles.detailContent}`}>
-            {/* Project Quick Facts Bar */}
-            <dl className="facts fade-in-up">
-              <div>
-                <dt>Location</dt>
-                <dd>{p.location}</dd>
-              </div>
-              <div>
-                <dt>Client / Sector</dt>
-                <dd>{d.authority}</dd>
-              </div>
-              <div>
-                <dt>Capacity</dt>
-                <dd>{d.capacity}</dd>
-              </div>
-              <div>
-                <dt>Voltage</dt>
-                <dd>{d.voltage}</dd>
-              </div>
-            </dl>
-
             {/* 1. Project Overview Intro */}
             <div className={`detail__header-block ${styles.detailHeaderBlock} fade-in-up`}>
               <span className="label" style={{ marginBottom: '0.35rem' }}>PROJECT SUMMARY</span>

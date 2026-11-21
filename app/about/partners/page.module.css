@@ -10,20 +10,11 @@
 .toolbar,
 .controls {
   display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  margin-bottom: 2.5rem;
-  padding-bottom: 1.5rem;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 2rem;
+  padding-bottom: 1.25rem;
   border-bottom: 1px solid #E2E8F0;
-}
-
-@media (min-width: 1024px) {
-  .toolbar,
-  .controls {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
 }
 
 .catTabs,
@@ -156,38 +147,29 @@
 /* Partner Cards Grid */
 .partnersGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.25rem;
 }
 
 .partnerCard {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   background: #FFFFFF;
   border: 1px solid #E2E8F0;
   border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 16px rgba(11, 25, 44, 0.04);
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
-  position: relative;
-  overflow: hidden;
+  padding: 1.75rem 1.25rem;
+  box-shadow: 0 2px 8px rgba(11, 25, 44, 0.03);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+  min-height: 170px;
 }
 
 .partnerCard:hover {
-  transform: translateY(-4px);
-  border-color: #93C5FD;
-  box-shadow: 0 12px 28px rgba(11, 92, 171, 0.08);
-}
-
-.partnerCard::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: var(--brand-color, #0B5CAB);
-  opacity: 0.85;
+  transform: translateY(-3px);
+  border-color: #CBD5E1;
+  box-shadow: 0 10px 24px rgba(11, 25, 44, 0.08);
 }
 
 .cardHeader {
