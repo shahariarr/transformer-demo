@@ -141,7 +141,16 @@ export default function Hero() {
               <div className="hero__grid">
                 <div className="hero__copy">
                   <p className="label hero__in" style={{ '--d': 0 }}>{s.label}</p>
-                  <h1 className="hero__in" style={{ '--d': 1 }}>{s.title}</h1>
+                  <h1 className="hero__in" style={{ '--d': 1 }}>
+                    {s.titlePrefix ? (
+                      <>
+                        {s.titlePrefix}
+                        <span className="text-accent">{s.titleAccent}</span>
+                      </>
+                    ) : (
+                      s.title
+                    )}
+                  </h1>
                   <p className="lead hero__in" style={{ '--d': 2 }}>{s.lead}</p>
                   <div className="cta hero__in" style={{ '--d': 3 }}>
                     <a className="btn btn--primary" href={s.ctaPrimary.href}>{s.ctaPrimary.text}</a>

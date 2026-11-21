@@ -236,7 +236,7 @@ export default function Quality({ showWhy = true, showCerts = true, viewAll = tr
         <div className="why-bpel__content">
           <div className="why-bpel__intro" data-animate="slideInRight">
             <p className="label">WHY WORK WITH BPEL</p>
-            <h2 className="why-bpel__title">Built in-house. Backed by engineers.</h2>
+            <h2 className="why-bpel__title">Built in-house. Backed by <span className="text-accent">Engineers</span>.</h2>
             <p className="why-bpel__lead">From raw material to final test, every transformer is designed, built and supported by one accountable team — so you get consistent quality, predictable delivery and support for the life of the equipment.</p>
           </div>
 
@@ -264,7 +264,7 @@ export default function Quality({ showWhy = true, showCerts = true, viewAll = tr
       {showCerts ? <div className="qa-certs-wrap" data-animate="slideInUp">
         <div className="qa-certs-header">
           <div className="qa-certs-titles">
-            <h3>Certificates & Test Reports</h3>
+            <h2>Certificates & <span className="text-accent">Test Reports</span></h2>
             <p>Official international accreditations and laboratory test reports (Click any certificate to inspect).</p>
           </div>
           <div className="qa-certs-nav">

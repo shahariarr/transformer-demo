@@ -52,8 +52,11 @@ export default function Partners() {
   return (
     <>
       <div className="wrap">
-        <SectionHead label="OUR PARTNERS" title="Trusted by Industry Leaders"
-          desc="We collaborate with world-class manufacturers and certification bodies to deliver reliable power solutions." />
+        <SectionHead
+          label="OUR PARTNERS"
+          title={<>Trusted by <span className="text-accent">Industry Leaders</span></>}
+          desc="We collaborate with world-class manufacturers and certification bodies to deliver reliable power solutions."
+        />
       </div>
       <div className="partners-wrap" data-animate="slideInRight" aria-label="Partner logos">
         <div className="partners-inner" id="partners-inner" ref={innerRef}>
